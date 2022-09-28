@@ -1,0 +1,16 @@
+{
+  "_comment" : {
+    "lambda": "REQUIRED: lambda hyperparameter for the noisy channel",
+    "iterations": "REQUIRED: number of iterations to run",
+    "inventory_fn": "REQUIRED: filename of the feature inventory",
+    "lexicon_fn": "REQUIRED: filename of the lexicon",
+    "mappings_fn": "REQUIRED: filename of the phonological mappings",
+    "surface_forms_fn": "REQUIRED: filename of the surface data"
+  },
+  "lambda": 1,
+  "iterations": 1000,
+  "inventory_fn": "ex-inventory.csv",
+  "lexicon_fn": "ex-lexicon.csv",
+  "surface_forms_fn": "ex-surface_forms.csv",
+  "mappings_fn": "ex-rules.csv"
+}
