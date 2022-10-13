@@ -40,18 +40,37 @@ def load_parameters(parameters_fn):
     return parameters
 
 
-def load_grammar_class(inventory_fn, lexicon_fn, mappings_fn, data_fn, mode):
+def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
     """Loads and initializes a Grammar class"""
-    segs, feats, configs = load_inventory(inventory_fn)
-    lxs, clxs, urs = load_lexicon(lexicon_fn)
-    L = Lexicon(lxs, clxs, urs, segs, feats, configs)
+
+    ## Load in inventory and inventory object
+    inventory_fn = inventory["fn"]
+    tokens, feats, configs = load_inventory(inventory_fn)
+
+    ## Load in mappings and mapping object
+    mappings_fn = mappings["fn"]
     if mode == OT:
         cnames, cdefs = load_constraints(mappings_fn)
-        M = OT(cnames, cdefs, segs, feats, configs)
+        M = OT(cnames, cdefs, tokens, feats, configs)
     else:
         rnames, rdefs = load_rules(mappings_fn)
-        M = SPE(rnames, rdefs, segs, feats, configs)
-    clxs, srs, nobs = load_data(data_fn)
+        M = SPE(rnames, rdefs, tokens, feats, configs)
+
+    ## Load in data and lexicon
+    surface_forms_fn = surface_forms["fn"]
+    ur_prior = lexicon["ur_prior"]
+    ur_proposal = lexicon["ur_proposal"]
+    lxs, xclxs, clxs, srs, nobs = load_surface_forms(surface_forms_fn)
+    L = Lexicon(lxs, xclxs, ur_prior, ur_proposal, tokens, feats, configs)
+
+    ## Initialize UR hypothesis
+    lexicon_fn = lexicon["fn"]
+    if lexicon_fn:
+        L.initialize_urs(load_lexicon(lexicon_fn))
+    else:
+        L.initialize_urs()
+
+    ## Load and return grammar object
     G = Grammar(clxs, srs, nobs, L, M)
     return G
 
@@ -63,25 +82,25 @@ def load_inventory(inventory_fn):
         inventory = f.readlines()
         inventory = [i.strip().split(",") for i in inventory]
         inventory = np.array(inventory)
-    segs = inventory[:, 0][1:]
+    tokens = inventory[:, 0][1:]
     feats = inventory[0, :][1:]
     configs = inventory[1:, 1:].astype(int)
-    return segs, feats, configs
+    return tokens, feats, configs
 
 
 def load_lexicon(lexicon_fn):
-    """Loads in a lexicon file and returns formatted
-    lexemes and underlying forms
-    """
+    """Loads in lexicon file and returns the initial UR hypothesis
+    for each lexeme in the space"""
     prefix = "./parameters/lexicon/"
     with open(f"{prefix}{lexicon_fn}") as f:
         lexicon = f.readlines()
-        lexicon = [l.strip().split(",") for l in lexicon]
-    lxs, clxs, urs = zip(*lexicon)
-    lxs = list(lxs)
-    clxs = [[tuple(xs.split(":")) for xs in clx.split(".")] for clx in clxs]
-    urs = [tuple(ur.split(".")) for ur in urs]
-    return lxs, clxs, urs
+        lexicon = [s.strip().split(",") for s in lexicon]
+    init_lxs, init_clxs, init_urs, init_alns = zip(*lexicon)
+    init_lxs = list(init_lxs)
+    init_clxs = [[tuple(x.split(":")) for x in cx.split(".")] for cx in init_clxs]
+    init_urs = [ur.split(".") for ur in init_urs]
+    init_alns = [[np.array(list(op)) for op in aln.split(".")] for aln in init_alns]
+    return init_lxs, init_clxs, init_urs, init_alns
 
 
 def load_constraints(constraints_fn):
@@ -106,19 +125,22 @@ def load_rules(rules_fn):
     return rnames, rdefs
 
 
-def load_data(data_fn):
+def load_surface_forms(surface_forms_fn):
     """Loads in a surface form file and returns formatted
-    lexemes and suurface forms
+    lexemes and surface forms
     """
     prefix = "./data/"
-    with open(f"{prefix}{data_fn}") as f:
-        lexicon = f.readlines()
-        lexicon = [l.strip().split(",") for l in lexicon]
-    clxs, srs, nobs = zip(*lexicon)
-    clxs = [tuple(clx.split(":")) for clx in clxs]
+    with open(f"{prefix}{surface_forms_fn}") as f:
+        surface_forms = f.readlines()
+        surface_forms = [s.strip().split(",") for s in surface_forms]
+    clxs, srs, nobs = zip(*surface_forms)
+    clxs = sorted(tuple(clx.split(":")) for clx in clxs)
+    lxs = sorted(set(lx for clx in clxs for lx in clx))
+    xclxs = [[clx for clx in clxs if lx in clx] for lx in lxs]
+    xclxs = [[tuple(["PROTO"])] + cxs for cxs in xclxs]
     srs = list(srs)
     nobs = [int(nob) for nob in nobs]
-    return clxs, srs, nobs
+    return lxs, xclxs, clxs, srs, nobs
 
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -133,19 +155,25 @@ def main():
     mode = args.mode
 
     """LOAD GRAMMAR CLASS"""
-    inventory_fn = parameters["inventory_fn"]
-    lexicon_fn = parameters["lexicon_fn"]
-    mappings_fn = parameters["mappings_fn"]
-    data_fn = parameters["surface_forms_fn"]
-    G = load_grammar_class(inventory_fn, lexicon_fn, mappings_fn, data_fn, mode)
+    inventory = parameters["inventory"]
+    lexicon = parameters["lexicon"]
+    mappings = parameters["mappings"]
+    surface_forms = parameters["surface_forms"]
+    G = load_grammar_class(inventory, lexicon, mappings, surface_forms, mode)
 
     """RUN MCMC MODEL"""
-    iterations = parameters["iterations"]
-    sampled_grammars = MCMC.gibbs_sampler(G, iterations)
+    gs_iterations = parameters["gs_iterations"]
+    mh_iterations = parameters["mh_iterations"]
+    sampled_grammars = MCMC.gibbs_sampler(G, gs_iterations, mh_iterations)
 
     """PREDICTIVE POSTERIOR"""
     burned_in_sampled_grammars = MCMC.burn_in(sampled_grammars)
     predictive = MCMC.posterior_predictive(burned_in_sampled_grammars)
+    for clx, pred_srs in predictive.items():
+        print(f"{'-'.join(clx):<5}", end="")
+        for pred_sr, prob in pred_srs.items():
+            print(f"{'':<5}{pred_sr:<20}{prob:<10}")
+
 
 if __name__ == "__main__":
     main()

@@ -1,16 +1,38 @@
 {
+  "lambda": 1,
+  "gs_iterations": 10000,
+  "mh_iterations": 50,
+  "inventory" : {
+    "fn": "ex-inventory.csv"
+  },
+  "mappings" : {
+    "fn": "ex-rules.csv"
+  },
+  "surface_forms" : {
+    "fn": "ex-surface_forms.csv"
+  },
+  "lexicon" : {
+    "fn": "ex-lexicon.csv",
+    "ur_prior" : {
+      "n": 5,
+      "phi": 0.75,
+      "alpha": 0.1,
+      "beta": 0.1
+    },
+    "ur_proposal" : {
+      "n": 5,
+      "chi": 0.5,
+      "delta": 0.25,
+      "theta": 0.25
+    }
+  },
   "_comment" : {
     "lambda": "REQUIRED: lambda hyperparameter for the noisy channel",
-    "iterations": "REQUIRED: number of iterations to run",
+    "gs_iterations": "REQUIRED: number of gibbs iterations to run",
+    "mh_iterations": "REQUIRED: number of MH iterations to run",
     "inventory_fn": "REQUIRED: filename of the feature inventory",
-    "lexicon_fn": "REQUIRED: filename of the lexicon",
     "mappings_fn": "REQUIRED: filename of the phonological mappings",
-    "surface_forms_fn": "REQUIRED: filename of the surface data"
-  },
-  "lambda": 1,
-  "iterations": 1000,
-  "inventory_fn": "ex-inventory.csv",
-  "lexicon_fn": "ex-lexicon.csv",
-  "surface_forms_fn": "ex-surface_forms.csv",
-  "mappings_fn": "ex-rules.csv"
+    "surface_forms_fn": "REQUIRED: filename of the surface data",
+    "lexicon_fn": "OPTIONAL: filename of the initial state of the lexicon"
+  }
 }

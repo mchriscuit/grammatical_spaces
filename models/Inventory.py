@@ -1,4 +1,5 @@
 import numpy as np
+import re
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 (FEATURE) INVENTORY DEFINITION
@@ -8,19 +9,29 @@ import numpy as np
 class Inventory:
     """========== INITIALIZATION ======================================="""
 
-    def __init__(self, segs: list, feats: list, configs: list):
-        self._nsegs = len(segs)
-        self._nfeats = len(feats)
+    def __init__(self, tokens: list, feats: list, configs: list):
+        self._rng = np.random.default_rng()
+
+        ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        def is_seg(token):
+            return bool(re.match("\w", token))
 
         ## *=*=*= SEGMENTS AND FEATURES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._segs = np.array(segs)
+        self._tokens = np.array(tokens)
+        self._segs = self._tokens[list(map(is_seg, self._tokens))]
         self._feats = np.array(feats)
-        self._configs = np.array(configs).astype(int)
+        self._tconfigs = np.array(configs).astype(int)
+        self._sconfigs = self._tconfigs[list(map(is_seg, self._tokens))]
+
+        ## *=*=*= SEGMENTS COUNTS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._ntokens = len(self._tokens)
+        self._nsegs = len(self._segs)
+        self._nfeats = len(self._feats)
 
         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-        self._seg2id = {s: i for i, s in enumerate(self._segs)}
+        self._token2id = {s: i for i, s in enumerate(self._tokens)}
         self._feat2id = {f: i for i, f in enumerate(self._feats)}
-        self._config2id = {tuple(c): i for i, c in enumerate(self._configs)}
+        self._tconfig2id = {tuple(c): i for i, c in enumerate(self._tconfigs)}
 
     """ ========== CLASS METHODS ======================================== """
 
@@ -35,23 +46,31 @@ class Inventory:
 
     """ ========== INSTANCE METHODS ===================================== """
 
-    def segs2seq_config(self, segs: list):
-        """Takes in a sequence of segments and returns a matrix of
+    def sample_sconfigs(self, n: int):
+        """Samples n configs uniformly from the inventory"""
+        return self._rng.choice(self.sconfigs(), n)
+
+    def sample_segs(self, n: int):
+        """Samples n segments uniformly from the inventory"""
+        return self._rng.choice(self.segs(), n)
+
+    def tokens2seq_config(self, tokens: list):
+        """Takes in a sequence of tokens and returns a matrix of
         feature values
         """
-        seq_config = [self.seg2config(seg) for seg in segs]
+        seq_config = [self.token2config(token) for token in tokens]
         seq_config = np.array(seq_config)
         return seq_config
 
-    def seq_config2segs(self, seq_config: list):
+    def seq_config2tokens(self, seq_config: list):
         """Takes in a sequence of configurations and returns the sequence
-        of segments corresponding to each one
+        of tokens corresponding to each one
         """
-        segs = ""
+        tokens = ""
         for config in seq_config:
             config = tuple(config)
-            segs += self.config2seg(config)
-        return segs
+            tokens += self.config2token(config)
+        return tokens
 
     def str_feats2config(self, str_feats: list):
         """Takes in a list of strings denoting the feature
@@ -69,41 +88,45 @@ class Inventory:
             config[id] = val
         return Inventory.config_to_nan(config)
 
-    def update_config(self, seq_seg_config: list, tgt_config: list, idxs: list):
-        """Given a list of indices, a sequence of segment feature
+    def update_config(self, seq_token_config: list, tgt_config: list, idxs: list):
+        """Given a list of indices, a sequence of token feature
         configurations and a target feature configuration, update the
         features with that configuration
         """
         m = ~np.isnan(tgt_config)
         for idx in idxs:
-            seq_seg_config[np.newaxis, idx][m] = tgt_config[m]
-        return seq_seg_config
+            seq_token_config[np.newaxis, idx][m] = tgt_config[m]
+        return seq_token_config
 
-    def is_compatible_seq_seg(self, seq_seg_config: list, seq_cxt_config: list):
+    def is_compatible_seq_token(self, seq_token_config: list, seq_cxt_config: list):
         """Takes in a vector (or list) of feature configurations for a sequence
-        of segments and a vector (or list) of the feature configurations for a
+        of tokens and a vector (or list) of the feature configurations for a
         context and returns a boolean corresponding to whether the sequence of
-        segment configurations are compatible
+        token configurations are compatible
         """
         m = ~np.isnan(seq_cxt_config)
-        return np.allclose(seq_seg_config[m], seq_cxt_config[m])
+        return np.allclose(seq_token_config[m], seq_cxt_config[m])
 
-    def get_compatible_idxs(self, seq_seg_config: list, seq_cxt_config: list):
+    def get_compatible_idxs(self, seq_token_config: list, seq_cxt_config: list):
         """Takes in a vector (or list) of feature configurations for a sequence
-        of segments and a vector (or list) of the feature configurations for a
+        of tokens and a vector (or list) of the feature configurations for a
         context and returns a vector of indices where the contextual
-        configuration is found in the segmental configuration sequence
+        configuration is found in the token configuration sequence
         """
         compatible_idxs = []
-        nsegs_seq, _ = seq_seg_config.shape
-        nsegs_cxt, _ = seq_cxt_config.shape
-        for i in range(nsegs_seq - nsegs_cxt + 1):
-            sub_seq_seg_config = seq_seg_config[i : i + nsegs_cxt]
-            if self.is_compatible_seq_seg(sub_seq_seg_config, seq_cxt_config):
+        ntokens_seq, _ = seq_token_config.shape
+        ntokens_cxt, _ = seq_cxt_config.shape
+        for i in range(ntokens_seq - ntokens_cxt + 1):
+            sub_seq_token_config = seq_token_config[i : i + ntokens_cxt]
+            if self.is_compatible_seq_token(sub_seq_token_config, seq_cxt_config):
                 compatible_idxs.append(i)
         return np.array(compatible_idxs)
 
     """ ========== ACCESSORS ============================================ """
+
+    def tokens(self):
+        """Returns the tokens in the inventory"""
+        return self._tokens
 
     def segs(self):
         """Returns the segments in the inventory"""
@@ -113,22 +136,33 @@ class Inventory:
         """Returns the feature names in the inventory"""
         return self._feats
 
-    def configs(self):
+    def tconfigs(self):
         """Returns the feature configurations"""
-        return self._configs
+        return self._tconfigs
 
-    def seg2config(self, seg: str):
-        """Returns the feature value vector given a segment"""
-        return self._configs[self._seg2id[seg]]
+    def sconfigs(self):
+        """Returns the feature configurations"""
+        return self._sconfigs
 
-    def config2seg(self, config: list):
-        """Returns the segment corresponding to the configuration"""
+    def token2config(self, token: str):
+        """Returns the feature value vector given a token"""
+        return self._tconfigs[self._token2id[token]]
+
+    def config2token(self, config: list):
+        """Returns the token corresponding to the configuration"""
         config = tuple(config)
-        return self._segs[self._config2id[config]]
+        if config in self._tconfig2id:
+            return self._tokens[self._tconfig2id[config]]
+        else:
+            return "?"
 
     def feat2id(self, feat: str):
         """Returns the index of a feature"""
         return self._feat2id[feat]
+
+    def ntokens(self):
+        """Returns the number of tokens in the inventory"""
+        return self._ntokens
 
     def nsegs(self):
         """Returns the number of segments in the inventory"""
@@ -137,7 +171,3 @@ class Inventory:
     def nfeats(self):
         """Returns the number of features in the inventory"""
         return self._nfeats
-
-
-if __name__ == "__main__":
-    print("Debugging mode...")

@@ -1,6 +1,7 @@
 import numpy as np
 import re
 import json
+import Levenshtein as lv
 from collections import defaultdict
 from models.Inventory import Inventory
 from models.Lexicon import Lexicon
@@ -21,6 +22,7 @@ class Grammar:
         ## *=*=*= DATA INITIALIZATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._clxs = clxs
         self._srs = srs
+        self._sr_configs = [L.tokens2seq_config(sr) for sr in self._srs]
         self._nobs = nobs
 
         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -32,14 +34,14 @@ class Grammar:
 
     """ ========== INSTANCE METHODS ===================================== """
 
-    def import_hyps(self, hyp_filename):
+    def import_likelihoods(self, hyp_filename):
         """Imports a json containing some or all of the likelihoods for a given
         hypothesis
         """
         with open(hyp_filename, "r") as hf:
             self._hyp2likelihood = json.load(hf)
 
-    def export_hyps(self, hyp_filename):
+    def export_likelihoods(self, hyp_filename):
         """Exports a json containing some or all of the likelihoods for a given
         hypothesis
         """
@@ -51,62 +53,61 @@ class Grammar:
         """
         return [self.predict_sr(clx) for clx in self.clxs()]
 
-    def predict_sr(self, clx):
+    def predict_sr(self, clx, to_token=True):
         """Generates the SR predicted by the Grammar object for a given
         lexical sequence
         """
         ur = self.L.get_ur(clx)
-        ur_config = self.L.configure(ur)
-        pred_sr_config = self.M.apply(ur_config)
-        pred_sr = self.L.deconfigure(pred_sr_config)
-        return pred_sr
+        ur = self.L.add_padding(ur)
+        pred_sr = self.M.apply(ur)
+        pred_sr = self.L.rm_padding(pred_sr)
+        return self.L.seq_config2tokens(pred_sr) if to_token else pred_sr
 
-    def compute_likelihood(self, lx):
+    def levenshtein(self, pred_sr, obs_sr):
+        """Calculates the levenshtein edit distance between the two strings"""
+        return np.exp(-lv.distance(pred_sr, obs_sr))
+
+    def compute_likelihoods(self, lx, likelihood):
         """Computes the likelihood of the data for the given lexeme given
         the current set of UR and rule hypotheses
         """
-        lhyp_idx = self.L.lhyp_idx(lx)
-        mhyp_idx = self.M.mhyp_idx()
-        if mhyp_idx in self._hyp2likelihood.get(lhyp_idx, {}):
-            return self._hyp2likelihood[lhyp_idx][mhyp_idx]
-        likelihood = 1
-        clxs = self.L.lx2clxs(lx)
-        for clx in clxs:
+        clxs = self.L.lx2clxs(lx)[1:]
+        return np.prod([self.compute_likelihood(clx, likelihood) for clx in clxs])
+
+    def compute_likelihood(self, clx, likelihood):
+        """Computes the likelihood of the data for the given lexical context
+        given the current set of UR and rule hypotheses
+        """
+        ur = self.L.get_ur(clx).tobytes()
+        mhyp = self.M.get_current_mhyp()
+        if (ur, mhyp) in self._hyp2likelihood:
+            return self._hyp2likelihood[(ur, mhyp)]
+        else:
             pred_sr = self.predict_sr(clx)
-            obs_sr = self.clx2sr(clx)
-            likelihood *= int(obs_sr == pred_sr) ** self.clx2nob(clx)
-        self._hyp2likelihood[lhyp_idx][mhyp_idx] = likelihood
-        return self._hyp2likelihood[lhyp_idx][mhyp_idx]
+            obs_sr = self.get_sr(clx)
+            self._hyp2likelihood[(ur, mhyp)] = likelihood(pred_sr, obs_sr)
+            return self._hyp2likelihood[(ur, mhyp)]
 
     def export(self):
         """Exports the current model parameters and predictions"""
         clxs = self.clxs()
         mnames = self.M.get_current_mhyp()
         urs = [self.L.get_ur(clx) for clx in clxs]
-        pred = self.predict_srs()
-        srs = self.srs()
-        return clxs, mnames, urs, pred, srs
+        urs = [self.L.seq_config2tokens(ur) for ur in urs]
+        pred_srs = self.predict_srs()
+        obs_srs = self.srs()
+        return clxs, mnames, urs, pred_srs, obs_srs
 
     """ ========== ACCESSORS ============================================ """
-
     def clxs(self):
-        """Returns the lexical sequences of the data"""
+        """Returns the clx of the data"""
         return self._clxs
 
     def srs(self):
         """Returns the surface forms of the data"""
         return self._srs
 
-    def nobs(self):
-        """Returns the number of observations for each surface
-        form in the data
-        """
-        return self._nobs
-
-    def clx2nob(self, clx: tuple):
-        """Returns the number of times we see a given lexical sequence"""
-        return self._nobs[self._clx2id[clx]]
-
-    def clx2sr(self, clx: tuple):
-        """Returns the surface form of a given lexical sequence"""
-        return self._srs[self._clx2id[clx]]
+    def get_sr(self, clx: tuple, to_config=False):
+        """Returns the surface form for the given lexical context"""
+        id = self._clx2id[clx]
+        return self._sr_configs[id] if to_config else self._srs[id]

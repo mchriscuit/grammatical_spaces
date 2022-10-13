@@ -18,36 +18,59 @@ class MCMC:
     """========== STATIC METHODS ====================================="""
 
     @staticmethod
-    def gibbs_sampler(G, iterations: int):
+    def acceptance(posterior_old, posterior_new):
+        """Returns a boolean corresponding whether to accept or reject
+        the new sample
+        """
+        if posterior_new > posterior_old:
+            return True
+        elif posterior_new == 0 and posterior_old == 0:
+            return True
+        else:
+            return np.random.uniform(0, 1) < (posterior_new / posterior_old)
+
+    @staticmethod
+    def gibbs_sampler(G, gs_iterations: int, mh_iterations: int):
         """Performs the Gibbs sampling algorithm for the Grammar object"""
+
+        ## Initialize list to store grammars at the end of each iteration
         sampled_grammars = []
         rng = np.random.default_rng()
-        for iteration in tqdm(range(iterations)):
+        for gs_iteration in tqdm(range(gs_iterations)):
 
             ## Loop through each lexeme and get the current UR hypotheses
             ## Calculate the likelihood of the data given the lexemes
             for lx in G.L.lxs():
-                plhyps = []
-                nlhyps = G.L.nlhyps(lx)
-                for lhyp_idx in range(nlhyps):
-                    G.L.update_lhyp_idx(lx, lhyp_idx)
-                    likelihood = G.compute_likelihood(lx)
-                    prior = G.L.compute_prior(lx)
-                    plhyps.append(likelihood * prior)
-                plhyps = np.array(plhyps)
-                if np.sum(plhyps) == 0:
-                    plhyps = np.ones(plhyps.shape)
-                plhyps = plhyps / np.sum(plhyps)
-                sampled_lhyp_idx = rng.choice(nlhyps, p=plhyps)
-                G.L.update_lhyp_idx(lx, sampled_lhyp_idx)
+                for mh_iteration in range(mh_iterations):
 
-            ## Loop through the rule hypotheses
-            ## Calculate the likelihood of the data given each rule ordering
+                    ## Retrieve the old UR hypotheses
+                    ur_old, aln_old, p_trans_ur_old = G.L.get_hyp(lx)
+                    prior_old = G.L.calculate_pr(ur_old, aln_old)
+                    likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
+
+                    ## Sample a new UR hypothesis
+                    ur_new, aln_new, p_trans_ur_new = G.L.sample_ur(lx, inplace=True)
+                    prior_new = G.L.calculate_pr(ur_new, aln_new)
+                    likelihood_new = G.compute_likelihoods(lx, G.levenshtein)
+
+                    ## Accept or reject the sample
+                    posterior_old = likelihood_old * prior_old * p_trans_ur_new
+                    posterior_new = likelihood_new * prior_new * p_trans_ur_old
+                    accepted = MCMC.acceptance(posterior_old, posterior_new)
+
+                    ## If we do not accept, revert to the old UR hypothesis
+                    if not accepted:
+                        G.L.set_ur(lx, ur_old, aln_old, p_trans_ur_old)
+
+            ## Loop through each mapping hypothesis
+            ## Calculate the likelihood of the data given each mapping
             pmhyps = []
             nmhyps = G.M.nmhyps()
             for mhyp_idx in range(nmhyps):
                 G.M.update_mhyp_idx(mhyp_idx)
-                likelihood = np.prod([G.compute_likelihood(lx) for lx in G.L.lxs()])
+                likelihood = np.prod(
+                    [G.compute_likelihoods(lx, G.levenshtein) for lx in G.L.lxs()]
+                )
                 prior = G.M.compute_prior()
                 pmhyps.append(likelihood * prior)
             pmhyps = np.array(pmhyps)
@@ -76,9 +99,9 @@ class MCMC:
         """
         predictive = defaultdict(dict)
         for burned_in_sampled_grammar in tqdm(burned_in_sampled_grammars):
-            clxs, mnames, urs, pred, srs = burned_in_sampled_grammar.export()
-            for clx, sr in zip(clxs, srs):
-                predictive[clx][sr] = predictive[clx].get(sr, 0) + 1
+            clxs, mnames, urs, pred_srs, obs_srs = burned_in_sampled_grammar.export()
+            for clx, pred_sr in zip(clxs, pred_srs):
+                predictive[clx][pred_sr] = predictive[clx].get(pred_sr, 0) + 1
         predictive = {
             clx: {
                 pred: count / sum(predictive[clx].values())

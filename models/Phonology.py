@@ -12,12 +12,12 @@ class SPE(Inventory):
     """========== INITIALIZATION ======================================="""
 
     def __init__(
-        self, mnames: list, mdefs: list, segs: list, feats: list, configs: list
+        self, mnames: list, mdefs: list, tokens: list, feats: list, configs: list
     ):
-        self.rng = np.random.default_rng()
+        self._rng = np.random.default_rng()
 
         ## *=*=*= INHERITENCE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-        super().__init__(segs, feats, configs)
+        super().__init__(tokens, feats, configs)
 
         ## *=*=*= BASIC RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._nms = len(mnames)
@@ -48,7 +48,7 @@ class SPE(Inventory):
         for n in range(self.nms() + 1):
             self._mhyps += permutations(self.mnames(), n)
         self._nmhyps = len(self.mhyps())
-        self._mhyp_idx = self.rng.choice(self.nmhyps())
+        self._mhyp_idx = self._rng.choice(self.nmhyps())
 
     def configure_mappings(self):
         """Converts mappings into vector notation for process application"""
@@ -88,7 +88,7 @@ class SPE(Inventory):
 
     def apply(self, seq_config: list):
         """Applies the phonological mapping given a sequence of feature
-        configurations corresponding to some sequence of segments
+        configurations corresponding to some sequence of tokens
         """
         mhyp = self.get_current_mhyp()
         for mname in mhyp:

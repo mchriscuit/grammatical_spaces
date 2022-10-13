@@ -1,5 +1,5 @@
-1,1.1:A,tak.tag
-2,2.2:A,tak.tag
-3,3.3:A,tat.tad
-4,4.4:A,tat.tad
-A,1:A.2:A.3:A.4:A,a
+1,PROTO.1.1:A,tak.tak.tag,NNN.NNS
+2,PROTO.2.2:A,tak.tak.tak,NNN.NNN
+3,PROTO.3.3:A,tat.tat.tad,NNN.NNS
+4,PROTO.4.4:A,tat.tat.tat,NNN.NNN
+A,PROTO.1:A.2:A.3:A.4:A,a.a.a.a.a,N.N.N.N
