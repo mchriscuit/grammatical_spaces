@@ -1,4 +1,5 @@
 import numpy as np
+import os
 import json
 import argparse
 from models.Inventory import Inventory
@@ -95,12 +96,13 @@ def load_lexicon(lexicon_fn):
     with open(f"{prefix}{lexicon_fn}") as f:
         lexicon = f.readlines()
         lexicon = [s.strip().split(",") for s in lexicon]
-    init_lxs, init_clxs, init_urs, init_alns = zip(*lexicon)
+    init_lxs, init_clxs, init_urs, init_alns, lbs = zip(*lexicon)
     init_lxs = list(init_lxs)
     init_clxs = [[tuple(x.split(":")) for x in cx.split(".")] for cx in init_clxs]
     init_urs = [ur.split(".") for ur in init_urs]
     init_alns = [[np.array(list(op)) for op in aln.split(".")] for aln in init_alns]
-    return init_lxs, init_clxs, init_urs, init_alns
+    lbs = [int(lb) for lb in lbs]
+    return init_lxs, init_clxs, init_urs, init_alns, lbs
 
 
 def load_constraints(constraints_fn):
@@ -164,15 +166,40 @@ def main():
     """RUN MCMC MODEL"""
     gs_iterations = parameters["gs_iterations"]
     mh_iterations = parameters["mh_iterations"]
-    sampled_grammars = MCMC.gibbs_sampler(G, gs_iterations, mh_iterations)
+    sampled_grammars, lx_acceptances = MCMC.gibbs_sampler(G, gs_iterations, mh_iterations)
 
     """PREDICTIVE POSTERIOR"""
-    burned_in_sampled_grammars = MCMC.burn_in(sampled_grammars)
-    predictive = MCMC.posterior_predictive(burned_in_sampled_grammars)
-    for clx, pred_srs in predictive.items():
-        print(f"{'-'.join(clx):<5}", end="")
-        for pred_sr, prob in pred_srs.items():
-            print(f"{'':<5}{pred_sr:<20}{prob:<10}")
+    burned_in = MCMC.burn_in(sampled_grammars)
+    post, pred = MCMC.posterior_predictive(burned_in)
+
+    """SAVE TO FILE"""
+    ## Generate new directory
+    output_path = f"./output/gs{gs_iterations}-mh{mh_iterations}"
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+    ## Write to file
+    acceptances_fn = f"{output_path}/acceptances.csv"
+    with open(acceptances_fn, "w") as f:
+        f.write("lx,gs,mh,ur_old,post_old,ur_new,post_new,accepted\n")
+        for lx, acceptances in lx_acceptances.items():
+            for gsi, acceptance in enumerate(acceptances):
+                for mhi, (ur_old, post_old, ur_new, post_new, accepted) in enumerate(acceptance):
+                    f.write(f"{lx},{gsi},{mhi},{'-'.join(ur_old)},{post_old},{'-'.join(ur_new)},{post_new},{accepted}\n")
+
+    posterior_fn = f"{output_path}/posterior.csv"
+    with open(posterior_fn, "w") as f:
+        f.write("clxs,mname,urs,pred_srs,obs_srs,prob\n")
+        for grammar, prob in post.items():
+            clxs, mnames, urs, pred_srs, obs_srs = grammar
+            f.write(f"{clxs},{mnames},{urs},{pred_srs},{obs_srs},{prob}\n")
+
+    predictive_fn = f"{output_path}/predictive.csv"
+    with open(predictive_fn, "w") as f:
+        f.write("clx,pred_sr,prob\n")
+        for clx, pred_srs in pred.items():
+            for pred_sr, prob in pred_srs.items():
+                f.write(f"{clx},{pred_sr},{prob}\n")
 
 
 if __name__ == "__main__":

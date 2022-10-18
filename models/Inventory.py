@@ -9,7 +9,7 @@ import re
 class Inventory:
     """========== INITIALIZATION ======================================="""
 
-    def __init__(self, tokens: list, feats: list, configs: list):
+    def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):
         self._rng = np.random.default_rng()
 
         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -33,18 +33,36 @@ class Inventory:
         self._feat2id = {f: i for i, f in enumerate(self._feats)}
         self._tconfig2id = {tuple(c): i for i, c in enumerate(self._tconfigs)}
 
-    """ ========== CLASS METHODS ======================================== """
+    """ ========== STATIC METHODS ======================================== """
 
-    @classmethod
-    def config_to_nan(cls, config: list):
+    @staticmethod
+    def config_to_nan(config: np.ndarray):
         """Takes in a vector (or list) of feature values and
         returns a vector where all 0 features are set to NaN
         """
-        config = np.array(config).astype("float")
+        config = config.astype("float")
         config[config == 0] = np.nan
         return config
 
     """ ========== INSTANCE METHODS ===================================== """
+
+    def edits(self, tokens: str, max_distance: int):
+        """Returns all edits from a given string of tokens to another string
+        of tokens up to max_distance
+        """
+        tokens = {tokens}
+        for _ in range(max_distance):
+            edited = [self.edit(token) for token in tokens]
+            tokens = tokens.union(*edited)
+        return tokens
+
+    def edit(self, tokens: str):
+        ntokens = len(tokens)
+        splits = [(tokens[: i + 1], tokens[i + 1 :]) for i in range(ntokens)]
+        dels = [L + R[1:] for L, R in splits if R]
+        subs = [L + c + R[1:] for L, R in splits if R for c in self._segs]
+        ins = [L + c + R for L, R in splits for c in self._segs]
+        return set(dels + subs + ins)
 
     def sample_sconfigs(self, n: int):
         """Samples n configs uniformly from the inventory"""
@@ -54,7 +72,7 @@ class Inventory:
         """Samples n segments uniformly from the inventory"""
         return self._rng.choice(self.segs(), n)
 
-    def tokens2seq_config(self, tokens: list):
+    def tokens2seq_config(self, tokens: str):
         """Takes in a sequence of tokens and returns a matrix of
         feature values
         """
@@ -62,7 +80,7 @@ class Inventory:
         seq_config = np.array(seq_config)
         return seq_config
 
-    def seq_config2tokens(self, seq_config: list):
+    def seq_config2tokens(self, seq_config: np.ndarray):
         """Takes in a sequence of configurations and returns the sequence
         of tokens corresponding to each one
         """
@@ -72,7 +90,7 @@ class Inventory:
             tokens += self.config2token(config)
         return tokens
 
-    def str_feats2config(self, str_feats: list):
+    def str_feats2config(self, str_feats: np.ndarray):
         """Takes in a list of strings denoting the feature
         configuration for a natural class and returns a single vector
         with the denoted feature values.
@@ -88,7 +106,9 @@ class Inventory:
             config[id] = val
         return Inventory.config_to_nan(config)
 
-    def update_config(self, seq_token_config: list, tgt_config: list, idxs: list):
+    def update_config(
+        self, seq_token_config: np.ndarray, tgt_config: np.ndarray, idxs: np.ndarray
+    ):
         """Given a list of indices, a sequence of token feature
         configurations and a target feature configuration, update the
         features with that configuration
@@ -98,7 +118,9 @@ class Inventory:
             seq_token_config[np.newaxis, idx][m] = tgt_config[m]
         return seq_token_config
 
-    def is_compatible_seq_token(self, seq_token_config: list, seq_cxt_config: list):
+    def is_compatible_seq_token(
+        self, seq_token_config: np.ndarray, seq_cxt_config: np.ndarray
+    ):
         """Takes in a vector (or list) of feature configurations for a sequence
         of tokens and a vector (or list) of the feature configurations for a
         context and returns a boolean corresponding to whether the sequence of
@@ -107,7 +129,9 @@ class Inventory:
         m = ~np.isnan(seq_cxt_config)
         return np.allclose(seq_token_config[m], seq_cxt_config[m])
 
-    def get_compatible_idxs(self, seq_token_config: list, seq_cxt_config: list):
+    def get_compatible_idxs(
+        self, seq_token_config: np.ndarray, seq_cxt_config: np.ndarray
+    ):
         """Takes in a vector (or list) of feature configurations for a sequence
         of tokens and a vector (or list) of the feature configurations for a
         context and returns a vector of indices where the contextual
@@ -148,7 +172,7 @@ class Inventory:
         """Returns the feature value vector given a token"""
         return self._tconfigs[self._token2id[token]]
 
-    def config2token(self, config: list):
+    def config2token(self, config: np.ndarray):
         """Returns the token corresponding to the configuration"""
         config = tuple(config)
         if config in self._tconfig2id:

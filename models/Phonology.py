@@ -1,7 +1,8 @@
 import numpy as np
 import re
 from itertools import permutations
-from models.Inventory import Inventory
+from optim.Inventory import Inventory
+from optim.Distributions import Binomial, Bernoulli, Uniform
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 PHONOLOGY (SPE vs. OT) DEFINITION

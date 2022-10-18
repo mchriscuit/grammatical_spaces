@@ -1,9 +1,7 @@
+import Levenshtein as lv
 import numpy as np
 import re
 import json
-import Levenshtein as lv
-from collections import defaultdict
-from models.Inventory import Inventory
 from models.Lexicon import Lexicon
 from models.Phonology import SPE, OT
 
@@ -30,7 +28,7 @@ class Grammar:
         self._sr2id = {sr: i for i, sr in enumerate(srs)}
 
         ## *=*=*= CACHE DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._hyp2likelihood = defaultdict(dict)
+        self._hyp2likelihood = {}
 
     """ ========== INSTANCE METHODS ===================================== """
 
@@ -65,7 +63,7 @@ class Grammar:
 
     def levenshtein(self, pred_sr, obs_sr):
         """Calculates the levenshtein edit distance between the two strings"""
-        return np.exp(-lv.distance(pred_sr, obs_sr))
+        return np.exp(-lv.distance(pred_sr, obs_sr) * 1)
 
     def compute_likelihoods(self, lx, likelihood):
         """Computes the likelihood of the data for the given lexeme given
@@ -78,15 +76,9 @@ class Grammar:
         """Computes the likelihood of the data for the given lexical context
         given the current set of UR and rule hypotheses
         """
-        ur = self.L.get_ur(clx).tobytes()
-        mhyp = self.M.get_current_mhyp()
-        if (ur, mhyp) in self._hyp2likelihood:
-            return self._hyp2likelihood[(ur, mhyp)]
-        else:
-            pred_sr = self.predict_sr(clx)
-            obs_sr = self.get_sr(clx)
-            self._hyp2likelihood[(ur, mhyp)] = likelihood(pred_sr, obs_sr)
-            return self._hyp2likelihood[(ur, mhyp)]
+        pred_sr = self.predict_sr(clx)
+        obs_sr = self.get_sr(clx)
+        return likelihood(pred_sr, obs_sr)
 
     def export(self):
         """Exports the current model parameters and predictions"""

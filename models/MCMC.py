@@ -3,7 +3,6 @@ import re
 from collections import defaultdict
 from tqdm import tqdm
 from copy import deepcopy
-from models.Inventory import Inventory
 from models.Lexicon import Lexicon
 from models.Phonology import SPE, OT
 from models.Grammar import Grammar
@@ -34,6 +33,7 @@ class MCMC:
         """Performs the Gibbs sampling algorithm for the Grammar object"""
 
         ## Initialize list to store grammars at the end of each iteration
+        lx_acceptances = {lx: [] for lx in G.L.lxs()}
         sampled_grammars = []
         rng = np.random.default_rng()
         for gs_iteration in tqdm(range(gs_iterations)):
@@ -41,26 +41,36 @@ class MCMC:
             ## Loop through each lexeme and get the current UR hypotheses
             ## Calculate the likelihood of the data given the lexemes
             for lx in G.L.lxs():
+                acceptance = []
                 for mh_iteration in range(mh_iterations):
 
                     ## Retrieve the old UR hypotheses
-                    ur_old, aln_old, p_trans_ur_old = G.L.get_hyp(lx)
-                    prior_old = G.L.calculate_pr(ur_old, aln_old)
+                    ur_old, aln_old, p_trans_ur_old, prior_old = G.L.get_hyp(lx)
                     likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
 
                     ## Sample a new UR hypothesis
-                    ur_new, aln_new, p_trans_ur_new = G.L.sample_ur(lx, inplace=True)
-                    prior_new = G.L.calculate_pr(ur_new, aln_new)
+                    ur_new, aln_new, p_trans_ur_new, prior_new = G.L.sample_ur(lx, inplace=True)
                     likelihood_new = G.compute_likelihoods(lx, G.levenshtein)
 
                     ## Accept or reject the sample
                     posterior_old = likelihood_old * prior_old * p_trans_ur_new
                     posterior_new = likelihood_new * prior_new * p_trans_ur_old
+                    # print(G.M.get_current_mhyp(), ur_old, [G.L.seq_config2tokens(u) for u in ur_old], aln_old, posterior_old, likelihood_old, prior_old, p_trans_ur_new)
+                    # print(G.M.get_current_mhyp(), ur_new, [G.L.seq_config2tokens(u) for u in ur_new], aln_new, posterior_new, likelihood_new, prior_new, p_trans_ur_old)
+                    # assert(False)
                     accepted = MCMC.acceptance(posterior_old, posterior_new)
 
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
-                        G.L.set_ur(lx, ur_old, aln_old, p_trans_ur_old)
+                        G.L.set_ur(lx, ur_old, aln_old, p_trans_ur_old, prior_old)
+                        ur_old = [G.L.seq_config2tokens(ur) for ur in ur_old]
+                        ur_new = [G.L.seq_config2tokens(ur) for ur in ur_new]
+                        acceptance.append((ur_old, posterior_old, ur_new, posterior_new, False))
+                    else:
+                        ur_old = [G.L.seq_config2tokens(ur) for ur in ur_old]
+                        ur_new = [G.L.seq_config2tokens(ur) for ur in ur_new]
+                        acceptance.append((ur_old, posterior_old, ur_new, posterior_new, True))
+                lx_acceptances[lx].append(acceptance)
 
             ## Loop through each mapping hypothesis
             ## Calculate the likelihood of the data given each mapping
@@ -83,7 +93,7 @@ class MCMC:
             ## Append to sample
             sampled_grammars.append(deepcopy(G))
 
-        return sampled_grammars
+        return sampled_grammars, lx_acceptances
 
     @staticmethod
     def burn_in(sampled_grammars: list, burn_in=2, steps=20):
@@ -93,20 +103,36 @@ class MCMC:
         return sampled_grammars[burn_in_idx::steps]
 
     @staticmethod
-    def posterior_predictive(burned_in_sampled_grammars: list):
+    def posterior_predictive(burned_in: list):
         """Calculates the posterior predictive probability for each output
         given the burned-in sample posterior
         """
-        predictive = defaultdict(dict)
-        for burned_in_sampled_grammar in tqdm(burned_in_sampled_grammars):
-            clxs, mnames, urs, pred_srs, obs_srs = burned_in_sampled_grammar.export()
+        post = {}
+        pred = defaultdict(dict)
+
+        ## Populate dictionaries
+        for grammar in tqdm(burned_in):
+            clxs, mnames, urs, pred_srs, obs_srs = grammar.export()
+            clxs = ['-'.join(cxs) for cxs in clxs]
             for clx, pred_sr in zip(clxs, pred_srs):
-                predictive[clx][pred_sr] = predictive[clx].get(pred_sr, 0) + 1
-        predictive = {
+                pred[clx][pred_sr] = pred[clx].get(pred_sr, 0) + 1
+            clxs = '.'.join(clxs)
+            mnames = '.'.join(mnames)
+            urs = '.'.join(urs)
+            pred_srs = '.'.join(pred_srs)
+            obs_srs = '.'.join(obs_srs)
+            fgrammar = (clxs, mnames, urs, pred_srs, obs_srs)
+            post[fgrammar] = post.get(grammar, 0) + 1
+
+        ## Normalize counts to get empirical probabilities
+        pred = {
             clx: {
-                pred: count / sum(predictive[clx].values())
-                for pred, count in predictive[clx].items()
+                sr: count / sum(pred[clx].values())
+                for sr, count in pred[clx].items()
             }
-            for clx in predictive
+            for clx in pred
         }
-        return predictive
+        post = {
+            fg: count / sum(post.values()) for fg, count in post.items()
+        }
+        return post, pred

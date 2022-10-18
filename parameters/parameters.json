@@ -1,7 +1,7 @@
 {
   "lambda": 1,
-  "gs_iterations": 10000,
-  "mh_iterations": 50,
+  "gs_iterations": 100000,
+  "mh_iterations": 10,
   "inventory" : {
     "fn": "ex-inventory.csv"
   },
@@ -25,14 +25,5 @@
       "delta": 0.25,
       "theta": 0.25
     }
-  },
-  "_comment" : {
-    "lambda": "REQUIRED: lambda hyperparameter for the noisy channel",
-    "gs_iterations": "REQUIRED: number of gibbs iterations to run",
-    "mh_iterations": "REQUIRED: number of MH iterations to run",
-    "inventory_fn": "REQUIRED: filename of the feature inventory",
-    "mappings_fn": "REQUIRED: filename of the phonological mappings",
-    "surface_forms_fn": "REQUIRED: filename of the surface data",
-    "lexicon_fn": "OPTIONAL: filename of the initial state of the lexicon"
   }
 }
