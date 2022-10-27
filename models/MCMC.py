@@ -45,31 +45,34 @@ class MCMC:
                 for mh_iteration in range(mh_iterations):
 
                     ## Retrieve the old UR hypotheses
-                    ur_old, aln_old, p_trans_ur_old, prior_old = G.L.get_hyp(lx)
+                    ur_old, prior_old = G.L.get_hyp(lx)
                     likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
 
                     ## Sample a new UR hypothesis
-                    ur_new, aln_new, p_trans_ur_new, prior_new = G.L.sample_ur(lx, inplace=True)
+                    ur_new, prior_new = G.L.sample_ur(lx, ur_old, inplace=True)
                     likelihood_new = G.compute_likelihoods(lx, G.levenshtein)
 
+                    ## Calculate the transition probability of the old hypothesis
+                    transition_old = G.L.calculate_tp(ur_new, ur_old)
+                    transition_new = G.L.calculate_tp(ur_old, ur_new)
+
                     ## Accept or reject the sample
-                    posterior_old = likelihood_old * prior_old * p_trans_ur_new
-                    posterior_new = likelihood_new * prior_new * p_trans_ur_old
-                    # print(G.M.get_current_mhyp(), ur_old, [G.L.seq_config2tokens(u) for u in ur_old], aln_old, posterior_old, likelihood_old, prior_old, p_trans_ur_new)
-                    # print(G.M.get_current_mhyp(), ur_new, [G.L.seq_config2tokens(u) for u in ur_new], aln_new, posterior_new, likelihood_new, prior_new, p_trans_ur_old)
-                    # assert(False)
+                    posterior_old = likelihood_old * prior_old * transition_new
+                    posterior_new = likelihood_new * prior_new * transition_old
+                    #print(G.M.get_current_mhyp(), ur_old, posterior_old, likelihood_old, prior_old, transition_new)
+                    #print(G.M.get_current_mhyp(), ur_new, posterior_new, likelihood_new, prior_new, transition_old)
                     accepted = MCMC.acceptance(posterior_old, posterior_new)
 
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
-                        G.L.set_ur(lx, ur_old, aln_old, p_trans_ur_old, prior_old)
-                        ur_old = [G.L.seq_config2tokens(ur) for ur in ur_old]
-                        ur_new = [G.L.seq_config2tokens(ur) for ur in ur_new]
-                        acceptance.append((ur_old, posterior_old, ur_new, posterior_new, False))
+                        G.L.set_ur(lx, ur_old, prior_old)
+                        mhyp = G.M.get_current_mhyp()
+                        mhyp = "-".join(mhyp)
+                        acceptance.append((mhyp, ur_old, posterior_old, ur_new, posterior_new, False))
                     else:
-                        ur_old = [G.L.seq_config2tokens(ur) for ur in ur_old]
-                        ur_new = [G.L.seq_config2tokens(ur) for ur in ur_new]
-                        acceptance.append((ur_old, posterior_old, ur_new, posterior_new, True))
+                        mhyp = G.M.get_current_mhyp()
+                        mhyp = "-".join(mhyp)
+                        acceptance.append((mhyp, ur_old, posterior_old, ur_new, posterior_new, True))
                 lx_acceptances[lx].append(acceptance)
 
             ## Loop through each mapping hypothesis

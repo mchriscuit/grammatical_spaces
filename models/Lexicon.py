@@ -1,7 +1,8 @@
 import numpy as np
 import re
+from copy import copy, deepcopy
 from optim.Inventory import Inventory
-from optim.Distributions import Binomial, Bernoulli, Uniform
+from optim.Distributions import Binomial, Bernoulli, Uniform, Distance
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 LEXICON DEFINITION
@@ -15,8 +16,7 @@ class Lexicon(Inventory):
         self,
         lxs: list,
         clxs: list,
-        ur_prior: tuple,
-        ur_proposal: tuple,
+        ur_params: dict,
         tokens: list,
         feats: list,
         configs: list,
@@ -28,22 +28,16 @@ class Lexicon(Inventory):
         super().__init__(tokens, feats, configs)
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        """UR PRIOR"""
-        self._pr_max_len = ur_prior["n"]
-        self._pr_len = ur_prior["phi"]
-        self._pr_del = ur_prior["alpha"]
-        self._pr_swp = ur_prior["beta"]
-
-        """UR PROPOSAL"""
-        self._tp_max_len = ur_proposal["n"]
-        self._tp_len = ur_proposal["chi"]
-        self._tp_del = ur_proposal["delta"]
-        self._tp_swp = ur_proposal["theta"]
+        self._n = ur_params["n"]
+        self._k = ur_params["k"]
+        self._tht = ur_params["tht"]
+        self._psi = ur_params["psi"]
+        self._cst = ur_params["costs"]
+        self.D = Distance(self.segs(), self._cst, self._n, self._k, self._psi)
 
         ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._lxs = lxs
         self._clxs = clxs
-        self._lbs = np.zeros(len(lxs))
 
         ## *=*=*= LEXICAL DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         """Lexeme to lexical sequence"""
@@ -59,141 +53,90 @@ class Lexicon(Inventory):
             cx: {x: i for i, x in enumerate(self._clx2lxs[cx])}
             for cx in self._clx2lxs.keys()
         }
-        """Underlying form hypotheses"""
+
+        ## *=*=*= LEXICON HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self._lx2ur = {}
-        self._lx2aln = {}
-        self._lx2tp = {}
         self._lx2pr = {}
+
+    """ ========== OVERLOADING METHODS =================================== """
+
+    def __deepcopy__(self, memo):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+        for k, v in self.__dict__.items():
+            if k == "lx2ur" or k == "lx2pr":
+                setattr(result, k, deepcopy(v, memo))
+            else:
+                setattr(result, k, copy(v))
+        return result
 
     """ ========== INSTANCE METHODS ===================================== """
 
-    def initialize_urs(self, init_ur_hyp=None):
-        """Initializes the UR hypotheses for the lexemes. If parameters
-        are given, set those as the initial URs
-        """
-        if init_ur_hyp:
-            init_lxs, init_clxs, init_urs, init_alns, lbs = init_ur_hyp
-            assert set(self._lxs) == set(
-                init_lxs
-            ), "Specified lexemes and observed lexemes are not equal"
-            assert all(
-                set(self._lx2clxs[lx]) == set(init_clxs[i])
-                for i, lx in enumerate(init_lxs)
-            ), "Specified lexical contexts and observed lexical contexts not equal"
-            for init_lx, init_ur, init_aln in zip(init_lxs, init_urs, init_alns):
-                self._lbs = lbs
-                init_ur = [self.tokens2seq_config(u) for u in init_ur]
-                self._lx2ur[init_lx] = init_ur
-                self._lx2aln[init_lx] = init_aln
-                self._lx2tp[init_lx] = self.calculate_tp(init_ur, init_aln)
-                self._lx2pr[init_lx] = self.calculate_pr(init_ur, init_aln)
-        else:
-            for lx in self.lxs():
-                sampled_ur, sampled_aln, tp, pr = self.sample_ur(lx)
-                self._lx2ur[lx] = sampled_ur
-                self._lx2aln[lx] = sampled_aln
-                self._lx2tp[lx] = tp
-                self._lx2pr[lx] = pr
+    def initialize_urs(self, init_ur_hyp):
+        """Initializes the UR hypotheses for the lexemes"""
+        init_lxs, init_clxs, init_urs = init_ur_hyp
+        assert set(self._lxs) == set(
+            init_lxs
+        ), "Given lexemes and observed lexemes are not equal"
+        assert all(
+            set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)
+        ), "Given lexical contexts and observed lexical contexts not equal"
+        for init_lx, init_ur in zip(init_lxs, init_urs):
+            self._lx2ur[init_lx] = init_ur
+            self._lx2pr[init_lx] = self.calculate_pr(init_ur)
 
-    def set_ur(self, lx, ur, aln, tp, pr):
+    def set_ur(self, lx, ur, pr):
         """Set the given lexeme to the given UR"""
         self._lx2ur[lx] = ur
-        self._lx2aln[lx] = aln
-        self._lx2tp[lx] = tp
         self._lx2pr[lx] = pr
 
-    def sample_ur(self, lx, inplace=False):
+    def sample_ur(self, lx, ur_old, inplace=False):
         """Samples a UR for a given lexeme given the proposal distribution.
         Also returns the transition probability and prior of the proposed UR
         """
-        nfeats = self.nfeats()
-        for i, clx in enumerate(self.lx2clxs(lx)):
+        for i, u in enumerate(ur_old):
             if i == 0:
-                pro_len = Binomial.rv(self._tp_max_len, self._tp_len)
-                pro_ur = self.sample_sconfigs(pro_len)
-                sampled_ur = []
-                sampled_ur.append(pro_ur)
-                pr = Binomial.pmf(pro_len, self._pr_max_len, self._pr_len)
-                pr *= Uniform.pmf(self.segs()) ** pro_len
-                tp = Binomial.pmf(pro_len, self._tp_max_len, self._tp_len)
-                tp *= Uniform.pmf(self.segs()) ** pro_len
-                sampled_aln = []
+                pro_ur = self.D.erv(u)
+                ur_new = [pro_ur]
+                pro_len = len(pro_ur)
+                pr = Binomial.pmf(pro_len, self._n, self._tht)
+                pr *= Uniform.pmf(self.nsegs()) ** pro_len
             else:
-                deleted = Bernoulli.rv(self._tp_len, pro_len).astype(bool)
-                ndeleted = np.sum(deleted == True)
-                nkept = np.sum(deleted == False)
-                cxt_ur = pro_ur[~deleted]
-                cxt_aln = np.full(pro_len, "D")
-                pr *= Bernoulli.pmf(1, self._pr_del) ** ndeleted
-                pr *= Bernoulli.pmf(0, self._pr_del) ** nkept
-                tp *= Bernoulli.pmf(1, self._tp_del) ** ndeleted
-                tp *= Bernoulli.pmf(0, self._tp_del) ** nkept
-                for j, cxt_idx in enumerate(np.argwhere(~deleted).squeeze(-1)):
-                    swap = Bernoulli.rv(self._tp_swp, size=nfeats).astype(bool)
-                    cxt_ur[j][swap] *= -1
-                    cxt_aln[cxt_idx] = "N" if all(~swap) else "S"
-                    nswapped = np.sum(swap == True)
-                    nkept = np.sum(swap == False)
-                    pr *= Bernoulli.pmf(1, self._pr_swp) ** nswapped
-                    pr *= Bernoulli.pmf(0, self._pr_swp) ** nkept
-                    tp *= Bernoulli.pmf(1, self._tp_swp) ** nswapped
-                    tp *= Bernoulli.pmf(0, self._tp_swp) ** nkept
-                sampled_ur.append(cxt_ur)
-                sampled_aln.append(cxt_aln)
+                cxt_ur = self.D.erv(u)
+                ur_new.append(cxt_ur)
+                pr *= self.D.lpmf(pro_ur, cxt_ur)
         if inplace:
-            self.set_ur(lx, sampled_ur, sampled_aln, tp, pr)
-        return sampled_ur, sampled_aln, tp, pr
+            self.set_ur(lx, ur_new, pr)
+        return ur_new, pr
 
-    def calculate_pr(self, urs, aln):
+    def calculate_pr(self, ur):
         """Returns the prior probability of the given UR"""
-        for i, ur in enumerate(urs):
+        for i, u in enumerate(ur):
             if i == 0:
-                pro_ur = ur
-                pro_len = len(ur)
-                pr = Binomial.pmf(pro_len, self._pr_max_len, self._pr_len)
-                pr *= Uniform.pmf(self.segs()) ** pro_len
+                pro_ur = u
+                pro_len = len(pro_ur)
+                pr = Binomial.pmf(pro_len, self._n, self._tht)
+                pr *= Uniform.pmf(self.nsegs()) ** pro_len
             else:
-                op = aln[i - 1]
-                deleted = op == "D"
-                pr *= Bernoulli.pmf(1, self._pr_del) ** np.sum(deleted)
-                left = op != "D"
-                pr *= Bernoulli.pmf(0, self._pr_del) ** np.sum(left)
-                nswapped = np.sum(~(pro_ur[~deleted] == ur))
-                pr *= Bernoulli.pmf(1, self._pr_swp) ** nswapped
-                nkept = np.sum(pro_ur[~deleted] == ur)
-                pr *= Bernoulli.pmf(0, self._pr_swp) ** nkept
+                cxt_ur = u
+                pr *= self.D.lpmf(pro_ur, cxt_ur)
         return pr
 
-    def calculate_tp(self, urs, aln):
-        """Returns the transition probability of the given UR"""
-        for i, ur in enumerate(urs):
-            if i == 0:
-                pro_ur = ur
-                pro_len = len(ur)
-                tp = Binomial.pmf(pro_len, self._tp_max_len, self._tp_len)
-                tp *= Uniform.pmf(self.segs()) ** pro_len
-            else:
-                op = aln[i - 1]
-                deleted = op == "D"
-                tp *= Bernoulli.pmf(1, self._tp_del) ** np.sum(deleted)
-                left = op != "D"
-                tp *= Bernoulli.pmf(0, self._tp_del) ** np.sum(left)
-                nswapped = np.sum(~(pro_ur[~deleted] == ur))
-                tp *= Bernoulli.pmf(1, self._tp_swp) ** nswapped
-                nkept = np.sum(pro_ur[~deleted] == ur)
-                tp *= Bernoulli.pmf(0, self._tp_swp) ** nkept
+    def calculate_tp(self, ur_old, ur_new):
+        """Returns the transition probability of the current and new UR"""
+        tp = 1
+        for o, n in zip(ur_old, ur_new):
+            tp *= self.D.epmf(o, n)
         return tp
 
-    def add_padding(self, config, token="#"):
-        """Pads the config with the specified token"""
-        padding_config = self.token2config(token)
-        return np.vstack((padding_config, config, padding_config))
+    def add_padding(self, ss, token="#"):
+        """Pads the string with the specified token"""
+        return f"#{ss}#"
 
-    def rm_padding(self, config, token="#"):
-        """Removes the padding from the given config"""
-        padding_config = self.token2config(token)
-        token_idx = ~(config[:, None] == padding_config).all(-1).squeeze()
-        return config[token_idx, :]
+    def rm_padding(self, ss, token="#"):
+        """Removes the padding from the given string"""
+        return re.sub(token, "", ss)
 
     """ ========== ACCESSORS ============================================ """
 
@@ -229,21 +172,9 @@ class Lexicon(Inventory):
         """Returns the number of lexemes given a lexical context"""
         return len(self._clx2lxs[clx])
 
-    def lx2lb(self, lx: str):
-        """Returns the lower bound of a given lexeme"""
-        return self._lbs[self._lx2id[lx]]
-
     def lx2ur(self, lx: str):
         """Returns the current UR hypothesis for a given lexeme"""
         return self._lx2ur[lx]
-
-    def lx2aln(self, lx: str):
-        """Returns the alignment for the current UR hypothesis"""
-        return self._lx2aln[lx]
-
-    def lx2tp(self, lx: str):
-        """Returns the transition probability of the current UR hypothesis"""
-        return self._lx2tp[lx]
 
     def lx2pr(self, lx: str):
         """Returns the prior probability of the current UR hypothesis"""
@@ -251,8 +182,12 @@ class Lexicon(Inventory):
 
     def get_hyp(self, lx: str):
         """Returns the current UR hypothesis for a given lexeme"""
-        return self.lx2ur(lx), self.lx2aln(lx), self.lx2tp(lx), self.lx2pr(lx)
+        return self.lx2ur(lx), self.lx2pr(lx)
 
     def get_ur(self, clx: tuple):
         """Returns the current UR for a given lexical context for a lexeme"""
         return np.vstack([self.lx2ur(lx)[self.lx2clx2id(lx, clx)] for lx in clx])
+
+    def get_ur(self, clx: tuple):
+        """Returns the current UR for a given lexical context for a lexeme"""
+        return "".join([self.lx2ur(lx)[self.lx2clx2id(lx, clx)] for lx in clx])

@@ -41,7 +41,7 @@ def load_parameters(parameters_fn):
     return parameters
 
 
-def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
+def load_grammar_class(inventory, lexicon, mappings, surface_forms, phi, mode):
     """Loads and initializes a Grammar class"""
 
     ## Load in inventory and inventory object
@@ -59,10 +59,9 @@ def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
 
     ## Load in data and lexicon
     surface_forms_fn = surface_forms["fn"]
-    ur_prior = lexicon["ur_prior"]
-    ur_proposal = lexicon["ur_proposal"]
+    ur_params = lexicon["urs"]
     lxs, xclxs, clxs, srs, nobs = load_surface_forms(surface_forms_fn)
-    L = Lexicon(lxs, xclxs, ur_prior, ur_proposal, tokens, feats, configs)
+    L = Lexicon(lxs, xclxs, ur_params, tokens, feats, configs)
 
     ## Initialize UR hypothesis
     lexicon_fn = lexicon["fn"]
@@ -72,7 +71,7 @@ def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
         L.initialize_urs()
 
     ## Load and return grammar object
-    G = Grammar(clxs, srs, nobs, L, M)
+    G = Grammar(clxs, srs, nobs, phi, L, M)
     return G
 
 
@@ -96,13 +95,11 @@ def load_lexicon(lexicon_fn):
     with open(f"{prefix}{lexicon_fn}") as f:
         lexicon = f.readlines()
         lexicon = [s.strip().split(",") for s in lexicon]
-    init_lxs, init_clxs, init_urs, init_alns, lbs = zip(*lexicon)
+    init_lxs, init_clxs, init_urs = zip(*lexicon)
     init_lxs = list(init_lxs)
     init_clxs = [[tuple(x.split(":")) for x in cx.split(".")] for cx in init_clxs]
     init_urs = [ur.split(".") for ur in init_urs]
-    init_alns = [[np.array(list(op)) for op in aln.split(".")] for aln in init_alns]
-    lbs = [int(lb) for lb in lbs]
-    return init_lxs, init_clxs, init_urs, init_alns, lbs
+    return init_lxs, init_clxs, init_urs
 
 
 def load_constraints(constraints_fn):
@@ -161,11 +158,13 @@ def main():
     lexicon = parameters["lexicon"]
     mappings = parameters["mappings"]
     surface_forms = parameters["surface_forms"]
-    G = load_grammar_class(inventory, lexicon, mappings, surface_forms, mode)
+    psi = parameters["lexicon"]["urs"]["psi"]
+    phi = parameters["grammar"]["phi"]
+    G = load_grammar_class(inventory, lexicon, mappings, surface_forms, phi, mode)
 
     """RUN MCMC MODEL"""
-    gs_iterations = parameters["gs_iterations"]
-    mh_iterations = parameters["mh_iterations"]
+    gs_iterations = parameters["MCMC"]["gs_iterations"]
+    mh_iterations = parameters["MCMC"]["mh_iterations"]
     sampled_grammars, lx_acceptances = MCMC.gibbs_sampler(G, gs_iterations, mh_iterations)
 
     """PREDICTIVE POSTERIOR"""
@@ -174,23 +173,23 @@ def main():
 
     """SAVE TO FILE"""
     ## Generate new directory
-    output_path = f"./output/gs{gs_iterations}-mh{mh_iterations}"
+    output_path = f"./output/gs{gs_iterations}-mh{mh_iterations}-psi{psi}-phi{phi}"
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
     ## Write to file
     acceptances_fn = f"{output_path}/acceptances.csv"
     with open(acceptances_fn, "w") as f:
-        f.write("lx,gs,mh,ur_old,post_old,ur_new,post_new,accepted\n")
+        f.write("lx,gs,mh,mhyp,ur_old,post_old,ur_new,post_new,accepted\n")
         for lx, acceptances in lx_acceptances.items():
             for gsi, acceptance in enumerate(acceptances):
-                for mhi, (ur_old, post_old, ur_new, post_new, accepted) in enumerate(acceptance):
-                    f.write(f"{lx},{gsi},{mhi},{'-'.join(ur_old)},{post_old},{'-'.join(ur_new)},{post_new},{accepted}\n")
+                for mhi, (mhyp, ur_old, post_old, ur_new, post_new, accepted) in enumerate(acceptance):
+                    f.write(f"{lx},{gsi},{mhi},{mhyp},{'-'.join(ur_old)},{post_old},{'-'.join(ur_new)},{post_new},{accepted}\n")
 
     posterior_fn = f"{output_path}/posterior.csv"
     with open(posterior_fn, "w") as f:
         f.write("clxs,mname,urs,pred_srs,obs_srs,prob\n")
-        for grammar, prob in post.items():
+        for grammar, prob in sorted(post.items(), key=lambda kv: kv[1], reverse=True):
             clxs, mnames, urs, pred_srs, obs_srs = grammar
             f.write(f"{clxs},{mnames},{urs},{pred_srs},{obs_srs},{prob}\n")
 
@@ -198,7 +197,7 @@ def main():
     with open(predictive_fn, "w") as f:
         f.write("clx,pred_sr,prob\n")
         for clx, pred_srs in pred.items():
-            for pred_sr, prob in pred_srs.items():
+            for pred_sr, prob in sorted(pred_srs.items(), key=lambda kv: kv[1], reverse=True):
                 f.write(f"{clx},{pred_sr},{prob}\n")
 
 

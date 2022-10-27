@@ -1,29 +1,32 @@
 {
-  "lambda": 1,
-  "gs_iterations": 100000,
-  "mh_iterations": 10,
+  "grammar" : {
+    "phi": 3
+  },
+  "surface_forms" : {
+    "fn": "ex-surface_forms.csv"
+  },
   "inventory" : {
     "fn": "ex-inventory.csv"
   },
   "mappings" : {
     "fn": "ex-rules.csv"
   },
-  "surface_forms" : {
-    "fn": "ex-surface_forms.csv"
-  },
   "lexicon" : {
     "fn": "ex-lexicon.csv",
-    "ur_prior" : {
+    "urs" : {
       "n": 5,
-      "phi": 0.75,
-      "alpha": 0.1,
-      "beta": 0.1
-    },
-    "ur_proposal" : {
-      "n": 5,
-      "chi": 0.5,
-      "delta": 0.25,
-      "theta": 0.25
+      "k": 2,
+      "tht": 0.75,
+      "psi": 5,
+      "costs": {
+        "I": 1,
+        "D": 1,
+        "S": 1
+      }
     }
+  },
+  "MCMC": {
+    "gs_iterations": 10000,
+    "mh_iterations": 50
   }
 }

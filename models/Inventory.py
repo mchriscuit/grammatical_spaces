@@ -1,5 +1,6 @@
 import numpy as np
 import re
+from copy import deepcopy
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 (FEATURE) INVENTORY DEFINITION
@@ -45,24 +46,6 @@ class Inventory:
         return config
 
     """ ========== INSTANCE METHODS ===================================== """
-
-    def edits(self, tokens: str, max_distance: int):
-        """Returns all edits from a given string of tokens to another string
-        of tokens up to max_distance
-        """
-        tokens = {tokens}
-        for _ in range(max_distance):
-            edited = [self.edit(token) for token in tokens]
-            tokens = tokens.union(*edited)
-        return tokens
-
-    def edit(self, tokens: str):
-        ntokens = len(tokens)
-        splits = [(tokens[: i + 1], tokens[i + 1 :]) for i in range(ntokens)]
-        dels = [L + R[1:] for L, R in splits if R]
-        subs = [L + c + R[1:] for L, R in splits if R for c in self._segs]
-        ins = [L + c + R for L, R in splits for c in self._segs]
-        return set(dels + subs + ins)
 
     def sample_sconfigs(self, n: int):
         """Samples n configs uniformly from the inventory"""
@@ -113,6 +96,7 @@ class Inventory:
         configurations and a target feature configuration, update the
         features with that configuration
         """
+        seq_token_config = deepcopy(seq_token_config)
         m = ~np.isnan(tgt_config)
         for idx in idxs:
             seq_token_config[np.newaxis, idx][m] = tgt_config[m]
@@ -127,7 +111,7 @@ class Inventory:
         token configurations are compatible
         """
         m = ~np.isnan(seq_cxt_config)
-        return np.allclose(seq_token_config[m], seq_cxt_config[m])
+        return np.all(seq_token_config[m], seq_cxt_config[m])
 
     def get_compatible_idxs(
         self, seq_token_config: np.ndarray, seq_cxt_config: np.ndarray
@@ -145,6 +129,20 @@ class Inventory:
             if self.is_compatible_seq_token(sub_seq_token_config, seq_cxt_config):
                 compatible_idxs.append(i)
         return np.array(compatible_idxs)
+
+    def get_compatible_tokens(self, seq_config: np.ndarray):
+        """Takes in a vector of feature configurations and returns all
+        token configurations compatible with that configuration. Compatible
+        tokens are determined by seeing whether all of the non-NaN values are
+        matched in the segment
+        """
+        tconfigs = self.tconfigs()
+        compatible_segs = []
+        for config in seq_config:
+            m = ~np.isnan(config)
+            compatible_configs = (tconfigs[:, m] == config[m]).all(axis=1)
+            compatible_segs.append(tconfigs[compatible_configs])
+        return np.array(compatible_segs, dtype=object)
 
     """ ========== ACCESSORS ============================================ """
 
@@ -175,10 +173,7 @@ class Inventory:
     def config2token(self, config: np.ndarray):
         """Returns the token corresponding to the configuration"""
         config = tuple(config)
-        if config in self._tconfig2id:
-            return self._tokens[self._tconfig2id[config]]
-        else:
-            return "?"
+        return self._tokens[self._tconfig2id[config]]
 
     def feat2id(self, feat: str):
         """Returns the index of a feature"""

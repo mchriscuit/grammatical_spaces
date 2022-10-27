@@ -13,9 +13,12 @@ from models.Phonology import SPE, OT
 class Grammar:
     """========== INITIALIZATION ======================================="""
 
-    def __init__(self, clxs: list, srs: list, nobs: list, L, M):
+    def __init__(self, clxs: list, srs: list, nobs: list, phi: float, L, M):
         self.L = L
         self.M = M
+
+        ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._phi = phi
 
         ## *=*=*= DATA INITIALIZATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._clxs = clxs
@@ -51,19 +54,19 @@ class Grammar:
         """
         return [self.predict_sr(clx) for clx in self.clxs()]
 
-    def predict_sr(self, clx, to_token=True):
+    def predict_sr(self, clx):
         """Generates the SR predicted by the Grammar object for a given
         lexical sequence
         """
         ur = self.L.get_ur(clx)
         ur = self.L.add_padding(ur)
-        pred_sr = self.M.apply(ur)
+        pred_sr = self.M.regex_apply(ur)
         pred_sr = self.L.rm_padding(pred_sr)
-        return self.L.seq_config2tokens(pred_sr) if to_token else pred_sr
+        return pred_sr
 
     def levenshtein(self, pred_sr, obs_sr):
         """Calculates the levenshtein edit distance between the two strings"""
-        return np.exp(-lv.distance(pred_sr, obs_sr) * 1)
+        return np.exp(-lv.distance(pred_sr, obs_sr) * self.phi())
 
     def compute_likelihoods(self, lx, likelihood):
         """Computes the likelihood of the data for the given lexeme given
@@ -85,12 +88,15 @@ class Grammar:
         clxs = self.clxs()
         mnames = self.M.get_current_mhyp()
         urs = [self.L.get_ur(clx) for clx in clxs]
-        urs = [self.L.seq_config2tokens(ur) for ur in urs]
         pred_srs = self.predict_srs()
         obs_srs = self.srs()
         return clxs, mnames, urs, pred_srs, obs_srs
 
     """ ========== ACCESSORS ============================================ """
+    def phi(self):
+        """Returns the phi hyperparameter for the noisy channel"""
+        return self._phi
+
     def clxs(self):
         """Returns the clx of the data"""
         return self._clxs

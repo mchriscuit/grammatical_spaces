@@ -22,8 +22,8 @@ class SPE(Inventory):
 
         ## *=*=*= BASIC RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._nms = len(mnames)
-        self._mnames = np.array(mnames)  # rule names (n, )
-        self._mdefs = np.array(mdefs)  # rule definitions (n, 3)
+        self._mnames = np.array(mnames)
+        self._mdefs = np.array(mdefs)
 
         ## *=*=*= INITIALIZE RULE HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._mhyps = []
@@ -34,6 +34,10 @@ class SPE(Inventory):
         ## *=*=*= INITIALIZE RULE CONFIGURATIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._mname2mconfig = {}
         self.configure_mappings()
+
+        ## *=*=*= INITIALIZE RULE REGULAR EXPRESSIONS *=*=*=*=*=*=*=*=*=*=*=*
+        self._mname2mregex = {}
+        self.regex_mappings()
 
     """ ========== INSTANCE METHODS ===================================== """
 
@@ -87,7 +91,7 @@ class SPE(Inventory):
             cxt_config = generate_seq_config(cxt)
             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
 
-    def apply(self, seq_config: list):
+    def config_apply(self, seq_config: list):
         """Applies the phonological mapping given a sequence of feature
         configurations corresponding to some sequence of tokens
         """
@@ -97,8 +101,40 @@ class SPE(Inventory):
             idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)
             idxs += src_idx
             if len(idxs) != 0:
-                seq_config = self.update_config(seq_config, tgt_config, idxs)
+                seq_config = self.update_configs(seq_config, tgt_config, idxs)
         return seq_config
+
+    def regex_mappings(self):
+        """Converts mappings into regular expressions for process application"""
+        for mname in self.mnames():
+            cxt_config, src_idx, tgt_config = self._mname2mconfig[mname]
+            cxt_token_configs = self.get_compatible_tokens(cxt_config)
+            x = np.arange(len(cxt_token_configs))
+            cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
+            cxt_regex = "".join(f"([{c}])" for c in cxt_regex)
+            src_token_configs = cxt_token_configs[src_idx]
+            y = np.arange(len(src_token_configs))
+            src_regex = self.seq_config2tokens(src_token_configs)
+            tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
+            tgt_regex = self.seq_config2tokens(tgt_token_configs)
+            tgt_regex = [
+                "".join(f"\{i+1}" if i != src_idx else tgt for i in x)
+                for tgt in tgt_regex
+            ]
+            tf_regex = {src: tgt for src, tgt in zip(src_regex, tgt_regex)}
+            self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
+
+    def regex_apply(self, tokens: str):
+        """Applies the phonological mapping given a sequence of tokens"""
+        mhyp = self.get_current_mhyp()
+        for mname in mhyp:
+            cxt_regex, tf_regex, idx = self.mname2mregex(mname)
+            tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)
+        return tokens
+
+    def tf(self, match: re.Match, tf_regex: dict, idx: int):
+        """Returns a different regular expression depending on the match"""
+        return match.expand(tf_regex[match.group(idx)])
 
     def compute_prior(self):
         """Computes the prior for the current rule hypothesis"""
@@ -122,6 +158,10 @@ class SPE(Inventory):
         """Returns the rule configuration given the rule name"""
         return self._mname2mconfig[mname]
 
+    def mname2mregex(self, mname: str):
+        """Retrusn the rule regex given the rule name"""
+        return self._mname2mregex[mname]
+
     def nmhyps(self):
         """Returns the number of rule hypotheses"""
         return self._nmhyps
@@ -142,7 +182,3 @@ class SPE(Inventory):
 class OT:
     def __init__(self):
         pass
-
-
-if __name__ == "__main__":
-    print("Debugging mode...")
