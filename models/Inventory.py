@@ -69,8 +69,15 @@ class Inventory:
         """
         tokens = ""
         for config in seq_config:
-            config = tuple(config)
             tokens += self.config2token(config)
+        return tokens
+
+    def seq_config2list(self, seq_config: np.ndarray):
+        """Takes in a sequence of configurations and returns the sequence
+        of tokens corresponding to each one as a list
+        """
+        tokens = [self.config2token(config) for config in seq_config]
+        tokens = np.array(tokens)
         return tokens
 
     def str_feats2config(self, str_feats: np.ndarray):
@@ -78,6 +85,9 @@ class Inventory:
         configuration for a natural class and returns a single vector
         with the denoted feature values.
         """
+        config = np.full(self.nfeats(), None)
+        if str_feats == [""]:
+            return config
         config = np.zeros(self.nfeats())
         if str_feats == ["#"]:
             return config
@@ -94,12 +104,16 @@ class Inventory:
     ):
         """Given a list of indices, a sequence of token feature
         configurations and a target feature configuration, update the
-        features with that configuration
+        features with that configuration. If it is a null segment, return
+        a vector of Nones
         """
         seq_token_config = deepcopy(seq_token_config)
-        m = ~np.isnan(tgt_config)
-        for idx in idxs:
-            seq_token_config[np.newaxis, idx][m] = tgt_config[m]
+        if tgt_config.all() == None:
+            seq_token_config[idxs] = None
+        else:
+            m = ~np.isnan(tgt_config)
+            for idx in idxs:
+                seq_token_config[np.newaxis, idx][m] = tgt_config[m].astype(int)
         return seq_token_config
 
     def is_compatible_seq_token(
@@ -172,6 +186,8 @@ class Inventory:
 
     def config2token(self, config: np.ndarray):
         """Returns the token corresponding to the configuration"""
+        if config.all() == None:
+            return ""
         config = tuple(config)
         return self._tokens[self._tconfig2id[config]]
 

@@ -14,12 +14,12 @@ class Lexicon(Inventory):
 
     def __init__(
         self,
-        lxs: list,
-        clxs: list,
-        ur_params: dict,
-        tokens: list,
-        feats: list,
-        configs: list,
+        lxs: np.ndarray,
+        clxs: np.ndarray,
+        lx_params: dict,
+        tokens: np.ndarray,
+        feats: np.ndarray,
+        configs: np.ndarray,
     ):
 
         self._rng = np.random.default_rng()
@@ -28,12 +28,15 @@ class Lexicon(Inventory):
         super().__init__(tokens, feats, configs)
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._n = ur_params["n"]
-        self._k = ur_params["k"]
-        self._tht = ur_params["tht"]
-        self._psi = ur_params["psi"]
-        self._cst = ur_params["costs"]
-        self.D = Distance(self.segs(), self._cst, self._n, self._k, self._psi)
+        self._max_len = lx_params["max_length"]
+        self._max_eds = lx_params["max_edits"]
+        self._costs = lx_params["costs"]
+        self._theta = lx_params["theta"]
+        self._psi = lx_params["psi"]
+        self._phi = lx_params["phi"]
+        self.D = Distance(
+            self.segs(), self._costs, self._max_len, self._max_eds, self._psi, self._phi
+        )
 
         ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._lxs = lxs
@@ -65,7 +68,7 @@ class Lexicon(Inventory):
         result = cls.__new__(cls)
         memo[id(self)] = result
         for k, v in self.__dict__.items():
-            if k == "lx2ur" or k == "lx2pr":
+            if k == "_lx2ur" or k == "_lx2pr":
                 setattr(result, k, deepcopy(v, memo))
             else:
                 setattr(result, k, copy(v))
@@ -91,16 +94,16 @@ class Lexicon(Inventory):
         self._lx2ur[lx] = ur
         self._lx2pr[lx] = pr
 
-    def sample_ur(self, lx, ur_old, inplace=False):
+    def sample_ur(self, lx, ur_old, inplace=True):
         """Samples a UR for a given lexeme given the proposal distribution.
-        Also returns the transition probability and prior of the proposed UR
+        Also returns the prior of the proposed UR
         """
         for i, u in enumerate(ur_old):
             if i == 0:
                 pro_ur = self.D.erv(u)
                 ur_new = [pro_ur]
                 pro_len = len(pro_ur)
-                pr = Binomial.pmf(pro_len, self._n, self._tht)
+                pr = Binomial.pmf(pro_len, self._max_len, self._theta)
                 pr *= Uniform.pmf(self.nsegs()) ** pro_len
             else:
                 cxt_ur = self.D.erv(u)
@@ -116,7 +119,7 @@ class Lexicon(Inventory):
             if i == 0:
                 pro_ur = u
                 pro_len = len(pro_ur)
-                pr = Binomial.pmf(pro_len, self._n, self._tht)
+                pr = Binomial.pmf(pro_len, self._max_len, self._theta)
                 pr *= Uniform.pmf(self.nsegs()) ** pro_len
             else:
                 cxt_ur = u
@@ -124,7 +127,7 @@ class Lexicon(Inventory):
         return pr
 
     def calculate_tp(self, ur_old, ur_new):
-        """Returns the transition probability of the current and new UR"""
+        """Returns the transition probability between the current and new UR"""
         tp = 1
         for o, n in zip(ur_old, ur_new):
             tp *= self.D.epmf(o, n)
@@ -148,23 +151,23 @@ class Lexicon(Inventory):
         """Returns the lexical sequences of each lexeme"""
         return self._clxs
 
-    def lx2clxs(self, lx: str):
+    def lx2clxs(self, lx: np.str_):
         """Returns a list of lexical contexts given a lexeme"""
         return self._lx2clxs[lx]
 
-    def lx2clx2id(self, lx: str, clx: tuple):
+    def lx2clx2id(self, lx: np.str_, clx: tuple):
         """Returns the index of a lexical context for a given lexeme"""
         return self._lx2clx2id[lx][clx]
 
-    def lx2nclxs(self, lx: str):
+    def lx2nclxs(self, lx: np.str_):
         """Returns the number of lexical contexts given a lexeme"""
         return len(self._lx2clxs[lx])
 
     def clx2lxs(self, clx: tuple):
         """Returns a list of lexemes given a lexical context"""
-        return self._clx2lxs[lx]
+        return self._clx2lxs[clx]
 
-    def clx2lx2id(self, clx: tuple, lx: str):
+    def clx2lx2id(self, clx: tuple, lx: np.str_):
         """Returns the index of a given lexeme for a given lexical context"""
         return self._clx2lx2id[clx][lx]
 
@@ -172,15 +175,15 @@ class Lexicon(Inventory):
         """Returns the number of lexemes given a lexical context"""
         return len(self._clx2lxs[clx])
 
-    def lx2ur(self, lx: str):
+    def lx2ur(self, lx: np.str_):
         """Returns the current UR hypothesis for a given lexeme"""
         return self._lx2ur[lx]
 
-    def lx2pr(self, lx: str):
+    def lx2pr(self, lx: np.str_):
         """Returns the prior probability of the current UR hypothesis"""
         return self._lx2pr[lx]
 
-    def get_hyp(self, lx: str):
+    def get_hyp(self, lx: np.str_):
         """Returns the current UR hypothesis for a given lexeme"""
         return self.lx2ur(lx), self.lx2pr(lx)
 
@@ -188,6 +191,6 @@ class Lexicon(Inventory):
         """Returns the current UR for a given lexical context for a lexeme"""
         return np.vstack([self.lx2ur(lx)[self.lx2clx2id(lx, clx)] for lx in clx])
 
-    def get_ur(self, clx: tuple):
+    def get_ur(self, clx: tuple, s=""):
         """Returns the current UR for a given lexical context for a lexeme"""
-        return "".join([self.lx2ur(lx)[self.lx2clx2id(lx, clx)] for lx in clx])
+        return s.join([self.lx2ur(lx)[self.lx2clx2id(lx, clx)] for lx in clx])

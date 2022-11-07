@@ -1,10 +1,10 @@
 import numpy as np
 import re
+from copy import deepcopy
 from collections import defaultdict
 from tqdm import tqdm
-from copy import deepcopy
-from models.Lexicon import Lexicon
-from models.Phonology import SPE, OT
+from optim.Lexicon import Lexicon
+from optim.Phonology import SPE, OT
 from models.Grammar import Grammar
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -29,68 +29,87 @@ class MCMC:
             return np.random.uniform(0, 1) < (posterior_new / posterior_old)
 
     @staticmethod
-    def gibbs_sampler(G, gs_iterations: int, mh_iterations: int):
+    def gibbs_sampler(G, anneal: float, gs_iterations: int, mh_iterations: int):
         """Performs the Gibbs sampling algorithm for the Grammar object"""
 
-        ## Initialize list to store grammars at the end of each iteration
-        lx_acceptances = {lx: [] for lx in G.L.lxs()}
-        sampled_grammars = []
+        ## Initialize RNG generator
         rng = np.random.default_rng()
+
+        ## Initialize acceptances for each lexeme
+        lx_acceptances = {lx: [] for lx in G.L.lxs()}
+
+        ## Initialize list to store grammars at the end of each iteration
+        sampled_grammars = []
         for gs_iteration in tqdm(range(gs_iterations)):
 
+            ## Compute annealling exponent
+            power = np.log(gs_iteration) / anneal
+
             ## Loop through each lexeme and get the current UR hypotheses
-            ## Calculate the likelihood of the data given the lexemes
             for lx in G.L.lxs():
+
+                ## Store acceptances
                 acceptance = []
+
+                ## Retrieve the old UR hypotheses
+                ur_old, pr_old = G.L.get_hyp(lx)
+                likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
+
                 for mh_iteration in range(mh_iterations):
 
-                    ## Retrieve the old UR hypotheses
-                    ur_old, prior_old = G.L.get_hyp(lx)
-                    likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
-
                     ## Sample a new UR hypothesis
-                    ur_new, prior_new = G.L.sample_ur(lx, ur_old, inplace=True)
+                    ur_new, pr_new = G.L.sample_ur(lx, ur_old)
                     likelihood_new = G.compute_likelihoods(lx, G.levenshtein)
 
-                    ## Calculate the transition probability of the old hypothesis
-                    transition_old = G.L.calculate_tp(ur_new, ur_old)
-                    transition_new = G.L.calculate_tp(ur_old, ur_new)
+                    ## Calculate the transition probability of the hypotheses
+                    tp_old = G.L.calculate_tp(ur_new, ur_old)
+                    tp_new = G.L.calculate_tp(ur_old, ur_new)
 
                     ## Accept or reject the sample
-                    posterior_old = likelihood_old * prior_old * transition_new
-                    posterior_new = likelihood_new * prior_new * transition_old
-                    #print(G.M.get_current_mhyp(), ur_old, posterior_old, likelihood_old, prior_old, transition_new)
-                    #print(G.M.get_current_mhyp(), ur_new, posterior_new, likelihood_new, prior_new, transition_old)
-                    accepted = MCMC.acceptance(posterior_old, posterior_new)
+                    post_old = (likelihood_old * pr_old) ** power * tp_new
+                    post_new = (likelihood_new * pr_new) ** power * tp_old
+                    accepted = MCMC.acceptance(post_old, post_new)
 
                     ## If we do not accept, revert to the old UR hypothesis
+                    ## Otherwise, update the new hypothesis
                     if not accepted:
-                        G.L.set_ur(lx, ur_old, prior_old)
-                        mhyp = G.M.get_current_mhyp()
-                        mhyp = "-".join(mhyp)
-                        acceptance.append((mhyp, ur_old, posterior_old, ur_new, posterior_new, False))
+                        G.L.set_ur(lx, ur_old, pr_old)
                     else:
+                        ur_old, pr_old = G.L.get_hyp(lx)
+
+                    ## Append the acceptances to file
+                    if gs_iteration % 100 == 0:
                         mhyp = G.M.get_current_mhyp()
                         mhyp = "-".join(mhyp)
-                        acceptance.append((mhyp, ur_old, posterior_old, ur_new, posterior_new, True))
+                        dets = (mhyp, ur_old, post_old, ur_new, post_new, accepted)
+                        acceptance.append(dets)
                 lx_acceptances[lx].append(acceptance)
 
             ## Loop through each mapping hypothesis
-            ## Calculate the likelihood of the data given each mapping
-            pmhyps = []
             nmhyps = G.M.nmhyps()
+            pmhyps = np.ones(nmhyps)
             for mhyp_idx in range(nmhyps):
+
+                ## Update the mapping hypothesis internally
                 G.M.update_mhyp_idx(mhyp_idx)
+
+                ## Calculate the likelihood and prior of the mapping hypothesis
                 likelihood = np.prod(
-                    [G.compute_likelihoods(lx, G.levenshtein) for lx in G.L.lxs()]
+                    [
+                        G.compute_likelihood(clx, G.levenshtein)
+                        for clx in G.clxs()
+                    ]
                 )
                 prior = G.M.compute_prior()
-                pmhyps.append(likelihood * prior)
-            pmhyps = np.array(pmhyps)
+                pmhyps[mhyp_idx] = (likelihood * prior) ** power
+
+            ## Sample a mapping hypothesis based on the unnormalized posterior
             if np.sum(pmhyps) == 0:
                 pmhyps = np.ones(pmhyps.shape)
             pmhyps = pmhyps / np.sum(pmhyps)
             sampled_mhyp_idx = rng.choice(nmhyps, p=pmhyps)
+
+            ## Update the mapping hypothesis with the sampled mapping hypothesis
             G.M.update_mhyp_idx(sampled_mhyp_idx)
 
             ## Append to sample
@@ -100,7 +119,7 @@ class MCMC:
 
     @staticmethod
     def burn_in(sampled_grammars: list, burn_in=2, steps=20):
-        """Burns in the sampled grammars by the specified amounts"""
+        """Burns in the sampled grammars by the specified amount"""
         nsampled_grammars = len(sampled_grammars)
         burn_in_idx = int(nsampled_grammars / burn_in)
         return sampled_grammars[burn_in_idx::steps]
@@ -116,26 +135,24 @@ class MCMC:
         ## Populate dictionaries
         for grammar in tqdm(burned_in):
             clxs, mnames, urs, pred_srs, obs_srs = grammar.export()
-            clxs = ['-'.join(cxs) for cxs in clxs]
+            clxs = [":".join(cxs) for cxs in clxs]
             for clx, pred_sr in zip(clxs, pred_srs):
                 pred[clx][pred_sr] = pred[clx].get(pred_sr, 0) + 1
-            clxs = '.'.join(clxs)
-            mnames = '.'.join(mnames)
-            urs = '.'.join(urs)
-            pred_srs = '.'.join(pred_srs)
-            obs_srs = '.'.join(obs_srs)
+            clxs = ".".join(clxs)
+            mnames = ".".join(mnames)
+            urs = ".".join(urs)
+            pred_srs = ".".join(pred_srs)
+            obs_srs = ".".join(obs_srs)
             fgrammar = (clxs, mnames, urs, pred_srs, obs_srs)
-            post[fgrammar] = post.get(grammar, 0) + 1
+            post[fgrammar] = post.get(fgrammar, 0) + 1
 
         ## Normalize counts to get empirical probabilities
+        post = {fg: count / sum(post.values()) for fg, count in post.items()}
         pred = {
             clx: {
                 sr: count / sum(pred[clx].values())
                 for sr, count in pred[clx].items()
             }
             for clx in pred
-        }
-        post = {
-            fg: count / sum(post.values()) for fg, count in post.items()
         }
         return post, pred

@@ -1,6 +1,7 @@
 import numpy as np
 import re
-from itertools import permutations
+from copy import copy, deepcopy
+from itertools import permutations, zip_longest
 from optim.Inventory import Inventory
 from optim.Distributions import Binomial, Bernoulli, Uniform
 
@@ -13,7 +14,12 @@ class SPE(Inventory):
     """========== INITIALIZATION ======================================="""
 
     def __init__(
-        self, mnames: list, mdefs: list, tokens: list, feats: list, configs: list
+        self,
+        mnames: np.ndarray,
+        mdefs: np.ndarray,
+        tokens: np.ndarray,
+        feats: np.ndarray,
+        configs: np.ndarray,
     ):
         self._rng = np.random.default_rng()
 
@@ -39,6 +45,22 @@ class SPE(Inventory):
         self._mname2mregex = {}
         self.regex_mappings()
 
+        ## *=*=*= LIKELIHOOD CACHE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._mhyp2likelihoods = {}
+
+    """ ========== OVERLOADING METHODS =================================== """
+
+    def __deepcopy__(self, memo):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+        for k, v in self.__dict__.items():
+            if k == "_mhyp_idx":
+                setattr(result, k, deepcopy(v, memo))
+            else:
+                setattr(result, k, copy(v))
+        return result
+
     """ ========== INSTANCE METHODS ===================================== """
 
     def update_mhyp_idx(self, idx: int):
@@ -58,13 +80,13 @@ class SPE(Inventory):
     def configure_mappings(self):
         """Converts mappings into vector notation for process application"""
 
-        def split_str_seq(str_seq_str_nat_classes: list):
+        def split_str_seq(str_seq_str_nat_classes: np.str_):
             """Splits string sequence of string natural classes into a
             list of string natural classes
             """
             return str_seq_str_nat_classes.split(".")
 
-        def split_str_nat_class(str_nat_classes: list):
+        def split_str_nat_class(str_nat_classes: np.str_):
             """Splits string sequence of features representing a natural class
             into a list of string features
             """
@@ -116,12 +138,14 @@ class SPE(Inventory):
             y = np.arange(len(src_token_configs))
             src_regex = self.seq_config2tokens(src_token_configs)
             tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
-            tgt_regex = self.seq_config2tokens(tgt_token_configs)
+            tgt_regex = self.seq_config2list(tgt_token_configs)
             tgt_regex = [
-                "".join(f"\{i+1}" if i != src_idx else tgt for i in x)
+                "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
                 for tgt in tgt_regex
             ]
-            tf_regex = {src: tgt for src, tgt in zip(src_regex, tgt_regex)}
+            tf_regex = {
+                src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)
+            }
             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
 
     def regex_apply(self, tokens: str):
@@ -154,11 +178,11 @@ class SPE(Inventory):
         """Returns the dictionary from rule names to rule definitions"""
         return self._mdefs
 
-    def mname2mconfig(self, mname: str):
+    def mname2mconfig(self, mname: np.str_):
         """Returns the rule configuration given the rule name"""
         return self._mname2mconfig[mname]
 
-    def mname2mregex(self, mname: str):
+    def mname2mregex(self, mname: np.str_):
         """Retrusn the rule regex given the rule name"""
         return self._mname2mregex[mname]
 

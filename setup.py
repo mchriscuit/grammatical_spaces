@@ -8,6 +8,14 @@ extensions = [
         include_dirs=[np.get_include()]),
     Extension("optim.Inventory", ["models/Inventory.py"],
         include_dirs=[np.get_include()]),
+    Extension("optim.Phonology", ["models/Phonology.py"],
+        include_dirs=[np.get_include()]),
+    Extension("optim.Lexicon", ["models/Lexicon.py"],
+        include_dirs=[np.get_include()]),
+    Extension("optim.Grammar", ["models/Grammar.py"],
+        include_dirs=[np.get_include()]),
+    Extension("optim.MCMC", ["models/MCMC.py"],
+        include_dirs=[np.get_include()]),
 ]
 
 

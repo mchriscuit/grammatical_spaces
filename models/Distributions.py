@@ -1,4 +1,5 @@
 import numpy as np
+import re
 from itertools import product
 from Levenshtein import distance
 from scipy.stats import binom
@@ -72,11 +73,13 @@ class Distance(Distributions):
         costs: dict,
         n: int,
         k: int,
-        d: int,
+        dl: int,
+        de: int,
     ):
         self._n = n
         self._k = k
-        self._d = d
+        self._dl = dl
+        self._de = de
         self._segs = np.array(segs)
         self._costs = costs
 
@@ -84,19 +87,26 @@ class Distance(Distributions):
         self._lalns = {}
         self._lprbs = {}
         self.init_all_lalns(self._n)
-        self._lidxs = {
-            x: {y: i for i, y in enumerate(Y)} for x, Y in self._lalns.items()
+        self._lpmfs = {
+            x: {y: p for y, p in zip(Y, self._lprbs[x])}
+            for x, Y in self._lalns.items()
         }
 
         """=============== EDIT-BASED EDITS (TRANSITION) ============ """
         self._ealns = {}
         self._eprbs = {}
         self.init_all_ealns(self._n, self._k)
-        self._eidxs = {
-            x: {y: i for i, y in enumerate(Y)} for x, Y in self._ealns.items()
+        self._epmfs = {
+            x: {y: p for y, p in zip(Y, self._eprbs[x])}
+            for x, Y in self._ealns.items()
         }
 
     """========== INSTANCE METHODS ========================================"""
+
+    def compute_distance(self, d: float, x: str, Y: list):
+        """Calculates the exponentiated distance between x and Y"""
+        dist = {x: [np.exp(-d * distance(x, y)) for y in Y]}
+        return dist
 
     def init_all_lalns(self, n: int):
         """Initializes the space of possible edits of a pair of strings of
@@ -109,7 +119,7 @@ class Distance(Distributions):
             X = list(map("".join, product(self._segs, repeat=i)))
             for x in X:
                 self._lalns[x] = np.array(Y, dtype=object)
-                self._lprbs[x] = [np.exp(-self._d * distance(x, y)) for y in Y]
+                self._lprbs[x] = [np.exp(-self._dl * distance(x, y)) for y in Y]
                 self._lprbs[x] = np.array(self._lprbs[x]) / sum(self._lprbs[x])
 
     def init_all_ealns(self, n: int, k: int):
@@ -139,7 +149,7 @@ class Distance(Distributions):
             Y = [y for y in sorted(Y) if len(y) < self._n]
             for x in X:
                 self._ealns[x] = np.array(Y, dtype=object)
-                self._eprbs[x] = [np.exp(-self._d * distance(x, y)) for y in Y]
+                self._eprbs[x] = [np.exp(-self._de * distance(x, y)) for y in Y]
                 self._eprbs[x] = np.array(self._eprbs[x]) / sum(self._eprbs[x])
 
     def lrv(self, x: str):
@@ -163,9 +173,7 @@ class Distance(Distributions):
         return self._eprbs[x]
 
     def lpmf(self, x: str, y: str):
-        id = self._lidxs[x][y]
-        return self._lprbs[x][id]
+        return self._lpmfs[x][y]
 
     def epmf(self, x: str, y: str):
-        id = self._eidxs[x][y]
-        return self._eprbs[x][id]
+        return self._epmfs[x][y]

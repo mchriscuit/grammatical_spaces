@@ -2,8 +2,8 @@ import Levenshtein as lv
 import numpy as np
 import re
 import json
-from models.Lexicon import Lexicon
-from models.Phonology import SPE, OT
+from optim.Lexicon import Lexicon
+from optim.Phonology import SPE, OT
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 GRAMMAR DEFINITION
@@ -13,17 +13,16 @@ from models.Phonology import SPE, OT
 class Grammar:
     """========== INITIALIZATION ======================================="""
 
-    def __init__(self, clxs: list, srs: list, nobs: list, phi: float, L, M):
+    def __init__(self, clxs: np.ndarray, srs: np.ndarray, nobs: np.ndarray, lm: float, L, M):
         self.L = L
         self.M = M
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._phi = phi
+        self._lm = lm
 
         ## *=*=*= DATA INITIALIZATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._clxs = clxs
         self._srs = srs
-        self._sr_configs = [L.tokens2seq_config(sr) for sr in self._srs]
         self._nobs = nobs
 
         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -50,8 +49,7 @@ class Grammar:
             json.dump(self._hyp2likelihood, hf)
 
     def predict_srs(self):
-        """Generates the SRs for the set of lexical sequences
-        """
+        """Generates the SRs for the set of lexical sequences"""
         return [self.predict_sr(clx) for clx in self.clxs()]
 
     def predict_sr(self, clx):
@@ -66,7 +64,7 @@ class Grammar:
 
     def levenshtein(self, pred_sr, obs_sr):
         """Calculates the levenshtein edit distance between the two strings"""
-        return np.exp(-lv.distance(pred_sr, obs_sr) * self.phi())
+        return np.exp(-lv.distance(pred_sr, obs_sr) * self.lm())
 
     def compute_likelihoods(self, lx, likelihood):
         """Computes the likelihood of the data for the given lexeme given
@@ -79,23 +77,26 @@ class Grammar:
         """Computes the likelihood of the data for the given lexical context
         given the current set of UR and rule hypotheses
         """
-        pred_sr = self.predict_sr(clx)
         obs_sr = self.get_sr(clx)
+        if obs_sr == "":
+            return 1
+        pred_sr = self.predict_sr(clx)
         return likelihood(pred_sr, obs_sr)
 
     def export(self):
         """Exports the current model parameters and predictions"""
         clxs = self.clxs()
         mnames = self.M.get_current_mhyp()
-        urs = [self.L.get_ur(clx) for clx in clxs]
+        urs = [self.L.get_ur(clx, s="-") for clx in clxs]
         pred_srs = self.predict_srs()
         obs_srs = self.srs()
         return clxs, mnames, urs, pred_srs, obs_srs
 
     """ ========== ACCESSORS ============================================ """
-    def phi(self):
-        """Returns the phi hyperparameter for the noisy channel"""
-        return self._phi
+
+    def lm(self):
+        """Returns the lambda hyperparameter for the noisy channel"""
+        return self._lm
 
     def clxs(self):
         """Returns the clx of the data"""
@@ -105,7 +106,7 @@ class Grammar:
         """Returns the surface forms of the data"""
         return self._srs
 
-    def get_sr(self, clx: tuple, to_config=False):
+    def get_sr(self, clx: tuple):
         """Returns the surface form for the given lexical context"""
         id = self._clx2id[clx]
-        return self._sr_configs[id] if to_config else self._srs[id]
+        return self._srs[id]
