@@ -43,7 +43,7 @@ class MCMC:
         for gs_iteration in tqdm(range(gs_iterations)):
 
             ## Compute annealling exponent
-            power = np.log(gs_iteration) / anneal
+            power = min(np.log(gs_iteration + 2) / anneal, 1)
 
             ## Loop through each lexeme and get the current UR hypotheses
             for lx in G.L.lxs():
@@ -66,8 +66,8 @@ class MCMC:
                     tp_new = G.L.calculate_tp(ur_old, ur_new)
 
                     ## Accept or reject the sample
-                    post_old = (likelihood_old * pr_old) ** power * tp_new
-                    post_new = (likelihood_new * pr_new) ** power * tp_old
+                    post_old = ((likelihood_old * pr_old)) ** power * tp_new
+                    post_new = ((likelihood_new * pr_new)) ** power * tp_old
                     accepted = MCMC.acceptance(post_old, post_new)
 
                     ## If we do not accept, revert to the old UR hypothesis

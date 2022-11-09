@@ -1,6 +1,6 @@
 {
   "surface_forms" : {
-    "fn": "prickett-b.csv",
+    "fn": "prickett-f.csv",
     "lambda": 3
   },
   "inventory" : {
@@ -10,7 +10,7 @@
     "fn": "prickett-rules.csv"
   },
   "lexicon" : {
-    "fn": "prickett-b.csv",
+    "fn": "prickett-f.csv",
     "params" : {
       "max_length": 5,
       "max_edits": 2,
@@ -25,8 +25,8 @@
     }
   },
   "MCMC": {
-    "anneal": 5,
+    "anneal": 10,
     "gs_iterations": 200000,
-    "mh_iterations": 50
+    "mh_iterations": 25
   }
 }
