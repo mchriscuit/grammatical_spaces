@@ -66,8 +66,8 @@ class MCMC:
                     tp_new = G.L.calculate_tp(ur_old, ur_new)
 
                     ## Accept or reject the sample
-                    post_old = ((likelihood_old * pr_old)) ** power * tp_new
-                    post_new = ((likelihood_new * pr_new)) ** power * tp_old
+                    post_old = ((likelihood_old * pr_old) ** power) * tp_new
+                    post_new = ((likelihood_new * pr_new) ** power) * tp_old
                     accepted = MCMC.acceptance(post_old, post_new)
 
                     ## If we do not accept, revert to the old UR hypothesis
@@ -76,6 +76,7 @@ class MCMC:
                         G.L.set_ur(lx, ur_old, pr_old)
                     else:
                         ur_old, pr_old = G.L.get_hyp(lx)
+                        likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
 
                     ## Append the acceptances to file
                     if gs_iteration % 100 == 0:

@@ -81,7 +81,7 @@ class Grammar:
         if obs_sr == "":
             return 1
         pred_sr = self.predict_sr(clx)
-        return likelihood(pred_sr, obs_sr)
+        return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
 
     def export(self):
         """Exports the current model parameters and predictions"""
@@ -110,3 +110,8 @@ class Grammar:
         """Returns the surface form for the given lexical context"""
         id = self._clx2id[clx]
         return self._srs[id]
+
+    def get_nob(self, clx: tuple):
+        """Returns the number of observations for the given form"""
+        id = self._clx2id[clx]
+        return self._nobs[id]

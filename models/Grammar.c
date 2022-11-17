@@ -1556,6 +1556,7 @@ static const char __pyx_k_nobs_2[] = "_nobs";
 static const char __pyx_k_obs_sr[] = "obs_sr";
 static const char __pyx_k_Grammar[] = "Grammar";
 static const char __pyx_k_Lexicon[] = "Lexicon";
+static const char __pyx_k_get_nob[] = "get_nob";
 static const char __pyx_k_lx2clxs[] = "lx2clxs";
 static const char __pyx_k_ndarray[] = "ndarray";
 static const char __pyx_k_obs_srs[] = "obs_srs";
@@ -1585,6 +1586,7 @@ static const char __pyx_k_Grammar_export[] = "Grammar.export";
 static const char __pyx_k_Grammar_get_sr[] = "Grammar.get_sr";
 static const char __pyx_k_INITIALIZATION[] = "========== INITIALIZATION =======================================";
 static const char __pyx_k_hyp2likelihood[] = "_hyp2likelihood";
+static const char __pyx_k_Grammar_get_nob[] = "Grammar.get_nob";
 static const char __pyx_k_optim_Phonology[] = "optim.Phonology";
 static const char __pyx_k_get_current_mhyp[] = "get_current_mhyp";
 static const char __pyx_k_models_Grammar_py[] = "models/Grammar.py";
@@ -1607,6 +1609,7 @@ static PyObject *__pyx_n_s_Grammar_compute_likelihood;
 static PyObject *__pyx_n_s_Grammar_compute_likelihoods;
 static PyObject *__pyx_n_s_Grammar_export;
 static PyObject *__pyx_n_s_Grammar_export_likelihoods;
+static PyObject *__pyx_n_s_Grammar_get_nob;
 static PyObject *__pyx_n_s_Grammar_get_sr;
 static PyObject *__pyx_n_s_Grammar_import_likelihoods;
 static PyObject *__pyx_n_s_Grammar_levenshtein;
@@ -1642,6 +1645,7 @@ static PyObject *__pyx_n_s_export;
 static PyObject *__pyx_n_s_export_likelihoods;
 static PyObject *__pyx_n_u_float;
 static PyObject *__pyx_n_s_get_current_mhyp;
+static PyObject *__pyx_n_s_get_nob;
 static PyObject *__pyx_n_s_get_sr;
 static PyObject *__pyx_n_s_get_ur;
 static PyObject *__pyx_n_s_hf;
@@ -1713,6 +1717,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_18lm(CYTHON_UNUSED PyObject *
 static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_nob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_tuple_;
@@ -1730,6 +1735,7 @@ static PyObject *__pyx_tuple__23;
 static PyObject *__pyx_tuple__25;
 static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__29;
+static PyObject *__pyx_tuple__31;
 static PyObject *__pyx_codeobj__6;
 static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
@@ -1743,6 +1749,7 @@ static PyObject *__pyx_codeobj__24;
 static PyObject *__pyx_codeobj__26;
 static PyObject *__pyx_codeobj__28;
 static PyObject *__pyx_codeobj__30;
+static PyObject *__pyx_codeobj__32;
 /* Late includes */
 
 /* "models/Grammar.py":16
@@ -3810,7 +3817,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_U
  *         if obs_sr == "":
  *             return 1             # <<<<<<<<<<<<<<
  *         pred_sr = self.predict_sr(clx)
- *         return likelihood(pred_sr, obs_sr)
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_int_1);
@@ -3830,7 +3837,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_U
  *         if obs_sr == "":
  *             return 1
  *         pred_sr = self.predict_sr(clx)             # <<<<<<<<<<<<<<
- *         return likelihood(pred_sr, obs_sr)
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
  * 
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_predict_sr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
@@ -3856,7 +3863,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_U
   /* "models/Grammar.py":84
  *             return 1
  *         pred_sr = self.predict_sr(clx)
- *         return likelihood(pred_sr, obs_sr)             # <<<<<<<<<<<<<<
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)             # <<<<<<<<<<<<<<
  * 
  *     def export(self):
  */
@@ -3907,8 +3914,29 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_U
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_nob); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_3, __pyx_v_clx) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_clx);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_t_6 = PyNumber_Power(__pyx_t_1, __pyx_t_2, Py_None); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_r = __pyx_t_6;
+  __pyx_t_6 = 0;
   goto __pyx_L0;
 
   /* "models/Grammar.py":76
@@ -3936,7 +3964,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_U
 }
 
 /* "models/Grammar.py":86
- *         return likelihood(pred_sr, obs_sr)
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
  * 
  *     def export(self):             # <<<<<<<<<<<<<<
  *         """Exports the current model parameters and predictions"""
@@ -4196,7 +4224,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
   goto __pyx_L0;
 
   /* "models/Grammar.py":86
- *         return likelihood(pred_sr, obs_sr)
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
  * 
  *     def export(self):             # <<<<<<<<<<<<<<
  *         """Exports the current model parameters and predictions"""
@@ -4515,6 +4543,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
  *         """Returns the surface form for the given lexical context"""
  *         id = self._clx2id[clx]             # <<<<<<<<<<<<<<
  *         return self._srs[id]
+ * 
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clx2id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4528,6 +4557,8 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
  *         """Returns the surface form for the given lexical context"""
  *         id = self._clx2id[clx]
  *         return self._srs[id]             # <<<<<<<<<<<<<<
+ * 
+ *     def get_nob(self, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_srs_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
@@ -4552,6 +4583,146 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_AddTraceback("optim.Grammar.Grammar.get_sr", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_id);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "models/Grammar.py":114
+ *         return self._srs[id]
+ * 
+ *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
+ *         """Returns the number of observations for the given form"""
+ *         id = self._clx2id[clx]
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Grammar_7Grammar_26get_nob[] = "Returns the number of observations for the given form";
+static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_27get_nob = {"get_nob", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Grammar_7Grammar_27get_nob, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Grammar_7Grammar_26get_nob};
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_self = 0;
+  PyObject *__pyx_v_clx = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_nob (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_clx,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_self)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("get_nob", 1, 2, 2, 1); __PYX_ERR(0, 114, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_nob") < 0)) __PYX_ERR(0, 114, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_self = values[0];
+    __pyx_v_clx = ((PyObject*)values[1]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("get_nob", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 114, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("optim.Grammar.Grammar.get_nob", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_26get_nob(__pyx_self, __pyx_v_self, __pyx_v_clx);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_nob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+  PyObject *__pyx_v_id = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_nob", 0);
+
+  /* "models/Grammar.py":116
+ *     def get_nob(self, clx: tuple):
+ *         """Returns the number of observations for the given form"""
+ *         id = self._clx2id[clx]             # <<<<<<<<<<<<<<
+ *         return self._nobs[id]
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clx2id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_clx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_id = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "models/Grammar.py":117
+ *         """Returns the number of observations for the given form"""
+ *         id = self._clx2id[clx]
+ *         return self._nobs[id]             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nobs_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "models/Grammar.py":114
+ *         return self._srs[id]
+ * 
+ *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
+ *         """Returns the number of observations for the given form"""
+ *         id = self._clx2id[clx]
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("optim.Grammar.Grammar.get_nob", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_id);
@@ -4613,6 +4784,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Grammar_compute_likelihoods, __pyx_k_Grammar_compute_likelihoods, sizeof(__pyx_k_Grammar_compute_likelihoods), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_export, __pyx_k_Grammar_export, sizeof(__pyx_k_Grammar_export), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_export_likelihoods, __pyx_k_Grammar_export_likelihoods, sizeof(__pyx_k_Grammar_export_likelihoods), 0, 0, 1, 1},
+  {&__pyx_n_s_Grammar_get_nob, __pyx_k_Grammar_get_nob, sizeof(__pyx_k_Grammar_get_nob), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_get_sr, __pyx_k_Grammar_get_sr, sizeof(__pyx_k_Grammar_get_sr), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_import_likelihoods, __pyx_k_Grammar_import_likelihoods, sizeof(__pyx_k_Grammar_import_likelihoods), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_levenshtein, __pyx_k_Grammar_levenshtein, sizeof(__pyx_k_Grammar_levenshtein), 0, 0, 1, 1},
@@ -4648,6 +4820,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_export_likelihoods, __pyx_k_export_likelihoods, sizeof(__pyx_k_export_likelihoods), 0, 0, 1, 1},
   {&__pyx_n_u_float, __pyx_k_float, sizeof(__pyx_k_float), 0, 1, 0, 1},
   {&__pyx_n_s_get_current_mhyp, __pyx_k_get_current_mhyp, sizeof(__pyx_k_get_current_mhyp), 0, 0, 1, 1},
+  {&__pyx_n_s_get_nob, __pyx_k_get_nob, sizeof(__pyx_k_get_nob), 0, 0, 1, 1},
   {&__pyx_n_s_get_sr, __pyx_k_get_sr, sizeof(__pyx_k_get_sr), 0, 0, 1, 1},
   {&__pyx_n_s_get_ur, __pyx_k_get_ur, sizeof(__pyx_k_get_ur), 0, 0, 1, 1},
   {&__pyx_n_s_hf, __pyx_k_hf, sizeof(__pyx_k_hf), 0, 0, 1, 1},
@@ -4839,7 +5012,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_compute_likelihood, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 76, __pyx_L1_error)
 
   /* "models/Grammar.py":86
- *         return likelihood(pred_sr, obs_sr)
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
  * 
  *     def export(self):             # <<<<<<<<<<<<<<
  *         """Exports the current model parameters and predictions"""
@@ -4897,6 +5070,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
   __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_get_sr, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 109, __pyx_L1_error)
+
+  /* "models/Grammar.py":114
+ *         return self._srs[id]
+ * 
+ *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
+ *         """Returns the number of observations for the given form"""
+ *         id = self._clx2id[clx]
+ */
+  __pyx_tuple__31 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_id); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_get_nob, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5407,7 +5592,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "models/Grammar.py":86
- *         return likelihood(pred_sr, obs_sr)
+ *         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
  * 
  *     def export(self):             # <<<<<<<<<<<<<<
  *         """Exports the current model parameters and predictions"""
@@ -5471,6 +5656,23 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_sr, __pyx_t_2) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
+  /* "models/Grammar.py":114
+ *         return self._srs[id]
+ * 
+ *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
+ *         """Returns the number of observations for the given form"""
+ *         id = self._clx2id[clx]
+ */
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_27get_nob, 0, __pyx_n_s_Grammar_get_nob, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_2);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_nob, __pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
   /* "models/Grammar.py":13
  * 
  * 
@@ -5478,10 +5680,10 @@ if (!__Pyx_RefNanny) {
  *     """========== INITIALIZATION ======================================="""
  * 
  */
-  __pyx_t_2 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Grammar, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Grammar, __pyx_t_2) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Grammar, __pyx_empty_tuple, __pyx_t_1, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Grammar, __pyx_t_4) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "models/Grammar.py":1
