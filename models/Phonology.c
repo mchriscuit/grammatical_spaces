@@ -1868,7 +1868,6 @@ static const char __pyx_k_seq_config[] = "seq_config";
 static const char __pyx_k_tgt_config[] = "tgt_config";
 static const char __pyx_k_default_rng[] = "default_rng";
 static const char __pyx_k_regex_apply[] = "regex_apply";
-static const char __pyx_k_zip_longest[] = "zip_longest";
 static const char __pyx_k_SPE_mhyp_idx[] = "SPE.mhyp_idx";
 static const char __pyx_k_config_apply[] = "config_apply";
 static const char __pyx_k_mname2mregex[] = "_mname2mregex";
@@ -2094,7 +2093,6 @@ static PyObject *__pyx_n_s_v;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_y;
 static PyObject *__pyx_n_s_zip;
-static PyObject *__pyx_n_s_zip_longest;
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_mnames, PyObject *__pyx_v_mdefs, PyObject *__pyx_v_tokens, PyObject *__pyx_v_feats, PyObject *__pyx_v_configs); /* proto */
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo); /* proto */
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4update_mhyp_idx(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_idx); /* proto */
@@ -8443,7 +8441,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_x, __pyx_k_x, sizeof(__pyx_k_x), 0, 0, 1, 1},
   {&__pyx_n_s_y, __pyx_k_y, sizeof(__pyx_k_y), 0, 0, 1, 1},
   {&__pyx_n_s_zip, __pyx_k_zip, sizeof(__pyx_k_zip), 0, 0, 1, 1},
-  {&__pyx_n_s_zip_longest, __pyx_k_zip_longest, sizeof(__pyx_k_zip_longest), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -9081,7 +9078,7 @@ if (!__Pyx_RefNanny) {
  * import numpy as np
  * import re             # <<<<<<<<<<<<<<
  * from copy import copy, deepcopy
- * from itertools import permutations, zip_longest
+ * from itertools import permutations
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_re, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -9092,7 +9089,7 @@ if (!__Pyx_RefNanny) {
  * import numpy as np
  * import re
  * from copy import copy, deepcopy             # <<<<<<<<<<<<<<
- * from itertools import permutations, zip_longest
+ * from itertools import permutations
  * from optim.Inventory import Inventory
  */
   __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
@@ -9119,18 +9116,15 @@ if (!__Pyx_RefNanny) {
   /* "models/Phonology.py":4
  * import re
  * from copy import copy, deepcopy
- * from itertools import permutations, zip_longest             # <<<<<<<<<<<<<<
+ * from itertools import permutations             # <<<<<<<<<<<<<<
  * from optim.Inventory import Inventory
  * from optim.Distributions import Binomial, Bernoulli, Uniform
  */
-  __pyx_t_2 = PyList_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_permutations);
   __Pyx_GIVEREF(__pyx_n_s_permutations);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_permutations);
-  __Pyx_INCREF(__pyx_n_s_zip_longest);
-  __Pyx_GIVEREF(__pyx_n_s_zip_longest);
-  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_zip_longest);
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_itertools, __pyx_t_2, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9138,15 +9132,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_permutations, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_1, __pyx_n_s_zip_longest); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_zip_longest, __pyx_t_2) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "models/Phonology.py":5
  * from copy import copy, deepcopy
- * from itertools import permutations, zip_longest
+ * from itertools import permutations
  * from optim.Inventory import Inventory             # <<<<<<<<<<<<<<
  * from optim.Distributions import Binomial, Bernoulli, Uniform
  * 
@@ -9166,7 +9156,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "models/Phonology.py":6
- * from itertools import permutations, zip_longest
+ * from itertools import permutations
  * from optim.Inventory import Inventory
  * from optim.Distributions import Binomial, Bernoulli, Uniform             # <<<<<<<<<<<<<<
  * 

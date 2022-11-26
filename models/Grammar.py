@@ -56,7 +56,7 @@ class Grammar:
         """Generates the SR predicted by the Grammar object for a given
         lexical sequence
         """
-        ur = self.L.get_ur(clx)
+        ur = "".join(self.L.get_clx_ur(clx))
         ur = self.L.add_padding(ur)
         pred_sr = self.M.regex_apply(ur)
         pred_sr = self.L.rm_padding(pred_sr)
@@ -87,7 +87,7 @@ class Grammar:
         """Exports the current model parameters and predictions"""
         clxs = self.clxs()
         mnames = self.M.get_current_mhyp()
-        urs = [self.L.get_ur(clx, s="-") for clx in clxs]
+        urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]
         pred_srs = self.predict_srs()
         obs_srs = self.srs()
         return clxs, mnames, urs, pred_srs, obs_srs
@@ -97,6 +97,10 @@ class Grammar:
     def lm(self):
         """Returns the lambda hyperparameter for the noisy channel"""
         return self._lm
+
+    def lxs(self):
+        """Returns the lexemes of the data"""
+        return self.L.lxs()
 
     def clxs(self):
         """Returns the clx of the data"""

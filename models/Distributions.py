@@ -1,5 +1,4 @@
 import numpy as np
-import re
 from itertools import product
 from Levenshtein import distance
 from scipy.stats import binom
@@ -27,15 +26,6 @@ class Binomial(Distributions):
         assert n >= k, f"Invalid number of successes; {n} !>= {k}"
         c = cls.factorial(n) / (cls.factorial(k) * cls.factorial(n - k))
         return c * (p**k) * (1 - p) ** (n - k)
-
-    @classmethod
-    def trunc_pmf(cls, b, k, n, p):
-        assert k >= b, f"Invalid lower bound; {k} !>= {b}"
-        assert n >= k, f"Invalid number of successes; {n} !>= {k}"
-        if b == 0:
-            return cls.pmf(k, n, p)
-        else:
-            return cls.pmf(k, n, p) / (cls.pmf(b, n, p) + binom.sf(b, n, p))
 
 
 class Bernoulli(Distributions):

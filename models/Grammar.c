@@ -1286,6 +1286,24 @@ static CYTHON_INLINE int __Pyx_ListComp_Append(PyObject* list, PyObject* x) {
 #define __Pyx_ListComp_Append(L,x) PyList_Append(L,x)
 #endif
 
+/* StringJoin.proto */
+#if PY_MAJOR_VERSION < 3
+#define __Pyx_PyString_Join __Pyx_PyBytes_Join
+#define __Pyx_PyBaseString_Join(s, v) (PyUnicode_CheckExact(s) ? PyUnicode_Join(s, v) : __Pyx_PyBytes_Join(s, v))
+#else
+#define __Pyx_PyString_Join PyUnicode_Join
+#define __Pyx_PyBaseString_Join PyUnicode_Join
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON
+    #if PY_MAJOR_VERSION < 3
+    #define __Pyx_PyBytes_Join _PyString_Join
+    #else
+    #define __Pyx_PyBytes_Join _PyBytes_Join
+    #endif
+#else
+static CYTHON_INLINE PyObject* __Pyx_PyBytes_Join(PyObject* sep, PyObject* values);
+#endif
+
 /* SliceObject.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyObject_GetSlice(
         PyObject* obj, Py_ssize_t cstart, Py_ssize_t cstop,
@@ -1504,10 +1522,9 @@ static const char __pyx_k_L[] = "L";
 static const char __pyx_k_M[] = "M";
 static const char __pyx_k_i[] = "i";
 static const char __pyx_k_r[] = "r";
-static const char __pyx_k_s[] = "s";
 static const char __pyx_k_w[] = "w";
 static const char __pyx_k_OT[] = "OT";
-static const char __pyx_k__3[] = "";
+static const char __pyx_k__2[] = "";
 static const char __pyx_k__4[] = "-";
 static const char __pyx_k_hf[] = "hf";
 static const char __pyx_k_id[] = "id";
@@ -1522,12 +1539,14 @@ static const char __pyx_k_SPE[] = "SPE";
 static const char __pyx_k_clx[] = "clx";
 static const char __pyx_k_doc[] = "__doc__";
 static const char __pyx_k_exp[] = "exp";
+static const char __pyx_k_lxs[] = "lxs";
 static const char __pyx_k_srs[] = "srs";
 static const char __pyx_k_urs[] = "urs";
 static const char __pyx_k_clxs[] = "clxs";
 static const char __pyx_k_dump[] = "dump";
 static const char __pyx_k_exit[] = "__exit__";
 static const char __pyx_k_init[] = "__init__";
+static const char __pyx_k_join[] = "join";
 static const char __pyx_k_json[] = "json";
 static const char __pyx_k_lm_2[] = "_lm";
 static const char __pyx_k_load[] = "load";
@@ -1548,7 +1567,6 @@ static const char __pyx_k_clx2id[] = "_clx2id";
 static const char __pyx_k_clxs_2[] = "_clxs";
 static const char __pyx_k_export[] = "export";
 static const char __pyx_k_get_sr[] = "get_sr";
-static const char __pyx_k_get_ur[] = "get_ur";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_mnames[] = "mnames";
 static const char __pyx_k_module[] = "__module__";
@@ -1568,9 +1586,11 @@ static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_Grammar_lm[] = "Grammar.lm";
+static const char __pyx_k_get_clx_ur[] = "get_clx_ur";
 static const char __pyx_k_likelihood[] = "likelihood";
 static const char __pyx_k_predict_sr[] = "predict_sr";
 static const char __pyx_k_rm_padding[] = "rm_padding";
+static const char __pyx_k_Grammar_lxs[] = "Grammar.lxs";
 static const char __pyx_k_Grammar_srs[] = "Grammar.srs";
 static const char __pyx_k_Levenshtein[] = "Levenshtein";
 static const char __pyx_k_add_padding[] = "add_padding";
@@ -1614,6 +1634,7 @@ static PyObject *__pyx_n_s_Grammar_get_sr;
 static PyObject *__pyx_n_s_Grammar_import_likelihoods;
 static PyObject *__pyx_n_s_Grammar_levenshtein;
 static PyObject *__pyx_n_s_Grammar_lm;
+static PyObject *__pyx_n_s_Grammar_lxs;
 static PyObject *__pyx_n_s_Grammar_predict_sr;
 static PyObject *__pyx_n_s_Grammar_predict_srs;
 static PyObject *__pyx_n_s_Grammar_srs;
@@ -1624,7 +1645,7 @@ static PyObject *__pyx_n_s_Lexicon;
 static PyObject *__pyx_n_s_M;
 static PyObject *__pyx_n_s_OT;
 static PyObject *__pyx_n_s_SPE;
-static PyObject *__pyx_kp_s__3;
+static PyObject *__pyx_kp_s__2;
 static PyObject *__pyx_kp_s__4;
 static PyObject *__pyx_n_s_add_padding;
 static PyObject *__pyx_n_s_cline_in_traceback;
@@ -1644,10 +1665,10 @@ static PyObject *__pyx_n_s_exp;
 static PyObject *__pyx_n_s_export;
 static PyObject *__pyx_n_s_export_likelihoods;
 static PyObject *__pyx_n_u_float;
+static PyObject *__pyx_n_s_get_clx_ur;
 static PyObject *__pyx_n_s_get_current_mhyp;
 static PyObject *__pyx_n_s_get_nob;
 static PyObject *__pyx_n_s_get_sr;
-static PyObject *__pyx_n_s_get_ur;
 static PyObject *__pyx_n_s_hf;
 static PyObject *__pyx_n_s_hyp2likelihood;
 static PyObject *__pyx_n_s_hyp_filename;
@@ -1656,6 +1677,7 @@ static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_import_likelihoods;
 static PyObject *__pyx_n_s_init;
+static PyObject *__pyx_n_s_join;
 static PyObject *__pyx_n_s_json;
 static PyObject *__pyx_n_s_levenshtein;
 static PyObject *__pyx_n_s_likelihood;
@@ -1665,6 +1687,7 @@ static PyObject *__pyx_n_s_load;
 static PyObject *__pyx_n_s_lv;
 static PyObject *__pyx_n_s_lx;
 static PyObject *__pyx_n_s_lx2clxs;
+static PyObject *__pyx_n_s_lxs;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_metaclass;
 static PyObject *__pyx_n_s_mnames;
@@ -1693,7 +1716,6 @@ static PyObject *__pyx_n_s_r;
 static PyObject *__pyx_n_s_re;
 static PyObject *__pyx_n_s_regex_apply;
 static PyObject *__pyx_n_s_rm_padding;
-static PyObject *__pyx_n_s_s;
 static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_sr;
 static PyObject *__pyx_n_s_sr2id;
@@ -1714,14 +1736,15 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_12compute_likelihoods(CYTHON_
 static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_likelihood); /* proto */
 static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_18lm(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_nob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20lxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24srs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_sr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_28get_nob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 static PyObject *__pyx_tuple_;
-static PyObject *__pyx_slice__2;
+static PyObject *__pyx_slice__3;
 static PyObject *__pyx_tuple__5;
 static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__9;
@@ -1736,6 +1759,7 @@ static PyObject *__pyx_tuple__25;
 static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_tuple__29;
 static PyObject *__pyx_tuple__31;
+static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_codeobj__6;
 static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
@@ -1750,6 +1774,7 @@ static PyObject *__pyx_codeobj__26;
 static PyObject *__pyx_codeobj__28;
 static PyObject *__pyx_codeobj__30;
 static PyObject *__pyx_codeobj__32;
+static PyObject *__pyx_codeobj__34;
 /* Late includes */
 
 /* "models/Grammar.py":16
@@ -2997,13 +3022,13 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_8predict_sr(CYTHON_UNUSED PyO
   /* "models/Grammar.py":59
  *         lexical sequence
  *         """
- *         ur = self.L.get_ur(clx)             # <<<<<<<<<<<<<<
+ *         ur = "".join(self.L.get_clx_ur(clx))             # <<<<<<<<<<<<<<
  *         ur = self.L.add_padding(ur)
  *         pred_sr = self.M.regex_apply(ur)
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_ur); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_clx_ur); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -3021,41 +3046,44 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_8predict_sr(CYTHON_UNUSED PyO
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_ur = __pyx_t_1;
-  __pyx_t_1 = 0;
+  __pyx_t_3 = __Pyx_PyString_Join(__pyx_kp_s__2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_ur = __pyx_t_3;
+  __pyx_t_3 = 0;
 
   /* "models/Grammar.py":60
  *         """
- *         ur = self.L.get_ur(clx)
+ *         ur = "".join(self.L.get_clx_ur(clx))
  *         ur = self.L.add_padding(ur)             # <<<<<<<<<<<<<<
  *         pred_sr = self.M.regex_apply(ur)
  *         pred_sr = self.L.rm_padding(pred_sr)
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_add_padding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_add_padding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = NULL;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_1)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_ur) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_ur);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_v_ur) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_ur);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF_SET(__pyx_v_ur, __pyx_t_1);
-  __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_ur, __pyx_t_3);
+  __pyx_t_3 = 0;
 
   /* "models/Grammar.py":61
- *         ur = self.L.get_ur(clx)
+ *         ur = "".join(self.L.get_clx_ur(clx))
  *         ur = self.L.add_padding(ur)
  *         pred_sr = self.M.regex_apply(ur)             # <<<<<<<<<<<<<<
  *         pred_sr = self.L.rm_padding(pred_sr)
@@ -3063,26 +3091,26 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_8predict_sr(CYTHON_UNUSED PyO
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_regex_apply); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_regex_apply); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_1);
     if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_ur) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_ur);
+  __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_v_ur) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_ur);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_pred_sr = __pyx_t_1;
-  __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_pred_sr = __pyx_t_3;
+  __pyx_t_3 = 0;
 
   /* "models/Grammar.py":62
  *         ur = self.L.add_padding(ur)
@@ -3091,28 +3119,28 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_8predict_sr(CYTHON_UNUSED PyO
  *         return pred_sr
  * 
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rm_padding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rm_padding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = NULL;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
+    __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_1)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_2, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_pred_sr) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_pred_sr);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_v_pred_sr) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_pred_sr);
+  __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF_SET(__pyx_v_pred_sr, __pyx_t_1);
-  __pyx_t_1 = 0;
+  __Pyx_DECREF_SET(__pyx_v_pred_sr, __pyx_t_3);
+  __pyx_t_3 = 0;
 
   /* "models/Grammar.py":63
  *         pred_sr = self.M.regex_apply(ur)
@@ -3513,7 +3541,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_12compute_likelihoods(CYTHON_
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_1, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_1, 1, 0, NULL, NULL, &__pyx_slice__3, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_clxs = __pyx_t_3;
@@ -3809,7 +3837,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14compute_likelihood(CYTHON_U
  *             return 1
  *         pred_sr = self.predict_sr(clx)
  */
-  __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_v_obs_sr, __pyx_kp_s__3, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyString_Equals(__pyx_v_obs_sr, __pyx_kp_s__2, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
   if (__pyx_t_4) {
 
     /* "models/Grammar.py":82
@@ -4002,7 +4030,6 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
   PyObject *(*__pyx_t_5)(PyObject *);
   PyObject *__pyx_t_6 = NULL;
   PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4013,7 +4040,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
  *         """Exports the current model parameters and predictions"""
  *         clxs = self.clxs()             # <<<<<<<<<<<<<<
  *         mnames = self.M.get_current_mhyp()
- *         urs = [self.L.get_ur(clx, s="-") for clx in clxs]
+ *         urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clxs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -4039,7 +4066,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
  *         """Exports the current model parameters and predictions"""
  *         clxs = self.clxs()
  *         mnames = self.M.get_current_mhyp()             # <<<<<<<<<<<<<<
- *         urs = [self.L.get_ur(clx, s="-") for clx in clxs]
+ *         urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]
  *         pred_srs = self.predict_srs()
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_M); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
@@ -4068,7 +4095,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
   /* "models/Grammar.py":90
  *         clxs = self.clxs()
  *         mnames = self.M.get_current_mhyp()
- *         urs = [self.L.get_ur(clx, s="-") for clx in clxs]             # <<<<<<<<<<<<<<
+ *         urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]             # <<<<<<<<<<<<<<
  *         pred_srs = self.predict_srs()
  *         obs_srs = self.srs()
  */
@@ -4115,26 +4142,31 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
     }
     __Pyx_XDECREF_SET(__pyx_v_clx, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_get_ur); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_INCREF(__pyx_v_clx);
-    __Pyx_GIVEREF(__pyx_v_clx);
-    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_clx);
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_get_clx_ur); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_s, __pyx_kp_s__4) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 90, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_6 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_7);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_7, function);
+      }
+    }
+    __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_6, __pyx_v_clx) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_clx);
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 90, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_7 = __Pyx_PyString_Join(__pyx_kp_s__4, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 90, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_urs = ((PyObject*)__pyx_t_1);
@@ -4142,25 +4174,25 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
 
   /* "models/Grammar.py":91
  *         mnames = self.M.get_current_mhyp()
- *         urs = [self.L.get_ur(clx, s="-") for clx in clxs]
+ *         urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]
  *         pred_srs = self.predict_srs()             # <<<<<<<<<<<<<<
  *         obs_srs = self.srs()
  *         return clxs, mnames, urs, pred_srs, obs_srs
  */
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_predict_srs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = NULL;
+  __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_8)) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_7)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx_t_7);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4168,7 +4200,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
   __pyx_t_1 = 0;
 
   /* "models/Grammar.py":92
- *         urs = [self.L.get_ur(clx, s="-") for clx in clxs]
+ *         urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]
  *         pred_srs = self.predict_srs()
  *         obs_srs = self.srs()             # <<<<<<<<<<<<<<
  *         return clxs, mnames, urs, pred_srs, obs_srs
@@ -4176,18 +4208,18 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
  */
   __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_srs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = NULL;
+  __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_8)) {
+    __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_7)) {
       PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx_t_7);
       __Pyx_INCREF(function);
       __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_7) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4238,7 +4270,6 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_16export(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("optim.Grammar.Grammar.export", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4290,7 +4321,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_18lm(CYTHON_UNUSED PyObject *
  *         """Returns the lambda hyperparameter for the noisy channel"""
  *         return self._lm             # <<<<<<<<<<<<<<
  * 
- *     def clxs(self):
+ *     def lxs(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lm_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
@@ -4321,27 +4352,114 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_18lm(CYTHON_UNUSED PyObject *
 /* "models/Grammar.py":101
  *         return self._lm
  * 
- *     def clxs(self):             # <<<<<<<<<<<<<<
- *         """Returns the clx of the data"""
- *         return self._clxs
+ *     def lxs(self):             # <<<<<<<<<<<<<<
+ *         """Returns the lexemes of the data"""
+ *         return self.L.lxs()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_21clxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static char __pyx_doc_5optim_7Grammar_7Grammar_20clxs[] = "Returns the clx of the data";
-static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_21clxs = {"clxs", (PyCFunction)__pyx_pw_5optim_7Grammar_7Grammar_21clxs, METH_O, __pyx_doc_5optim_7Grammar_7Grammar_20clxs};
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_21clxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_21lxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Grammar_7Grammar_20lxs[] = "Returns the lexemes of the data";
+static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_21lxs = {"lxs", (PyCFunction)__pyx_pw_5optim_7Grammar_7Grammar_21lxs, METH_O, __pyx_doc_5optim_7Grammar_7Grammar_20lxs};
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_21lxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("clxs (wrapper)", 0);
-  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_20clxs(__pyx_self, ((PyObject *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("lxs (wrapper)", 0);
+  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_20lxs(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20lxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("lxs", 0);
+
+  /* "models/Grammar.py":103
+ *     def lxs(self):
+ *         """Returns the lexemes of the data"""
+ *         return self.L.lxs()             # <<<<<<<<<<<<<<
+ * 
+ *     def clxs(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_L); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_lxs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "models/Grammar.py":101
+ *         return self._lm
+ * 
+ *     def lxs(self):             # <<<<<<<<<<<<<<
+ *         """Returns the lexemes of the data"""
+ *         return self.L.lxs()
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("optim.Grammar.Grammar.lxs", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "models/Grammar.py":105
+ *         return self.L.lxs()
+ * 
+ *     def clxs(self):             # <<<<<<<<<<<<<<
+ *         """Returns the clx of the data"""
+ *         return self._clxs
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_23clxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Grammar_7Grammar_22clxs[] = "Returns the clx of the data";
+static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_23clxs = {"clxs", (PyCFunction)__pyx_pw_5optim_7Grammar_7Grammar_23clxs, METH_O, __pyx_doc_5optim_7Grammar_7Grammar_22clxs};
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_23clxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("clxs (wrapper)", 0);
+  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_22clxs(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4350,7 +4468,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("clxs", 0);
 
-  /* "models/Grammar.py":103
+  /* "models/Grammar.py":107
  *     def clxs(self):
  *         """Returns the clx of the data"""
  *         return self._clxs             # <<<<<<<<<<<<<<
@@ -4358,14 +4476,14 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject
  *     def srs(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clxs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clxs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Grammar.py":101
- *         return self._lm
+  /* "models/Grammar.py":105
+ *         return self.L.lxs()
  * 
  *     def clxs(self):             # <<<<<<<<<<<<<<
  *         """Returns the clx of the data"""
@@ -4383,7 +4501,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Grammar.py":105
+/* "models/Grammar.py":109
  *         return self._clxs
  * 
  *     def srs(self):             # <<<<<<<<<<<<<<
@@ -4392,21 +4510,21 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_20clxs(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_23srs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static char __pyx_doc_5optim_7Grammar_7Grammar_22srs[] = "Returns the surface forms of the data";
-static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_23srs = {"srs", (PyCFunction)__pyx_pw_5optim_7Grammar_7Grammar_23srs, METH_O, __pyx_doc_5optim_7Grammar_7Grammar_22srs};
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_23srs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25srs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Grammar_7Grammar_24srs[] = "Returns the surface forms of the data";
+static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_25srs = {"srs", (PyCFunction)__pyx_pw_5optim_7Grammar_7Grammar_25srs, METH_O, __pyx_doc_5optim_7Grammar_7Grammar_24srs};
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25srs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("srs (wrapper)", 0);
-  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_22srs(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_24srs(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24srs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4415,7 +4533,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("srs", 0);
 
-  /* "models/Grammar.py":107
+  /* "models/Grammar.py":111
  *     def srs(self):
  *         """Returns the surface forms of the data"""
  *         return self._srs             # <<<<<<<<<<<<<<
@@ -4423,13 +4541,13 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject 
  *     def get_sr(self, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_srs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_srs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Grammar.py":105
+  /* "models/Grammar.py":109
  *         return self._clxs
  * 
  *     def srs(self):             # <<<<<<<<<<<<<<
@@ -4448,7 +4566,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Grammar.py":109
+/* "models/Grammar.py":113
  *         return self._srs
  * 
  *     def get_sr(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -4457,10 +4575,10 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_22srs(CYTHON_UNUSED PyObject 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25get_sr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Grammar_7Grammar_24get_sr[] = "Returns the surface form for the given lexical context";
-static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_25get_sr = {"get_sr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Grammar_7Grammar_25get_sr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Grammar_7Grammar_24get_sr};
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25get_sr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_sr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Grammar_7Grammar_26get_sr[] = "Returns the surface form for the given lexical context";
+static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_27get_sr = {"get_sr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Grammar_7Grammar_27get_sr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Grammar_7Grammar_26get_sr};
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_sr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -4492,11 +4610,11 @@ static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25get_sr(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_sr", 1, 2, 2, 1); __PYX_ERR(0, 109, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_sr", 1, 2, 2, 1); __PYX_ERR(0, 113, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_sr") < 0)) __PYX_ERR(0, 109, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_sr") < 0)) __PYX_ERR(0, 113, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4509,14 +4627,14 @@ static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25get_sr(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_sr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 109, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_sr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 113, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Grammar.Grammar.get_sr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 109, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_24get_sr(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_26get_sr(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4527,7 +4645,7 @@ static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_25get_sr(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_sr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_v_id = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4538,22 +4656,22 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_sr", 0);
 
-  /* "models/Grammar.py":111
+  /* "models/Grammar.py":115
  *     def get_sr(self, clx: tuple):
  *         """Returns the surface form for the given lexical context"""
  *         id = self._clx2id[clx]             # <<<<<<<<<<<<<<
  *         return self._srs[id]
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clx2id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clx2id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_clx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_clx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_id = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "models/Grammar.py":112
+  /* "models/Grammar.py":116
  *         """Returns the surface form for the given lexical context"""
  *         id = self._clx2id[clx]
  *         return self._srs[id]             # <<<<<<<<<<<<<<
@@ -4561,16 +4679,16 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
  *     def get_nob(self, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_srs_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_srs_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Grammar.py":109
+  /* "models/Grammar.py":113
  *         return self._srs
  * 
  *     def get_sr(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -4591,7 +4709,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Grammar.py":114
+/* "models/Grammar.py":118
  *         return self._srs[id]
  * 
  *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -4600,10 +4718,10 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_24get_sr(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Grammar_7Grammar_26get_nob[] = "Returns the number of observations for the given form";
-static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_27get_nob = {"get_nob", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Grammar_7Grammar_27get_nob, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Grammar_7Grammar_26get_nob};
-static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_29get_nob(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Grammar_7Grammar_28get_nob[] = "Returns the number of observations for the given form";
+static PyMethodDef __pyx_mdef_5optim_7Grammar_7Grammar_29get_nob = {"get_nob", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Grammar_7Grammar_29get_nob, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Grammar_7Grammar_28get_nob};
+static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_29get_nob(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -4635,11 +4753,11 @@ static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_nob", 1, 2, 2, 1); __PYX_ERR(0, 114, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("get_nob", 1, 2, 2, 1); __PYX_ERR(0, 118, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_nob") < 0)) __PYX_ERR(0, 114, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_nob") < 0)) __PYX_ERR(0, 118, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4652,14 +4770,14 @@ static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_nob", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 114, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_nob", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 118, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Grammar.Grammar.get_nob", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 114, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_26get_nob(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Grammar_7Grammar_28get_nob(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4670,7 +4788,7 @@ static PyObject *__pyx_pw_5optim_7Grammar_7Grammar_27get_nob(PyObject *__pyx_sel
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_nob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_28get_nob(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_v_id = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4681,36 +4799,36 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_26get_nob(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_nob", 0);
 
-  /* "models/Grammar.py":116
+  /* "models/Grammar.py":120
  *     def get_nob(self, clx: tuple):
  *         """Returns the number of observations for the given form"""
  *         id = self._clx2id[clx]             # <<<<<<<<<<<<<<
  *         return self._nobs[id]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clx2id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clx2id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_clx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_clx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_id = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "models/Grammar.py":117
+  /* "models/Grammar.py":121
  *         """Returns the number of observations for the given form"""
  *         id = self._clx2id[clx]
  *         return self._nobs[id]             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nobs_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nobs_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_id); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Grammar.py":114
+  /* "models/Grammar.py":118
  *         return self._srs[id]
  * 
  *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -4789,6 +4907,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Grammar_import_likelihoods, __pyx_k_Grammar_import_likelihoods, sizeof(__pyx_k_Grammar_import_likelihoods), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_levenshtein, __pyx_k_Grammar_levenshtein, sizeof(__pyx_k_Grammar_levenshtein), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_lm, __pyx_k_Grammar_lm, sizeof(__pyx_k_Grammar_lm), 0, 0, 1, 1},
+  {&__pyx_n_s_Grammar_lxs, __pyx_k_Grammar_lxs, sizeof(__pyx_k_Grammar_lxs), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_predict_sr, __pyx_k_Grammar_predict_sr, sizeof(__pyx_k_Grammar_predict_sr), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_predict_srs, __pyx_k_Grammar_predict_srs, sizeof(__pyx_k_Grammar_predict_srs), 0, 0, 1, 1},
   {&__pyx_n_s_Grammar_srs, __pyx_k_Grammar_srs, sizeof(__pyx_k_Grammar_srs), 0, 0, 1, 1},
@@ -4799,7 +4918,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_M, __pyx_k_M, sizeof(__pyx_k_M), 0, 0, 1, 1},
   {&__pyx_n_s_OT, __pyx_k_OT, sizeof(__pyx_k_OT), 0, 0, 1, 1},
   {&__pyx_n_s_SPE, __pyx_k_SPE, sizeof(__pyx_k_SPE), 0, 0, 1, 1},
-  {&__pyx_kp_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 0},
+  {&__pyx_kp_s__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 0, 1, 0},
   {&__pyx_kp_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 0},
   {&__pyx_n_s_add_padding, __pyx_k_add_padding, sizeof(__pyx_k_add_padding), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
@@ -4819,10 +4938,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_export, __pyx_k_export, sizeof(__pyx_k_export), 0, 0, 1, 1},
   {&__pyx_n_s_export_likelihoods, __pyx_k_export_likelihoods, sizeof(__pyx_k_export_likelihoods), 0, 0, 1, 1},
   {&__pyx_n_u_float, __pyx_k_float, sizeof(__pyx_k_float), 0, 1, 0, 1},
+  {&__pyx_n_s_get_clx_ur, __pyx_k_get_clx_ur, sizeof(__pyx_k_get_clx_ur), 0, 0, 1, 1},
   {&__pyx_n_s_get_current_mhyp, __pyx_k_get_current_mhyp, sizeof(__pyx_k_get_current_mhyp), 0, 0, 1, 1},
   {&__pyx_n_s_get_nob, __pyx_k_get_nob, sizeof(__pyx_k_get_nob), 0, 0, 1, 1},
   {&__pyx_n_s_get_sr, __pyx_k_get_sr, sizeof(__pyx_k_get_sr), 0, 0, 1, 1},
-  {&__pyx_n_s_get_ur, __pyx_k_get_ur, sizeof(__pyx_k_get_ur), 0, 0, 1, 1},
   {&__pyx_n_s_hf, __pyx_k_hf, sizeof(__pyx_k_hf), 0, 0, 1, 1},
   {&__pyx_n_s_hyp2likelihood, __pyx_k_hyp2likelihood, sizeof(__pyx_k_hyp2likelihood), 0, 0, 1, 1},
   {&__pyx_n_s_hyp_filename, __pyx_k_hyp_filename, sizeof(__pyx_k_hyp_filename), 0, 0, 1, 1},
@@ -4831,6 +4950,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_import_likelihoods, __pyx_k_import_likelihoods, sizeof(__pyx_k_import_likelihoods), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
+  {&__pyx_n_s_join, __pyx_k_join, sizeof(__pyx_k_join), 0, 0, 1, 1},
   {&__pyx_n_s_json, __pyx_k_json, sizeof(__pyx_k_json), 0, 0, 1, 1},
   {&__pyx_n_s_levenshtein, __pyx_k_levenshtein, sizeof(__pyx_k_levenshtein), 0, 0, 1, 1},
   {&__pyx_n_s_likelihood, __pyx_k_likelihood, sizeof(__pyx_k_likelihood), 0, 0, 1, 1},
@@ -4840,6 +4960,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_lv, __pyx_k_lv, sizeof(__pyx_k_lv), 0, 0, 1, 1},
   {&__pyx_n_s_lx, __pyx_k_lx, sizeof(__pyx_k_lx), 0, 0, 1, 1},
   {&__pyx_n_s_lx2clxs, __pyx_k_lx2clxs, sizeof(__pyx_k_lx2clxs), 0, 0, 1, 1},
+  {&__pyx_n_s_lxs, __pyx_k_lxs, sizeof(__pyx_k_lxs), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
   {&__pyx_n_s_mnames, __pyx_k_mnames, sizeof(__pyx_k_mnames), 0, 0, 1, 1},
@@ -4868,7 +4989,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_re, __pyx_k_re, sizeof(__pyx_k_re), 0, 0, 1, 1},
   {&__pyx_n_s_regex_apply, __pyx_k_regex_apply, sizeof(__pyx_k_regex_apply), 0, 0, 1, 1},
   {&__pyx_n_s_rm_padding, __pyx_k_rm_padding, sizeof(__pyx_k_rm_padding), 0, 0, 1, 1},
-  {&__pyx_n_s_s, __pyx_k_s, sizeof(__pyx_k_s), 0, 0, 1, 1},
   {&__pyx_n_s_self, __pyx_k_self, sizeof(__pyx_k_self), 0, 0, 1, 1},
   {&__pyx_n_s_sr, __pyx_k_sr, sizeof(__pyx_k_sr), 0, 0, 1, 1},
   {&__pyx_n_s_sr2id, __pyx_k_sr2id, sizeof(__pyx_k_sr2id), 0, 0, 1, 1},
@@ -4911,9 +5031,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return np.prod([self.compute_likelihood(clx, likelihood) for clx in clxs])
  * 
  */
-  __pyx_slice__2 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 73, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_slice__2);
-  __Pyx_GIVEREF(__pyx_slice__2);
+  __pyx_slice__3 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_slice__3);
+  __Pyx_GIVEREF(__pyx_slice__3);
 
   /* "models/Grammar.py":16
  *     """========== INITIALIZATION ======================================="""
@@ -5038,50 +5158,62 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "models/Grammar.py":101
  *         return self._lm
  * 
- *     def clxs(self):             # <<<<<<<<<<<<<<
- *         """Returns the clx of the data"""
- *         return self._clxs
+ *     def lxs(self):             # <<<<<<<<<<<<<<
+ *         """Returns the lexemes of the data"""
+ *         return self.L.lxs()
  */
   __pyx_tuple__25 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_clxs, 101, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_lxs, 101, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 101, __pyx_L1_error)
 
   /* "models/Grammar.py":105
+ *         return self.L.lxs()
+ * 
+ *     def clxs(self):             # <<<<<<<<<<<<<<
+ *         """Returns the clx of the data"""
+ *         return self._clxs
+ */
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_clxs, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 105, __pyx_L1_error)
+
+  /* "models/Grammar.py":109
  *         return self._clxs
  * 
  *     def srs(self):             # <<<<<<<<<<<<<<
  *         """Returns the surface forms of the data"""
  *         return self._srs
  */
-  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 105, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__27);
-  __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_srs, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_srs, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 109, __pyx_L1_error)
 
-  /* "models/Grammar.py":109
+  /* "models/Grammar.py":113
  *         return self._srs
  * 
  *     def get_sr(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the surface form for the given lexical context"""
  *         id = self._clx2id[clx]
  */
-  __pyx_tuple__29 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_id); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 109, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__29);
-  __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_get_sr, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_id); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_get_sr, 113, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 113, __pyx_L1_error)
 
-  /* "models/Grammar.py":114
+  /* "models/Grammar.py":118
  *         return self._srs[id]
  * 
  *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the number of observations for the given form"""
  *         id = self._clx2id[clx]
  */
-  __pyx_tuple__31 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_id); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 114, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_get_nob, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_id); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Grammar_py, __pyx_n_s_get_nob, 118, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -5618,59 +5750,71 @@ if (!__Pyx_RefNanny) {
   /* "models/Grammar.py":101
  *         return self._lm
  * 
+ *     def lxs(self):             # <<<<<<<<<<<<<<
+ *         """Returns the lexemes of the data"""
+ *         return self.L.lxs()
+ */
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_21lxs, 0, __pyx_n_s_Grammar_lxs, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_lxs, __pyx_t_4) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "models/Grammar.py":105
+ *         return self.L.lxs()
+ * 
  *     def clxs(self):             # <<<<<<<<<<<<<<
  *         """Returns the clx of the data"""
  *         return self._clxs
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_21clxs, 0, __pyx_n_s_Grammar_clxs, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_23clxs, 0, __pyx_n_s_Grammar_clxs, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_clxs, __pyx_t_4) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_clxs, __pyx_t_4) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Grammar.py":105
+  /* "models/Grammar.py":109
  *         return self._clxs
  * 
  *     def srs(self):             # <<<<<<<<<<<<<<
  *         """Returns the surface forms of the data"""
  *         return self._srs
  */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_23srs, 0, __pyx_n_s_Grammar_srs, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_25srs, 0, __pyx_n_s_Grammar_srs, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_srs, __pyx_t_4) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_srs, __pyx_t_4) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Grammar.py":109
+  /* "models/Grammar.py":113
  *         return self._srs
  * 
  *     def get_sr(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the surface form for the given lexical context"""
  *         id = self._clx2id[clx]
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_25get_sr, 0, __pyx_n_s_Grammar_get_sr, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_27get_sr, 0, __pyx_n_s_Grammar_get_sr, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_sr, __pyx_t_2) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_sr, __pyx_t_2) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Grammar.py":114
+  /* "models/Grammar.py":118
  *         return self._srs[id]
  * 
  *     def get_nob(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the number of observations for the given form"""
  *         id = self._clx2id[clx]
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_27get_nob, 0, __pyx_n_s_Grammar_get_nob, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Grammar_7Grammar_29get_nob, 0, __pyx_n_s_Grammar_get_nob, NULL, __pyx_n_s_optim_Grammar, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_nob, __pyx_t_4) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_1, __pyx_n_s_get_nob, __pyx_t_4) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "models/Grammar.py":13
@@ -6534,6 +6678,13 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
     tstate->curexc_type = 0;
     tstate->curexc_value = 0;
     tstate->curexc_traceback = 0;
+}
+#endif
+
+/* StringJoin */
+#if !CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyBytes_Join(PyObject* sep, PyObject* values) {
+    return PyObject_CallMethodObjArgs(sep, __pyx_n_s_join, values, NULL);
 }
 #endif
 

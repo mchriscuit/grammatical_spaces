@@ -5,7 +5,7 @@ from collections import defaultdict
 from tqdm import tqdm
 from optim.Lexicon import Lexicon
 from optim.Phonology import SPE, OT
-from models.Grammar import Grammar
+from optim.Grammar import Grammar
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 MCMC SAMPLER DEFINITION
@@ -45,46 +45,77 @@ class MCMC:
             ## Compute annealling exponent
             power = min(np.log(gs_iteration + 2) / anneal, 1)
 
-            ## Loop through each lexeme and get the current UR hypotheses
-            for lx in G.L.lxs():
+            ## Loop through each contextual UR
+            for clx in G.clxs():
 
-                ## Store acceptances
-                acceptance = []
+                ## Retrieve the prior and likelihood of the old UR
+                clx_ur_old, clx_pr_old = G.L.get_clx_hyp(clx)
+                likelihood_old = G.compute_likelihood(clx, G.levenshtein)
 
-                ## Retrieve the old UR hypotheses
-                ur_old, pr_old = G.L.get_hyp(lx)
-                likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
-
+                ## Loop for mh_iterations
                 for mh_iteration in range(mh_iterations):
 
-                    ## Sample a new UR hypothesis
-                    ur_new, pr_new = G.L.sample_ur(lx, ur_old)
-                    likelihood_new = G.compute_likelihoods(lx, G.levenshtein)
+                    ## Sample a new underlying form
+                    clx_ur_new, clx_pr_new = G.L.sample_cxt_ur(clx)
+                    likelihood_new = G.compute_likelihood(clx, G.levenshtein)
 
                     ## Calculate the transition probability of the hypotheses
-                    tp_old = G.L.calculate_tp(ur_new, ur_old)
-                    tp_new = G.L.calculate_tp(ur_old, ur_new)
+                    tp_old = np.prod(
+                        [G.L.compute_tp(n, o) for n, o in zip(clx_ur_new, clx_ur_old)]
+                    )
+                    tp_new = np.prod(
+                        [G.L.compute_tp(o, n) for o, n in zip(clx_ur_old, clx_ur_new)]
+                    )
 
                     ## Accept or reject the sample
-                    post_old = ((likelihood_old * pr_old) ** power) * tp_new
-                    post_new = ((likelihood_new * pr_new) ** power) * tp_old
+                    post_old = tp_new * (likelihood_old * np.prod(clx_pr_old)) ** power
+                    post_new = tp_old * (likelihood_new * np.prod(clx_pr_new)) ** power
                     accepted = MCMC.acceptance(post_old, post_new)
 
                     ## If we do not accept, revert to the old UR hypothesis
-                    ## Otherwise, update the new hypothesis
                     if not accepted:
-                        G.L.set_ur(lx, ur_old, pr_old)
+                        for lx, u_old, p_old, in zip(clx, clx_ur_old, clx_pr_old):
+                            G.L.set_ur(lx, clx, u_old, p_old)
+
+                    ## Otherwise, update the new hypothesis
+                    else:
+                        clx_ur_old, clx_pr_old = G.L.get_clx_hyp(clx)
+                        likelihood_old = likelihood_new
+
+            ## Loop through each prototype UR
+            for lx in G.lxs():
+
+                ## Retrieve the old prototype UR and prior
+                ur_old, pr_old = G.L.get_hyp(lx)
+                pr_old = deepcopy(pr_old)
+                pro_ur_old = deepcopy(ur_old[G.L.pro()])
+                pro_pr_old = np.prod(list(pr_old.values()))
+
+                ## Loop for mh_iterations
+                for mh_iteration in range(mh_iterations):
+
+                    ## Sample a new prototype underlying form
+                    pro_ur_new, pro_pr_new = G.L.sample_pro_ur(lx)
+
+                    ## Calculate the transition probability of the hypotheses
+                    tp_old = G.L.compute_tp(pro_ur_new, pro_ur_old)
+                    tp_new = G.L.compute_tp(pro_ur_old, pro_ur_new)
+
+                    ## Accept or reject the sample
+                    post_old = (pro_pr_old ** power) * tp_new
+                    post_new = (pro_pr_new ** power) * tp_old
+                    accepted = MCMC.acceptance(post_old, post_new)
+
+                    ## If we do not accept, revert to the old UR hypothesis
+                    if not accepted:
+                        G.L.set_pro_ur(lx, pro_ur_old, pr_old)
+
+                    ## Otherwise, update the new hypothesis
                     else:
                         ur_old, pr_old = G.L.get_hyp(lx)
-                        likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
-
-                    ## Append the acceptances to file
-                    if gs_iteration % 100 == 0:
-                        mhyp = G.M.get_current_mhyp()
-                        mhyp = "-".join(mhyp)
-                        dets = (mhyp, ur_old, post_old, ur_new, post_new, accepted)
-                        acceptance.append(dets)
-                lx_acceptances[lx].append(acceptance)
+                        pr_old = deepcopy(pr_old)
+                        pro_ur_old = ur_old[G.L.pro()]
+                        pro_pr_old = np.prod(list(pr_old.values()))
 
             ## Loop through each mapping hypothesis
             nmhyps = G.M.nmhyps()

@@ -1,7 +1,7 @@
 import numpy as np
 import re
 from copy import copy, deepcopy
-from itertools import permutations, zip_longest
+from itertools import permutations
 from optim.Inventory import Inventory
 from optim.Distributions import Binomial, Bernoulli, Uniform
 
