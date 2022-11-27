@@ -135,12 +135,13 @@ def load_surface_forms(surface_forms_fn):
         surface_forms = f.readlines()
         surface_forms = [s.strip().split(",") for s in surface_forms]
     clxs, srs, nobs = zip(*surface_forms)
-    clxs = sorted(tuple(clx.split(":")) for clx in clxs)
+    clxs = [tuple(clx.split(":")) for clx in clxs]
     lxs = sorted(set(lx for clx in clxs for lx in clx))
     xclxs = [[clx for clx in clxs if lx in clx] for lx in lxs]
     xclxs = [[tuple(["PROTO"])] + cxs for cxs in xclxs]
     srs = list(srs)
     nobs = [int(nob) for nob in nobs]
+    print(clxs, srs)
     return lxs, xclxs, clxs, srs, nobs
 
 
