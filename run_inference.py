@@ -141,7 +141,6 @@ def load_surface_forms(surface_forms_fn):
     xclxs = [[tuple(["PROTO"])] + cxs for cxs in xclxs]
     srs = list(srs)
     nobs = [int(nob) for nob in nobs]
-    print(clxs, srs)
     return lxs, xclxs, clxs, srs, nobs
 
 
