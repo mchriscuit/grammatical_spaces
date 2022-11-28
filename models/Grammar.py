@@ -1,7 +1,6 @@
-import Levenshtein as lv
 import numpy as np
 import re
-import json
+from Levenshtein import distance
 from optim.Lexicon import Lexicon
 from optim.Phonology import SPE, OT
 
@@ -13,7 +12,17 @@ from optim.Phonology import SPE, OT
 class Grammar:
     """========== INITIALIZATION ======================================="""
 
-    def __init__(self, clxs: np.ndarray, srs: np.ndarray, nobs: np.ndarray, lm: float, L, M):
+    def __init__(
+            self, 
+            clxs: np.ndarray, 
+            srs: np.ndarray, 
+            nobs: np.ndarray, 
+            lm: float, 
+            L, 
+            M,
+    ):
+
+        ## *=*=*= OBJECT "INHERITENCE" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self.L = L
         self.M = M
 
@@ -29,25 +38,14 @@ class Grammar:
         self._clx2id = {clx: i for i, clx in enumerate(clxs)}
         self._sr2id = {sr: i for i, sr in enumerate(srs)}
 
-        ## *=*=*= CACHE DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._hyp2likelihood = {}
-
     """ ========== INSTANCE METHODS ===================================== """
 
-    def import_likelihoods(self, hyp_filename):
-        """Imports a json containing some or all of the likelihoods for a given
-        hypothesis
-        """
-        with open(hyp_filename, "r") as hf:
-            self._hyp2likelihood = json.load(hf)
+    ## *=*=*= DISTANCE METRIC *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+    def levenshtein(self, pred_sr, obs_sr):
+        """Calculates the levenshtein edit distance between the two strings"""
+        return np.exp(-distance(pred_sr, obs_sr) * self.lm())
 
-    def export_likelihoods(self, hyp_filename):
-        """Exports a json containing some or all of the likelihoods for a given
-        hypothesis
-        """
-        with open(hyp_filename, "w") as hf:
-            json.dump(self._hyp2likelihood, hf)
-
+    ## *=*=*= GENERATING PREDICTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     def predict_srs(self):
         """Generates the SRs for the set of lexical sequences"""
         return [self.predict_sr(clx) for clx in self.clxs()]
@@ -56,16 +54,13 @@ class Grammar:
         """Generates the SR predicted by the Grammar object for a given
         lexical sequence
         """
-        ur = "".join(self.L.get_clx_ur(clx))
+        ur = self.L.str_cxt_ur(clx)
         ur = self.L.add_padding(ur)
         pred_sr = self.M.regex_apply(ur)
         pred_sr = self.L.rm_padding(pred_sr)
         return pred_sr
 
-    def levenshtein(self, pred_sr, obs_sr):
-        """Calculates the levenshtein edit distance between the two strings"""
-        return np.exp(-lv.distance(pred_sr, obs_sr) * self.lm())
-
+    ## *=*=*= LIKELIHOOD CALCULATION =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     def compute_likelihoods(self, lx, likelihood):
         """Computes the likelihood of the data for the given lexeme given
         the current set of UR and rule hypotheses
@@ -83,11 +78,12 @@ class Grammar:
         pred_sr = self.predict_sr(clx)
         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
 
+    ## *=*=*= EXPORTING GRAMMAR =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     def export(self):
         """Exports the current model parameters and predictions"""
         clxs = self.clxs()
         mnames = self.M.get_current_mhyp()
-        urs = ["-".join(self.L.get_clx_ur(clx)) for clx in clxs]
+        urs = [self.L.str_cxt_ur(clx, "-") for clx in clxs]
         pred_srs = self.predict_srs()
         obs_srs = self.srs()
         return clxs, mnames, urs, pred_srs, obs_srs

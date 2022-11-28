@@ -4,7 +4,7 @@
 {
     "distutils": {
         "include_dirs": [
-            "/usr/local/lib/python3.10/site-packages/numpy/core/include"
+            "/home/cminwoo/.local/lib/python3.10/site-packages/numpy/core/include"
         ],
         "name": "optim.Phonology",
         "sources": [
