@@ -62,6 +62,13 @@ class Lexicon(Inventory):
 
     """ ========== OVERLOADING METHODS =================================== """
 
+    def __copy__(self):
+        """Overloads the copy function"""
+        cls = self.__class__
+        cp = cls.__new__(cls)
+        cp.__dict__.update(self.__dict__)
+        return cp
+
     def __deepcopy__(self, memo):
         """Overloads the deepcopy function to only copy the list of
         UR hypotheses and priors, keeping a shallow copy of everything else
@@ -82,7 +89,7 @@ class Lexicon(Inventory):
     def initialize_urs(self, init_ur_hyp: tuple):
         """Initializes the UR hypotheses for the lexemes"""
         init_lxs, init_clxs, init_urs = init_ur_hyp
-        
+
         ## Check that number of given UR hypotheses match the number of
         ## lexemes seen in the data
         assert set(self._lxs) == set(
@@ -101,9 +108,9 @@ class Lexicon(Inventory):
                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
             }
             self._lx2pr[init_lx] = {
-                init_cx: 
-                    self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else 
-                    self.compute_pr(self.pro_ur(init_lx), init_u) 
+                init_cx:
+                    self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
+                    self.compute_pr(self.pro_ur(init_lx), init_u)
                 for init_cx, init_u in zip(init_clx, init_ur)
             }
 
@@ -125,7 +132,7 @@ class Lexicon(Inventory):
         ## probability of generating the proto UR
         if cxt_ur is None:
             pro_len = len(pro_ur)
-            pr *= Binomial.pmf(pro_len, self._me, self._th)
+            pr *= Binomial.pmf(pro_len, self._ml, self._th)
             pr *= Uniform.pmf(self.nsegs()) ** pro_len
             return pr
 
@@ -205,7 +212,7 @@ class Lexicon(Inventory):
         return re.sub(token, "", ss)
 
     """ ========== ACCESSORS ============================================ """
-    
+
     ## *=*=*= BOOLEAN OPERATORS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*+*=*=*
     def is_pro(self, clx: tuple):
         """Checks whether the clx is the prototype context"""
@@ -263,7 +270,7 @@ class Lexicon(Inventory):
     def cxt_ur(self, clx: tuple):
         """Returns a list containing the URs of all the lexemes in a clx"""
         return [self.lx_clx_ur(lx, clx) for lx in clx]
-   
+
     def str_cxt_ur(self, clx: tuple, sep=""):
         """Returns the concatenated URs of all the lexemes in a clx"""
         return sep.join(self.cxt_ur(clx))

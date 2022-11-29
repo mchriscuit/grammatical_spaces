@@ -10,6 +10,10 @@ from optim.Grammar import Grammar
 from optim.MCMC import MCMC
 
 
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+                ARGUMENT PASSER
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
+
 def parse_args():
     """Reads in and parses arguments from the command line"""
     parser = argparse.ArgumentParser()
@@ -34,6 +38,9 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+                PARAMETER LOADER
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
 
 def load_parameters(parameters_fn):
     """Loads parameters from JSON file"""
@@ -42,43 +49,8 @@ def load_parameters(parameters_fn):
     return parameters
 
 
-def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
-    """Loads and initializes a Grammar class"""
-
-    ## Load in inventory and inventory object
-    inventory_fn = inventory["fn"]
-    tokens, feats, configs = load_inventory(inventory_fn)
-
-    ## Load in mappings and mapping object
-    mappings_fn = mappings["fn"]
-    if mode == OT:
-        cnames, cdefs = load_constraints(mappings_fn)
-        M = OT(cnames, cdefs, tokens, feats, configs)
-    else:
-        rnames, rdefs = load_rules(mappings_fn)
-        M = SPE(rnames, rdefs, tokens, feats, configs)
-
-    ## Load in data and lexicon
-    surface_forms_fn = surface_forms["fn"]
-    lx_params = lexicon["params"]
-    lxs, xclxs, clxs, srs, nobs = load_surface_forms(surface_forms_fn)
-    L = Lexicon(lxs, xclxs, lx_params, tokens, feats, configs)
-
-    ## Initialize UR hypothesis
-    lexicon_fn = lexicon["fn"]
-    if lexicon_fn:
-        L.initialize_urs(load_lexicon(lexicon_fn))
-    else:
-        L.initialize_urs()
-
-    ## Load and return grammar object
-    lm = surface_forms["lambda"]
-    G = Grammar(clxs, srs, nobs, lm, L, M)
-    return G
-
-
 def load_inventory(inventory_fn):
-    """Loads in inventory file and returns an Inventory object"""
+    """Loads in and reads an inventory file"""
     prefix = "./parameters/inventory/"
     with open(f"{prefix}{inventory_fn}") as f:
         inventory = f.readlines()
@@ -135,13 +107,81 @@ def load_surface_forms(surface_forms_fn):
         surface_forms = f.readlines()
         surface_forms = [s.strip().split(",") for s in surface_forms]
     clxs, srs, nobs = zip(*surface_forms)
+
+    ## Generate the clxs by splitting by the delimiter ":"
     clxs = [tuple(clx.split(":")) for clx in clxs]
+
+    ## Generate the lxs by getting all the unique lxs in the space of clxs
     lxs = sorted(set(lx for clx in clxs for lx in clx))
-    xclxs = [[clx for clx in clxs if lx in clx] for lx in lxs]
-    xclxs = [[tuple(["PROTO"])] + cxs for cxs in xclxs]
+
+    ## Generate the list of clxs containing each lx
+    lx_clxs = [[clx for clx in clxs if lx in clx] for lx in lxs]
+    lx_clxs = [[tuple(["PROTO"])] + cxs for cxs in lx_clxs]
+
+    ## Convert the tuple of SRs to a list of SRs
     srs = list(srs)
+
+    ## Convers the tuple of observations to a list of observations
     nobs = [int(nob) for nob in nobs]
-    return lxs, xclxs, clxs, srs, nobs
+
+    return lxs, lx_clxs, clxs, srs, nobs
+
+
+
+
+
+
+
+
+
+
+
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+                GRAMMAR INSTANTIATION
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
+
+
+def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
+    """Loads and initializes a Grammar class"""
+
+    ## Load in inventory information
+    inventory_fn = inventory["fn"]
+    tokens, feats, configs = load_inventory(inventory_fn)
+
+    ## Load in mappings information
+    mappings_fn = mappings["fn"]
+
+    ## If we are using an OT-based theory, retrieve the constraints
+    ## and instantiate an OT object
+    if mode == OT:
+        cnames, cdefs = load_constraints(mappings_fn)
+        M = OT(cnames, cdefs, tokens, feats, configs)
+
+    ## Otherwise, we are using a rule-based theory. Retrieve the rules
+    ## and instantiate an SPE object
+    else:
+        rnames, rdefs = load_rules(mappings_fn)
+        M = SPE(rnames, rdefs, tokens, feats, configs)
+
+    ## Load in surface forms
+    surface_forms_fn = surface_forms["fn"]
+
+    ## Generate the lexical information
+    lxs, lx_clxs, clxs, srs, nobs = load_surface_forms(surface_forms_fn)
+    lx_params = lexicon["params"]
+
+    ## Instantiate a Lexicon object
+    L = Lexicon(lxs, lx_clxs, lx_params, tokens, feats, configs)
+
+    ## Initialize UR hypothesis
+    lexicon_fn = lexicon["fn"]
+    L.initialize_urs(load_lexicon(lexicon_fn))
+
+    ## Load and return grammar object
+    lm = surface_forms["lambda"]
+    G = Grammar(clxs, srs, nobs, lm, L, M)
+
+    return G
 
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=

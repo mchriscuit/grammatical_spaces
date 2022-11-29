@@ -972,7 +972,7 @@ static const char *__pyx_f[] = {
 struct __pyx_obj_5optim_7Lexicon___pyx_scope_struct__initialize_urs;
 struct __pyx_obj_5optim_7Lexicon___pyx_scope_struct_1_genexpr;
 
-/* "models/Lexicon.py":82
+/* "models/Lexicon.py":89
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def initialize_urs(self, init_ur_hyp: tuple):             # <<<<<<<<<<<<<<
@@ -987,7 +987,7 @@ struct __pyx_obj_5optim_7Lexicon___pyx_scope_struct__initialize_urs {
 };
 
 
-/* "models/Lexicon.py":95
+/* "models/Lexicon.py":102
  *         ## seen in the data
  *         assert all(
  *             set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)             # <<<<<<<<<<<<<<
@@ -1730,6 +1730,7 @@ static const char __pyx_k_throw[] = "throw";
 static const char __pyx_k_token[] = "token";
 static const char __pyx_k_tuple[] = "tuple";
 static const char __pyx_k_clxs_2[] = "_clxs";
+static const char __pyx_k_copy_2[] = "__copy__";
 static const char __pyx_k_cxt_pr[] = "cxt_pr";
 static const char __pyx_k_cxt_ur[] = "cxt_ur";
 static const char __pyx_k_dict_2[] = "dict";
@@ -1801,6 +1802,7 @@ static const char __pyx_k_optim_Lexicon[] = "optim.Lexicon";
 static const char __pyx_k_sample_cxt_ur[] = "sample_cxt_ur";
 static const char __pyx_k_sample_pro_ur[] = "sample_pro_ur";
 static const char __pyx_k_INITIALIZATION[] = "========== INITIALIZATION =======================================";
+static const char __pyx_k_Lexicon___copy[] = "Lexicon.__copy__";
 static const char __pyx_k_Lexicon___init[] = "Lexicon.__init__";
 static const char __pyx_k_Lexicon_cxt_pr[] = "Lexicon.cxt_pr";
 static const char __pyx_k_Lexicon_cxt_ur[] = "Lexicon.cxt_ur";
@@ -1840,6 +1842,7 @@ static PyObject *__pyx_kp_s_Given_lexical_contexts_and_obser;
 static PyObject *__pyx_kp_s_INITIALIZATION;
 static PyObject *__pyx_n_s_Inventory;
 static PyObject *__pyx_n_s_Lexicon;
+static PyObject *__pyx_n_s_Lexicon___copy;
 static PyObject *__pyx_n_s_Lexicon___deepcopy;
 static PyObject *__pyx_n_s_Lexicon___init;
 static PyObject *__pyx_n_s_Lexicon_add_padding;
@@ -1886,6 +1889,7 @@ static PyObject *__pyx_n_s_compute_pr;
 static PyObject *__pyx_n_s_compute_tp;
 static PyObject *__pyx_n_s_configs;
 static PyObject *__pyx_n_s_copy;
+static PyObject *__pyx_n_s_copy_2;
 static PyObject *__pyx_n_s_costs;
 static PyObject *__pyx_n_s_cp;
 static PyObject *__pyx_n_s_ct;
@@ -2006,33 +2010,34 @@ static PyObject *__pyx_n_s_ur_old;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_zip;
 static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lxs, PyObject *__pyx_v_clxs, PyObject *__pyx_v_pars, PyObject *__pyx_v_tokens, PyObject *__pyx_v_feats, PyObject *__pyx_v_configs); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__copy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo); /* proto */
 static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14initialize_urs_genexpr(PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_init_ur_hyp); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6set_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx, PyObject *__pyx_v_ur, double __pyx_v_pr); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_ur, PyObject *__pyx_v_pr); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pro_ur, PyObject *__pyx_v_cxt_ur); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ur_old, PyObject *__pyx_v_ur_new); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_inplace); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_inplace); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, CYTHON_UNUSED PyObject *__pyx_v_token); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, PyObject *__pyx_v_token); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_sep); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52prd_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6initialize_urs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_init_ur_hyp); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx, PyObject *__pyx_v_ur, double __pyx_v_pr); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10set_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_ur, PyObject *__pyx_v_pr); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pro_ur, PyObject *__pyx_v_cxt_ur); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14compute_tp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ur_old, PyObject *__pyx_v_ur_new); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_inplace); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18sample_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_inplace); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20add_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, CYTHON_UNUSED PyObject *__pyx_v_token); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22rm_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, PyObject *__pyx_v_token); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26is_cxt(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30lxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx2clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42lx_clx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46pro_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50str_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_sep); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52cxt_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_54prd_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx); /* proto */
 static PyObject *__pyx_tp_new_5optim_7Lexicon___pyx_scope_struct__initialize_urs(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_5optim_7Lexicon___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
@@ -2045,16 +2050,16 @@ static PyObject *__pyx_tuple__10;
 static PyObject *__pyx_tuple__12;
 static PyObject *__pyx_tuple__14;
 static PyObject *__pyx_tuple__16;
-static PyObject *__pyx_tuple__17;
+static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__19;
 static PyObject *__pyx_tuple__21;
-static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__23;
 static PyObject *__pyx_tuple__24;
-static PyObject *__pyx_tuple__25;
+static PyObject *__pyx_tuple__26;
 static PyObject *__pyx_tuple__27;
-static PyObject *__pyx_tuple__28;
+static PyObject *__pyx_tuple__29;
 static PyObject *__pyx_tuple__30;
-static PyObject *__pyx_tuple__31;
+static PyObject *__pyx_tuple__32;
 static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__35;
 static PyObject *__pyx_tuple__37;
@@ -2069,20 +2074,21 @@ static PyObject *__pyx_tuple__53;
 static PyObject *__pyx_tuple__55;
 static PyObject *__pyx_tuple__57;
 static PyObject *__pyx_tuple__59;
-static PyObject *__pyx_tuple__60;
+static PyObject *__pyx_tuple__61;
 static PyObject *__pyx_tuple__62;
+static PyObject *__pyx_tuple__64;
 static PyObject *__pyx_codeobj__5;
 static PyObject *__pyx_codeobj__7;
 static PyObject *__pyx_codeobj__9;
 static PyObject *__pyx_codeobj__11;
 static PyObject *__pyx_codeobj__13;
 static PyObject *__pyx_codeobj__15;
-static PyObject *__pyx_codeobj__18;
+static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__20;
-static PyObject *__pyx_codeobj__23;
-static PyObject *__pyx_codeobj__26;
-static PyObject *__pyx_codeobj__29;
-static PyObject *__pyx_codeobj__32;
+static PyObject *__pyx_codeobj__22;
+static PyObject *__pyx_codeobj__25;
+static PyObject *__pyx_codeobj__28;
+static PyObject *__pyx_codeobj__31;
 static PyObject *__pyx_codeobj__34;
 static PyObject *__pyx_codeobj__36;
 static PyObject *__pyx_codeobj__38;
@@ -2096,8 +2102,9 @@ static PyObject *__pyx_codeobj__52;
 static PyObject *__pyx_codeobj__54;
 static PyObject *__pyx_codeobj__56;
 static PyObject *__pyx_codeobj__58;
-static PyObject *__pyx_codeobj__61;
+static PyObject *__pyx_codeobj__60;
 static PyObject *__pyx_codeobj__63;
+static PyObject *__pyx_codeobj__65;
 /* Late includes */
 
 /* "models/Lexicon.py":15
@@ -2840,16 +2847,160 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon___init__(CYTHON_UNUSED PyObje
 /* "models/Lexicon.py":65
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
+ *     def __copy__(self):             # <<<<<<<<<<<<<<
+ *         """Overloads the copy function"""
+ *         cls = self.__class__
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_3__copy__(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_2__copy__[] = "Overloads the copy function";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_3__copy__ = {"__copy__", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_3__copy__, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_2__copy__};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_3__copy__(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__copy__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_2__copy__(__pyx_self, ((PyObject *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__copy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+  PyObject *__pyx_v_cls = NULL;
+  PyObject *__pyx_v_cp = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__copy__", 0);
+
+  /* "models/Lexicon.py":67
+ *     def __copy__(self):
+ *         """Overloads the copy function"""
+ *         cls = self.__class__             # <<<<<<<<<<<<<<
+ *         cp = cls.__new__(cls)
+ *         cp.__dict__.update(self.__dict__)
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_cls = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "models/Lexicon.py":68
+ *         """Overloads the copy function"""
+ *         cls = self.__class__
+ *         cp = cls.__new__(cls)             # <<<<<<<<<<<<<<
+ *         cp.__dict__.update(self.__dict__)
+ *         return cp
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cls, __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_cls) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_cls);
+  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_cp = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "models/Lexicon.py":69
+ *         cls = self.__class__
+ *         cp = cls.__new__(cls)
+ *         cp.__dict__.update(self.__dict__)             # <<<<<<<<<<<<<<
+ *         return cp
+ * 
+ */
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cp, __pyx_n_s_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "models/Lexicon.py":70
+ *         cp = cls.__new__(cls)
+ *         cp.__dict__.update(self.__dict__)
+ *         return cp             # <<<<<<<<<<<<<<
+ * 
+ *     def __deepcopy__(self, memo):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_cp);
+  __pyx_r = __pyx_v_cp;
+  goto __pyx_L0;
+
+  /* "models/Lexicon.py":65
+ *     """ ========== OVERLOADING METHODS =================================== """
+ * 
+ *     def __copy__(self):             # <<<<<<<<<<<<<<
+ *         """Overloads the copy function"""
+ *         cls = self.__class__
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("optim.Lexicon.Lexicon.__copy__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_cls);
+  __Pyx_XDECREF(__pyx_v_cp);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "models/Lexicon.py":72
+ *         return cp
+ * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
  *         """Overloads the deepcopy function to only copy the list of
  *         UR hypotheses and priors, keeping a shallow copy of everything else
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_3__deepcopy__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_2__deepcopy__[] = "Overloads the deepcopy function to only copy the list of\n        UR hypotheses and priors, keeping a shallow copy of everything else\n        ";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_3__deepcopy__ = {"__deepcopy__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_3__deepcopy__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_2__deepcopy__};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_3__deepcopy__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5__deepcopy__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_4__deepcopy__[] = "Overloads the deepcopy function to only copy the list of\n        UR hypotheses and priors, keeping a shallow copy of everything else\n        ";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_5__deepcopy__ = {"__deepcopy__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_5__deepcopy__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_4__deepcopy__};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5__deepcopy__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_memo = 0;
   int __pyx_lineno = 0;
@@ -2881,11 +3032,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_3__deepcopy__(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_memo)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__deepcopy__", 1, 2, 2, 1); __PYX_ERR(0, 65, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__deepcopy__", 1, 2, 2, 1); __PYX_ERR(0, 72, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__deepcopy__") < 0)) __PYX_ERR(0, 65, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__deepcopy__") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2898,20 +3049,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_3__deepcopy__(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__deepcopy__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 65, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__deepcopy__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 72, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.__deepcopy__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(__pyx_self, __pyx_v_self, __pyx_v_memo);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_4__deepcopy__(__pyx_self, __pyx_v_self, __pyx_v_memo);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo) {
   PyObject *__pyx_v_cls = NULL;
   PyObject *__pyx_v_cp = NULL;
   PyObject *__pyx_r = NULL;
@@ -2928,26 +3079,26 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__deepcopy__", 0);
 
-  /* "models/Lexicon.py":70
+  /* "models/Lexicon.py":77
  *         """
  *         ## Initialize a new class object
  *         cls = self.__class__             # <<<<<<<<<<<<<<
  *         cp = cls.__new__(cls)
  *         memo[id(self)] = cp
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_cls = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":71
+  /* "models/Lexicon.py":78
  *         ## Initialize a new class object
  *         cls = self.__class__
  *         cp = cls.__new__(cls)             # <<<<<<<<<<<<<<
  *         memo[id(self)] = cp
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cls, __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cls, __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2961,36 +3112,36 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_cls) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_cls);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_cp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":72
+  /* "models/Lexicon.py":79
  *         cls = self.__class__
  *         cp = cls.__new__(cls)
  *         memo[id(self)] = cp             # <<<<<<<<<<<<<<
  * 
  *         ## Create deep copies of the lx2ur and lx2pr attributes
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyObject_SetItem(__pyx_v_memo, __pyx_t_1, __pyx_v_cp) < 0)) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_v_memo, __pyx_t_1, __pyx_v_cp) < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":75
+  /* "models/Lexicon.py":82
  * 
  *         ## Create deep copies of the lx2ur and lx2pr attributes
  *         setattr(cp, "_lx2ur", deepcopy(self.__dict__["_lx2ur"], memo))             # <<<<<<<<<<<<<<
  *         setattr(cp, "_lx2pr", deepcopy(self.__dict__["_lx2pr"], memo))
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_3, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -3008,7 +3159,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_4, __pyx_v_memo};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3017,14 +3168,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_4, __pyx_v_memo};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 82, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -3035,26 +3186,26 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
     __Pyx_GIVEREF(__pyx_v_memo);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_v_memo);
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_7 = PyObject_SetAttr(__pyx_v_cp, __pyx_n_s_lx2ur, __pyx_t_1); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_7 = PyObject_SetAttr(__pyx_v_cp, __pyx_n_s_lx2ur, __pyx_t_1); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 82, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":76
+  /* "models/Lexicon.py":83
  *         ## Create deep copies of the lx2ur and lx2pr attributes
  *         setattr(cp, "_lx2ur", deepcopy(self.__dict__["_lx2ur"], memo))
  *         setattr(cp, "_lx2pr", deepcopy(self.__dict__["_lx2pr"], memo))             # <<<<<<<<<<<<<<
  * 
  *         return cp
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dict); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dict); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Dict_GetItem(__pyx_t_6, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -3072,7 +3223,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_4, __pyx_v_memo};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3081,14 +3232,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_t_4, __pyx_v_memo};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_3 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -3099,15 +3250,15 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
     __Pyx_GIVEREF(__pyx_v_memo);
     PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_5, __pyx_v_memo);
     __pyx_t_4 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_7 = PyObject_SetAttr(__pyx_v_cp, __pyx_n_s_lx2pr, __pyx_t_1); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_7 = PyObject_SetAttr(__pyx_v_cp, __pyx_n_s_lx2pr, __pyx_t_1); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":78
+  /* "models/Lexicon.py":85
  *         setattr(cp, "_lx2pr", deepcopy(self.__dict__["_lx2pr"], memo))
  * 
  *         return cp             # <<<<<<<<<<<<<<
@@ -3119,8 +3270,8 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   __pyx_r = __pyx_v_cp;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":65
- *     """ ========== OVERLOADING METHODS =================================== """
+  /* "models/Lexicon.py":72
+ *         return cp
  * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
  *         """Overloads the deepcopy function to only copy the list of
@@ -3144,7 +3295,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":82
+/* "models/Lexicon.py":89
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def initialize_urs(self, init_ur_hyp: tuple):             # <<<<<<<<<<<<<<
@@ -3153,10 +3304,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_2__deepcopy__(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5initialize_urs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_4initialize_urs[] = "Initializes the UR hypotheses for the lexemes";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_5initialize_urs = {"initialize_urs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_5initialize_urs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_4initialize_urs};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5initialize_urs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7initialize_urs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_6initialize_urs[] = "Initializes the UR hypotheses for the lexemes";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_7initialize_urs = {"initialize_urs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_7initialize_urs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_6initialize_urs};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7initialize_urs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_init_ur_hyp = 0;
   int __pyx_lineno = 0;
@@ -3188,11 +3339,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5initialize_urs(PyObject *__p
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_init_ur_hyp)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("initialize_urs", 1, 2, 2, 1); __PYX_ERR(0, 82, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("initialize_urs", 1, 2, 2, 1); __PYX_ERR(0, 89, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "initialize_urs") < 0)) __PYX_ERR(0, 82, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "initialize_urs") < 0)) __PYX_ERR(0, 89, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3205,14 +3356,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5initialize_urs(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("initialize_urs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 82, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("initialize_urs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 89, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.initialize_urs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_init_ur_hyp), (&PyTuple_Type), 1, "init_ur_hyp", 1))) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(__pyx_self, __pyx_v_self, __pyx_v_init_ur_hyp);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_init_ur_hyp), (&PyTuple_Type), 1, "init_ur_hyp", 1))) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_6initialize_urs(__pyx_self, __pyx_v_self, __pyx_v_init_ur_hyp);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3224,7 +3375,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_5initialize_urs(PyObject *__p
 }
 static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Lexicon.py":95
+/* "models/Lexicon.py":102
  *         ## seen in the data
  *         assert all(
  *             set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)             # <<<<<<<<<<<<<<
@@ -3244,7 +3395,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14initialize_urs_genexpr(PyOb
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_7Lexicon___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 95, __pyx_L1_error)
+    __PYX_ERR(0, 102, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3252,7 +3403,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14initialize_urs_genexpr(PyOb
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_Lexicon_initialize_urs_locals_ge, __pyx_n_s_optim_Lexicon); if (unlikely(!gen)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_Lexicon_initialize_urs_locals_ge, __pyx_n_s_optim_Lexicon); if (unlikely(!gen)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3293,34 +3444,34 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_INCREF(__pyx_int_0);
   __pyx_t_1 = __pyx_int_0;
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs)) { __Pyx_RaiseClosureNameError("init_lxs"); __PYX_ERR(0, 95, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs)) { __Pyx_RaiseClosureNameError("init_lxs"); __PYX_ERR(0, 102, __pyx_L1_error) }
   if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs)) {
     __pyx_t_2 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_lxs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_4)) {
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
         if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
@@ -3330,7 +3481,7 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 95, __pyx_L1_error)
+          else __PYX_ERR(0, 102, __pyx_L1_error)
         }
         break;
       }
@@ -3344,35 +3495,35 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_i);
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_i, __pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1);
     __pyx_t_1 = __pyx_t_5;
     __pyx_t_5 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 95, __pyx_L1_error) }
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_lx2clxs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 102, __pyx_L1_error) }
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_self, __pyx_n_s_lx2clxs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_cur_scope->__pyx_v_lx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_cur_scope->__pyx_v_lx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_5 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_clxs)) { __Pyx_RaiseClosureNameError("init_clxs"); __PYX_ERR(0, 95, __pyx_L1_error) }
-    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_clxs, __pyx_cur_scope->__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_clxs)) { __Pyx_RaiseClosureNameError("init_clxs"); __PYX_ERR(0, 102, __pyx_L1_error) }
+    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_init_clxs, __pyx_cur_scope->__pyx_v_i); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_7 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_7, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_7, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_9 = ((!__pyx_t_8) != 0);
     if (__pyx_t_9) {
 
-      /* "models/Lexicon.py":94
+      /* "models/Lexicon.py":101
  *         ## Check that the given lexical contexts match the lexical contexts
  *         ## seen in the data
  *         assert all(             # <<<<<<<<<<<<<<
@@ -3381,7 +3532,7 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
  */
       __Pyx_XDECREF(__pyx_r);
 
-      /* "models/Lexicon.py":95
+      /* "models/Lexicon.py":102
  *         ## seen in the data
  *         assert all(
  *             set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)             # <<<<<<<<<<<<<<
@@ -3397,7 +3548,7 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
   }
   /*else*/ {
 
-    /* "models/Lexicon.py":94
+    /* "models/Lexicon.py":101
  *         ## Check that the given lexical contexts match the lexical contexts
  *         ## seen in the data
  *         assert all(             # <<<<<<<<<<<<<<
@@ -3406,7 +3557,7 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
  */
     __Pyx_XDECREF(__pyx_r);
 
-    /* "models/Lexicon.py":95
+    /* "models/Lexicon.py":102
  *         ## seen in the data
  *         assert all(
  *             set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)             # <<<<<<<<<<<<<<
@@ -3443,7 +3594,7 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":82
+/* "models/Lexicon.py":89
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def initialize_urs(self, init_ur_hyp: tuple):             # <<<<<<<<<<<<<<
@@ -3451,7 +3602,7 @@ static PyObject *__pyx_gb_5optim_7Lexicon_7Lexicon_14initialize_urs_2generator(_
  *         init_lxs, init_clxs, init_urs = init_ur_hyp
  */
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_init_ur_hyp) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6initialize_urs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_init_ur_hyp) {
   struct __pyx_obj_5optim_7Lexicon___pyx_scope_struct__initialize_urs *__pyx_cur_scope;
   PyObject *__pyx_v_init_urs = NULL;
   PyObject *__pyx_v_init_lx = NULL;
@@ -3488,7 +3639,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_7Lexicon___pyx_scope_struct__initialize_urs *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 82, __pyx_L1_error)
+    __PYX_ERR(0, 89, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3496,7 +3647,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
 
-  /* "models/Lexicon.py":84
+  /* "models/Lexicon.py":91
  *     def initialize_urs(self, init_ur_hyp: tuple):
  *         """Initializes the UR hypotheses for the lexemes"""
  *         init_lxs, init_clxs, init_urs = init_ur_hyp             # <<<<<<<<<<<<<<
@@ -3509,7 +3660,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
     if (unlikely(size != 3)) {
       if (size > 3) __Pyx_RaiseTooManyValuesError(3);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 84, __pyx_L1_error)
+      __PYX_ERR(0, 91, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0); 
@@ -3519,15 +3670,15 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
     __Pyx_INCREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
   } else {
-    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 84, __pyx_L1_error)
+    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 91, __pyx_L1_error)
   }
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_init_lxs = __pyx_t_1;
@@ -3538,7 +3689,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   __pyx_v_init_urs = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "models/Lexicon.py":88
+  /* "models/Lexicon.py":95
  *         ## Check that number of given UR hypotheses match the number of
  *         ## lexemes seen in the data
  *         assert set(self._lxs) == set(             # <<<<<<<<<<<<<<
@@ -3547,42 +3698,42 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_lxs_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_lxs_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PySet_New(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_2 = PySet_New(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "models/Lexicon.py":89
+    /* "models/Lexicon.py":96
  *         ## lexemes seen in the data
  *         assert set(self._lxs) == set(
  *             init_lxs             # <<<<<<<<<<<<<<
  *         ), "Given lexemes and observed lexemes are not equal"
  * 
  */
-    __pyx_t_3 = PySet_New(__pyx_cur_scope->__pyx_v_init_lxs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_3 = PySet_New(__pyx_cur_scope->__pyx_v_init_lxs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "models/Lexicon.py":88
+    /* "models/Lexicon.py":95
  *         ## Check that number of given UR hypotheses match the number of
  *         ## lexemes seen in the data
  *         assert set(self._lxs) == set(             # <<<<<<<<<<<<<<
  *             init_lxs
  *         ), "Given lexemes and observed lexemes are not equal"
  */
-    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(!__pyx_t_4)) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_s_Given_lexemes_and_observed_lexem);
-      __PYX_ERR(0, 88, __pyx_L1_error)
+      __PYX_ERR(0, 95, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "models/Lexicon.py":94
+  /* "models/Lexicon.py":101
  *         ## Check that the given lexical contexts match the lexical contexts
  *         ## seen in the data
  *         assert all(             # <<<<<<<<<<<<<<
@@ -3592,35 +3743,35 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
 
-    /* "models/Lexicon.py":95
+    /* "models/Lexicon.py":102
  *         ## seen in the data
  *         assert all(
  *             set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)             # <<<<<<<<<<<<<<
  *         ), "Given lexical contexts and observed lexical contexts not equal"
  * 
  */
-    __pyx_t_1 = __pyx_pf_5optim_7Lexicon_7Lexicon_14initialize_urs_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_1 = __pyx_pf_5optim_7Lexicon_7Lexicon_14initialize_urs_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (unlikely(!__pyx_t_4)) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_s_Given_lexical_contexts_and_obser);
-      __PYX_ERR(0, 94, __pyx_L1_error)
+      __PYX_ERR(0, 101, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "models/Lexicon.py":99
+  /* "models/Lexicon.py":106
  * 
  *         ## Otherwise, update the UR hypothesis and prior
  *         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):             # <<<<<<<<<<<<<<
  *             self._lx2ur[init_lx] = {
  *                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
  */
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_init_lxs);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_init_lxs);
@@ -3631,16 +3782,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   __Pyx_INCREF(__pyx_v_init_urs);
   __Pyx_GIVEREF(__pyx_v_init_urs);
   PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_init_urs);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_3 = __pyx_t_1; __Pyx_INCREF(__pyx_t_3); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -3648,17 +3799,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_1); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -3668,7 +3819,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 99, __pyx_L1_error)
+          else __PYX_ERR(0, 106, __pyx_L1_error)
         }
         break;
       }
@@ -3680,7 +3831,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 99, __pyx_L1_error)
+        __PYX_ERR(0, 106, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -3696,17 +3847,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_t_8);
       #else
-      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -3716,7 +3867,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __Pyx_GOTREF(__pyx_t_7);
       index = 2; __pyx_t_8 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_8)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_8);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 3) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 3) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
       __pyx_t_10 = NULL;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       goto __pyx_L6_unpacking_done;
@@ -3724,7 +3875,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_10 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 99, __pyx_L1_error)
+      __PYX_ERR(0, 106, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_init_lx, __pyx_t_2);
@@ -3734,7 +3885,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_init_ur, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "models/Lexicon.py":100
+    /* "models/Lexicon.py":107
  *         ## Otherwise, update the UR hypothesis and prior
  *         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):
  *             self._lx2ur[init_lx] = {             # <<<<<<<<<<<<<<
@@ -3742,17 +3893,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
  *             }
  */
     { /* enter inner scope */
-      __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L9_error)
+      __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L9_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "models/Lexicon.py":101
+      /* "models/Lexicon.py":108
  *         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):
  *             self._lx2ur[init_lx] = {
  *                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)             # <<<<<<<<<<<<<<
  *             }
  *             self._lx2pr[init_lx] = {
  */
-      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 101, __pyx_L9_error)
+      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 108, __pyx_L9_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_v_init_clx);
       __Pyx_GIVEREF(__pyx_v_init_clx);
@@ -3760,16 +3911,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_v_init_ur);
       __Pyx_GIVEREF(__pyx_v_init_ur);
       PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_v_init_ur);
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 101, __pyx_L9_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L9_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
         __pyx_t_8 = __pyx_t_7; __Pyx_INCREF(__pyx_t_8); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
       } else {
-        __pyx_t_11 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 101, __pyx_L9_error)
+        __pyx_t_11 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 108, __pyx_L9_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_12 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 101, __pyx_L9_error)
+        __pyx_t_12 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 108, __pyx_L9_error)
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       for (;;) {
@@ -3777,17 +3928,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 101, __pyx_L9_error)
+            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 108, __pyx_L9_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 101, __pyx_L9_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L9_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           } else {
             if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 101, __pyx_L9_error)
+            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 108, __pyx_L9_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 101, __pyx_L9_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L9_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           }
@@ -3797,7 +3948,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 101, __pyx_L9_error)
+              else __PYX_ERR(0, 108, __pyx_L9_error)
             }
             break;
           }
@@ -3809,7 +3960,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 101, __pyx_L9_error)
+            __PYX_ERR(0, 108, __pyx_L9_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -3822,15 +3973,15 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __Pyx_INCREF(__pyx_t_2);
           __Pyx_INCREF(__pyx_t_9);
           #else
-          __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L9_error)
+          __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L9_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 101, __pyx_L9_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 108, __pyx_L9_error)
           __Pyx_GOTREF(__pyx_t_9);
           #endif
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_13 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 101, __pyx_L9_error)
+          __pyx_t_13 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 108, __pyx_L9_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_10 = Py_TYPE(__pyx_t_13)->tp_iternext;
@@ -3838,7 +3989,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __Pyx_GOTREF(__pyx_t_2);
           index = 1; __pyx_t_9 = __pyx_t_10(__pyx_t_13); if (unlikely(!__pyx_t_9)) goto __pyx_L12_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_9);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_13), 2) < 0) __PYX_ERR(0, 101, __pyx_L9_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_13), 2) < 0) __PYX_ERR(0, 108, __pyx_L9_error)
           __pyx_t_10 = NULL;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           goto __pyx_L13_unpacking_done;
@@ -3846,14 +3997,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __pyx_t_10 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 101, __pyx_L9_error)
+          __PYX_ERR(0, 108, __pyx_L9_error)
           __pyx_L13_unpacking_done:;
         }
         __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_init_cx, __pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_init_u, __pyx_t_9);
         __pyx_t_9 = 0;
-        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr2__pyx_v_init_cx, (PyObject*)__pyx_8genexpr2__pyx_v_init_u))) __PYX_ERR(0, 101, __pyx_L9_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr2__pyx_v_init_cx, (PyObject*)__pyx_8genexpr2__pyx_v_init_u))) __PYX_ERR(0, 108, __pyx_L9_error)
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_XDECREF(__pyx_8genexpr2__pyx_v_init_cx); __pyx_8genexpr2__pyx_v_init_cx = 0;
@@ -3866,20 +4017,20 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __pyx_L14_exit_scope:;
     } /* exit inner scope */
 
-    /* "models/Lexicon.py":100
+    /* "models/Lexicon.py":107
  *         ## Otherwise, update the UR hypothesis and prior
  *         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):
  *             self._lx2ur[init_lx] = {             # <<<<<<<<<<<<<<
  *                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
  *             }
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_v_init_lx, __pyx_t_1) < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_v_init_lx, __pyx_t_1) < 0)) __PYX_ERR(0, 107, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "models/Lexicon.py":103
+    /* "models/Lexicon.py":110
  *                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
  *             }
  *             self._lx2pr[init_lx] = {             # <<<<<<<<<<<<<<
@@ -3887,17 +4038,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
  *                     self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
  */
     { /* enter inner scope */
-      __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L17_error)
+      __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L17_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "models/Lexicon.py":107
+      /* "models/Lexicon.py":114
  *                     self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
  *                     self.compute_pr(self.pro_ur(init_lx), init_u)
  *                 for init_cx, init_u in zip(init_clx, init_ur)             # <<<<<<<<<<<<<<
  *             }
  * 
  */
-      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 107, __pyx_L17_error)
+      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L17_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_v_init_clx);
       __Pyx_GIVEREF(__pyx_v_init_clx);
@@ -3905,16 +4056,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_v_init_ur);
       __Pyx_GIVEREF(__pyx_v_init_ur);
       PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_v_init_ur);
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L17_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L17_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
         __pyx_t_8 = __pyx_t_7; __Pyx_INCREF(__pyx_t_8); __pyx_t_11 = 0;
         __pyx_t_12 = NULL;
       } else {
-        __pyx_t_11 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 107, __pyx_L17_error)
+        __pyx_t_11 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 114, __pyx_L17_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_12 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 107, __pyx_L17_error)
+        __pyx_t_12 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 114, __pyx_L17_error)
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       for (;;) {
@@ -3922,17 +4073,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 107, __pyx_L17_error)
+            __pyx_t_7 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 114, __pyx_L17_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L17_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L17_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           } else {
             if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 107, __pyx_L17_error)
+            __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_11); __Pyx_INCREF(__pyx_t_7); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 114, __pyx_L17_error)
             #else
-            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 107, __pyx_L17_error)
+            __pyx_t_7 = PySequence_ITEM(__pyx_t_8, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L17_error)
             __Pyx_GOTREF(__pyx_t_7);
             #endif
           }
@@ -3942,7 +4093,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 107, __pyx_L17_error)
+              else __PYX_ERR(0, 114, __pyx_L17_error)
             }
             break;
           }
@@ -3954,7 +4105,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 107, __pyx_L17_error)
+            __PYX_ERR(0, 114, __pyx_L17_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -3967,15 +4118,15 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __Pyx_INCREF(__pyx_t_9);
           __Pyx_INCREF(__pyx_t_2);
           #else
-          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 107, __pyx_L17_error)
+          __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 114, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L17_error)
+          __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_13 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 107, __pyx_L17_error)
+          __pyx_t_13 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 114, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_10 = Py_TYPE(__pyx_t_13)->tp_iternext;
@@ -3983,7 +4134,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __Pyx_GOTREF(__pyx_t_9);
           index = 1; __pyx_t_2 = __pyx_t_10(__pyx_t_13); if (unlikely(!__pyx_t_2)) goto __pyx_L20_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_2);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_13), 2) < 0) __PYX_ERR(0, 107, __pyx_L17_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_13), 2) < 0) __PYX_ERR(0, 114, __pyx_L17_error)
           __pyx_t_10 = NULL;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           goto __pyx_L21_unpacking_done;
@@ -3991,7 +4142,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __pyx_t_10 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 107, __pyx_L17_error)
+          __PYX_ERR(0, 114, __pyx_L17_error)
           __pyx_L21_unpacking_done:;
         }
         __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_init_cx, __pyx_t_9);
@@ -3999,14 +4150,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
         __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_init_u, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "models/Lexicon.py":105
+        /* "models/Lexicon.py":112
  *             self._lx2pr[init_lx] = {
  *                 init_cx:
  *                     self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else             # <<<<<<<<<<<<<<
  *                     self.compute_pr(self.pro_ur(init_lx), init_u)
  *                 for init_cx, init_u in zip(init_clx, init_ur)
  */
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_is_pro); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 105, __pyx_L17_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_is_pro); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 112, __pyx_L17_error)
         __Pyx_GOTREF(__pyx_t_9);
         __pyx_t_13 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -4020,15 +4171,15 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
         }
         __pyx_t_2 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_13, __pyx_8genexpr3__pyx_v_init_cx) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_8genexpr3__pyx_v_init_cx);
         __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L17_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L17_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 105, __pyx_L17_error)
+        __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 112, __pyx_L17_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (__pyx_t_4) {
-          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 105, __pyx_L17_error)
+          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 112, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 105, __pyx_L17_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 112, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
@@ -4042,7 +4193,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           }
           __pyx_t_13 = (__pyx_t_15) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_15, __pyx_v_init_lx) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_init_lx);
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 105, __pyx_L17_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 112, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_14 = NULL;
@@ -4058,23 +4209,23 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __pyx_t_2 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_14, __pyx_t_13) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_13);
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L17_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __pyx_t_7 = __pyx_t_2;
           __pyx_t_2 = 0;
         } else {
 
-          /* "models/Lexicon.py":106
+          /* "models/Lexicon.py":113
  *                 init_cx:
  *                     self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
  *                     self.compute_pr(self.pro_ur(init_lx), init_u)             # <<<<<<<<<<<<<<
  *                 for init_cx, init_u in zip(init_clx, init_ur)
  *             }
  */
-          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 106, __pyx_L17_error)
+          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 113, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 106, __pyx_L17_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 113, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
@@ -4088,7 +4239,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           }
           __pyx_t_13 = (__pyx_t_15) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_15, __pyx_v_init_lx) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_init_lx);
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 106, __pyx_L17_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 113, __pyx_L17_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __pyx_t_14 = NULL;
@@ -4106,7 +4257,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_9)) {
             PyObject *__pyx_temp[3] = {__pyx_t_14, __pyx_t_13, __pyx_8genexpr3__pyx_v_init_u};
-            __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L17_error)
+            __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L17_error)
             __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -4115,14 +4266,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
             PyObject *__pyx_temp[3] = {__pyx_t_14, __pyx_t_13, __pyx_8genexpr3__pyx_v_init_u};
-            __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L17_error)
+            __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L17_error)
             __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           } else
           #endif
           {
-            __pyx_t_15 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 106, __pyx_L17_error)
+            __pyx_t_15 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 113, __pyx_L17_error)
             __Pyx_GOTREF(__pyx_t_15);
             if (__pyx_t_14) {
               __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_14); __pyx_t_14 = NULL;
@@ -4133,7 +4284,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
             __Pyx_GIVEREF(__pyx_8genexpr3__pyx_v_init_u);
             PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_16, __pyx_8genexpr3__pyx_v_init_u);
             __pyx_t_13 = 0;
-            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L17_error)
+            __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L17_error)
             __Pyx_GOTREF(__pyx_t_2);
             __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
           }
@@ -4141,10 +4292,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
           __pyx_t_7 = __pyx_t_2;
           __pyx_t_2 = 0;
         }
-        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr3__pyx_v_init_cx, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 104, __pyx_L17_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr3__pyx_v_init_cx, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 111, __pyx_L17_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "models/Lexicon.py":107
+        /* "models/Lexicon.py":114
  *                     self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
  *                     self.compute_pr(self.pro_ur(init_lx), init_u)
  *                 for init_cx, init_u in zip(init_clx, init_ur)             # <<<<<<<<<<<<<<
@@ -4163,20 +4314,20 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
       __pyx_L22_exit_scope:;
     } /* exit inner scope */
 
-    /* "models/Lexicon.py":103
+    /* "models/Lexicon.py":110
  *                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
  *             }
  *             self._lx2pr[init_lx] = {             # <<<<<<<<<<<<<<
  *                 init_cx:
  *                     self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_v_init_lx, __pyx_t_1) < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_8, __pyx_v_init_lx, __pyx_t_1) < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "models/Lexicon.py":99
+    /* "models/Lexicon.py":106
  * 
  *         ## Otherwise, update the UR hypothesis and prior
  *         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):             # <<<<<<<<<<<<<<
@@ -4186,7 +4337,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Lexicon.py":82
+  /* "models/Lexicon.py":89
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def initialize_urs(self, init_ur_hyp: tuple):             # <<<<<<<<<<<<<<
@@ -4225,7 +4376,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":110
+/* "models/Lexicon.py":117
  *             }
  * 
  *     def set_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):             # <<<<<<<<<<<<<<
@@ -4234,10 +4385,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_4initialize_urs(CYTHON_UNUSED
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7set_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_6set_ur[] = "Set the given lexeme in a given lexical sequence to the given UR";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_7set_ur = {"set_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_7set_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_6set_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7set_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_8set_ur[] = "Set the given lexeme in a given lexical sequence to the given UR";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_9set_ur = {"set_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_9set_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_8set_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   PyObject *__pyx_v_clx = 0;
@@ -4278,29 +4429,29 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7set_ur(PyObject *__pyx_self,
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 1); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 1); __PYX_ERR(0, 117, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 2); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 2); __PYX_ERR(0, 117, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ur)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 3); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 3); __PYX_ERR(0, 117, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 4); __PYX_ERR(0, 110, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, 4); __PYX_ERR(0, 117, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_ur") < 0)) __PYX_ERR(0, 110, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_ur") < 0)) __PYX_ERR(0, 117, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -4315,18 +4466,18 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7set_ur(PyObject *__pyx_self,
     __pyx_v_lx = values[1];
     __pyx_v_clx = ((PyObject*)values[2]);
     __pyx_v_ur = values[3];
-    __pyx_v_pr = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_pr == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 110, __pyx_L3_error)
+    __pyx_v_pr = __pyx_PyFloat_AsDouble(values[4]); if (unlikely((__pyx_v_pr == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 110, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_ur", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 117, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.set_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 110, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_6set_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_clx, __pyx_v_ur, __pyx_v_pr);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_8set_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_clx, __pyx_v_ur, __pyx_v_pr);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4337,7 +4488,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_7set_ur(PyObject *__pyx_self,
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6set_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx, PyObject *__pyx_v_ur, double __pyx_v_pr) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx, PyObject *__pyx_v_ur, double __pyx_v_pr) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4348,40 +4499,40 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6set_ur(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_ur", 0);
 
-  /* "models/Lexicon.py":112
+  /* "models/Lexicon.py":119
  *     def set_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):
  *         """Set the given lexeme in a given lexical sequence to the given UR"""
  *         self._lx2ur[lx][clx] = ur             # <<<<<<<<<<<<<<
  *         self._lx2pr[lx][clx] = pr
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_t_2, __pyx_v_clx, __pyx_v_ur) < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_t_2, __pyx_v_clx, __pyx_v_ur) < 0)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Lexicon.py":113
+  /* "models/Lexicon.py":120
  *         """Set the given lexeme in a given lexical sequence to the given UR"""
  *         self._lx2ur[lx][clx] = ur
  *         self._lx2pr[lx][clx] = pr             # <<<<<<<<<<<<<<
  * 
  *     def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):
  */
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_pr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_pr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_t_3, __pyx_v_clx, __pyx_t_2) < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_t_3, __pyx_v_clx, __pyx_t_2) < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Lexicon.py":110
+  /* "models/Lexicon.py":117
  *             }
  * 
  *     def set_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):             # <<<<<<<<<<<<<<
@@ -4404,7 +4555,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6set_ur(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":115
+/* "models/Lexicon.py":122
  *         self._lx2pr[lx][clx] = pr
  * 
  *     def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):             # <<<<<<<<<<<<<<
@@ -4413,10 +4564,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_6set_ur(CYTHON_UNUSED PyObjec
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_8set_pro_ur[] = "Set the given lexeme to the given prototype UR";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_9set_pro_ur = {"set_pro_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_9set_pro_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_8set_pro_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11set_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_10set_pro_ur[] = "Set the given lexeme to the given prototype UR";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_11set_pro_ur = {"set_pro_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_11set_pro_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_10set_pro_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11set_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   PyObject *__pyx_v_ur = 0;
@@ -4454,23 +4605,23 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_pro_ur(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, 1); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, 1); __PYX_ERR(0, 122, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ur)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, 2); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, 2); __PYX_ERR(0, 122, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, 3); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, 3); __PYX_ERR(0, 122, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_pro_ur") < 0)) __PYX_ERR(0, 115, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_pro_ur") < 0)) __PYX_ERR(0, 122, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -4487,14 +4638,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_pro_ur(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 115, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_pro_ur", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 122, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.set_pro_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pr), (&PyDict_Type), 1, "pr", 1))) __PYX_ERR(0, 115, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_ur, __pyx_v_pr);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pr), (&PyDict_Type), 1, "pr", 1))) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_10set_pro_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_ur, __pyx_v_pr);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4505,7 +4656,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_9set_pro_ur(PyObject *__pyx_s
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_ur, PyObject *__pyx_v_pr) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10set_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_ur, PyObject *__pyx_v_pr) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4517,19 +4668,19 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("set_pro_ur", 0);
 
-  /* "models/Lexicon.py":117
+  /* "models/Lexicon.py":124
  *     def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):
  *         """Set the given lexeme to the given prototype UR"""
  *         self._lx2ur[lx][self.pro()] = ur             # <<<<<<<<<<<<<<
  *         self._lx2pr[lx].update(pr)
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4543,26 +4694,26 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(PyObject_SetItem(__pyx_t_2, __pyx_t_1, __pyx_v_ur) < 0)) __PYX_ERR(0, 117, __pyx_L1_error)
+  if (unlikely(PyObject_SetItem(__pyx_t_2, __pyx_t_1, __pyx_v_ur) < 0)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":118
+  /* "models/Lexicon.py":125
  *         """Set the given lexeme to the given prototype UR"""
  *         self._lx2ur[lx][self.pro()] = ur
  *         self._lx2pr[lx].update(pr)             # <<<<<<<<<<<<<<
  * 
  *     def compute_pr(self, pro_ur, cxt_ur=None):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_lx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_lx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_update); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_update); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -4577,12 +4728,12 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_pr) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_pr);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":115
+  /* "models/Lexicon.py":122
  *         self._lx2pr[lx][clx] = pr
  * 
  *     def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):             # <<<<<<<<<<<<<<
@@ -4606,7 +4757,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":120
+/* "models/Lexicon.py":127
  *         self._lx2pr[lx].update(pr)
  * 
  *     def compute_pr(self, pro_ur, cxt_ur=None):             # <<<<<<<<<<<<<<
@@ -4615,10 +4766,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_8set_pro_ur(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11compute_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_10compute_pr[] = "Returns the prior probability of the given UR";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_11compute_pr = {"compute_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_11compute_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_10compute_pr};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11compute_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_12compute_pr[] = "Returns the prior probability of the given UR";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_13compute_pr = {"compute_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_12compute_pr};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_pro_ur = 0;
   PyObject *__pyx_v_cxt_ur = 0;
@@ -4654,7 +4805,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11compute_pr(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pro_ur)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_pr", 0, 2, 3, 1); __PYX_ERR(0, 120, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_pr", 0, 2, 3, 1); __PYX_ERR(0, 127, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -4664,7 +4815,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11compute_pr(PyObject *__pyx_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "compute_pr") < 0)) __PYX_ERR(0, 120, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "compute_pr") < 0)) __PYX_ERR(0, 127, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4682,20 +4833,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_11compute_pr(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_pr", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 120, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_pr", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 127, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.compute_pr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(__pyx_self, __pyx_v_self, __pyx_v_pro_ur, __pyx_v_cxt_ur);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_12compute_pr(__pyx_self, __pyx_v_self, __pyx_v_pro_ur, __pyx_v_cxt_ur);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pro_ur, PyObject *__pyx_v_cxt_ur) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_pro_ur, PyObject *__pyx_v_cxt_ur) {
   PyObject *__pyx_v_pr = NULL;
   PyObject *__pyx_v_pro_len = NULL;
   PyObject *__pyx_r = NULL;
@@ -4715,7 +4866,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_pr", 0);
 
-  /* "models/Lexicon.py":122
+  /* "models/Lexicon.py":129
  *     def compute_pr(self, pro_ur, cxt_ur=None):
  *         """Returns the prior probability of the given UR"""
  *         pr = 1             # <<<<<<<<<<<<<<
@@ -4725,45 +4876,45 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
   __Pyx_INCREF(__pyx_int_1);
   __pyx_v_pr = __pyx_int_1;
 
-  /* "models/Lexicon.py":126
+  /* "models/Lexicon.py":133
  *         ## If a contextual UR is not specified, calculate the
  *         ## probability of generating the proto UR
  *         if cxt_ur is None:             # <<<<<<<<<<<<<<
  *             pro_len = len(pro_ur)
- *             pr *= Binomial.pmf(pro_len, self._me, self._th)
+ *             pr *= Binomial.pmf(pro_len, self._ml, self._th)
  */
   __pyx_t_1 = (__pyx_v_cxt_ur == Py_None);
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "models/Lexicon.py":127
+    /* "models/Lexicon.py":134
  *         ## probability of generating the proto UR
  *         if cxt_ur is None:
  *             pro_len = len(pro_ur)             # <<<<<<<<<<<<<<
- *             pr *= Binomial.pmf(pro_len, self._me, self._th)
+ *             pr *= Binomial.pmf(pro_len, self._ml, self._th)
  *             pr *= Uniform.pmf(self.nsegs()) ** pro_len
  */
-    __pyx_t_3 = PyObject_Length(__pyx_v_pro_ur); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 127, __pyx_L1_error)
-    __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
+    __pyx_t_3 = PyObject_Length(__pyx_v_pro_ur); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_pro_len = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":128
+    /* "models/Lexicon.py":135
  *         if cxt_ur is None:
  *             pro_len = len(pro_ur)
- *             pr *= Binomial.pmf(pro_len, self._me, self._th)             # <<<<<<<<<<<<<<
+ *             pr *= Binomial.pmf(pro_len, self._ml, self._th)             # <<<<<<<<<<<<<<
  *             pr *= Uniform.pmf(self.nsegs()) ** pro_len
  *             return pr
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Binomial); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_Binomial); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_pmf); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_pmf); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_me); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ml); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_th); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_th); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     __pyx_t_9 = 0;
@@ -4780,7 +4931,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_v_pro_len, __pyx_t_5, __pyx_t_7};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4790,7 +4941,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[4] = {__pyx_t_8, __pyx_v_pro_len, __pyx_t_5, __pyx_t_7};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_9, 3+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -4798,7 +4949,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(3+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       if (__pyx_t_8) {
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -4812,30 +4963,30 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
       PyTuple_SET_ITEM(__pyx_t_10, 2+__pyx_t_9, __pyx_t_7);
       __pyx_t_5 = 0;
       __pyx_t_7 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_10, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_InPlaceMultiply(__pyx_v_pr, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 128, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_InPlaceMultiply(__pyx_v_pr, __pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_pr, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Lexicon.py":129
+    /* "models/Lexicon.py":136
  *             pro_len = len(pro_ur)
- *             pr *= Binomial.pmf(pro_len, self._me, self._th)
+ *             pr *= Binomial.pmf(pro_len, self._ml, self._th)
  *             pr *= Uniform.pmf(self.nsegs()) ** pro_len             # <<<<<<<<<<<<<<
  *             return pr
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Uniform); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Uniform); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_pmf); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_pmf); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsegs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsegs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -4849,7 +5000,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     }
     __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -4865,20 +5016,20 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     __pyx_t_6 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_10, __pyx_t_7, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 129, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = PyNumber_Power(__pyx_t_6, __pyx_v_pro_len, Py_None); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Power(__pyx_t_6, __pyx_v_pro_len, Py_None); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_InPlaceMultiply(__pyx_v_pr, __pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_InPlaceMultiply(__pyx_v_pr, __pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF_SET(__pyx_v_pr, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Lexicon.py":130
- *             pr *= Binomial.pmf(pro_len, self._me, self._th)
+    /* "models/Lexicon.py":137
+ *             pr *= Binomial.pmf(pro_len, self._ml, self._th)
  *             pr *= Uniform.pmf(self.nsegs()) ** pro_len
  *             return pr             # <<<<<<<<<<<<<<
  * 
@@ -4889,16 +5040,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     __pyx_r = __pyx_v_pr;
     goto __pyx_L0;
 
-    /* "models/Lexicon.py":126
+    /* "models/Lexicon.py":133
  *         ## If a contextual UR is not specified, calculate the
  *         ## probability of generating the proto UR
  *         if cxt_ur is None:             # <<<<<<<<<<<<<<
  *             pro_len = len(pro_ur)
- *             pr *= Binomial.pmf(pro_len, self._me, self._th)
+ *             pr *= Binomial.pmf(pro_len, self._ml, self._th)
  */
   }
 
-  /* "models/Lexicon.py":135
+  /* "models/Lexicon.py":142
  *         ## specified contextual UR given the proto UR
  *         else:
  *             pr *= self.D.lpmf(pro_ur, cxt_ur)             # <<<<<<<<<<<<<<
@@ -4906,9 +5057,9 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
  * 
  */
   /*else*/ {
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_lpmf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_lpmf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_10 = NULL;
@@ -4926,7 +5077,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_pro_ur, __pyx_v_cxt_ur};
-      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_GOTREF(__pyx_t_6);
     } else
@@ -4934,13 +5085,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_pro_ur, __pyx_v_cxt_ur};
-      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_GOTREF(__pyx_t_6);
     } else
     #endif
     {
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_10) {
         __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -4951,18 +5102,18 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
       __Pyx_INCREF(__pyx_v_cxt_ur);
       __Pyx_GIVEREF(__pyx_v_cxt_ur);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_9, __pyx_v_cxt_ur);
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_InPlaceMultiply(__pyx_v_pr, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_InPlaceMultiply(__pyx_v_pr, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF_SET(__pyx_v_pr, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":136
+    /* "models/Lexicon.py":143
  *         else:
  *             pr *= self.D.lpmf(pro_ur, cxt_ur)
  *             return pr             # <<<<<<<<<<<<<<
@@ -4975,7 +5126,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
     goto __pyx_L0;
   }
 
-  /* "models/Lexicon.py":120
+  /* "models/Lexicon.py":127
  *         self._lx2pr[lx].update(pr)
  * 
  *     def compute_pr(self, pro_ur, cxt_ur=None):             # <<<<<<<<<<<<<<
@@ -5001,7 +5152,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":138
+/* "models/Lexicon.py":145
  *             return pr
  * 
  *     def compute_tp(self, ur_old, ur_new):             # <<<<<<<<<<<<<<
@@ -5010,10 +5161,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_10compute_pr(CYTHON_UNUSED Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_tp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_12compute_tp[] = "Returns the transition probability between the current and new UR";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_13compute_tp = {"compute_tp", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_tp, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_12compute_tp};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_tp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15compute_tp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_14compute_tp[] = "Returns the transition probability between the current and new UR";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_15compute_tp = {"compute_tp", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_15compute_tp, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_14compute_tp};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15compute_tp(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_ur_old = 0;
   PyObject *__pyx_v_ur_new = 0;
@@ -5048,17 +5199,17 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_tp(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ur_old)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_tp", 1, 3, 3, 1); __PYX_ERR(0, 138, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_tp", 1, 3, 3, 1); __PYX_ERR(0, 145, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ur_new)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("compute_tp", 1, 3, 3, 2); __PYX_ERR(0, 138, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("compute_tp", 1, 3, 3, 2); __PYX_ERR(0, 145, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "compute_tp") < 0)) __PYX_ERR(0, 138, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "compute_tp") < 0)) __PYX_ERR(0, 145, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -5073,20 +5224,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_13compute_tp(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("compute_tp", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 138, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("compute_tp", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 145, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.compute_tp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(__pyx_self, __pyx_v_self, __pyx_v_ur_old, __pyx_v_ur_new);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_14compute_tp(__pyx_self, __pyx_v_self, __pyx_v_ur_old, __pyx_v_ur_new);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ur_old, PyObject *__pyx_v_ur_new) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14compute_tp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_ur_old, PyObject *__pyx_v_ur_new) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5099,7 +5250,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("compute_tp", 0);
 
-  /* "models/Lexicon.py":140
+  /* "models/Lexicon.py":147
  *     def compute_tp(self, ur_old, ur_new):
  *         """Returns the transition probability between the current and new UR"""
  *         return self.D.epmf(ur_old, ur_new)             # <<<<<<<<<<<<<<
@@ -5107,9 +5258,9 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
  *     def sample_pro_ur(self, lx, inplace=True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_epmf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_epmf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -5127,7 +5278,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_ur_old, __pyx_v_ur_new};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -5135,13 +5286,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_ur_old, __pyx_v_ur_new};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -5152,7 +5303,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
     __Pyx_INCREF(__pyx_v_ur_new);
     __Pyx_GIVEREF(__pyx_v_ur_new);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_ur_new);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -5161,7 +5312,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":138
+  /* "models/Lexicon.py":145
  *             return pr
  * 
  *     def compute_tp(self, ur_old, ur_new):             # <<<<<<<<<<<<<<
@@ -5183,7 +5334,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":142
+/* "models/Lexicon.py":149
  *         return self.D.epmf(ur_old, ur_new)
  * 
  *     def sample_pro_ur(self, lx, inplace=True):             # <<<<<<<<<<<<<<
@@ -5192,10 +5343,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_12compute_tp(CYTHON_UNUSED Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15sample_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_14sample_pro_ur[] = "Samples a prototype underlying form for a given lexeme. Also\n        returns the prior of the proposed UR\n        ";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_15sample_pro_ur = {"sample_pro_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_15sample_pro_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_14sample_pro_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15sample_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_16sample_pro_ur[] = "Samples a prototype underlying form for a given lexeme. Also\n        returns the prior of the proposed UR\n        ";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_17sample_pro_ur = {"sample_pro_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_pro_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_16sample_pro_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   PyObject *__pyx_v_inplace = 0;
@@ -5231,7 +5382,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15sample_pro_ur(PyObject *__p
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sample_pro_ur", 0, 2, 3, 1); __PYX_ERR(0, 142, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sample_pro_ur", 0, 2, 3, 1); __PYX_ERR(0, 149, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -5241,7 +5392,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15sample_pro_ur(PyObject *__p
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_pro_ur") < 0)) __PYX_ERR(0, 142, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_pro_ur") < 0)) __PYX_ERR(0, 149, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5259,20 +5410,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_15sample_pro_ur(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_pro_ur", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 142, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sample_pro_ur", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 149, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.sample_pro_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_inplace);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_16sample_pro_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_inplace);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_inplace) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_inplace) {
   PyObject *__pyx_v_pro_ur_old = NULL;
   PyObject *__pyx_v_pro_ur_new = NULL;
   PyObject *__pyx_v_pro_len = NULL;
@@ -5299,14 +5450,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sample_pro_ur", 0);
 
-  /* "models/Lexicon.py":148
+  /* "models/Lexicon.py":155
  * 
  *         ## Retrieve the old prototype UR
  *         pro_ur_old = self.pro_ur(lx)             # <<<<<<<<<<<<<<
  * 
  *         ## Sample a new prototype UR
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5320,22 +5471,22 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_lx) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_lx);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_pro_ur_old = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":151
+  /* "models/Lexicon.py":158
  * 
  *         ## Sample a new prototype UR
  *         pro_ur_new = self.D.erv(pro_ur_old)             # <<<<<<<<<<<<<<
  * 
  *         ## Calculate the prior for the new prototype UR
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_erv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_erv); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -5350,40 +5501,40 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_pro_ur_old) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_pro_ur_old);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_pro_ur_new = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":154
+  /* "models/Lexicon.py":161
  * 
  *         ## Calculate the prior for the new prototype UR
  *         pro_len = len(pro_ur_new)             # <<<<<<<<<<<<<<
  *         pro_pr = Binomial.pmf(pro_len, self._ml, self._th)
  *         pro_pr *= Uniform.pmf(self.nsegs()) ** pro_len
  */
-  __pyx_t_4 = PyObject_Length(__pyx_v_pro_ur_new); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 154, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(__pyx_v_pro_ur_new); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_pro_len = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":155
+  /* "models/Lexicon.py":162
  *         ## Calculate the prior for the new prototype UR
  *         pro_len = len(pro_ur_new)
  *         pro_pr = Binomial.pmf(pro_len, self._ml, self._th)             # <<<<<<<<<<<<<<
  *         pro_pr *= Uniform.pmf(self.nsegs()) ** pro_len
  *         pr = {self.pro(): pro_pr}
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Binomial); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Binomial); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_pmf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_pmf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ml); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_ml); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_th); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_th); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -5400,7 +5551,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_v_pro_len, __pyx_t_3, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5410,7 +5561,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_6, __pyx_v_pro_len, __pyx_t_3, __pyx_t_5};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5418,7 +5569,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -5432,7 +5583,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
     PyTuple_SET_ITEM(__pyx_t_8, 2+__pyx_t_7, __pyx_t_5);
     __pyx_t_3 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_8, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
@@ -5440,19 +5591,19 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   __pyx_v_pro_pr = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":156
+  /* "models/Lexicon.py":163
  *         pro_len = len(pro_ur_new)
  *         pro_pr = Binomial.pmf(pro_len, self._ml, self._th)
  *         pro_pr *= Uniform.pmf(self.nsegs()) ** pro_len             # <<<<<<<<<<<<<<
  *         pr = {self.pro(): pro_pr}
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Uniform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_Uniform); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_pmf); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_pmf); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsegs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nsegs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -5466,7 +5617,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -5482,28 +5633,28 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyNumber_Power(__pyx_t_1, __pyx_v_pro_len, Py_None); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Power(__pyx_t_1, __pyx_v_pro_len, Py_None); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_InPlaceMultiply(__pyx_v_pro_pr, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_InPlaceMultiply(__pyx_v_pro_pr, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF_SET(__pyx_v_pro_pr, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":157
+  /* "models/Lexicon.py":164
  *         pro_pr = Binomial.pmf(pro_len, self._ml, self._th)
  *         pro_pr *= Uniform.pmf(self.nsegs()) ** pro_len
  *         pr = {self.pro(): pro_pr}             # <<<<<<<<<<<<<<
  * 
  *         ## Calculate the prior for each contextual UR given the newly-sampled UR
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5517,22 +5668,22 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __pyx_t_8 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_t_8, __pyx_v_pro_pr) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_t_8, __pyx_v_pro_pr) < 0) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_pr = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":160
+  /* "models/Lexicon.py":167
  * 
  *         ## Calculate the prior for each contextual UR given the newly-sampled UR
  *         for clx, cxt_ur in self.lx_ur(lx).items():             # <<<<<<<<<<<<<<
  *             if self.is_cxt(clx):
  *                 cxt_pr = self.compute_pr(pro_ur_new, cxt_ur)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_ur); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_ur); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5546,10 +5697,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __pyx_t_8 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_lx) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_lx);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_items); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_items); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_t_8 = NULL;
@@ -5564,16 +5715,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
     __pyx_t_9 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_9 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_9 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 167, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -5581,17 +5732,17 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5601,7 +5752,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 160, __pyx_L1_error)
+          else __PYX_ERR(0, 167, __pyx_L1_error)
         }
         break;
       }
@@ -5613,7 +5764,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 160, __pyx_L1_error)
+        __PYX_ERR(0, 167, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5626,15 +5777,15 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_t_8);
       __Pyx_INCREF(__pyx_t_5);
       #else
-      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 167, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_3 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_10 = Py_TYPE(__pyx_t_3)->tp_iternext;
@@ -5642,7 +5793,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       __Pyx_GOTREF(__pyx_t_8);
       index = 1; __pyx_t_5 = __pyx_t_10(__pyx_t_3); if (unlikely(!__pyx_t_5)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_5);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_3), 2) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
       __pyx_t_10 = NULL;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       goto __pyx_L6_unpacking_done;
@@ -5650,7 +5801,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 160, __pyx_L1_error)
+      __PYX_ERR(0, 167, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_clx, __pyx_t_8);
@@ -5658,14 +5809,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_cxt_ur, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "models/Lexicon.py":161
+    /* "models/Lexicon.py":168
  *         ## Calculate the prior for each contextual UR given the newly-sampled UR
  *         for clx, cxt_ur in self.lx_ur(lx).items():
  *             if self.is_cxt(clx):             # <<<<<<<<<<<<<<
  *                 cxt_pr = self.compute_pr(pro_ur_new, cxt_ur)
  *                 pr[clx] = cxt_pr
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_cxt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_cxt); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -5679,21 +5830,21 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
     }
     __pyx_t_1 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_v_clx) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_clx);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_11) {
 
-      /* "models/Lexicon.py":162
+      /* "models/Lexicon.py":169
  *         for clx, cxt_ur in self.lx_ur(lx).items():
  *             if self.is_cxt(clx):
  *                 cxt_pr = self.compute_pr(pro_ur_new, cxt_ur)             # <<<<<<<<<<<<<<
  *                 pr[clx] = cxt_pr
  * 
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_8 = NULL;
       __pyx_t_7 = 0;
@@ -5710,7 +5861,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_pro_ur_new, __pyx_v_cxt_ur};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
@@ -5718,13 +5869,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_pro_ur_new, __pyx_v_cxt_ur};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else
       #endif
       {
-        __pyx_t_3 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -5735,7 +5886,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
         __Pyx_INCREF(__pyx_v_cxt_ur);
         __Pyx_GIVEREF(__pyx_v_cxt_ur);
         PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_7, __pyx_v_cxt_ur);
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
@@ -5743,16 +5894,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       __Pyx_XDECREF_SET(__pyx_v_cxt_pr, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "models/Lexicon.py":163
+      /* "models/Lexicon.py":170
  *             if self.is_cxt(clx):
  *                 cxt_pr = self.compute_pr(pro_ur_new, cxt_ur)
  *                 pr[clx] = cxt_pr             # <<<<<<<<<<<<<<
  * 
  *         ## Update the dictionary
  */
-      if (unlikely(PyDict_SetItem(__pyx_v_pr, __pyx_v_clx, __pyx_v_cxt_pr) < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_pr, __pyx_v_clx, __pyx_v_cxt_pr) < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
 
-      /* "models/Lexicon.py":161
+      /* "models/Lexicon.py":168
  *         ## Calculate the prior for each contextual UR given the newly-sampled UR
  *         for clx, cxt_ur in self.lx_ur(lx).items():
  *             if self.is_cxt(clx):             # <<<<<<<<<<<<<<
@@ -5761,7 +5912,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
  */
     }
 
-    /* "models/Lexicon.py":160
+    /* "models/Lexicon.py":167
  * 
  *         ## Calculate the prior for each contextual UR given the newly-sampled UR
  *         for clx, cxt_ur in self.lx_ur(lx).items():             # <<<<<<<<<<<<<<
@@ -5771,24 +5922,24 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Lexicon.py":166
+  /* "models/Lexicon.py":173
  * 
  *         ## Update the dictionary
  *         if inplace:             # <<<<<<<<<<<<<<
  *             self.set_pro_ur(lx, pro_ur_new, pr)
  * 
  */
-  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_inplace); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_inplace); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
   if (__pyx_t_11) {
 
-    /* "models/Lexicon.py":167
+    /* "models/Lexicon.py":174
  *         ## Update the dictionary
  *         if inplace:
  *             self.set_pro_ur(lx, pro_ur_new, pr)             # <<<<<<<<<<<<<<
  * 
  *         return pro_ur_new, pr
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_set_pro_ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_set_pro_ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_5 = NULL;
     __pyx_t_7 = 0;
@@ -5805,7 +5956,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_v_lx, __pyx_v_pro_ur_new, __pyx_v_pr};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -5813,13 +5964,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
       PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_v_lx, __pyx_v_pro_ur_new, __pyx_v_pr};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_7, 3+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(3+__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -5833,14 +5984,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_v_pr);
       __Pyx_GIVEREF(__pyx_v_pr);
       PyTuple_SET_ITEM(__pyx_t_3, 2+__pyx_t_7, __pyx_v_pr);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "models/Lexicon.py":166
+    /* "models/Lexicon.py":173
  * 
  *         ## Update the dictionary
  *         if inplace:             # <<<<<<<<<<<<<<
@@ -5849,7 +6000,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
  */
   }
 
-  /* "models/Lexicon.py":169
+  /* "models/Lexicon.py":176
  *             self.set_pro_ur(lx, pro_ur_new, pr)
  * 
  *         return pro_ur_new, pr             # <<<<<<<<<<<<<<
@@ -5857,7 +6008,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
  *     def sample_cxt_ur(self, clx, inplace=True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_pro_ur_new);
   __Pyx_GIVEREF(__pyx_v_pro_ur_new);
@@ -5869,7 +6020,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":142
+  /* "models/Lexicon.py":149
  *         return self.D.epmf(ur_old, ur_new)
  * 
  *     def sample_pro_ur(self, lx, inplace=True):             # <<<<<<<<<<<<<<
@@ -5901,7 +6052,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":171
+/* "models/Lexicon.py":178
  *         return pro_ur_new, pr
  * 
  *     def sample_cxt_ur(self, clx, inplace=True):             # <<<<<<<<<<<<<<
@@ -5910,10 +6061,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_14sample_pro_ur(CYTHON_UNUSED
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_16sample_cxt_ur[] = "Samples a UR for a given lexical sequence given the\n        proposal distribution. Also returns the prior of the proposed UR\n        ";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_17sample_cxt_ur = {"sample_cxt_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_cxt_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_16sample_cxt_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19sample_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_18sample_cxt_ur[] = "Samples a UR for a given lexical sequence given the\n        proposal distribution. Also returns the prior of the proposed UR\n        ";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_19sample_cxt_ur = {"sample_cxt_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_19sample_cxt_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_18sample_cxt_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19sample_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   PyObject *__pyx_v_inplace = 0;
@@ -5949,7 +6100,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_cxt_ur(PyObject *__p
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("sample_cxt_ur", 0, 2, 3, 1); __PYX_ERR(0, 171, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("sample_cxt_ur", 0, 2, 3, 1); __PYX_ERR(0, 178, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -5959,7 +6110,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_cxt_ur(PyObject *__p
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_cxt_ur") < 0)) __PYX_ERR(0, 171, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "sample_cxt_ur") < 0)) __PYX_ERR(0, 178, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5977,20 +6128,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_17sample_cxt_ur(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("sample_cxt_ur", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 171, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("sample_cxt_ur", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 178, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.sample_cxt_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(__pyx_self, __pyx_v_self, __pyx_v_clx, __pyx_v_inplace);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_18sample_cxt_ur(__pyx_self, __pyx_v_self, __pyx_v_clx, __pyx_v_inplace);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_inplace) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18sample_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_inplace) {
   PyObject *__pyx_v_cxt_ur_new = NULL;
   PyObject *__pyx_v_cxt_pr_new = NULL;
   PyObject *__pyx_v_lx = NULL;
@@ -6015,31 +6166,31 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sample_cxt_ur", 0);
 
-  /* "models/Lexicon.py":175
+  /* "models/Lexicon.py":182
  *         proposal distribution. Also returns the prior of the proposed UR
  *         """
  *         cxt_ur_new = []             # <<<<<<<<<<<<<<
  *         cxt_pr_new = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_cxt_ur_new = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":176
+  /* "models/Lexicon.py":183
  *         """
  *         cxt_ur_new = []
  *         cxt_pr_new = []             # <<<<<<<<<<<<<<
  * 
  *         ## For each lexeme in the lexical item
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_cxt_pr_new = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":179
+  /* "models/Lexicon.py":186
  * 
  *         ## For each lexeme in the lexical item
  *         for lx in clx:             # <<<<<<<<<<<<<<
@@ -6050,26 +6201,26 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     __pyx_t_1 = __pyx_v_clx; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_clx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_clx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -6079,7 +6230,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 179, __pyx_L1_error)
+          else __PYX_ERR(0, 186, __pyx_L1_error)
         }
         break;
       }
@@ -6088,14 +6239,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_lx, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":182
+    /* "models/Lexicon.py":189
  * 
  *             ## Retrieve the prototype UR
  *             pro_ur = self.pro_ur(lx)             # <<<<<<<<<<<<<<
  * 
  *             ## Retrieve the old contextual UR and sample a new UR
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 182, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_ur); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -6109,20 +6260,20 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     }
     __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_v_lx) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_lx);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 182, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_XDECREF_SET(__pyx_v_pro_ur, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":185
+    /* "models/Lexicon.py":192
  * 
  *             ## Retrieve the old contextual UR and sample a new UR
  *             lx_clx_ur_old = self.lx_clx_ur(lx, clx)             # <<<<<<<<<<<<<<
  *             lx_clx_ur_new = self.D.erv(lx_clx_ur_old)
  *             cxt_ur_new.append(lx_clx_ur_new)
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_ur); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_ur); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -6139,7 +6290,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
@@ -6147,13 +6298,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -6164,7 +6315,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_v_clx);
       __Pyx_GIVEREF(__pyx_v_clx);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_clx);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 192, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
@@ -6172,16 +6323,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_lx_clx_ur_old, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":186
+    /* "models/Lexicon.py":193
  *             ## Retrieve the old contextual UR and sample a new UR
  *             lx_clx_ur_old = self.lx_clx_ur(lx, clx)
  *             lx_clx_ur_new = self.D.erv(lx_clx_ur_old)             # <<<<<<<<<<<<<<
  *             cxt_ur_new.append(lx_clx_ur_new)
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_D); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_erv); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 186, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_erv); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 193, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -6196,29 +6347,29 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     }
     __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_v_lx_clx_ur_old) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_lx_clx_ur_old);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 186, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lx_clx_ur_new, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":187
+    /* "models/Lexicon.py":194
  *             lx_clx_ur_old = self.lx_clx_ur(lx, clx)
  *             lx_clx_ur_new = self.D.erv(lx_clx_ur_old)
  *             cxt_ur_new.append(lx_clx_ur_new)             # <<<<<<<<<<<<<<
  * 
  *             ## Calculate the prior of the contextual UR given the prototype UR
  */
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_cxt_ur_new, __pyx_v_lx_clx_ur_new); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 187, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_cxt_ur_new, __pyx_v_lx_clx_ur_new); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 194, __pyx_L1_error)
 
-    /* "models/Lexicon.py":190
+    /* "models/Lexicon.py":197
  * 
  *             ## Calculate the prior of the contextual UR given the prototype UR
  *             lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)             # <<<<<<<<<<<<<<
  *             cxt_pr_new.append(lx_clx_pr_new)
  * 
  */
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_compute_pr); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 197, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_5 = NULL;
     __pyx_t_7 = 0;
@@ -6235,7 +6386,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_pro_ur, __pyx_v_lx_clx_ur_new};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
@@ -6243,13 +6394,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_pro_ur, __pyx_v_lx_clx_ur_new};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 190, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -6260,7 +6411,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
       __Pyx_INCREF(__pyx_v_lx_clx_ur_new);
       __Pyx_GIVEREF(__pyx_v_lx_clx_ur_new);
       PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_7, __pyx_v_lx_clx_ur_new);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -6268,33 +6419,33 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_lx_clx_pr_new, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Lexicon.py":191
+    /* "models/Lexicon.py":198
  *             ## Calculate the prior of the contextual UR given the prototype UR
  *             lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)
  *             cxt_pr_new.append(lx_clx_pr_new)             # <<<<<<<<<<<<<<
  * 
  *             ## Update the dictionary of URs, if specified
  */
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_cxt_pr_new, __pyx_v_lx_clx_pr_new); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 191, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_cxt_pr_new, __pyx_v_lx_clx_pr_new); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 198, __pyx_L1_error)
 
-    /* "models/Lexicon.py":194
+    /* "models/Lexicon.py":201
  * 
  *             ## Update the dictionary of URs, if specified
  *             if inplace:             # <<<<<<<<<<<<<<
  *                 self.set_ur(lx, clx, lx_clx_ur_new, lx_clx_pr_new)
  * 
  */
-    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_inplace); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_inplace); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 201, __pyx_L1_error)
     if (__pyx_t_10) {
 
-      /* "models/Lexicon.py":195
+      /* "models/Lexicon.py":202
  *             ## Update the dictionary of URs, if specified
  *             if inplace:
  *                 self.set_ur(lx, clx, lx_clx_ur_new, lx_clx_pr_new)             # <<<<<<<<<<<<<<
  * 
  *         return cxt_ur_new, cxt_pr_new
  */
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_set_ur); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 195, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_set_ur); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 202, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -6311,7 +6462,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx, __pyx_v_lx_clx_ur_new, __pyx_v_lx_clx_pr_new};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -6319,13 +6470,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
         PyObject *__pyx_temp[5] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx, __pyx_v_lx_clx_ur_new, __pyx_v_lx_clx_pr_new};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 4+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_5 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_New(4+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 202, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         if (__pyx_t_6) {
           __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -6342,14 +6493,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
         __Pyx_INCREF(__pyx_v_lx_clx_pr_new);
         __Pyx_GIVEREF(__pyx_v_lx_clx_pr_new);
         PyTuple_SET_ITEM(__pyx_t_5, 3+__pyx_t_7, __pyx_v_lx_clx_pr_new);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "models/Lexicon.py":194
+      /* "models/Lexicon.py":201
  * 
  *             ## Update the dictionary of URs, if specified
  *             if inplace:             # <<<<<<<<<<<<<<
@@ -6358,7 +6509,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
  */
     }
 
-    /* "models/Lexicon.py":179
+    /* "models/Lexicon.py":186
  * 
  *         ## For each lexeme in the lexical item
  *         for lx in clx:             # <<<<<<<<<<<<<<
@@ -6368,7 +6519,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Lexicon.py":197
+  /* "models/Lexicon.py":204
  *                 self.set_ur(lx, clx, lx_clx_ur_new, lx_clx_pr_new)
  * 
  *         return cxt_ur_new, cxt_pr_new             # <<<<<<<<<<<<<<
@@ -6376,7 +6527,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
  *     def add_padding(self, ss, token="#"):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_cxt_ur_new);
   __Pyx_GIVEREF(__pyx_v_cxt_ur_new);
@@ -6388,7 +6539,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":171
+  /* "models/Lexicon.py":178
  *         return pro_ur_new, pr
  * 
  *     def sample_cxt_ur(self, clx, inplace=True):             # <<<<<<<<<<<<<<
@@ -6418,7 +6569,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":199
+/* "models/Lexicon.py":206
  *         return cxt_ur_new, cxt_pr_new
  * 
  *     def add_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
@@ -6427,10 +6578,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16sample_cxt_ur(CYTHON_UNUSED
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19add_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_18add_padding[] = "Pads the string with the specified token";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_19add_padding = {"add_padding", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_19add_padding, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_18add_padding};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19add_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21add_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_20add_padding[] = "Pads the string with the specified token";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_21add_padding = {"add_padding", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_21add_padding, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_20add_padding};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21add_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_ss = 0;
   CYTHON_UNUSED PyObject *__pyx_v_token = 0;
@@ -6466,7 +6617,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19add_padding(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ss)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_padding", 0, 2, 3, 1); __PYX_ERR(0, 199, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_padding", 0, 2, 3, 1); __PYX_ERR(0, 206, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -6476,7 +6627,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19add_padding(PyObject *__pyx
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_padding") < 0)) __PYX_ERR(0, 199, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_padding") < 0)) __PYX_ERR(0, 206, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6494,20 +6645,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_19add_padding(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_padding", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 199, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_padding", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 206, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.add_padding", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(__pyx_self, __pyx_v_self, __pyx_v_ss, __pyx_v_token);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_20add_padding(__pyx_self, __pyx_v_self, __pyx_v_ss, __pyx_v_token);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, CYTHON_UNUSED PyObject *__pyx_v_token) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20add_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, CYTHON_UNUSED PyObject *__pyx_v_token) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6519,7 +6670,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_padding", 0);
 
-  /* "models/Lexicon.py":201
+  /* "models/Lexicon.py":208
  *     def add_padding(self, ss, token="#"):
  *         """Pads the string with the specified token"""
  *         return f"#{ss}#"             # <<<<<<<<<<<<<<
@@ -6527,7 +6678,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED P
  *     def rm_padding(self, ss, token="#"):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
@@ -6535,7 +6686,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED P
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__2);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u__2);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_ss, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_v_ss, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
   __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
@@ -6546,14 +6697,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED P
   __pyx_t_2 += 1;
   __Pyx_GIVEREF(__pyx_kp_u__2);
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u__2);
-  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 3, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":199
+  /* "models/Lexicon.py":206
  *         return cxt_ur_new, cxt_pr_new
  * 
  *     def add_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
@@ -6573,7 +6724,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":203
+/* "models/Lexicon.py":210
  *         return f"#{ss}#"
  * 
  *     def rm_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
@@ -6582,10 +6733,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18add_padding(CYTHON_UNUSED P
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21rm_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_20rm_padding[] = "Removes the padding from the given string";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_21rm_padding = {"rm_padding", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_21rm_padding, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_20rm_padding};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21rm_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23rm_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_22rm_padding[] = "Removes the padding from the given string";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_23rm_padding = {"rm_padding", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_23rm_padding, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_22rm_padding};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23rm_padding(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_ss = 0;
   PyObject *__pyx_v_token = 0;
@@ -6621,7 +6772,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21rm_padding(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_ss)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("rm_padding", 0, 2, 3, 1); __PYX_ERR(0, 203, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("rm_padding", 0, 2, 3, 1); __PYX_ERR(0, 210, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -6631,7 +6782,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21rm_padding(PyObject *__pyx_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rm_padding") < 0)) __PYX_ERR(0, 203, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "rm_padding") < 0)) __PYX_ERR(0, 210, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6649,20 +6800,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_21rm_padding(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("rm_padding", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 203, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("rm_padding", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 210, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.rm_padding", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(__pyx_self, __pyx_v_self, __pyx_v_ss, __pyx_v_token);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_22rm_padding(__pyx_self, __pyx_v_self, __pyx_v_ss, __pyx_v_token);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, PyObject *__pyx_v_token) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22rm_padding(CYTHON_UNUSED PyObject *__pyx_self, CYTHON_UNUSED PyObject *__pyx_v_self, PyObject *__pyx_v_ss, PyObject *__pyx_v_token) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6675,7 +6826,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("rm_padding", 0);
 
-  /* "models/Lexicon.py":205
+  /* "models/Lexicon.py":212
  *     def rm_padding(self, ss, token="#"):
  *         """Removes the padding from the given string"""
  *         return re.sub(token, "", ss)             # <<<<<<<<<<<<<<
@@ -6683,9 +6834,9 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
  *     """ ========== ACCESSORS ============================================ """
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_re); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_re); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sub); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sub); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -6703,7 +6854,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_token, __pyx_kp_s__3, __pyx_v_ss};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -6711,13 +6862,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_token, __pyx_kp_s__3, __pyx_v_ss};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -6731,7 +6882,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
     __Pyx_INCREF(__pyx_v_ss);
     __Pyx_GIVEREF(__pyx_v_ss);
     PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_4, __pyx_v_ss);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -6740,7 +6891,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":203
+  /* "models/Lexicon.py":210
  *         return f"#{ss}#"
  * 
  *     def rm_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
@@ -6762,7 +6913,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":210
+/* "models/Lexicon.py":217
  * 
  *     ## *=*=*= BOOLEAN OPERATORS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*+*=*=*
  *     def is_pro(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -6771,10 +6922,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_20rm_padding(CYTHON_UNUSED Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23is_pro(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_22is_pro[] = "Checks whether the clx is the prototype context";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_23is_pro = {"is_pro", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_23is_pro, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_22is_pro};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23is_pro(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_pro(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_24is_pro[] = "Checks whether the clx is the prototype context";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_25is_pro = {"is_pro", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_25is_pro, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_24is_pro};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_pro(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -6806,11 +6957,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23is_pro(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("is_pro", 1, 2, 2, 1); __PYX_ERR(0, 210, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("is_pro", 1, 2, 2, 1); __PYX_ERR(0, 217, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_pro") < 0)) __PYX_ERR(0, 210, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_pro") < 0)) __PYX_ERR(0, 217, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6823,14 +6974,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23is_pro(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("is_pro", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 210, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("is_pro", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 217, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.is_pro", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 210, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_24is_pro(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -6841,7 +6992,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_23is_pro(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6852,7 +7003,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_pro", 0);
 
-  /* "models/Lexicon.py":212
+  /* "models/Lexicon.py":219
  *     def is_pro(self, clx: tuple):
  *         """Checks whether the clx is the prototype context"""
  *         return clx == self.pro()             # <<<<<<<<<<<<<<
@@ -6860,7 +7011,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObje
  *     def is_cxt(self, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6874,16 +7025,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObje
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 212, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_clx, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_clx, __pyx_t_1, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":210
+  /* "models/Lexicon.py":217
  * 
  *     ## *=*=*= BOOLEAN OPERATORS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*+*=*=*
  *     def is_pro(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -6904,7 +7055,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":214
+/* "models/Lexicon.py":221
  *         return clx == self.pro()
  * 
  *     def is_cxt(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -6913,10 +7064,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_22is_pro(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_cxt(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_24is_cxt[] = "Checks whether the clx is the contextual context";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_25is_cxt = {"is_cxt", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_25is_cxt, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_24is_cxt};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_cxt(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_27is_cxt(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_26is_cxt[] = "Checks whether the clx is the contextual context";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_27is_cxt = {"is_cxt", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_27is_cxt, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_26is_cxt};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_27is_cxt(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -6948,11 +7099,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_cxt(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("is_cxt", 1, 2, 2, 1); __PYX_ERR(0, 214, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("is_cxt", 1, 2, 2, 1); __PYX_ERR(0, 221, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_cxt") < 0)) __PYX_ERR(0, 214, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "is_cxt") < 0)) __PYX_ERR(0, 221, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6965,14 +7116,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_cxt(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("is_cxt", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 214, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("is_cxt", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 221, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.is_cxt", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 214, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_26is_cxt(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -6983,7 +7134,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_25is_cxt(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26is_cxt(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -6995,7 +7146,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_cxt", 0);
 
-  /* "models/Lexicon.py":216
+  /* "models/Lexicon.py":223
  *     def is_cxt(self, clx: tuple):
  *         """Checks whether the clx is the contextual context"""
  *         return not self.is_pro(clx)             # <<<<<<<<<<<<<<
@@ -7003,7 +7154,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObje
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_pro); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_is_pro); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7017,18 +7168,18 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObje
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_v_clx) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_clx);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyBool_FromLong((!__pyx_t_4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyBool_FromLong((!__pyx_t_4)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":214
+  /* "models/Lexicon.py":221
  *         return clx == self.pro()
  * 
  *     def is_cxt(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -7049,7 +7200,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":220
+/* "models/Lexicon.py":227
  * 
  *     ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def pro(self):             # <<<<<<<<<<<<<<
@@ -7058,21 +7209,21 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_24is_cxt(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_27pro(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_26pro[] = "Returns the prototype context";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_27pro = {"pro", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_27pro, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_26pro};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_27pro(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_29pro(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_28pro[] = "Returns the prototype context";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_29pro = {"pro", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_29pro, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_28pro};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_29pro(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("pro (wrapper)", 0);
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_26pro(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_28pro(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28pro(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7081,7 +7232,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26pro(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pro", 0);
 
-  /* "models/Lexicon.py":222
+  /* "models/Lexicon.py":229
  *     def pro(self):
  *         """Returns the prototype context"""
  *         return self._pro             # <<<<<<<<<<<<<<
@@ -7089,13 +7240,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26pro(CYTHON_UNUSED PyObject 
  *     def lxs(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":220
+  /* "models/Lexicon.py":227
  * 
  *     ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def pro(self):             # <<<<<<<<<<<<<<
@@ -7114,7 +7265,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26pro(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":224
+/* "models/Lexicon.py":231
  *         return self._pro
  * 
  *     def lxs(self):             # <<<<<<<<<<<<<<
@@ -7123,21 +7274,21 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_26pro(CYTHON_UNUSED PyObject 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_29lxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_28lxs[] = "Returns the lexemes";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_29lxs = {"lxs", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_29lxs, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_28lxs};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_29lxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_31lxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_30lxs[] = "Returns the lexemes";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_31lxs = {"lxs", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_31lxs, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_30lxs};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_31lxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("lxs (wrapper)", 0);
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_30lxs(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30lxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7146,7 +7297,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lxs", 0);
 
-  /* "models/Lexicon.py":226
+  /* "models/Lexicon.py":233
  *     def lxs(self):
  *         """Returns the lexemes"""
  *         return self._lxs             # <<<<<<<<<<<<<<
@@ -7154,13 +7305,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(CYTHON_UNUSED PyObject 
  *     def clxs(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lxs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lxs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":224
+  /* "models/Lexicon.py":231
  *         return self._pro
  * 
  *     def lxs(self):             # <<<<<<<<<<<<<<
@@ -7179,7 +7330,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":228
+/* "models/Lexicon.py":235
  *         return self._lxs
  * 
  *     def clxs(self):             # <<<<<<<<<<<<<<
@@ -7188,21 +7339,21 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_28lxs(CYTHON_UNUSED PyObject 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_31clxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_30clxs[] = "Returns the lexical sequences of each lexeme";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_31clxs = {"clxs", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_31clxs, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_30clxs};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_31clxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_33clxs(PyObject *__pyx_self, PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_32clxs[] = "Returns the lexical sequences of each lexeme";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_33clxs = {"clxs", (PyCFunction)__pyx_pw_5optim_7Lexicon_7Lexicon_33clxs, METH_O, __pyx_doc_5optim_7Lexicon_7Lexicon_32clxs};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_33clxs(PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("clxs (wrapper)", 0);
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(__pyx_self, ((PyObject *)__pyx_v_self));
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_32clxs(__pyx_self, ((PyObject *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7211,7 +7362,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("clxs", 0);
 
-  /* "models/Lexicon.py":230
+  /* "models/Lexicon.py":237
  *     def clxs(self):
  *         """Returns the lexical sequences of each lexeme"""
  *         return self._clxs             # <<<<<<<<<<<<<<
@@ -7219,13 +7370,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(CYTHON_UNUSED PyObject
  *     def lx2clxs(self, lx: np.str_):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clxs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 230, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_clxs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":228
+  /* "models/Lexicon.py":235
  *         return self._lxs
  * 
  *     def clxs(self):             # <<<<<<<<<<<<<<
@@ -7244,7 +7395,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":232
+/* "models/Lexicon.py":239
  *         return self._clxs
  * 
  *     def lx2clxs(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7253,10 +7404,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_30clxs(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_33lx2clxs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_32lx2clxs[] = "Returns a list of lexical contexts given a lexeme";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_33lx2clxs = {"lx2clxs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_33lx2clxs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_32lx2clxs};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_33lx2clxs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_35lx2clxs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_34lx2clxs[] = "Returns a list of lexical contexts given a lexeme";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_35lx2clxs = {"lx2clxs", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_35lx2clxs, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_34lx2clxs};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_35lx2clxs(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   int __pyx_lineno = 0;
@@ -7288,11 +7439,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_33lx2clxs(PyObject *__pyx_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx2clxs", 1, 2, 2, 1); __PYX_ERR(0, 232, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx2clxs", 1, 2, 2, 1); __PYX_ERR(0, 239, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx2clxs") < 0)) __PYX_ERR(0, 232, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx2clxs") < 0)) __PYX_ERR(0, 239, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7305,20 +7456,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_33lx2clxs(PyObject *__pyx_sel
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lx2clxs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 232, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lx2clxs", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 239, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.lx2clxs", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(__pyx_self, __pyx_v_self, __pyx_v_lx);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_34lx2clxs(__pyx_self, __pyx_v_self, __pyx_v_lx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx2clxs(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7328,7 +7479,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lx2clxs", 0);
 
-  /* "models/Lexicon.py":234
+  /* "models/Lexicon.py":241
  *     def lx2clxs(self, lx: np.str_):
  *         """Returns a list of lexical contexts given a lexeme"""
  *         return self._lx2clxs[lx]             # <<<<<<<<<<<<<<
@@ -7336,16 +7487,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(CYTHON_UNUSED PyObj
  *     ## *=*=*= UNDERLYING FORM ACCESSORS  *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2clxs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2clxs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":232
+  /* "models/Lexicon.py":239
  *         return self._clxs
  * 
  *     def lx2clxs(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7365,7 +7516,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":237
+/* "models/Lexicon.py":244
  * 
  *     ## *=*=*= UNDERLYING FORM ACCESSORS  *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def lx_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7374,10 +7525,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_32lx2clxs(CYTHON_UNUSED PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_35lx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_34lx_ur[] = "Returns the URs for a given lexeme";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_35lx_ur = {"lx_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_35lx_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_34lx_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_35lx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_36lx_ur[] = "Returns the URs for a given lexeme";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_37lx_ur = {"lx_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_36lx_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   int __pyx_lineno = 0;
@@ -7409,11 +7560,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_35lx_ur(PyObject *__pyx_self,
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx_ur", 1, 2, 2, 1); __PYX_ERR(0, 237, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx_ur", 1, 2, 2, 1); __PYX_ERR(0, 244, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_ur") < 0)) __PYX_ERR(0, 237, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_ur") < 0)) __PYX_ERR(0, 244, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7426,20 +7577,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_35lx_ur(PyObject *__pyx_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lx_ur", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 237, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lx_ur", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 244, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.lx_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(__pyx_self, __pyx_v_self, __pyx_v_lx);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_36lx_ur(__pyx_self, __pyx_v_self, __pyx_v_lx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7449,7 +7600,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lx_ur", 0);
 
-  /* "models/Lexicon.py":239
+  /* "models/Lexicon.py":246
  *     def lx_ur(self, lx: np.str_):
  *         """Returns the URs for a given lexeme"""
  *         return self._lx2ur[lx]             # <<<<<<<<<<<<<<
@@ -7457,16 +7608,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(CYTHON_UNUSED PyObjec
  *     def lx_pr(self, lx: np.str_):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":237
+  /* "models/Lexicon.py":244
  * 
  *     ## *=*=*= UNDERLYING FORM ACCESSORS  *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def lx_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7486,7 +7637,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":241
+/* "models/Lexicon.py":248
  *         return self._lx2ur[lx]
  * 
  *     def lx_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7495,10 +7646,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_34lx_ur(CYTHON_UNUSED PyObjec
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_36lx_pr[] = "Returns a dictionary containing the priors for all clxs of a given lexeme";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_37lx_pr = {"lx_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_36lx_pr};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_38lx_pr[] = "Returns a dictionary containing the priors for all clxs of a given lexeme";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_39lx_pr = {"lx_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_38lx_pr};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   int __pyx_lineno = 0;
@@ -7530,11 +7681,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_pr(PyObject *__pyx_self,
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx_pr", 1, 2, 2, 1); __PYX_ERR(0, 241, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx_pr", 1, 2, 2, 1); __PYX_ERR(0, 248, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_pr") < 0)) __PYX_ERR(0, 241, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_pr") < 0)) __PYX_ERR(0, 248, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7547,20 +7698,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_37lx_pr(PyObject *__pyx_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lx_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 241, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lx_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 248, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.lx_pr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(__pyx_self, __pyx_v_self, __pyx_v_lx);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_38lx_pr(__pyx_self, __pyx_v_self, __pyx_v_lx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7570,7 +7721,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lx_pr", 0);
 
-  /* "models/Lexicon.py":243
+  /* "models/Lexicon.py":250
  *     def lx_pr(self, lx: np.str_):
  *         """Returns a dictionary containing the priors for all clxs of a given lexeme"""
  *         return self._lx2pr[lx]             # <<<<<<<<<<<<<<
@@ -7578,16 +7729,16 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(CYTHON_UNUSED PyObjec
  *     def lx_clx_ur(self, lx: np.str_, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":241
+  /* "models/Lexicon.py":248
  *         return self._lx2ur[lx]
  * 
  *     def lx_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7607,7 +7758,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":245
+/* "models/Lexicon.py":252
  *         return self._lx2pr[lx]
  * 
  *     def lx_clx_ur(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
@@ -7616,10 +7767,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_36lx_pr(CYTHON_UNUSED PyObjec
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_clx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_38lx_clx_ur[] = "Returns the UR for a lexeme in a given clx";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_39lx_clx_ur = {"lx_clx_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_clx_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_38lx_clx_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_clx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_40lx_clx_ur[] = "Returns the UR for a lexeme in a given clx";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_41lx_clx_ur = {"lx_clx_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_40lx_clx_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   PyObject *__pyx_v_clx = 0;
@@ -7654,17 +7805,17 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_clx_ur(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx_clx_ur", 1, 3, 3, 1); __PYX_ERR(0, 245, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx_clx_ur", 1, 3, 3, 1); __PYX_ERR(0, 252, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx_clx_ur", 1, 3, 3, 2); __PYX_ERR(0, 245, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx_clx_ur", 1, 3, 3, 2); __PYX_ERR(0, 252, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_clx_ur") < 0)) __PYX_ERR(0, 245, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_clx_ur") < 0)) __PYX_ERR(0, 252, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -7679,14 +7830,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_clx_ur(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lx_clx_ur", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 245, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lx_clx_ur", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 252, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.lx_clx_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 245, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_ur(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -7697,7 +7848,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_39lx_clx_ur(PyObject *__pyx_s
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7707,7 +7858,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lx_clx_ur", 0);
 
-  /* "models/Lexicon.py":247
+  /* "models/Lexicon.py":254
  *     def lx_clx_ur(self, lx: np.str_, clx: tuple):
  *         """Returns the UR for a lexeme in a given clx"""
  *         return self._lx2ur[lx][clx]             # <<<<<<<<<<<<<<
@@ -7715,19 +7866,19 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(CYTHON_UNUSED PyO
  *     def lx_clx_pr(self, lx: np.str_, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2ur); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_clx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_clx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":245
+  /* "models/Lexicon.py":252
  *         return self._lx2pr[lx]
  * 
  *     def lx_clx_ur(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
@@ -7747,7 +7898,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":249
+/* "models/Lexicon.py":256
  *         return self._lx2ur[lx][clx]
  * 
  *     def lx_clx_pr(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
@@ -7756,10 +7907,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_38lx_clx_ur(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_40lx_clx_pr[] = "Returns the prior for the UR for a lexeme in a given clx";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_41lx_clx_pr = {"lx_clx_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_40lx_clx_pr};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_43lx_clx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_42lx_clx_pr[] = "Returns the prior for the UR for a lexeme in a given clx";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_43lx_clx_pr = {"lx_clx_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_43lx_clx_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_42lx_clx_pr};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_43lx_clx_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   PyObject *__pyx_v_clx = 0;
@@ -7794,17 +7945,17 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_pr(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx_clx_pr", 1, 3, 3, 1); __PYX_ERR(0, 249, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx_clx_pr", 1, 3, 3, 1); __PYX_ERR(0, 256, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("lx_clx_pr", 1, 3, 3, 2); __PYX_ERR(0, 249, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("lx_clx_pr", 1, 3, 3, 2); __PYX_ERR(0, 256, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_clx_pr") < 0)) __PYX_ERR(0, 249, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "lx_clx_pr") < 0)) __PYX_ERR(0, 256, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -7819,14 +7970,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_pr(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("lx_clx_pr", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 249, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("lx_clx_pr", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 256, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.lx_clx_pr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 249, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_42lx_clx_pr(__pyx_self, __pyx_v_self, __pyx_v_lx, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -7837,7 +7988,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_41lx_clx_pr(PyObject *__pyx_s
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42lx_clx_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx, PyObject *__pyx_v_clx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7847,7 +7998,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("lx_clx_pr", 0);
 
-  /* "models/Lexicon.py":251
+  /* "models/Lexicon.py":258
  *     def lx_clx_pr(self, lx: np.str_, clx: tuple):
  *         """Returns the prior for the UR for a lexeme in a given clx"""
  *         return self._lx2pr[lx][clx]             # <<<<<<<<<<<<<<
@@ -7855,19 +8006,19 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(CYTHON_UNUSED PyO
  *     ## (1) Prototype URs
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx2pr); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_lx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_clx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_2, __pyx_v_clx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":249
+  /* "models/Lexicon.py":256
  *         return self._lx2ur[lx][clx]
  * 
  *     def lx_clx_pr(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
@@ -7887,7 +8038,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":254
+/* "models/Lexicon.py":261
  * 
  *     ## (1) Prototype URs
  *     def pro_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -7896,10 +8047,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_40lx_clx_pr(CYTHON_UNUSED PyO
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_43pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_42pro_ur[] = "Returns the prototype UR for the given lexeme";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_43pro_ur = {"pro_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_43pro_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_42pro_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_43pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_44pro_ur[] = "Returns the prototype UR for the given lexeme";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_45pro_ur = {"pro_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_44pro_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   int __pyx_lineno = 0;
@@ -7931,11 +8082,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_43pro_ur(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pro_ur", 1, 2, 2, 1); __PYX_ERR(0, 254, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pro_ur", 1, 2, 2, 1); __PYX_ERR(0, 261, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pro_ur") < 0)) __PYX_ERR(0, 254, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pro_ur") < 0)) __PYX_ERR(0, 261, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7948,20 +8099,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_43pro_ur(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pro_ur", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 254, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pro_ur", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 261, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.pro_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(__pyx_self, __pyx_v_self, __pyx_v_lx);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_44pro_ur(__pyx_self, __pyx_v_self, __pyx_v_lx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7975,7 +8126,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pro_ur", 0);
 
-  /* "models/Lexicon.py":256
+  /* "models/Lexicon.py":263
  *     def pro_ur(self, lx: np.str_):
  *         """Returns the prototype UR for the given lexeme"""
  *         return self.lx_clx_ur(lx, self.pro())             # <<<<<<<<<<<<<<
@@ -7983,9 +8134,9 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
  *     def pro_pr(self, lx: np.str_):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_ur); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_ur); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -7999,7 +8150,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -8017,7 +8168,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_lx, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8026,14 +8177,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_lx, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8044,7 +8195,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -8053,7 +8204,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":254
+  /* "models/Lexicon.py":261
  * 
  *     ## (1) Prototype URs
  *     def pro_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -8076,7 +8227,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":258
+/* "models/Lexicon.py":265
  *         return self.lx_clx_ur(lx, self.pro())
  * 
  *     def pro_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -8085,10 +8236,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_42pro_ur(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_44pro_pr[] = "Returns the probability of the prototype UR for the given lexeme";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_45pro_pr = {"pro_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_44pro_pr};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47pro_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_46pro_pr[] = "Returns the probability of the prototype UR for the given lexeme";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_47pro_pr = {"pro_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_47pro_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_46pro_pr};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47pro_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_lx = 0;
   int __pyx_lineno = 0;
@@ -8120,11 +8271,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_pr(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pro_pr", 1, 2, 2, 1); __PYX_ERR(0, 258, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pro_pr", 1, 2, 2, 1); __PYX_ERR(0, 265, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pro_pr") < 0)) __PYX_ERR(0, 258, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pro_pr") < 0)) __PYX_ERR(0, 265, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8137,20 +8288,20 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_45pro_pr(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pro_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 258, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pro_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 265, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.pro_pr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(__pyx_self, __pyx_v_self, __pyx_v_lx);
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_46pro_pr(__pyx_self, __pyx_v_self, __pyx_v_lx);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46pro_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_lx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8164,7 +8315,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pro_pr", 0);
 
-  /* "models/Lexicon.py":260
+  /* "models/Lexicon.py":267
  *     def pro_pr(self, lx: np.str_):
  *         """Returns the probability of the prototype UR for the given lexeme"""
  *         return self.lx_clx_pr(lx, self.pro())             # <<<<<<<<<<<<<<
@@ -8172,9 +8323,9 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
  *     ## (2) Contextual URs
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_pr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_pr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_pro_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -8188,7 +8339,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 260, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -8206,7 +8357,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_lx, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8215,14 +8366,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_v_lx, __pyx_t_3};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -8233,7 +8384,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -8242,7 +8393,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":258
+  /* "models/Lexicon.py":265
  *         return self.lx_clx_ur(lx, self.pro())
  * 
  *     def pro_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
@@ -8265,7 +8416,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":263
+/* "models/Lexicon.py":270
  * 
  *     ## (2) Contextual URs
  *     def cxt_ur(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -8274,10 +8425,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_44pro_pr(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_46cxt_ur[] = "Returns a list containing the URs of all the lexemes in a clx";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_47cxt_ur = {"cxt_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_47cxt_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_46cxt_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_48cxt_ur[] = "Returns a list containing the URs of all the lexemes in a clx";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_49cxt_ur = {"cxt_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_49cxt_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_48cxt_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -8309,11 +8460,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47cxt_ur(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("cxt_ur", 1, 2, 2, 1); __PYX_ERR(0, 263, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("cxt_ur", 1, 2, 2, 1); __PYX_ERR(0, 270, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cxt_ur") < 0)) __PYX_ERR(0, 263, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cxt_ur") < 0)) __PYX_ERR(0, 270, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8326,14 +8477,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47cxt_ur(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("cxt_ur", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 263, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("cxt_ur", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 270, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.cxt_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 263, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_48cxt_ur(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8344,7 +8495,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_47cxt_ur(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_v_lx = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -8361,7 +8512,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cxt_ur", 0);
 
-  /* "models/Lexicon.py":265
+  /* "models/Lexicon.py":272
  *     def cxt_ur(self, clx: tuple):
  *         """Returns a list containing the URs of all the lexemes in a clx"""
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]             # <<<<<<<<<<<<<<
@@ -8369,24 +8520,24 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
  *     def str_cxt_ur(self, clx: tuple, sep=""):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__pyx_v_clx == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 265, __pyx_L1_error)
+    __PYX_ERR(0, 272, __pyx_L1_error)
   }
   __pyx_t_2 = __pyx_v_clx; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
   for (;;) {
     if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_4); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_4); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 272, __pyx_L1_error)
     #else
-    __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_lx, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_ur); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_ur); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -8403,7 +8554,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
@@ -8411,13 +8562,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8428,12 +8579,12 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
       __Pyx_INCREF(__pyx_v_clx);
       __Pyx_GIVEREF(__pyx_v_clx);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_clx);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 265, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8441,7 +8592,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":263
+  /* "models/Lexicon.py":270
  * 
  *     ## (2) Contextual URs
  *     def cxt_ur(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -8466,7 +8617,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":267
+/* "models/Lexicon.py":274
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]
  * 
  *     def str_cxt_ur(self, clx: tuple, sep=""):             # <<<<<<<<<<<<<<
@@ -8475,10 +8626,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_46cxt_ur(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_48str_cxt_ur[] = "Returns the concatenated URs of all the lexemes in a clx";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_49str_cxt_ur = {"str_cxt_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_48str_cxt_ur};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51str_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_50str_cxt_ur[] = "Returns the concatenated URs of all the lexemes in a clx";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_51str_cxt_ur = {"str_cxt_ur", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_51str_cxt_ur, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_50str_cxt_ur};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51str_cxt_ur(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   PyObject *__pyx_v_sep = 0;
@@ -8514,7 +8665,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("str_cxt_ur", 0, 2, 3, 1); __PYX_ERR(0, 267, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("str_cxt_ur", 0, 2, 3, 1); __PYX_ERR(0, 274, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -8524,7 +8675,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur(PyObject *__pyx_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "str_cxt_ur") < 0)) __PYX_ERR(0, 267, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "str_cxt_ur") < 0)) __PYX_ERR(0, 274, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -8542,14 +8693,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("str_cxt_ur", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 267, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("str_cxt_ur", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 274, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.str_cxt_ur", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 267, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(__pyx_self, __pyx_v_self, __pyx_v_clx, __pyx_v_sep);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_50str_cxt_ur(__pyx_self, __pyx_v_self, __pyx_v_clx, __pyx_v_sep);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8560,7 +8711,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_49str_cxt_ur(PyObject *__pyx_
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_sep) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50str_cxt_ur(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx, PyObject *__pyx_v_sep) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8573,7 +8724,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("str_cxt_ur", 0);
 
-  /* "models/Lexicon.py":269
+  /* "models/Lexicon.py":276
  *     def str_cxt_ur(self, clx: tuple, sep=""):
  *         """Returns the concatenated URs of all the lexemes in a clx"""
  *         return sep.join(self.cxt_ur(clx))             # <<<<<<<<<<<<<<
@@ -8581,9 +8732,9 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED Py
  *     def cxt_pr(self, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_sep, __pyx_n_s_join); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_sep, __pyx_n_s_join); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cxt_ur); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cxt_ur); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -8597,7 +8748,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED Py
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_clx) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_clx);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 269, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -8613,14 +8764,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED Py
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":267
+  /* "models/Lexicon.py":274
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]
  * 
  *     def str_cxt_ur(self, clx: tuple, sep=""):             # <<<<<<<<<<<<<<
@@ -8643,7 +8794,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":271
+/* "models/Lexicon.py":278
  *         return sep.join(self.cxt_ur(clx))
  * 
  *     def cxt_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -8652,10 +8803,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_48str_cxt_ur(CYTHON_UNUSED Py
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51cxt_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_50cxt_pr[] = "Returns a list containing the priors of the URs for all the lexemes in a clx";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_51cxt_pr = {"cxt_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_51cxt_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_50cxt_pr};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51cxt_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53cxt_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_52cxt_pr[] = "Returns a list containing the priors of the URs for all the lexemes in a clx";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_53cxt_pr = {"cxt_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_53cxt_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_52cxt_pr};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53cxt_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -8687,11 +8838,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51cxt_pr(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("cxt_pr", 1, 2, 2, 1); __PYX_ERR(0, 271, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("cxt_pr", 1, 2, 2, 1); __PYX_ERR(0, 278, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cxt_pr") < 0)) __PYX_ERR(0, 271, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "cxt_pr") < 0)) __PYX_ERR(0, 278, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8704,14 +8855,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51cxt_pr(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("cxt_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 271, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("cxt_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 278, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.cxt_pr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 271, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_52cxt_pr(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8722,7 +8873,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_51cxt_pr(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52cxt_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_v_lx = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -8739,7 +8890,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("cxt_pr", 0);
 
-  /* "models/Lexicon.py":273
+  /* "models/Lexicon.py":280
  *     def cxt_pr(self, clx: tuple):
  *         """Returns a list containing the priors of the URs for all the lexemes in a clx"""
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]             # <<<<<<<<<<<<<<
@@ -8747,24 +8898,24 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
  *     def prd_pr(self, clx: tuple):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__pyx_v_clx == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 273, __pyx_L1_error)
+    __PYX_ERR(0, 280, __pyx_L1_error)
   }
   __pyx_t_2 = __pyx_v_clx; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
   for (;;) {
     if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_4); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_4); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 280, __pyx_L1_error)
     #else
-    __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_lx, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_pr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_lx_clx_pr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     __pyx_t_7 = 0;
@@ -8781,7 +8932,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
@@ -8789,13 +8940,13 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_lx, __pyx_v_clx};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 273, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -8806,12 +8957,12 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
       __Pyx_INCREF(__pyx_v_clx);
       __Pyx_GIVEREF(__pyx_v_clx);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_clx);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 273, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8819,7 +8970,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":271
+  /* "models/Lexicon.py":278
  *         return sep.join(self.cxt_ur(clx))
  * 
  *     def cxt_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -8844,7 +8995,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Lexicon.py":275
+/* "models/Lexicon.py":282
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]
  * 
  *     def prd_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -8853,10 +9004,10 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_50cxt_pr(CYTHON_UNUSED PyObje
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53prd_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_7Lexicon_7Lexicon_52prd_pr[] = "Returns the product of the priors of the URs for all the lexemes in a clx";
-static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_53prd_pr = {"prd_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_53prd_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_52prd_pr};
-static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53prd_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_55prd_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_5optim_7Lexicon_7Lexicon_54prd_pr[] = "Returns the product of the priors of the URs for all the lexemes in a clx";
+static PyMethodDef __pyx_mdef_5optim_7Lexicon_7Lexicon_55prd_pr = {"prd_pr", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_7Lexicon_7Lexicon_55prd_pr, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_7Lexicon_7Lexicon_54prd_pr};
+static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_55prd_pr(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_clx = 0;
   int __pyx_lineno = 0;
@@ -8888,11 +9039,11 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53prd_pr(PyObject *__pyx_self
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_clx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("prd_pr", 1, 2, 2, 1); __PYX_ERR(0, 275, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("prd_pr", 1, 2, 2, 1); __PYX_ERR(0, 282, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "prd_pr") < 0)) __PYX_ERR(0, 275, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "prd_pr") < 0)) __PYX_ERR(0, 282, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -8905,14 +9056,14 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53prd_pr(PyObject *__pyx_self
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("prd_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 275, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("prd_pr", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 282, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Lexicon.Lexicon.prd_pr", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 275, __pyx_L1_error)
-  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_52prd_pr(__pyx_self, __pyx_v_self, __pyx_v_clx);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_clx), (&PyTuple_Type), 1, "clx", 1))) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_r = __pyx_pf_5optim_7Lexicon_7Lexicon_54prd_pr(__pyx_self, __pyx_v_self, __pyx_v_clx);
 
   /* function exit code */
   goto __pyx_L0;
@@ -8923,7 +9074,7 @@ static PyObject *__pyx_pw_5optim_7Lexicon_7Lexicon_53prd_pr(PyObject *__pyx_self
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52prd_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
+static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_54prd_pr(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_clx) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8936,18 +9087,18 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52prd_pr(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("prd_pr", 0);
 
-  /* "models/Lexicon.py":277
+  /* "models/Lexicon.py":284
  *     def prd_pr(self, clx: tuple):
  *         """Returns the product of the priors of the URs for all the lexemes in a clx"""
  *         return np.prod(self.cxt_pr(clx))             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_prod); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_prod); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cxt_pr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_cxt_pr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -8961,7 +9112,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52prd_pr(CYTHON_UNUSED PyObje
   }
   __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_clx) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_clx);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 277, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -8977,14 +9128,14 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_52prd_pr(CYTHON_UNUSED PyObje
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 277, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 284, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Lexicon.py":275
+  /* "models/Lexicon.py":282
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]
  * 
  *     def prd_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
@@ -9311,6 +9462,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_INITIALIZATION, __pyx_k_INITIALIZATION, sizeof(__pyx_k_INITIALIZATION), 0, 0, 1, 0},
   {&__pyx_n_s_Inventory, __pyx_k_Inventory, sizeof(__pyx_k_Inventory), 0, 0, 1, 1},
   {&__pyx_n_s_Lexicon, __pyx_k_Lexicon, sizeof(__pyx_k_Lexicon), 0, 0, 1, 1},
+  {&__pyx_n_s_Lexicon___copy, __pyx_k_Lexicon___copy, sizeof(__pyx_k_Lexicon___copy), 0, 0, 1, 1},
   {&__pyx_n_s_Lexicon___deepcopy, __pyx_k_Lexicon___deepcopy, sizeof(__pyx_k_Lexicon___deepcopy), 0, 0, 1, 1},
   {&__pyx_n_s_Lexicon___init, __pyx_k_Lexicon___init, sizeof(__pyx_k_Lexicon___init), 0, 0, 1, 1},
   {&__pyx_n_s_Lexicon_add_padding, __pyx_k_Lexicon_add_padding, sizeof(__pyx_k_Lexicon_add_padding), 0, 0, 1, 1},
@@ -9357,6 +9509,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_compute_tp, __pyx_k_compute_tp, sizeof(__pyx_k_compute_tp), 0, 0, 1, 1},
   {&__pyx_n_s_configs, __pyx_k_configs, sizeof(__pyx_k_configs), 0, 0, 1, 1},
   {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
+  {&__pyx_n_s_copy_2, __pyx_k_copy_2, sizeof(__pyx_k_copy_2), 0, 0, 1, 1},
   {&__pyx_n_s_costs, __pyx_k_costs, sizeof(__pyx_k_costs), 0, 0, 1, 1},
   {&__pyx_n_s_cp, __pyx_k_cp, sizeof(__pyx_k_cp), 0, 0, 1, 1},
   {&__pyx_n_s_ct, __pyx_k_ct, sizeof(__pyx_k_ct), 0, 0, 1, 1},
@@ -9481,8 +9634,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 29, __pyx_L1_error)
   __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 57, __pyx_L1_error)
-  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(0, 72, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 102, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -9518,332 +9671,344 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "models/Lexicon.py":65
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
+ *     def __copy__(self):             # <<<<<<<<<<<<<<
+ *         """Overloads the copy function"""
+ *         cls = self.__class__
+ */
+  __pyx_tuple__6 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_cls, __pyx_n_s_cp); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_copy_2, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 65, __pyx_L1_error)
+
+  /* "models/Lexicon.py":72
+ *         return cp
+ * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
  *         """Overloads the deepcopy function to only copy the list of
  *         UR hypotheses and priors, keeping a shallow copy of everything else
  */
-  __pyx_tuple__6 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_memo, __pyx_n_s_cls, __pyx_n_s_cp); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__6);
-  __Pyx_GIVEREF(__pyx_tuple__6);
-  __pyx_codeobj__7 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__6, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_deepcopy_2, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__7)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_memo, __pyx_n_s_cls, __pyx_n_s_cp); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_deepcopy_2, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 72, __pyx_L1_error)
 
-  /* "models/Lexicon.py":82
+  /* "models/Lexicon.py":89
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def initialize_urs(self, init_ur_hyp: tuple):             # <<<<<<<<<<<<<<
  *         """Initializes the UR hypotheses for the lexemes"""
  *         init_lxs, init_clxs, init_urs = init_ur_hyp
  */
-  __pyx_tuple__8 = PyTuple_Pack(14, __pyx_n_s_self, __pyx_n_s_init_ur_hyp, __pyx_n_s_init_lxs, __pyx_n_s_init_clxs, __pyx_n_s_init_urs, __pyx_n_s_init_lx, __pyx_n_s_init_clx, __pyx_n_s_init_ur, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_init_cx, __pyx_n_s_init_u, __pyx_n_s_init_cx, __pyx_n_s_init_u); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 82, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__8);
-  __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(2, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_initialize_urs, 82, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(14, __pyx_n_s_self, __pyx_n_s_init_ur_hyp, __pyx_n_s_init_lxs, __pyx_n_s_init_clxs, __pyx_n_s_init_urs, __pyx_n_s_init_lx, __pyx_n_s_init_clx, __pyx_n_s_init_ur, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_init_cx, __pyx_n_s_init_u, __pyx_n_s_init_cx, __pyx_n_s_init_u); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_initialize_urs, 89, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 89, __pyx_L1_error)
 
-  /* "models/Lexicon.py":110
+  /* "models/Lexicon.py":117
  *             }
  * 
  *     def set_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):             # <<<<<<<<<<<<<<
  *         """Set the given lexeme in a given lexical sequence to the given UR"""
  *         self._lx2ur[lx][clx] = ur
  */
-  __pyx_tuple__10 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_clx, __pyx_n_s_ur, __pyx_n_s_pr); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__10);
-  __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_set_ur, 110, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_clx, __pyx_n_s_ur, __pyx_n_s_pr); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_set_ur, 117, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 117, __pyx_L1_error)
 
-  /* "models/Lexicon.py":115
+  /* "models/Lexicon.py":122
  *         self._lx2pr[lx][clx] = pr
  * 
  *     def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):             # <<<<<<<<<<<<<<
  *         """Set the given lexeme to the given prototype UR"""
  *         self._lx2ur[lx][self.pro()] = ur
  */
-  __pyx_tuple__12 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_ur, __pyx_n_s_pr); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 115, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__12);
-  __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_set_pro_ur, 115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_ur, __pyx_n_s_pr); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_set_pro_ur, 122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 122, __pyx_L1_error)
 
-  /* "models/Lexicon.py":120
+  /* "models/Lexicon.py":127
  *         self._lx2pr[lx].update(pr)
  * 
  *     def compute_pr(self, pro_ur, cxt_ur=None):             # <<<<<<<<<<<<<<
  *         """Returns the prior probability of the given UR"""
  *         pr = 1
  */
-  __pyx_tuple__14 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_pro_ur, __pyx_n_s_cxt_ur, __pyx_n_s_pr, __pyx_n_s_pro_len); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 120, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__14);
-  __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_compute_pr, 120, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 120, __pyx_L1_error)
-  __pyx_tuple__16 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_pro_ur, __pyx_n_s_cxt_ur, __pyx_n_s_pr, __pyx_n_s_pro_len); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_compute_pr, 127, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "models/Lexicon.py":138
+  /* "models/Lexicon.py":145
  *             return pr
  * 
  *     def compute_tp(self, ur_old, ur_new):             # <<<<<<<<<<<<<<
  *         """Returns the transition probability between the current and new UR"""
  *         return self.D.epmf(ur_old, ur_new)
  */
-  __pyx_tuple__17 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ur_old, __pyx_n_s_ur_new); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 138, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_compute_tp, 138, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ur_old, __pyx_n_s_ur_new); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_compute_tp, 145, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 145, __pyx_L1_error)
 
-  /* "models/Lexicon.py":142
+  /* "models/Lexicon.py":149
  *         return self.D.epmf(ur_old, ur_new)
  * 
  *     def sample_pro_ur(self, lx, inplace=True):             # <<<<<<<<<<<<<<
  *         """Samples a prototype underlying form for a given lexeme. Also
  *         returns the prior of the proposed UR
  */
-  __pyx_tuple__19 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_inplace, __pyx_n_s_pro_ur_old, __pyx_n_s_pro_ur_new, __pyx_n_s_pro_len, __pyx_n_s_pro_pr, __pyx_n_s_pr, __pyx_n_s_clx, __pyx_n_s_cxt_ur, __pyx_n_s_cxt_pr); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_sample_pro_ur, 142, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __pyx_tuple__21 = PyTuple_Pack(1, ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(11, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_inplace, __pyx_n_s_pro_ur_old, __pyx_n_s_pro_ur_new, __pyx_n_s_pro_len, __pyx_n_s_pro_pr, __pyx_n_s_pr, __pyx_n_s_clx, __pyx_n_s_cxt_ur, __pyx_n_s_cxt_pr); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(3, 0, 11, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_sample_pro_ur, 149, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(1, ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
 
-  /* "models/Lexicon.py":171
+  /* "models/Lexicon.py":178
  *         return pro_ur_new, pr
  * 
  *     def sample_cxt_ur(self, clx, inplace=True):             # <<<<<<<<<<<<<<
  *         """Samples a UR for a given lexical sequence given the
  *         proposal distribution. Also returns the prior of the proposed UR
  */
-  __pyx_tuple__22 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_inplace, __pyx_n_s_cxt_ur_new, __pyx_n_s_cxt_pr_new, __pyx_n_s_lx, __pyx_n_s_pro_ur, __pyx_n_s_lx_clx_ur_old, __pyx_n_s_lx_clx_ur_new, __pyx_n_s_lx_clx_pr_new); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_sample_cxt_ur, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 171, __pyx_L1_error)
-  __pyx_tuple__24 = PyTuple_Pack(1, ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_inplace, __pyx_n_s_cxt_ur_new, __pyx_n_s_cxt_pr_new, __pyx_n_s_lx, __pyx_n_s_pro_ur, __pyx_n_s_lx_clx_ur_old, __pyx_n_s_lx_clx_ur_new, __pyx_n_s_lx_clx_pr_new); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(3, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_sample_cxt_ur, 178, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(1, ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
 
-  /* "models/Lexicon.py":199
+  /* "models/Lexicon.py":206
  *         return cxt_ur_new, cxt_pr_new
  * 
  *     def add_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
  *         """Pads the string with the specified token"""
  *         return f"#{ss}#"
  */
-  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ss, __pyx_n_s_token); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 199, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__25);
-  __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_add_padding, 199, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 199, __pyx_L1_error)
-  __pyx_tuple__27 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_s__2)); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ss, __pyx_n_s_token); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_add_padding, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_s__2)); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
 
-  /* "models/Lexicon.py":203
+  /* "models/Lexicon.py":210
  *         return f"#{ss}#"
  * 
  *     def rm_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
  *         """Removes the padding from the given string"""
  *         return re.sub(token, "", ss)
  */
-  __pyx_tuple__28 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ss, __pyx_n_s_token); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 203, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__28);
-  __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_rm_padding, 203, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 203, __pyx_L1_error)
-  __pyx_tuple__30 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_s__2)); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_ss, __pyx_n_s_token); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_rm_padding, 210, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_s__2)); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
 
-  /* "models/Lexicon.py":210
+  /* "models/Lexicon.py":217
  * 
  *     ## *=*=*= BOOLEAN OPERATORS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*+*=*=*
  *     def is_pro(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Checks whether the clx is the prototype context"""
  *         return clx == self.pro()
  */
-  __pyx_tuple__31 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 210, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__31);
-  __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_is_pro, 210, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_is_pro, 217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 217, __pyx_L1_error)
 
-  /* "models/Lexicon.py":214
+  /* "models/Lexicon.py":221
  *         return clx == self.pro()
  * 
  *     def is_cxt(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Checks whether the clx is the contextual context"""
  *         return not self.is_pro(clx)
  */
-  __pyx_tuple__33 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 214, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__33);
-  __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_is_cxt, 214, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_tuple__35 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 221, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_is_cxt, 221, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 221, __pyx_L1_error)
 
-  /* "models/Lexicon.py":220
+  /* "models/Lexicon.py":227
  * 
  *     ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def pro(self):             # <<<<<<<<<<<<<<
  *         """Returns the prototype context"""
  *         return self._pro
  */
-  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(0, 220, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__35);
-  __Pyx_GIVEREF(__pyx_tuple__35);
-  __pyx_codeobj__36 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__35, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_pro_2, 220, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__36)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 227, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__37);
+  __Pyx_GIVEREF(__pyx_tuple__37);
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_pro_2, 227, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 227, __pyx_L1_error)
 
-  /* "models/Lexicon.py":224
+  /* "models/Lexicon.py":231
  *         return self._pro
  * 
  *     def lxs(self):             # <<<<<<<<<<<<<<
  *         """Returns the lexemes"""
  *         return self._lxs
  */
-  __pyx_tuple__37 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(0, 224, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__37);
-  __Pyx_GIVEREF(__pyx_tuple__37);
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lxs, 224, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__39);
+  __Pyx_GIVEREF(__pyx_tuple__39);
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lxs, 231, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 231, __pyx_L1_error)
 
-  /* "models/Lexicon.py":228
+  /* "models/Lexicon.py":235
  *         return self._lxs
  * 
  *     def clxs(self):             # <<<<<<<<<<<<<<
  *         """Returns the lexical sequences of each lexeme"""
  *         return self._clxs
  */
-  __pyx_tuple__39 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(0, 228, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__39);
-  __Pyx_GIVEREF(__pyx_tuple__39);
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_clxs, 228, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_tuple__41 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 235, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__41);
+  __Pyx_GIVEREF(__pyx_tuple__41);
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_clxs, 235, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 235, __pyx_L1_error)
 
-  /* "models/Lexicon.py":232
+  /* "models/Lexicon.py":239
  *         return self._clxs
  * 
  *     def lx2clxs(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns a list of lexical contexts given a lexeme"""
  *         return self._lx2clxs[lx]
  */
-  __pyx_tuple__41 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(0, 232, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__41);
-  __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx2clxs_2, 232, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_tuple__43 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 239, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__43);
+  __Pyx_GIVEREF(__pyx_tuple__43);
+  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx2clxs_2, 239, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 239, __pyx_L1_error)
 
-  /* "models/Lexicon.py":237
+  /* "models/Lexicon.py":244
  * 
  *     ## *=*=*= UNDERLYING FORM ACCESSORS  *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def lx_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the URs for a given lexeme"""
  *         return self._lx2ur[lx]
  */
-  __pyx_tuple__43 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__43)) __PYX_ERR(0, 237, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__43);
-  __Pyx_GIVEREF(__pyx_tuple__43);
-  __pyx_codeobj__44 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__43, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_ur, 237, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__44)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_tuple__45 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__45);
+  __Pyx_GIVEREF(__pyx_tuple__45);
+  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_ur, 244, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 244, __pyx_L1_error)
 
-  /* "models/Lexicon.py":241
+  /* "models/Lexicon.py":248
  *         return self._lx2ur[lx]
  * 
  *     def lx_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns a dictionary containing the priors for all clxs of a given lexeme"""
  *         return self._lx2pr[lx]
  */
-  __pyx_tuple__45 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__45)) __PYX_ERR(0, 241, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__45);
-  __Pyx_GIVEREF(__pyx_tuple__45);
-  __pyx_codeobj__46 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__45, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_pr, 241, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__46)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__47);
+  __Pyx_GIVEREF(__pyx_tuple__47);
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_pr, 248, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 248, __pyx_L1_error)
 
-  /* "models/Lexicon.py":245
+  /* "models/Lexicon.py":252
  *         return self._lx2pr[lx]
  * 
  *     def lx_clx_ur(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the UR for a lexeme in a given clx"""
  *         return self._lx2ur[lx][clx]
  */
-  __pyx_tuple__47 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 245, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__47);
-  __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_clx_ur, 245, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__49);
+  __Pyx_GIVEREF(__pyx_tuple__49);
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_clx_ur, 252, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 252, __pyx_L1_error)
 
-  /* "models/Lexicon.py":249
+  /* "models/Lexicon.py":256
  *         return self._lx2ur[lx][clx]
  * 
  *     def lx_clx_pr(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the prior for the UR for a lexeme in a given clx"""
  *         return self._lx2pr[lx][clx]
  */
-  __pyx_tuple__49 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 249, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__49);
-  __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_clx_pr, 249, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_lx, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__51);
+  __Pyx_GIVEREF(__pyx_tuple__51);
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_lx_clx_pr, 256, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 256, __pyx_L1_error)
 
-  /* "models/Lexicon.py":254
+  /* "models/Lexicon.py":261
  * 
  *     ## (1) Prototype URs
  *     def pro_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the prototype UR for the given lexeme"""
  *         return self.lx_clx_ur(lx, self.pro())
  */
-  __pyx_tuple__51 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 254, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__51);
-  __Pyx_GIVEREF(__pyx_tuple__51);
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__51, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_pro_ur, 254, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_tuple__53 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 261, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__53);
+  __Pyx_GIVEREF(__pyx_tuple__53);
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_pro_ur, 261, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 261, __pyx_L1_error)
 
-  /* "models/Lexicon.py":258
+  /* "models/Lexicon.py":265
  *         return self.lx_clx_ur(lx, self.pro())
  * 
  *     def pro_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the probability of the prototype UR for the given lexeme"""
  *         return self.lx_clx_pr(lx, self.pro())
  */
-  __pyx_tuple__53 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(0, 258, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__53);
-  __Pyx_GIVEREF(__pyx_tuple__53);
-  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_pro_pr, 258, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_tuple__55 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(0, 265, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__55);
+  __Pyx_GIVEREF(__pyx_tuple__55);
+  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_pro_pr, 265, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 265, __pyx_L1_error)
 
-  /* "models/Lexicon.py":263
+  /* "models/Lexicon.py":270
  * 
  *     ## (2) Contextual URs
  *     def cxt_ur(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns a list containing the URs of all the lexemes in a clx"""
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]
  */
-  __pyx_tuple__55 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(0, 263, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__55);
-  __Pyx_GIVEREF(__pyx_tuple__55);
-  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_cxt_ur, 263, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_tuple__57 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__57);
+  __Pyx_GIVEREF(__pyx_tuple__57);
+  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_cxt_ur, 270, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(0, 270, __pyx_L1_error)
 
-  /* "models/Lexicon.py":267
+  /* "models/Lexicon.py":274
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]
  * 
  *     def str_cxt_ur(self, clx: tuple, sep=""):             # <<<<<<<<<<<<<<
  *         """Returns the concatenated URs of all the lexemes in a clx"""
  *         return sep.join(self.cxt_ur(clx))
  */
-  __pyx_tuple__57 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_sep); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(0, 267, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__57);
-  __Pyx_GIVEREF(__pyx_tuple__57);
-  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_str_cxt_ur, 267, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(0, 267, __pyx_L1_error)
-  __pyx_tuple__59 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_s__3)); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_tuple__59 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_sep); if (unlikely(!__pyx_tuple__59)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__59);
   __Pyx_GIVEREF(__pyx_tuple__59);
+  __pyx_codeobj__60 = (PyObject*)__Pyx_PyCode_New(3, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__59, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_str_cxt_ur, 274, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__60)) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_tuple__61 = PyTuple_Pack(1, ((PyObject*)__pyx_kp_s__3)); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 274, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__61);
+  __Pyx_GIVEREF(__pyx_tuple__61);
 
-  /* "models/Lexicon.py":271
+  /* "models/Lexicon.py":278
  *         return sep.join(self.cxt_ur(clx))
  * 
  *     def cxt_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns a list containing the priors of the URs for all the lexemes in a clx"""
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]
  */
-  __pyx_tuple__60 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 271, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__60);
-  __Pyx_GIVEREF(__pyx_tuple__60);
-  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_cxt_pr, 271, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_tuple__62 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_clx, __pyx_n_s_lx); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__62);
+  __Pyx_GIVEREF(__pyx_tuple__62);
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_cxt_pr, 278, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 278, __pyx_L1_error)
 
-  /* "models/Lexicon.py":275
+  /* "models/Lexicon.py":282
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]
  * 
  *     def prd_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the product of the priors of the URs for all the lexemes in a clx"""
  *         return np.prod(self.cxt_pr(clx))
  */
-  __pyx_tuple__62 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 275, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__62);
-  __Pyx_GIVEREF(__pyx_tuple__62);
-  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_prd_pr, 275, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_tuple__64 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_clx); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__64);
+  __Pyx_GIVEREF(__pyx_tuple__64);
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Lexicon_py, __pyx_n_s_prd_pr, 282, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -9899,7 +10064,7 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_5optim_7Lexicon___pyx_scope_struct__initialize_urs) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_7Lexicon___pyx_scope_struct__initialize_urs) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_7Lexicon___pyx_scope_struct__initialize_urs.tp_print = 0;
   #endif
@@ -9907,7 +10072,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5optim_7Lexicon___pyx_scope_struct__initialize_urs.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5optim_7Lexicon___pyx_scope_struct__initialize_urs = &__pyx_type_5optim_7Lexicon___pyx_scope_struct__initialize_urs;
-  if (PyType_Ready(&__pyx_type_5optim_7Lexicon___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_7Lexicon___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_7Lexicon___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif
@@ -10384,472 +10549,484 @@ if (!__Pyx_RefNanny) {
   /* "models/Lexicon.py":65
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
+ *     def __copy__(self):             # <<<<<<<<<<<<<<
+ *         """Overloads the copy function"""
+ *         cls = self.__class__
+ */
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_3__copy__, 0, __pyx_n_s_Lexicon___copy, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_copy_2, __pyx_t_7) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+  /* "models/Lexicon.py":72
+ *         return cp
+ * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
  *         """Overloads the deepcopy function to only copy the list of
  *         UR hypotheses and priors, keeping a shallow copy of everything else
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_3__deepcopy__, 0, __pyx_n_s_Lexicon___deepcopy, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_5__deepcopy__, 0, __pyx_n_s_Lexicon___deepcopy, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_deepcopy_2, __pyx_t_7) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_deepcopy_2, __pyx_t_7) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Lexicon.py":82
+  /* "models/Lexicon.py":89
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def initialize_urs(self, init_ur_hyp: tuple):             # <<<<<<<<<<<<<<
  *         """Initializes the UR hypotheses for the lexemes"""
  *         init_lxs, init_clxs, init_urs = init_ur_hyp
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_init_ur_hyp, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_5initialize_urs, 0, __pyx_n_s_Lexicon_initialize_urs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__9)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_init_ur_hyp, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_7initialize_urs, 0, __pyx_n_s_Lexicon_initialize_urs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_initialize_urs, __pyx_t_5) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_initialize_urs, __pyx_t_5) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":110
+  /* "models/Lexicon.py":117
  *             }
  * 
  *     def set_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):             # <<<<<<<<<<<<<<
  *         """Set the given lexeme in a given lexical sequence to the given UR"""
  *         self._lx2ur[lx][clx] = ur
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_ur, __pyx_t_7) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_ur, __pyx_t_7) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_pr, __pyx_n_u_float) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_7set_ur, 0, __pyx_n_s_Lexicon_set_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__11)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_pr, __pyx_n_u_float) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_9set_ur, 0, __pyx_n_s_Lexicon_set_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_set_ur, __pyx_t_7) < 0) __PYX_ERR(0, 110, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_set_ur, __pyx_t_7) < 0) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Lexicon.py":115
+  /* "models/Lexicon.py":122
  *         self._lx2pr[lx][clx] = pr
  * 
  *     def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):             # <<<<<<<<<<<<<<
  *         """Set the given lexeme to the given prototype UR"""
  *         self._lx2ur[lx][self.pro()] = ur
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_ur, __pyx_t_5) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_ur, __pyx_t_5) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_pr, __pyx_n_u_dict_2) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_9set_pro_ur, 0, __pyx_n_s_Lexicon_set_pro_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_pr, __pyx_n_u_dict_2) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_11set_pro_ur, 0, __pyx_n_s_Lexicon_set_pro_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_set_pro_ur, __pyx_t_5) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_set_pro_ur, __pyx_t_5) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":120
+  /* "models/Lexicon.py":127
  *         self._lx2pr[lx].update(pr)
  * 
  *     def compute_pr(self, pro_ur, cxt_ur=None):             # <<<<<<<<<<<<<<
  *         """Returns the prior probability of the given UR"""
  *         pr = 1
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_11compute_pr, 0, __pyx_n_s_Lexicon_compute_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_13compute_pr, 0, __pyx_n_s_Lexicon_compute_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__17)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__16);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_pr, __pyx_t_5) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__18);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_pr, __pyx_t_5) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":138
+  /* "models/Lexicon.py":145
  *             return pr
  * 
  *     def compute_tp(self, ur_old, ur_new):             # <<<<<<<<<<<<<<
  *         """Returns the transition probability between the current and new UR"""
  *         return self.D.epmf(ur_old, ur_new)
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_13compute_tp, 0, __pyx_n_s_Lexicon_compute_tp, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_15compute_tp, 0, __pyx_n_s_Lexicon_compute_tp, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_tp, __pyx_t_5) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_tp, __pyx_t_5) < 0) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":142
+  /* "models/Lexicon.py":149
  *         return self.D.epmf(ur_old, ur_new)
  * 
  *     def sample_pro_ur(self, lx, inplace=True):             # <<<<<<<<<<<<<<
  *         """Samples a prototype underlying form for a given lexeme. Also
  *         returns the prior of the proposed UR
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_15sample_pro_ur, 0, __pyx_n_s_Lexicon_sample_pro_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__20)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_17sample_pro_ur, 0, __pyx_n_s_Lexicon_sample_pro_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__21);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_sample_pro_ur, __pyx_t_5) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__23);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_sample_pro_ur, __pyx_t_5) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":171
+  /* "models/Lexicon.py":178
  *         return pro_ur_new, pr
  * 
  *     def sample_cxt_ur(self, clx, inplace=True):             # <<<<<<<<<<<<<<
  *         """Samples a UR for a given lexical sequence given the
  *         proposal distribution. Also returns the prior of the proposed UR
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_17sample_cxt_ur, 0, __pyx_n_s_Lexicon_sample_cxt_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_19sample_cxt_ur, 0, __pyx_n_s_Lexicon_sample_cxt_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__24);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_sample_cxt_ur, __pyx_t_5) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__26);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_sample_cxt_ur, __pyx_t_5) < 0) __PYX_ERR(0, 178, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":199
+  /* "models/Lexicon.py":206
  *         return cxt_ur_new, cxt_pr_new
  * 
  *     def add_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
  *         """Pads the string with the specified token"""
  *         return f"#{ss}#"
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_19add_padding, 0, __pyx_n_s_Lexicon_add_padding, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_21add_padding, 0, __pyx_n_s_Lexicon_add_padding, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__27);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_add_padding, __pyx_t_5) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__29);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_add_padding, __pyx_t_5) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":203
+  /* "models/Lexicon.py":210
  *         return f"#{ss}#"
  * 
  *     def rm_padding(self, ss, token="#"):             # <<<<<<<<<<<<<<
  *         """Removes the padding from the given string"""
  *         return re.sub(token, "", ss)
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_21rm_padding, 0, __pyx_n_s_Lexicon_rm_padding, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_23rm_padding, 0, __pyx_n_s_Lexicon_rm_padding, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__30);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_rm_padding, __pyx_t_5) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_5, __pyx_tuple__32);
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_rm_padding, __pyx_t_5) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":210
+  /* "models/Lexicon.py":217
  * 
  *     ## *=*=*= BOOLEAN OPERATORS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*+*=*=*
  *     def is_pro(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Checks whether the clx is the prototype context"""
  *         return clx == self.pro()
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_23is_pro, 0, __pyx_n_s_Lexicon_is_pro, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__32)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_25is_pro, 0, __pyx_n_s_Lexicon_is_pro, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_is_pro, __pyx_t_7) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_is_pro, __pyx_t_7) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Lexicon.py":214
+  /* "models/Lexicon.py":221
  *         return clx == self.pro()
  * 
  *     def is_cxt(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Checks whether the clx is the contextual context"""
  *         return not self.is_pro(clx)
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_25is_cxt, 0, __pyx_n_s_Lexicon_is_cxt, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__34)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_27is_cxt, 0, __pyx_n_s_Lexicon_is_cxt, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_is_cxt, __pyx_t_5) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_is_cxt, __pyx_t_5) < 0) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":220
+  /* "models/Lexicon.py":227
  * 
  *     ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def pro(self):             # <<<<<<<<<<<<<<
  *         """Returns the prototype context"""
  *         return self._pro
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_27pro, 0, __pyx_n_s_Lexicon_pro, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__36)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_29pro, 0, __pyx_n_s_Lexicon_pro, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_pro_2, __pyx_t_5) < 0) __PYX_ERR(0, 220, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_pro_2, __pyx_t_5) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":224
+  /* "models/Lexicon.py":231
  *         return self._pro
  * 
  *     def lxs(self):             # <<<<<<<<<<<<<<
  *         """Returns the lexemes"""
  *         return self._lxs
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_29lxs, 0, __pyx_n_s_Lexicon_lxs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_31lxs, 0, __pyx_n_s_Lexicon_lxs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lxs, __pyx_t_5) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lxs, __pyx_t_5) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":228
+  /* "models/Lexicon.py":235
  *         return self._lxs
  * 
  *     def clxs(self):             # <<<<<<<<<<<<<<
  *         """Returns the lexical sequences of each lexeme"""
  *         return self._clxs
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_31clxs, 0, __pyx_n_s_Lexicon_clxs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_33clxs, 0, __pyx_n_s_Lexicon_clxs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_clxs, __pyx_t_5) < 0) __PYX_ERR(0, 228, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_clxs, __pyx_t_5) < 0) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":232
+  /* "models/Lexicon.py":239
  *         return self._clxs
  * 
  *     def lx2clxs(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns a list of lexical contexts given a lexeme"""
  *         return self._lx2clxs[lx]
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_33lx2clxs, 0, __pyx_n_s_Lexicon_lx2clxs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_35lx2clxs, 0, __pyx_n_s_Lexicon_lx2clxs, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx2clxs_2, __pyx_t_6) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx2clxs_2, __pyx_t_6) < 0) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Lexicon.py":237
+  /* "models/Lexicon.py":244
  * 
  *     ## *=*=*= UNDERLYING FORM ACCESSORS  *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *     def lx_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the URs for a given lexeme"""
  *         return self._lx2ur[lx]
  */
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_lx, __pyx_t_7) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_lx, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_35lx_ur, 0, __pyx_n_s_Lexicon_lx_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__44)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_37lx_ur, 0, __pyx_n_s_Lexicon_lx_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_6);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_ur, __pyx_t_7) < 0) __PYX_ERR(0, 237, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_ur, __pyx_t_7) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Lexicon.py":241
+  /* "models/Lexicon.py":248
  *         return self._lx2ur[lx]
  * 
  *     def lx_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns a dictionary containing the priors for all clxs of a given lexeme"""
  *         return self._lx2pr[lx]
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_lx, __pyx_t_5) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_lx, __pyx_t_5) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_37lx_pr, 0, __pyx_n_s_Lexicon_lx_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__46)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_39lx_pr, 0, __pyx_n_s_Lexicon_lx_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_pr, __pyx_t_5) < 0) __PYX_ERR(0, 241, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_pr, __pyx_t_5) < 0) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":245
+  /* "models/Lexicon.py":252
  *         return self._lx2pr[lx]
  * 
  *     def lx_clx_ur(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the UR for a lexeme in a given clx"""
  *         return self._lx2ur[lx][clx]
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 245, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 245, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 245, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_39lx_clx_ur, 0, __pyx_n_s_Lexicon_lx_clx_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 245, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_41lx_clx_ur, 0, __pyx_n_s_Lexicon_lx_clx_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_clx_ur, __pyx_t_6) < 0) __PYX_ERR(0, 245, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_clx_ur, __pyx_t_6) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Lexicon.py":249
+  /* "models/Lexicon.py":256
  *         return self._lx2ur[lx][clx]
  * 
  *     def lx_clx_pr(self, lx: np.str_, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the prior for the UR for a lexeme in a given clx"""
  *         return self._lx2pr[lx][clx]
  */
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_lx, __pyx_t_7) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_lx, __pyx_t_7) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_41lx_clx_pr, 0, __pyx_n_s_Lexicon_lx_clx_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_43lx_clx_pr, 0, __pyx_n_s_Lexicon_lx_clx_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_6);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_clx_pr, __pyx_t_7) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_lx_clx_pr, __pyx_t_7) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Lexicon.py":254
+  /* "models/Lexicon.py":261
  * 
  *     ## (1) Prototype URs
  *     def pro_ur(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the prototype UR for the given lexeme"""
  *         return self.lx_clx_ur(lx, self.pro())
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_lx, __pyx_t_5) < 0) __PYX_ERR(0, 254, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_lx, __pyx_t_5) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_43pro_ur, 0, __pyx_n_s_Lexicon_pro_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_45pro_ur, 0, __pyx_n_s_Lexicon_pro_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_pro_ur, __pyx_t_5) < 0) __PYX_ERR(0, 254, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_pro_ur, __pyx_t_5) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":258
+  /* "models/Lexicon.py":265
  *         return self.lx_clx_ur(lx, self.pro())
  * 
  *     def pro_pr(self, lx: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the probability of the prototype UR for the given lexeme"""
  *         return self.lx_clx_pr(lx, self.pro())
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_lx, __pyx_t_6) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_45pro_pr, 0, __pyx_n_s_Lexicon_pro_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 258, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_47pro_pr, 0, __pyx_n_s_Lexicon_pro_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_pro_pr, __pyx_t_6) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_pro_pr, __pyx_t_6) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Lexicon.py":263
+  /* "models/Lexicon.py":270
  * 
  *     ## (2) Contextual URs
  *     def cxt_ur(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns a list containing the URs of all the lexemes in a clx"""
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]
  */
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 263, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 263, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_47cxt_ur, 0, __pyx_n_s_Lexicon_cxt_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 263, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_49cxt_ur, 0, __pyx_n_s_Lexicon_cxt_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_6);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_cxt_ur, __pyx_t_5) < 0) __PYX_ERR(0, 263, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_cxt_ur, __pyx_t_5) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":267
+  /* "models/Lexicon.py":274
  *         return [self.lx_clx_ur(lx, clx) for lx in clx]
  * 
  *     def str_cxt_ur(self, clx: tuple, sep=""):             # <<<<<<<<<<<<<<
  *         """Returns the concatenated URs of all the lexemes in a clx"""
  *         return sep.join(self.cxt_ur(clx))
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_49str_cxt_ur, 0, __pyx_n_s_Lexicon_str_cxt_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 267, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_51str_cxt_ur, 0, __pyx_n_s_Lexicon_str_cxt_ur, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__60)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_tuple__59);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_6, __pyx_tuple__61);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_str_cxt_ur, __pyx_t_6) < 0) __PYX_ERR(0, 267, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_str_cxt_ur, __pyx_t_6) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Lexicon.py":271
+  /* "models/Lexicon.py":278
  *         return sep.join(self.cxt_ur(clx))
  * 
  *     def cxt_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns a list containing the priors of the URs for all the lexemes in a clx"""
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]
  */
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 271, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_51cxt_pr, 0, __pyx_n_s_Lexicon_cxt_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 271, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_53cxt_pr, 0, __pyx_n_s_Lexicon_cxt_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_6);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_cxt_pr, __pyx_t_5) < 0) __PYX_ERR(0, 271, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_cxt_pr, __pyx_t_5) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Lexicon.py":275
+  /* "models/Lexicon.py":282
  *         return [self.lx_clx_pr(lx, clx) for lx in clx]
  * 
  *     def prd_pr(self, clx: tuple):             # <<<<<<<<<<<<<<
  *         """Returns the product of the priors of the URs for all the lexemes in a clx"""
  *         return np.prod(self.cxt_pr(clx))
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 275, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 275, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_53prd_pr, 0, __pyx_n_s_Lexicon_prd_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__63)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 275, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_clx, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_55prd_pr, 0, __pyx_n_s_Lexicon_prd_pr, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_prd_pr, __pyx_t_6) < 0) __PYX_ERR(0, 275, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_prd_pr, __pyx_t_6) < 0) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
   /* "models/Lexicon.py":12

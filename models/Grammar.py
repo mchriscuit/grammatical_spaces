@@ -13,12 +13,12 @@ class Grammar:
     """========== INITIALIZATION ======================================="""
 
     def __init__(
-            self, 
-            clxs: np.ndarray, 
-            srs: np.ndarray, 
-            nobs: np.ndarray, 
-            lm: float, 
-            L, 
+            self,
+            clxs: np.ndarray,
+            srs: np.ndarray,
+            nobs: np.ndarray,
+            lm: float,
+            L,
             M,
     ):
 
@@ -74,18 +74,30 @@ class Grammar:
         """
         obs_sr = self.get_sr(clx)
         if obs_sr == "":
-            return 1
+            return 1.0
         pred_sr = self.predict_sr(clx)
         return likelihood(pred_sr, obs_sr) ** self.get_nob(clx)
 
     ## *=*=*= EXPORTING GRAMMAR =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
     def export(self):
         """Exports the current model parameters and predictions"""
+
+        ## Export the clxs
         clxs = self.clxs()
+        clxs = ["-".join(cxs) for cxs in clxs]
+
+        ## Export the rule names
         mnames = self.M.get_current_mhyp()
+
+        ## Get the URs
         urs = [self.L.str_cxt_ur(clx, "-") for clx in clxs]
+
+        ## Get the predicted SRs
         pred_srs = self.predict_srs()
+
+        ## Get the observed SRs
         obs_srs = self.srs()
+
         return clxs, mnames, urs, pred_srs, obs_srs
 
     """ ========== ACCESSORS ============================================ """

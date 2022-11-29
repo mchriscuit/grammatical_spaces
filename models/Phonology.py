@@ -1,6 +1,6 @@
 import numpy as np
 import re
-from copy import copy, deepcopy
+from copy import deepcopy
 from itertools import permutations
 from optim.Inventory import Inventory
 from optim.Distributions import Binomial, Bernoulli, Uniform
@@ -37,6 +37,9 @@ class SPE(Inventory):
         self._mhyp_idx = 0
         self.generate_hypotheses()
 
+        ## *=*=*= INITIALIZE RULE DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._mhyp2idx = {mhyp: i for i, mhyp in enumerate(self._mhyps)}
+
         ## *=*=*= INITIALIZE RULE CONFIGURATIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._mname2mconfig = {}
         self.configure_mappings()
@@ -45,23 +48,30 @@ class SPE(Inventory):
         self._mname2mregex = {}
         self.regex_mappings()
 
-        ## *=*=*= LIKELIHOOD CACHE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._mhyp2likelihoods = {}
-
     """ ========== OVERLOADING METHODS =================================== """
 
-    def __deepcopy__(self, memo):
+    def __copy__(self):
+        """Overloads the copy function"""
         cls = self.__class__
-        result = cls.__new__(cls)
-        memo[id(self)] = result
-        for k, v in self.__dict__.items():
-            if k == "_mhyp_idx":
-                setattr(result, k, deepcopy(v, memo))
-            else:
-                setattr(result, k, copy(v))
-        return result
+        cp = cls.__new__(cls)
+        cp.__dict__.update(self.__dict__)
+        return cp
+
+    def __deepcopy__(self, memo):
+        """Returns a shallow copy of everything"""
+
+        ## Initialize a new class object
+        cls = self.__class__
+        cp = cls.__new__(cls)
+        memo[id(self)] = cp
+
+        return  cp
 
     """ ========== INSTANCE METHODS ===================================== """
+
+    def update_mhyp(self, mhyp: tuple):
+        """Updates the rule hypothesis to the index corresponding to the name"""
+        self._mhyp_idx = self._mhyp2idx[mhyp]
 
     def update_mhyp_idx(self, idx: int):
         """Updates the rule hypothesis index"""

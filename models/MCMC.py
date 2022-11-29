@@ -21,10 +21,18 @@ class MCMC:
         """Returns a boolean corresponding whether to accept or reject
         the new sample
         """
+
+        ## If the new sample has a higher joint probability than the old
+        ## sample, automatically accept the new sample
         if posterior_new > posterior_old:
             return True
+
+        ## If both the new and old sample have a joint probability of 0,
+        ## automatically accept the new sample
         elif posterior_new == 0 and posterior_old == 0:
             return True
+
+        ## Otherwise, sample based on the ratio of the two joint probabilities
         else:
             return np.random.uniform(0, 1) < (posterior_new / posterior_old)
 
@@ -55,7 +63,7 @@ class MCMC:
 
                 ## Loop for mh_iterations
                 for mh_iteration in range(mh_iterations):
-                    
+
                     ## Sample a new contextual UR
                     cxt_ur_new, cxt_pr_new = G.L.sample_cxt_ur(clx)
                     likelihood_new = G.compute_likelihood(clx, G.levenshtein)
@@ -75,7 +83,7 @@ class MCMC:
 
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
-                        for lx, cxt_u_old, cxt_p_old in zip(clx, cxt_ur_old, cxt_pr_old): 
+                        for lx, cxt_u_old, cxt_p_old in zip(clx, cxt_ur_old, cxt_pr_old):
                             G.L.set_ur(lx, clx, cxt_u_old, cxt_p_old)
 
                     ## Otherwise, update the new hypothesis
@@ -155,8 +163,13 @@ class MCMC:
     @staticmethod
     def burn_in(sampled_grammars: list, burn_in=2, steps=20):
         """Burns in the sampled grammars by the specified amount"""
+
+        ## Get the number of sampled grammars
         nsampled_grammars = len(sampled_grammars)
+
+        ## Get the number of samples to burn in
         burn_in_idx = int(nsampled_grammars / burn_in)
+
         return sampled_grammars[burn_in_idx::steps]
 
     @staticmethod
@@ -169,15 +182,22 @@ class MCMC:
 
         ## Populate dictionaries
         for grammar in tqdm(burned_in):
+
+            ## Retrieve the information from the grammar
             clxs, mnames, urs, pred_srs, obs_srs = grammar.export()
-            clxs = [":".join(cxs) for cxs in clxs]
+
+            ## Count each predicted SR for each clx
             for clx, pred_sr in zip(clxs, pred_srs):
                 pred[clx][pred_sr] = pred[clx].get(pred_sr, 0) + 1
+
+            ## Format the strings of all the exported information
             clxs = ".".join(clxs)
             mnames = ".".join(mnames)
             urs = ".".join(urs)
             pred_srs = ".".join(pred_srs)
             obs_srs = ".".join(obs_srs)
+
+            ## Count the number of each grammar
             fgrammar = (clxs, mnames, urs, pred_srs, obs_srs)
             post[fgrammar] = post.get(fgrammar, 0) + 1
 
@@ -190,4 +210,5 @@ class MCMC:
             }
             for clx in pred
         }
+
         return post, pred
