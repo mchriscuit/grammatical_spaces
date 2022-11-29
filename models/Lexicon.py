@@ -1,6 +1,6 @@
 import numpy as np
 import re
-from copy import deepcopy
+from copy import copy, deepcopy
 from optim.Inventory import Inventory
 from optim.Distributions import Binomial, Bernoulli, Uniform, Distance
 
@@ -76,6 +76,7 @@ class Lexicon(Inventory):
         ## Initialize a new class object
         cls = self.__class__
         cp = cls.__new__(cls)
+        cp.__dict__.update(self.__dict__)
         memo[id(self)] = cp
 
         ## Create deep copies of the lx2ur and lx2pr attributes

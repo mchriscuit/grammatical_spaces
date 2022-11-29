@@ -975,7 +975,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_2_genexpr;
 struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_3_genexpr;
 struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_4_regex_apply;
 
-/* "models/Phonology.py":92
+/* "models/Phonology.py":90
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def configure_mappings(self):             # <<<<<<<<<<<<<<
@@ -990,7 +990,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct__configure_mappings {
 };
 
 
-/* "models/Phonology.py":141
+/* "models/Phonology.py":139
  *         return seq_config
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -1006,7 +1006,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_1_regex_mappings {
 };
 
 
-/* "models/Phonology.py":148
+/* "models/Phonology.py":146
  *             x = np.arange(len(cxt_token_configs))
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)             # <<<<<<<<<<<<<<
@@ -1023,7 +1023,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_2_genexpr {
 };
 
 
-/* "models/Phonology.py":155
+/* "models/Phonology.py":153
  *             tgt_regex = self.seq_config2list(tgt_token_configs)
  *             tgt_regex = [
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)             # <<<<<<<<<<<<<<
@@ -1040,7 +1040,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_3_genexpr {
 };
 
 
-/* "models/Phonology.py":163
+/* "models/Phonology.py":161
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -1579,16 +1579,6 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object);
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
-/* Print.proto */
-static int __Pyx_Print(PyObject*, PyObject *, int);
-#if CYTHON_COMPILING_IN_PYPY || PY_MAJOR_VERSION >= 3
-static PyObject* __pyx_print = 0;
-static PyObject* __pyx_print_kwargs = 0;
-#endif
-
-/* PrintOne.proto */
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o);
-
 /* GCCDiagnostics.proto */
 #if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
 #define __Pyx_HAS_GCC_DIAGNOSTIC
@@ -1745,7 +1735,6 @@ int __pyx_module_is_main_optim__Phonology = 0;
 /* Implementation of 'optim.Phonology' */
 static PyObject *__pyx_builtin_super;
 static PyObject *__pyx_builtin_enumerate;
-static PyObject *__pyx_builtin_id;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_zip;
 static PyObject *__pyx_builtin_map;
@@ -1759,7 +1748,6 @@ static const char __pyx_k_OT[] = "OT";
 static const char __pyx_k__2[] = ":";
 static const char __pyx_k__9[] = "_";
 static const char __pyx_k_cp[] = "cp";
-static const char __pyx_k_id[] = "id";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_re[] = "re";
 static const char __pyx_k_tf[] = "tf";
@@ -1771,7 +1759,6 @@ static const char __pyx_k__13[] = "";
 static const char __pyx_k_cls[] = "cls";
 static const char __pyx_k_cxt[] = "cxt";
 static const char __pyx_k_doc[] = "__doc__";
-static const char __pyx_k_end[] = "end";
 static const char __pyx_k_idx[] = "idx";
 static const char __pyx_k_int[] = "int";
 static const char __pyx_k_map[] = "map";
@@ -1786,7 +1773,6 @@ static const char __pyx_k_zip[] = "zip";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_copy[] = "copy";
 static const char __pyx_k_dict[] = "__dict__";
-static const char __pyx_k_file[] = "file";
 static const char __pyx_k_idxs[] = "idxs";
 static const char __pyx_k_init[] = "__init__";
 static const char __pyx_k_join[] = "join";
@@ -1812,7 +1798,6 @@ static const char __pyx_k_mhyps[] = "_mhyps";
 static const char __pyx_k_mname[] = "mname";
 static const char __pyx_k_nms_2[] = "nms";
 static const char __pyx_k_numpy[] = "numpy";
-static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_split[] = "split";
 static const char __pyx_k_str_2[] = "str";
@@ -1998,11 +1983,9 @@ static PyObject *__pyx_n_s_default_rng;
 static PyObject *__pyx_n_s_dict;
 static PyObject *__pyx_n_u_dict_2;
 static PyObject *__pyx_n_s_doc;
-static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_expand;
 static PyObject *__pyx_n_s_feats;
-static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_generate_hypotheses;
 static PyObject *__pyx_n_s_generate_seq_config;
 static PyObject *__pyx_n_s_genexpr;
@@ -2011,7 +1994,6 @@ static PyObject *__pyx_n_s_get_compatible_tokens;
 static PyObject *__pyx_n_s_get_current_mhyp;
 static PyObject *__pyx_n_s_group;
 static PyObject *__pyx_n_s_i;
-static PyObject *__pyx_n_s_id;
 static PyObject *__pyx_n_s_idx;
 static PyObject *__pyx_n_s_idxs;
 static PyObject *__pyx_n_s_import;
@@ -2058,7 +2040,6 @@ static PyObject *__pyx_n_s_optim_Inventory;
 static PyObject *__pyx_n_s_optim_Phonology;
 static PyObject *__pyx_n_s_permutations;
 static PyObject *__pyx_n_s_prepare;
-static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_qualname;
 static PyObject *__pyx_n_s_random;
 static PyObject *__pyx_n_s_range;
@@ -2109,7 +2090,7 @@ static PyObject *__pyx_n_s_y;
 static PyObject *__pyx_n_s_zip;
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_mnames, PyObject *__pyx_v_mdefs, PyObject *__pyx_v_tokens, PyObject *__pyx_v_feats, PyObject *__pyx_v_configs); /* proto */
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo); /* proto */
+static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_memo); /* proto */
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_mhyp); /* proto */
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE_8update_mhyp_idx(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_idx); /* proto */
 static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
@@ -2904,7 +2885,7 @@ static char __pyx_doc_5optim_9Phonology_3SPE_4__deepcopy__[] = "Returns a shallo
 static PyMethodDef __pyx_mdef_5optim_9Phonology_3SPE_5__deepcopy__ = {"__deepcopy__", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_9Phonology_3SPE_5__deepcopy__, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_9Phonology_3SPE_4__deepcopy__};
 static PyObject *__pyx_pw_5optim_9Phonology_3SPE_5__deepcopy__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
-  PyObject *__pyx_v_memo = 0;
+  CYTHON_UNUSED PyObject *__pyx_v_memo = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2964,7 +2945,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_5__deepcopy__(PyObject *__pyx_s
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_memo) {
+static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_memo) {
   PyObject *__pyx_v_cls = NULL;
   PyObject *__pyx_v_cp = NULL;
   PyObject *__pyx_r = NULL;
@@ -2972,6 +2953,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2982,7 +2964,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
  *         ## Initialize a new class object
  *         cls = self.__class__             # <<<<<<<<<<<<<<
  *         cp = cls.__new__(cls)
- *         memo[id(self)] = cp
+ *         cp.__dict__.update(self.__dict__)
  */
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_class); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2993,7 +2975,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
  *         ## Initialize a new class object
  *         cls = self.__class__
  *         cp = cls.__new__(cls)             # <<<<<<<<<<<<<<
- *         memo[id(self)] = cp
+ *         cp.__dict__.update(self.__dict__)
  * 
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cls, __pyx_n_s_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
@@ -3019,44 +3001,37 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   /* "models/Phonology.py":66
  *         cls = self.__class__
  *         cp = cls.__new__(cls)
- *         memo[id(self)] = cp             # <<<<<<<<<<<<<<
- * 
- *         print(cp.mhyps())
- */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_id, __pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyObject_SetItem(__pyx_v_memo, __pyx_t_1, __pyx_v_cp) < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "models/Phonology.py":68
- *         memo[id(self)] = cp
- * 
- *         print(cp.mhyps())             # <<<<<<<<<<<<<<
+ *         cp.__dict__.update(self.__dict__)             # <<<<<<<<<<<<<<
  * 
  *         return  cp
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cp, __pyx_n_s_mhyps_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_cp, __pyx_n_s_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_dict); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_4);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
     }
   }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 68, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":70
- *         print(cp.mhyps())
+  /* "models/Phonology.py":68
+ *         cp.__dict__.update(self.__dict__)
  * 
  *         return  cp             # <<<<<<<<<<<<<<
  * 
@@ -3080,6 +3055,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("optim.Phonology.SPE.__deepcopy__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3090,7 +3066,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Phonology.py":74
+/* "models/Phonology.py":72
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
@@ -3134,11 +3110,11 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_7update_mhyp(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mhyp)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_mhyp", 1, 2, 2, 1); __PYX_ERR(0, 74, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_mhyp", 1, 2, 2, 1); __PYX_ERR(0, 72, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_mhyp") < 0)) __PYX_ERR(0, 74, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_mhyp") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3151,13 +3127,13 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_7update_mhyp(PyObject *__pyx_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_mhyp", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 74, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_mhyp", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 72, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.update_mhyp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_mhyp), (&PyTuple_Type), 1, "mhyp", 1))) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_mhyp), (&PyTuple_Type), 1, "mhyp", 1))) __PYX_ERR(0, 72, __pyx_L1_error)
   __pyx_r = __pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(__pyx_self, __pyx_v_self, __pyx_v_mhyp);
 
   /* function exit code */
@@ -3179,22 +3155,22 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_mhyp", 0);
 
-  /* "models/Phonology.py":76
+  /* "models/Phonology.py":74
  *     def update_mhyp(self, mhyp: tuple):
  *         """Updates the rule hypothesis to the index corresponding to the name"""
  *         self._mhyp_idx = self._mhyp2idx[mhyp]             # <<<<<<<<<<<<<<
  * 
  *     def update_mhyp_idx(self, idx: int):
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyp2idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyp2idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mhyp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mhyp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_t_2) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_t_2) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":74
+  /* "models/Phonology.py":72
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
@@ -3216,7 +3192,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "models/Phonology.py":78
+/* "models/Phonology.py":76
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
@@ -3260,11 +3236,11 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_9update_mhyp_idx(PyObject *__py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_mhyp_idx", 1, 2, 2, 1); __PYX_ERR(0, 78, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_mhyp_idx", 1, 2, 2, 1); __PYX_ERR(0, 76, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_mhyp_idx") < 0)) __PYX_ERR(0, 78, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_mhyp_idx") < 0)) __PYX_ERR(0, 76, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3277,7 +3253,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_9update_mhyp_idx(PyObject *__py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_mhyp_idx", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 78, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_mhyp_idx", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 76, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.update_mhyp_idx", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3298,16 +3274,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_8update_mhyp_idx(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_mhyp_idx", 0);
 
-  /* "models/Phonology.py":80
+  /* "models/Phonology.py":78
  *     def update_mhyp_idx(self, idx: int):
  *         """Updates the rule hypothesis index"""
  *         self._mhyp_idx = idx             # <<<<<<<<<<<<<<
  * 
  *     def generate_hypotheses(self):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_v_idx) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_v_idx) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
 
-  /* "models/Phonology.py":78
+  /* "models/Phonology.py":76
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
@@ -3327,7 +3303,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_8update_mhyp_idx(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":82
+/* "models/Phonology.py":80
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
@@ -3369,14 +3345,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("generate_hypotheses", 0);
 
-  /* "models/Phonology.py":87
+  /* "models/Phonology.py":85
  *         as the initial rule hypothesis
  *         """
  *         for n in range(self.nms() + 1):             # <<<<<<<<<<<<<<
  *             self._mhyps += permutations(self.mnames(), n)
  *         self._nmhyps = len(self.mhyps())
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nms_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nms_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3390,22 +3366,22 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -3413,17 +3389,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 87, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 87, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -3433,7 +3409,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 87, __pyx_L1_error)
+          else __PYX_ERR(0, 85, __pyx_L1_error)
         }
         break;
       }
@@ -3442,18 +3418,18 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
     __Pyx_XDECREF_SET(__pyx_v_n, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":88
+    /* "models/Phonology.py":86
  *         """
  *         for n in range(self.nms() + 1):
  *             self._mhyps += permutations(self.mnames(), n)             # <<<<<<<<<<<<<<
  *         self._nmhyps = len(self.mhyps())
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_permutations); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_permutations); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mnames); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mnames); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_8))) {
@@ -3467,7 +3443,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
     }
     __pyx_t_7 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_8);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 88, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_8 = NULL;
@@ -3485,7 +3461,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_7, __pyx_v_n};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -3494,14 +3470,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_7, __pyx_v_n};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_8) {
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -3512,19 +3488,19 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
       __Pyx_GIVEREF(__pyx_v_n);
       PyTuple_SET_ITEM(__pyx_t_9, 1+__pyx_t_10, __pyx_v_n);
       __pyx_t_7 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_6 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyps, __pyx_t_6) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyps, __pyx_t_6) < 0) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":87
+    /* "models/Phonology.py":85
  *         as the initial rule hypothesis
  *         """
  *         for n in range(self.nms() + 1):             # <<<<<<<<<<<<<<
@@ -3534,14 +3510,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":89
+  /* "models/Phonology.py":87
  *         for n in range(self.nms() + 1):
  *             self._mhyps += permutations(self.mnames(), n)
  *         self._nmhyps = len(self.mhyps())             # <<<<<<<<<<<<<<
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -3555,29 +3531,29 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   }
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_4 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps, __pyx_t_2) < 0) __PYX_ERR(0, 89, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps, __pyx_t_2) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":90
+  /* "models/Phonology.py":88
  *             self._mhyps += permutations(self.mnames(), n)
  *         self._nmhyps = len(self.mhyps())
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())             # <<<<<<<<<<<<<<
  * 
  *     def configure_mappings(self):
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_rng); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_rng); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_choice); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_choice); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_9 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -3591,7 +3567,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   }
   __pyx_t_6 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -3607,13 +3583,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_1, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_t_2) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_t_2) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":82
+  /* "models/Phonology.py":80
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
@@ -3641,7 +3617,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   return __pyx_r;
 }
 
-/* "models/Phonology.py":92
+/* "models/Phonology.py":90
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def configure_mappings(self):             # <<<<<<<<<<<<<<
@@ -3664,7 +3640,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_13configure_mappings(PyObject *
   return __pyx_r;
 }
 
-/* "models/Phonology.py":95
+/* "models/Phonology.py":93
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3698,7 +3674,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_split_str_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split_str_seq", 0);
 
-  /* "models/Phonology.py":99
+  /* "models/Phonology.py":97
  *             list of string natural classes
  *             """
  *             return str_seq_str_nat_classes.split(".")             # <<<<<<<<<<<<<<
@@ -3706,7 +3682,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_split_str_
  *         def split_str_nat_class(str_nat_classes: np.str_):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_str_seq_str_nat_classes, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_str_seq_str_nat_classes, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3720,14 +3696,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_split_str_
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_kp_s_) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_s_);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":95
+  /* "models/Phonology.py":93
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3748,7 +3724,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_split_str_
   return __pyx_r;
 }
 
-/* "models/Phonology.py":101
+/* "models/Phonology.py":99
  *             return str_seq_str_nat_classes.split(".")
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3782,7 +3758,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_2split_str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split_str_nat_class", 0);
 
-  /* "models/Phonology.py":105
+  /* "models/Phonology.py":103
  *             into a list of string features
  *             """
  *             return str_nat_classes.split(":")             # <<<<<<<<<<<<<<
@@ -3790,7 +3766,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_2split_str
  *         def generate_seq_config(seq_str_nat_classes: list):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_str_nat_classes, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_str_nat_classes, __pyx_n_s_split); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3804,14 +3780,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_2split_str
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_kp_s__2) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_s__2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":101
+  /* "models/Phonology.py":99
  *             return str_seq_str_nat_classes.split(".")
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3832,7 +3808,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_2split_str
   return __pyx_r;
 }
 
-/* "models/Phonology.py":107
+/* "models/Phonology.py":105
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -3851,7 +3827,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_18configure_mappings_5generate_
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("generate_seq_config (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_seq_str_nat_classes), (&PyList_Type), 1, "seq_str_nat_classes", 1))) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_seq_str_nat_classes), (&PyList_Type), 1, "seq_str_nat_classes", 1))) __PYX_ERR(0, 105, __pyx_L1_error)
   __pyx_r = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_seq_config(__pyx_self, ((PyObject*)__pyx_v_seq_str_nat_classes));
 
   /* function exit code */
@@ -3885,19 +3861,19 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
   __pyx_outer_scope = (struct __pyx_obj_5optim_9Phonology___pyx_scope_struct__configure_mappings *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "models/Phonology.py":113
+  /* "models/Phonology.py":111
  *             boundaries are represented as a vector of 0s
  *             """
  *             seq_config = []             # <<<<<<<<<<<<<<
  *             for str_nat_classes in seq_str_nat_classes:
  *                 str_feats = split_str_nat_class(str_nat_classes)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_seq_config = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":114
+  /* "models/Phonology.py":112
  *             """
  *             seq_config = []
  *             for str_nat_classes in seq_str_nat_classes:             # <<<<<<<<<<<<<<
@@ -3906,42 +3882,42 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
  */
   if (unlikely(__pyx_v_seq_str_nat_classes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 114, __pyx_L1_error)
+    __PYX_ERR(0, 112, __pyx_L1_error)
   }
   __pyx_t_1 = __pyx_v_seq_str_nat_classes; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_3); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_str_nat_classes, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":115
+    /* "models/Phonology.py":113
  *             seq_config = []
  *             for str_nat_classes in seq_str_nat_classes:
  *                 str_feats = split_str_nat_class(str_nat_classes)             # <<<<<<<<<<<<<<
  *                 config = self.str_feats2config(str_feats)
  *                 seq_config.append(config)
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_v_split_str_nat_class)) { __Pyx_RaiseClosureNameError("split_str_nat_class"); __PYX_ERR(0, 115, __pyx_L1_error) }
-    __pyx_t_3 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_2split_str_nat_class(__pyx_cur_scope->__pyx_v_split_str_nat_class, __pyx_v_str_nat_classes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_split_str_nat_class)) { __Pyx_RaiseClosureNameError("split_str_nat_class"); __PYX_ERR(0, 113, __pyx_L1_error) }
+    __pyx_t_3 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_2split_str_nat_class(__pyx_cur_scope->__pyx_v_split_str_nat_class, __pyx_v_str_nat_classes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF_SET(__pyx_v_str_feats, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":116
+    /* "models/Phonology.py":114
  *             for str_nat_classes in seq_str_nat_classes:
  *                 str_feats = split_str_nat_class(str_nat_classes)
  *                 config = self.str_feats2config(str_feats)             # <<<<<<<<<<<<<<
  *                 seq_config.append(config)
  *             return np.array(seq_config)
  */
-    if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 116, __pyx_L1_error) }
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_str_feats2config); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 114, __pyx_L1_error) }
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_str_feats2config); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3955,22 +3931,22 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_str_feats) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_str_feats);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF_SET(__pyx_v_config, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":117
+    /* "models/Phonology.py":115
  *                 str_feats = split_str_nat_class(str_nat_classes)
  *                 config = self.str_feats2config(str_feats)
  *                 seq_config.append(config)             # <<<<<<<<<<<<<<
  *             return np.array(seq_config)
  * 
  */
-    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_seq_config, __pyx_v_config); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyList_Append(__pyx_v_seq_config, __pyx_v_config); if (unlikely(__pyx_t_6 == ((int)-1))) __PYX_ERR(0, 115, __pyx_L1_error)
 
-    /* "models/Phonology.py":114
+    /* "models/Phonology.py":112
  *             """
  *             seq_config = []
  *             for str_nat_classes in seq_str_nat_classes:             # <<<<<<<<<<<<<<
@@ -3980,7 +3956,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":118
+  /* "models/Phonology.py":116
  *                 config = self.str_feats2config(str_feats)
  *                 seq_config.append(config)
  *             return np.array(seq_config)             # <<<<<<<<<<<<<<
@@ -3988,9 +3964,9 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -4005,14 +3981,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_v_seq_config) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_seq_config);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":107
+  /* "models/Phonology.py":105
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -4038,7 +4014,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_
   return __pyx_r;
 }
 
-/* "models/Phonology.py":121
+/* "models/Phonology.py":119
  * 
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)             # <<<<<<<<<<<<<<
@@ -4073,8 +4049,8 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __pyx_outer_scope = (struct __pyx_obj_5optim_9Phonology___pyx_scope_struct__configure_mappings *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_split_str_seq)) { __Pyx_RaiseClosureNameError("split_str_seq"); __PYX_ERR(0, 121, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_split_str_seq(__pyx_cur_scope->__pyx_v_split_str_seq, __pyx_v_str_seq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_split_str_seq)) { __Pyx_RaiseClosureNameError("split_str_seq"); __PYX_ERR(0, 119, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_split_str_seq(__pyx_cur_scope->__pyx_v_split_str_seq, __pyx_v_str_seq); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -4091,7 +4067,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   return __pyx_r;
 }
 
-/* "models/Phonology.py":92
+/* "models/Phonology.py":90
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def configure_mappings(self):             # <<<<<<<<<<<<<<
@@ -4129,7 +4105,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_9Phonology___pyx_scope_struct__configure_mappings *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 92, __pyx_L1_error)
+    __PYX_ERR(0, 90, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -4137,23 +4113,23 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
 
-  /* "models/Phonology.py":95
+  /* "models/Phonology.py":93
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
  *             """Splits string sequence of string natural classes into a
  *             list of string natural classes
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_str_seq_str_nat_classes, __pyx_t_3) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_str_seq_str_nat_classes, __pyx_t_3) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_1split_str_seq, 0, __pyx_n_s_SPE_configure_mappings_locals_sp, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_1split_str_seq, 0, __pyx_n_s_SPE_configure_mappings_locals_sp, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__4)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4161,23 +4137,23 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   __pyx_cur_scope->__pyx_v_split_str_seq = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "models/Phonology.py":101
+  /* "models/Phonology.py":99
  *             return str_seq_str_nat_classes.split(".")
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
  *             """Splits string sequence of features representing a natural class
  *             into a list of string features
  */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_str); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_str_nat_classes, __pyx_t_2) < 0) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_str_nat_classes, __pyx_t_2) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_3split_str_nat_class, 0, __pyx_n_s_SPE_configure_mappings_locals_sp_2, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_3split_str_nat_class, 0, __pyx_n_s_SPE_configure_mappings_locals_sp_2, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_3);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4185,31 +4161,31 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   __pyx_cur_scope->__pyx_v_split_str_nat_class = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":107
+  /* "models/Phonology.py":105
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
  *             """Takes in a sequence of string natural class(es) and returns its
  *             feature configuration. If there is a ':' delimiter between
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_seq_str_nat_classes, __pyx_n_u_list) < 0) __PYX_ERR(0, 107, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_5generate_seq_config, 0, __pyx_n_s_SPE_configure_mappings_locals_ge, ((PyObject*)__pyx_cur_scope), __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_seq_str_nat_classes, __pyx_n_u_list) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_5generate_seq_config, 0, __pyx_n_s_SPE_configure_mappings_locals_ge, ((PyObject*)__pyx_cur_scope), __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__8)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_generate_seq_config = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "models/Phonology.py":120
+  /* "models/Phonology.py":118
  *             return np.array(seq_config)
  * 
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):             # <<<<<<<<<<<<<<
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
  *             idx = cxt.index("_")
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mnames); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mnames); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4223,10 +4199,10 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   }
   __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mdefs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mdefs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -4240,10 +4216,10 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   }
   __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -4251,16 +4227,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
     __pyx_t_1 = __pyx_t_2; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 118, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
@@ -4268,17 +4244,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 118, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 118, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -4288,7 +4264,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 120, __pyx_L1_error)
+          else __PYX_ERR(0, 118, __pyx_L1_error)
         }
         break;
       }
@@ -4300,7 +4276,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 120, __pyx_L1_error)
+        __PYX_ERR(0, 118, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -4313,15 +4289,15 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_4);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
+      __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 118, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_7)->tp_iternext;
@@ -4329,7 +4305,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       __Pyx_GOTREF(__pyx_t_3);
       index = 1; __pyx_t_4 = __pyx_t_8(__pyx_t_7); if (unlikely(!__pyx_t_4)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_7), 2) < 0) __PYX_ERR(0, 118, __pyx_L1_error)
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       goto __pyx_L6_unpacking_done;
@@ -4337,7 +4313,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 120, __pyx_L1_error)
+      __PYX_ERR(0, 118, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_mname, __pyx_t_3);
@@ -4345,16 +4321,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
     __Pyx_XDECREF_SET(__pyx_v_rdef, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Phonology.py":121
+    /* "models/Phonology.py":119
  * 
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)             # <<<<<<<<<<<<<<
  *             idx = cxt.index("_")
  *             cxt[idx : idx + 1] = src
  */
-    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_6lambda, 0, __pyx_n_s_SPE_configure_mappings_locals_la, ((PyObject*)__pyx_cur_scope), __pyx_n_s_optim_Phonology, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_18configure_mappings_6lambda, 0, __pyx_n_s_SPE_configure_mappings_locals_la, ((PyObject*)__pyx_cur_scope), __pyx_n_s_optim_Phonology, __pyx_d, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -4362,7 +4338,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
     __Pyx_GIVEREF(__pyx_v_rdef);
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_rdef);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_map, __pyx_t_4, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -4371,7 +4347,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 121, __pyx_L1_error)
+        __PYX_ERR(0, 119, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -4387,17 +4363,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       __Pyx_INCREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_t_7);
       #else
-      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_9 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_9 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 119, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -4407,7 +4383,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       __Pyx_GOTREF(__pyx_t_3);
       index = 2; __pyx_t_7 = __pyx_t_8(__pyx_t_9); if (unlikely(!__pyx_t_7)) goto __pyx_L7_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_9), 3) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_8(__pyx_t_9), 3) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
       __pyx_t_8 = NULL;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       goto __pyx_L8_unpacking_done;
@@ -4415,7 +4391,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_8 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 121, __pyx_L1_error)
+      __PYX_ERR(0, 119, __pyx_L1_error)
       __pyx_L8_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_src, __pyx_t_4);
@@ -4425,14 +4401,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
     __Pyx_XDECREF_SET(__pyx_v_cxt, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":122
+    /* "models/Phonology.py":120
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
  *             idx = cxt.index("_")             # <<<<<<<<<<<<<<
  *             cxt[idx : idx + 1] = src
  *             tgt_config = generate_seq_config(tgt)
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_cxt, __pyx_n_s_index); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_cxt, __pyx_n_s_index); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -4446,58 +4422,58 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
     }
     __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_3, __pyx_n_s__9) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_n_s__9);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":123
+    /* "models/Phonology.py":121
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
  *             idx = cxt.index("_")
  *             cxt[idx : idx + 1] = src             # <<<<<<<<<<<<<<
  *             tgt_config = generate_seq_config(tgt)
  *             cxt_config = generate_seq_config(cxt)
  */
-    __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_idx, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_AddObjC(__pyx_v_idx, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (__Pyx_PyObject_SetSlice(__pyx_v_cxt, __pyx_v_src, 0, 0, &__pyx_v_idx, &__pyx_t_2, NULL, 0, 0, 1) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
+    if (__Pyx_PyObject_SetSlice(__pyx_v_cxt, __pyx_v_src, 0, 0, &__pyx_v_idx, &__pyx_t_2, NULL, 0, 0, 1) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":124
+    /* "models/Phonology.py":122
  *             idx = cxt.index("_")
  *             cxt[idx : idx + 1] = src
  *             tgt_config = generate_seq_config(tgt)             # <<<<<<<<<<<<<<
  *             cxt_config = generate_seq_config(cxt)
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
  */
-    if (!(likely(PyList_CheckExact(__pyx_v_tgt))||((__pyx_v_tgt) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_tgt)->tp_name), 0))) __PYX_ERR(0, 124, __pyx_L1_error)
-    __pyx_t_2 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_seq_config(__pyx_v_generate_seq_config, ((PyObject*)__pyx_v_tgt)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_v_tgt))||((__pyx_v_tgt) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_tgt)->tp_name), 0))) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_2 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_seq_config(__pyx_v_generate_seq_config, ((PyObject*)__pyx_v_tgt)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_tgt_config, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":125
+    /* "models/Phonology.py":123
  *             cxt[idx : idx + 1] = src
  *             tgt_config = generate_seq_config(tgt)
  *             cxt_config = generate_seq_config(cxt)             # <<<<<<<<<<<<<<
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
  * 
  */
-    if (!(likely(PyList_CheckExact(__pyx_v_cxt))||((__pyx_v_cxt) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_cxt)->tp_name), 0))) __PYX_ERR(0, 125, __pyx_L1_error)
-    __pyx_t_2 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_seq_config(__pyx_v_generate_seq_config, ((PyObject*)__pyx_v_cxt)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
+    if (!(likely(PyList_CheckExact(__pyx_v_cxt))||((__pyx_v_cxt) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_cxt)->tp_name), 0))) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_2 = __pyx_pf_5optim_9Phonology_3SPE_18configure_mappings_4generate_seq_config(__pyx_v_generate_seq_config, ((PyObject*)__pyx_v_cxt)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_XDECREF_SET(__pyx_v_cxt_config, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":126
+    /* "models/Phonology.py":124
  *             tgt_config = generate_seq_config(tgt)
  *             cxt_config = generate_seq_config(cxt)
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)             # <<<<<<<<<<<<<<
  * 
  *     def config_apply(self, seq_config: list):
  */
-    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_v_cxt_config);
     __Pyx_GIVEREF(__pyx_v_cxt_config);
@@ -4508,13 +4484,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
     __Pyx_INCREF(__pyx_v_tgt_config);
     __Pyx_GIVEREF(__pyx_v_tgt_config);
     PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_tgt_config);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mname2mconfig); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 126, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mname2mconfig); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyObject_SetItem(__pyx_t_7, __pyx_v_mname, __pyx_t_2) < 0)) __PYX_ERR(0, 126, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_7, __pyx_v_mname, __pyx_t_2) < 0)) __PYX_ERR(0, 124, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":120
+    /* "models/Phonology.py":118
  *             return np.array(seq_config)
  * 
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):             # <<<<<<<<<<<<<<
@@ -4524,7 +4500,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":92
+  /* "models/Phonology.py":90
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def configure_mappings(self):             # <<<<<<<<<<<<<<
@@ -4560,7 +4536,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12configure_mappings(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "models/Phonology.py":128
+/* "models/Phonology.py":126
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
  * 
  *     def config_apply(self, seq_config: list):             # <<<<<<<<<<<<<<
@@ -4604,11 +4580,11 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_15config_apply(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_seq_config)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("config_apply", 1, 2, 2, 1); __PYX_ERR(0, 128, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("config_apply", 1, 2, 2, 1); __PYX_ERR(0, 126, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "config_apply") < 0)) __PYX_ERR(0, 128, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "config_apply") < 0)) __PYX_ERR(0, 126, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4621,13 +4597,13 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_15config_apply(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("config_apply", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 128, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("config_apply", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 126, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.config_apply", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_seq_config), (&PyList_Type), 1, "seq_config", 1))) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_seq_config), (&PyList_Type), 1, "seq_config", 1))) __PYX_ERR(0, 126, __pyx_L1_error)
   __pyx_r = __pyx_pf_5optim_9Phonology_3SPE_14config_apply(__pyx_self, __pyx_v_self, __pyx_v_seq_config);
 
   /* function exit code */
@@ -4666,14 +4642,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
   __Pyx_RefNannySetupContext("config_apply", 0);
   __Pyx_INCREF(__pyx_v_seq_config);
 
-  /* "models/Phonology.py":132
+  /* "models/Phonology.py":130
  *         configurations corresponding to some sequence of tokens
  *         """
  *         mhyp = self.get_current_mhyp()             # <<<<<<<<<<<<<<
  *         for mname in mhyp:
  *             seq_cxt_config, src_idx, tgt_config = self.mname2mconfig(mname)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_current_mhyp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_current_mhyp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4687,13 +4663,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_mhyp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":133
+  /* "models/Phonology.py":131
  *         """
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:             # <<<<<<<<<<<<<<
@@ -4704,26 +4680,26 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     __pyx_t_1 = __pyx_v_mhyp; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_mhyp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_mhyp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 131, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 131, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -4733,7 +4709,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 133, __pyx_L1_error)
+          else __PYX_ERR(0, 131, __pyx_L1_error)
         }
         break;
       }
@@ -4742,14 +4718,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_mname, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":134
+    /* "models/Phonology.py":132
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:
  *             seq_cxt_config, src_idx, tgt_config = self.mname2mconfig(mname)             # <<<<<<<<<<<<<<
  *             idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)
  *             idxs += src_idx
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -4763,7 +4739,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     }
     __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_6, __pyx_v_mname) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_mname);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -4772,7 +4748,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 134, __pyx_L1_error)
+        __PYX_ERR(0, 132, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -4788,17 +4764,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_7);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -4808,7 +4784,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       __Pyx_GOTREF(__pyx_t_6);
       index = 2; __pyx_t_7 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_7)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 134, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L6_unpacking_done;
@@ -4816,7 +4792,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 134, __pyx_L1_error)
+      __PYX_ERR(0, 132, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_seq_cxt_config, __pyx_t_3);
@@ -4826,14 +4802,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_tgt_config, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":135
+    /* "models/Phonology.py":133
  *         for mname in mhyp:
  *             seq_cxt_config, src_idx, tgt_config = self.mname2mconfig(mname)
  *             idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)             # <<<<<<<<<<<<<<
  *             idxs += src_idx
  *             if len(idxs) != 0:
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_compatible_idxs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_compatible_idxs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_6 = NULL;
     __pyx_t_10 = 0;
@@ -4850,7 +4826,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_seq_config, __pyx_v_seq_cxt_config};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -4858,13 +4834,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_seq_config, __pyx_v_seq_cxt_config};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 2+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(2+__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -4875,7 +4851,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       __Pyx_INCREF(__pyx_v_seq_cxt_config);
       __Pyx_GIVEREF(__pyx_v_seq_cxt_config);
       PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_10, __pyx_v_seq_cxt_config);
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -4883,37 +4859,37 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_idxs, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":136
+    /* "models/Phonology.py":134
  *             seq_cxt_config, src_idx, tgt_config = self.mname2mconfig(mname)
  *             idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)
  *             idxs += src_idx             # <<<<<<<<<<<<<<
  *             if len(idxs) != 0:
  *                 seq_config = self.update_configs(seq_config, tgt_config, idxs)
  */
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_idxs, __pyx_v_src_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_idxs, __pyx_v_src_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF_SET(__pyx_v_idxs, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":137
+    /* "models/Phonology.py":135
  *             idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)
  *             idxs += src_idx
  *             if len(idxs) != 0:             # <<<<<<<<<<<<<<
  *                 seq_config = self.update_configs(seq_config, tgt_config, idxs)
  *         return seq_config
  */
-    __pyx_t_11 = PyObject_Length(__pyx_v_idxs); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_11 = PyObject_Length(__pyx_v_idxs); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
     __pyx_t_12 = ((__pyx_t_11 != 0) != 0);
     if (__pyx_t_12) {
 
-      /* "models/Phonology.py":138
+      /* "models/Phonology.py":136
  *             idxs += src_idx
  *             if len(idxs) != 0:
  *                 seq_config = self.update_configs(seq_config, tgt_config, idxs)             # <<<<<<<<<<<<<<
  *         return seq_config
  * 
  */
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_update_configs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_update_configs); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_3 = NULL;
       __pyx_t_10 = 0;
@@ -4930,7 +4906,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_seq_config, __pyx_v_tgt_config, __pyx_v_idxs};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
@@ -4938,13 +4914,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_seq_config, __pyx_v_tgt_config, __pyx_v_idxs};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         if (__pyx_t_3) {
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -4958,16 +4934,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
         __Pyx_INCREF(__pyx_v_idxs);
         __Pyx_GIVEREF(__pyx_v_idxs);
         PyTuple_SET_ITEM(__pyx_t_6, 2+__pyx_t_10, __pyx_v_idxs);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 138, __pyx_L1_error)
+      if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 136, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_seq_config, ((PyObject*)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "models/Phonology.py":137
+      /* "models/Phonology.py":135
  *             idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)
  *             idxs += src_idx
  *             if len(idxs) != 0:             # <<<<<<<<<<<<<<
@@ -4976,7 +4952,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
  */
     }
 
-    /* "models/Phonology.py":133
+    /* "models/Phonology.py":131
  *         """
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:             # <<<<<<<<<<<<<<
@@ -4986,7 +4962,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":139
+  /* "models/Phonology.py":137
  *             if len(idxs) != 0:
  *                 seq_config = self.update_configs(seq_config, tgt_config, idxs)
  *         return seq_config             # <<<<<<<<<<<<<<
@@ -4998,7 +4974,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
   __pyx_r = __pyx_v_seq_config;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":128
+  /* "models/Phonology.py":126
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
  * 
  *     def config_apply(self, seq_config: list):             # <<<<<<<<<<<<<<
@@ -5029,7 +5005,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14config_apply(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Phonology.py":141
+/* "models/Phonology.py":139
  *         return seq_config
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -5053,7 +5029,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_17regex_mappings(PyObject *__py
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":148
+/* "models/Phonology.py":146
  *             x = np.arange(len(cxt_token_configs))
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)             # <<<<<<<<<<<<<<
@@ -5073,7 +5049,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_genexpr(PyObje
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_2_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 148, __pyx_L1_error)
+    __PYX_ERR(0, 146, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -5081,7 +5057,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_genexpr(PyObje
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_SPE_regex_mappings_locals_genexp, __pyx_n_s_optim_Phonology); if (unlikely(!gen)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_SPE_regex_mappings_locals_genexp, __pyx_n_s_optim_Phonology); if (unlikely(!gen)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -5121,32 +5097,32 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 148, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex)) { __Pyx_RaiseClosureNameError("cxt_regex"); __PYX_ERR(0, 148, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex)) { __Pyx_RaiseClosureNameError("cxt_regex"); __PYX_ERR(0, 146, __pyx_L1_error) }
   if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex)) {
     __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_cxt_regex); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -5156,7 +5132,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 148, __pyx_L1_error)
+          else __PYX_ERR(0, 146, __pyx_L1_error)
         }
         break;
       }
@@ -5166,7 +5142,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_c, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = 0;
     __pyx_t_6 = 127;
@@ -5174,7 +5150,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
     __pyx_t_5 += 2;
     __Pyx_GIVEREF(__pyx_kp_u__10);
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_kp_u__10);
-    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_cur_scope->__pyx_v_c, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_cur_scope->__pyx_v_c, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_6 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) > __pyx_t_6) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_7) : __pyx_t_6;
     __pyx_t_5 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_7);
@@ -5185,7 +5161,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
     __pyx_t_5 += 2;
     __Pyx_GIVEREF(__pyx_kp_u__11);
     PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_kp_u__11);
-    __pyx_t_7 = __Pyx_PyUnicode_Join(__pyx_t_4, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyUnicode_Join(__pyx_t_4, 3, __pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_r = __pyx_t_7;
@@ -5206,7 +5182,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
     __Pyx_XGOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 148, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 146, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
@@ -5231,7 +5207,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator(__p
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":155
+/* "models/Phonology.py":153
  *             tgt_regex = self.seq_config2list(tgt_token_configs)
  *             tgt_regex = [
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)             # <<<<<<<<<<<<<<
@@ -5251,7 +5227,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_3genexpr(PyObj
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_3_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 155, __pyx_L1_error)
+    __PYX_ERR(0, 153, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -5259,7 +5235,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_3genexpr(PyObj
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_SPE_regex_mappings_locals_genexp, __pyx_n_s_optim_Phonology); if (unlikely(!gen)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_SPE_regex_mappings_locals_genexp, __pyx_n_s_optim_Phonology); if (unlikely(!gen)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -5299,32 +5275,32 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1(__
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 155, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_x)) { __Pyx_RaiseClosureNameError("x"); __PYX_ERR(0, 155, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 153, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_x)) { __Pyx_RaiseClosureNameError("x"); __PYX_ERR(0, 153, __pyx_L1_error) }
   if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_x)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_x)) {
     __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_x; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -5334,7 +5310,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1(__
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 155, __pyx_L1_error)
+          else __PYX_ERR(0, 153, __pyx_L1_error)
         }
         break;
       }
@@ -5344,23 +5320,23 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1(__
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_i, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_src_idx)) { __Pyx_RaiseClosureNameError("src_idx"); __PYX_ERR(0, 155, __pyx_L1_error) }
-    __pyx_t_5 = PyObject_RichCompare(__pyx_cur_scope->__pyx_v_i, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_src_idx, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 155, __pyx_L1_error)
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_src_idx)) { __Pyx_RaiseClosureNameError("src_idx"); __PYX_ERR(0, 153, __pyx_L1_error) }
+    __pyx_t_5 = PyObject_RichCompare(__pyx_cur_scope->__pyx_v_i, __pyx_cur_scope->__pyx_outer_scope->__pyx_v_src_idx, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_6) {
-      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_cur_scope->__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_cur_scope->__pyx_v_i, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__12, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_kp_u__12, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_4 = __pyx_t_5;
       __pyx_t_5 = 0;
     } else {
-      if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_tgt)) { __Pyx_RaiseClosureNameError("tgt"); __PYX_ERR(0, 155, __pyx_L1_error) }
+      if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_tgt)) { __Pyx_RaiseClosureNameError("tgt"); __PYX_ERR(0, 153, __pyx_L1_error) }
       __Pyx_INCREF(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_tgt);
       __pyx_t_4 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_tgt;
     }
@@ -5382,7 +5358,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1(__
     __Pyx_XGOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 155, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 153, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
@@ -5407,7 +5383,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator1(__
   return __pyx_r;
 }
 
-/* "models/Phonology.py":141
+/* "models/Phonology.py":139
  *         return seq_config
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -5456,19 +5432,19 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_1_regex_mappings *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 141, __pyx_L1_error)
+    __PYX_ERR(0, 139, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
 
-  /* "models/Phonology.py":143
+  /* "models/Phonology.py":141
  *     def regex_mappings(self):
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():             # <<<<<<<<<<<<<<
  *             cxt_config, src_idx, tgt_config = self._mname2mconfig[mname]
  *             cxt_token_configs = self.get_compatible_tokens(cxt_config)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mnames); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mnames); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -5482,16 +5458,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
     __pyx_t_2 = __pyx_t_1; __Pyx_INCREF(__pyx_t_2); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (;;) {
@@ -5499,17 +5475,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 141, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 141, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5519,7 +5495,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 143, __pyx_L1_error)
+          else __PYX_ERR(0, 141, __pyx_L1_error)
         }
         break;
       }
@@ -5528,16 +5504,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_mname, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":144
+    /* "models/Phonology.py":142
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():
  *             cxt_config, src_idx, tgt_config = self._mname2mconfig[mname]             # <<<<<<<<<<<<<<
  *             cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *             x = np.arange(len(cxt_token_configs))
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mname); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mname); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_3))) || (PyList_CheckExact(__pyx_t_3))) {
@@ -5546,7 +5522,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 144, __pyx_L1_error)
+        __PYX_ERR(0, 142, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5562,17 +5538,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_7);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 144, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 142, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -5582,7 +5558,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __Pyx_GOTREF(__pyx_t_6);
       index = 2; __pyx_t_7 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_7)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 144, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 142, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L6_unpacking_done;
@@ -5590,7 +5566,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 144, __pyx_L1_error)
+      __PYX_ERR(0, 142, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_cxt_config, __pyx_t_1);
@@ -5602,14 +5578,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_tgt_config, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":145
+    /* "models/Phonology.py":143
  *         for mname in self.mnames():
  *             cxt_config, src_idx, tgt_config = self._mname2mconfig[mname]
  *             cxt_token_configs = self.get_compatible_tokens(cxt_config)             # <<<<<<<<<<<<<<
  *             x = np.arange(len(cxt_token_configs))
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_compatible_tokens); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 145, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_get_compatible_tokens); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -5623,26 +5599,26 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     }
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_6, __pyx_v_cxt_config) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_cxt_config);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_cxt_token_configs, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":146
+    /* "models/Phonology.py":144
  *             cxt_config, src_idx, tgt_config = self._mname2mconfig[mname]
  *             cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *             x = np.arange(len(cxt_token_configs))             # <<<<<<<<<<<<<<
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_arange); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_arange); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_10 = PyObject_Length(__pyx_v_cxt_token_configs); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 146, __pyx_L1_error)
-    __pyx_t_7 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_10 = PyObject_Length(__pyx_v_cxt_token_configs); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 144, __pyx_L1_error)
+    __pyx_t_7 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_1 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -5657,7 +5633,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_1, __pyx_t_7) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XGOTREF(__pyx_cur_scope->__pyx_v_x);
@@ -5665,39 +5641,39 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":147
+    /* "models/Phonology.py":145
  *             cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *             x = np.arange(len(cxt_token_configs))
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]             # <<<<<<<<<<<<<<
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)
  *             src_token_configs = cxt_token_configs[src_idx]
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (likely(PyList_CheckExact(__pyx_v_cxt_token_configs)) || PyTuple_CheckExact(__pyx_v_cxt_token_configs)) {
       __pyx_t_6 = __pyx_v_cxt_token_configs; __Pyx_INCREF(__pyx_t_6); __pyx_t_10 = 0;
       __pyx_t_11 = NULL;
     } else {
-      __pyx_t_10 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_v_cxt_token_configs); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
+      __pyx_t_10 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_v_cxt_token_configs); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_11 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 147, __pyx_L1_error)
+      __pyx_t_11 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 145, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_11)) {
         if (likely(PyList_CheckExact(__pyx_t_6))) {
           if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_6)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_10); __Pyx_INCREF(__pyx_t_7); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 147, __pyx_L1_error)
+          __pyx_t_7 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_10); __Pyx_INCREF(__pyx_t_7); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
           #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 147, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 145, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
         } else {
           if (__pyx_t_10 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_10); __Pyx_INCREF(__pyx_t_7); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 147, __pyx_L1_error)
+          __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_10); __Pyx_INCREF(__pyx_t_7); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 145, __pyx_L1_error)
           #else
-          __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 147, __pyx_L1_error)
+          __pyx_t_7 = PySequence_ITEM(__pyx_t_6, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 145, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           #endif
         }
@@ -5707,7 +5683,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 147, __pyx_L1_error)
+            else __PYX_ERR(0, 145, __pyx_L1_error)
           }
           break;
         }
@@ -5715,7 +5691,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       }
       __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_seq_config2tokens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_seq_config2tokens); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_8 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -5729,10 +5705,10 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       }
       __pyx_t_7 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_8, __pyx_v_c) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_c);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 147, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 147, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 145, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -5741,16 +5717,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":148
+    /* "models/Phonology.py":146
  *             x = np.arange(len(cxt_token_configs))
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)             # <<<<<<<<<<<<<<
  *             src_token_configs = cxt_token_configs[src_idx]
  *             y = np.arange(len(src_token_configs))
  */
-    __pyx_t_3 = __pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_3 = __pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_6 = __Pyx_PyString_Join(__pyx_kp_s__13, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyString_Join(__pyx_kp_s__13, __pyx_t_3); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_cxt_regex);
@@ -5758,32 +5734,32 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_GIVEREF(__pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":149
+    /* "models/Phonology.py":147
  *             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)
  *             src_token_configs = cxt_token_configs[src_idx]             # <<<<<<<<<<<<<<
  *             y = np.arange(len(src_token_configs))
  *             src_regex = self.seq_config2tokens(src_token_configs)
  */
-    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_cxt_token_configs, __pyx_cur_scope->__pyx_v_src_idx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetItem(__pyx_v_cxt_token_configs, __pyx_cur_scope->__pyx_v_src_idx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_XDECREF_SET(__pyx_v_src_token_configs, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":150
+    /* "models/Phonology.py":148
  *             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)
  *             src_token_configs = cxt_token_configs[src_idx]
  *             y = np.arange(len(src_token_configs))             # <<<<<<<<<<<<<<
  *             src_regex = self.seq_config2tokens(src_token_configs)
  *             tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_arange); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_arange); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_10 = PyObject_Length(__pyx_v_src_token_configs); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 150, __pyx_L1_error)
-    __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
+    __pyx_t_10 = PyObject_Length(__pyx_v_src_token_configs); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 148, __pyx_L1_error)
+    __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_1 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
@@ -5798,20 +5774,20 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __pyx_t_6 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_y, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":151
+    /* "models/Phonology.py":149
  *             src_token_configs = cxt_token_configs[src_idx]
  *             y = np.arange(len(src_token_configs))
  *             src_regex = self.seq_config2tokens(src_token_configs)             # <<<<<<<<<<<<<<
  *             tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
  *             tgt_regex = self.seq_config2list(tgt_token_configs)
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_seq_config2tokens); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_seq_config2tokens); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -5825,20 +5801,20 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     }
     __pyx_t_6 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_3, __pyx_v_src_token_configs) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_src_token_configs);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 151, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 149, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_src_regex, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":152
+    /* "models/Phonology.py":150
  *             y = np.arange(len(src_token_configs))
  *             src_regex = self.seq_config2tokens(src_token_configs)
  *             tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)             # <<<<<<<<<<<<<<
  *             tgt_regex = self.seq_config2list(tgt_token_configs)
  *             tgt_regex = [
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_update_config); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_update_config); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 150, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_3 = NULL;
     __pyx_t_12 = 0;
@@ -5855,7 +5831,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_src_token_configs, __pyx_v_tgt_config, __pyx_v_y};
-      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_6);
     } else
@@ -5863,13 +5839,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_src_token_configs, __pyx_v_tgt_config, __pyx_v_y};
-      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_12, 3+__pyx_t_12); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_6);
     } else
     #endif
     {
-      __pyx_t_1 = PyTuple_New(3+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __pyx_t_1 = PyTuple_New(3+__pyx_t_12); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (__pyx_t_3) {
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5883,7 +5859,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __Pyx_INCREF(__pyx_v_y);
       __Pyx_GIVEREF(__pyx_v_y);
       PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_12, __pyx_v_y);
-      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_1, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_1, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 150, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     }
@@ -5891,14 +5867,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_tgt_token_configs, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":153
+    /* "models/Phonology.py":151
  *             src_regex = self.seq_config2tokens(src_token_configs)
  *             tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
  *             tgt_regex = self.seq_config2list(tgt_token_configs)             # <<<<<<<<<<<<<<
  *             tgt_regex = [
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
  */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_seq_config2list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_seq_config2list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_1 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -5912,23 +5888,23 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     }
     __pyx_t_6 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, __pyx_v_tgt_token_configs) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_tgt_token_configs);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 153, __pyx_L1_error)
+    if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 151, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_tgt_regex, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":154
+    /* "models/Phonology.py":152
  *             tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
  *             tgt_regex = self.seq_config2list(tgt_token_configs)
  *             tgt_regex = [             # <<<<<<<<<<<<<<
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
  *                 for tgt in tgt_regex
  */
-    __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
 
-    /* "models/Phonology.py":156
+    /* "models/Phonology.py":154
  *             tgt_regex = [
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
  *                 for tgt in tgt_regex             # <<<<<<<<<<<<<<
@@ -5939,26 +5915,26 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __pyx_t_7 = __pyx_v_tgt_regex; __Pyx_INCREF(__pyx_t_7); __pyx_t_10 = 0;
       __pyx_t_11 = NULL;
     } else {
-      __pyx_t_10 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_v_tgt_regex); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_10 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_v_tgt_regex); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_11 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_11 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 154, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_11)) {
         if (likely(PyList_CheckExact(__pyx_t_7))) {
           if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_7)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
           if (__pyx_t_10 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_1); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         }
@@ -5968,7 +5944,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 156, __pyx_L1_error)
+            else __PYX_ERR(0, 154, __pyx_L1_error)
           }
           break;
         }
@@ -5979,22 +5955,22 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __Pyx_GIVEREF(__pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "models/Phonology.py":155
+      /* "models/Phonology.py":153
  *             tgt_regex = self.seq_config2list(tgt_token_configs)
  *             tgt_regex = [
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)             # <<<<<<<<<<<<<<
  *                 for tgt in tgt_regex
  *             ]
  */
-      __pyx_t_1 = __pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_3genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_1 = __pyx_pf_5optim_9Phonology_3SPE_14regex_mappings_3genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __Pyx_PyString_Join(__pyx_kp_s__13, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyString_Join(__pyx_kp_s__13, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 154, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":156
+      /* "models/Phonology.py":154
  *             tgt_regex = [
  *                 "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
  *                 for tgt in tgt_regex             # <<<<<<<<<<<<<<
@@ -6006,7 +5982,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_DECREF_SET(__pyx_v_tgt_regex, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":158
+    /* "models/Phonology.py":156
  *                 for tgt in tgt_regex
  *             ]
  *             tf_regex = {             # <<<<<<<<<<<<<<
@@ -6014,17 +5990,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
  *             }
  */
     { /* enter inner scope */
-      __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 158, __pyx_L13_error)
+      __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 156, __pyx_L13_error)
       __Pyx_GOTREF(__pyx_t_6);
 
-      /* "models/Phonology.py":159
+      /* "models/Phonology.py":157
  *             ]
  *             tf_regex = {
  *                 src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)             # <<<<<<<<<<<<<<
  *             }
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  */
-      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L13_error)
+      __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 157, __pyx_L13_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_INCREF(__pyx_v_src_regex);
       __Pyx_GIVEREF(__pyx_v_src_regex);
@@ -6032,16 +6008,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
       __Pyx_INCREF(__pyx_v_tgt_regex);
       __Pyx_GIVEREF(__pyx_v_tgt_regex);
       PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_tgt_regex);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L13_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L13_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
         __pyx_t_7 = __pyx_t_3; __Pyx_INCREF(__pyx_t_7); __pyx_t_10 = 0;
         __pyx_t_11 = NULL;
       } else {
-        __pyx_t_10 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L13_error)
+        __pyx_t_10 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 157, __pyx_L13_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 159, __pyx_L13_error)
+        __pyx_t_11 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 157, __pyx_L13_error)
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       for (;;) {
@@ -6049,17 +6025,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           if (likely(PyList_CheckExact(__pyx_t_7))) {
             if (__pyx_t_10 >= PyList_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 159, __pyx_L13_error)
+            __pyx_t_3 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 157, __pyx_L13_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L13_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L13_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           } else {
             if (__pyx_t_10 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 159, __pyx_L13_error)
+            __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_10); __Pyx_INCREF(__pyx_t_3); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 157, __pyx_L13_error)
             #else
-            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L13_error)
+            __pyx_t_3 = PySequence_ITEM(__pyx_t_7, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L13_error)
             __Pyx_GOTREF(__pyx_t_3);
             #endif
           }
@@ -6069,7 +6045,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 159, __pyx_L13_error)
+              else __PYX_ERR(0, 157, __pyx_L13_error)
             }
             break;
           }
@@ -6081,7 +6057,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 159, __pyx_L13_error)
+            __PYX_ERR(0, 157, __pyx_L13_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -6094,15 +6070,15 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           __Pyx_INCREF(__pyx_t_1);
           __Pyx_INCREF(__pyx_t_8);
           #else
-          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L13_error)
+          __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L13_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 159, __pyx_L13_error)
+          __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 157, __pyx_L13_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_13 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 159, __pyx_L13_error)
+          __pyx_t_13 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 157, __pyx_L13_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_9 = Py_TYPE(__pyx_t_13)->tp_iternext;
@@ -6110,7 +6086,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           __Pyx_GOTREF(__pyx_t_1);
           index = 1; __pyx_t_8 = __pyx_t_9(__pyx_t_13); if (unlikely(!__pyx_t_8)) goto __pyx_L16_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_8);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_13), 2) < 0) __PYX_ERR(0, 159, __pyx_L13_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_13), 2) < 0) __PYX_ERR(0, 157, __pyx_L13_error)
           __pyx_t_9 = NULL;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           goto __pyx_L17_unpacking_done;
@@ -6118,14 +6094,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __pyx_t_9 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 159, __pyx_L13_error)
+          __PYX_ERR(0, 157, __pyx_L13_error)
           __pyx_L17_unpacking_done:;
         }
         __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_src, __pyx_t_1);
         __pyx_t_1 = 0;
         __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_tgt, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_8genexpr3__pyx_v_tgt); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 159, __pyx_L13_error)
+        __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_8genexpr3__pyx_v_tgt); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 157, __pyx_L13_error)
         if (__pyx_t_14) {
           __Pyx_INCREF(__pyx_8genexpr3__pyx_v_tgt);
           __pyx_t_3 = __pyx_8genexpr3__pyx_v_tgt;
@@ -6133,7 +6109,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
           __Pyx_INCREF(__pyx_kp_s__13);
           __pyx_t_3 = __pyx_kp_s__13;
         }
-        if (unlikely(PyDict_SetItem(__pyx_t_6, (PyObject*)__pyx_8genexpr3__pyx_v_src, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 159, __pyx_L13_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_6, (PyObject*)__pyx_8genexpr3__pyx_v_src, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 157, __pyx_L13_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6149,16 +6125,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_tf_regex, ((PyObject*)__pyx_t_6));
     __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":161
+    /* "models/Phonology.py":159
  *                 src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)
  *             }
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)             # <<<<<<<<<<<<<<
  * 
  *     def regex_apply(self, tokens: str):
  */
-    __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_cur_scope->__pyx_v_src_idx, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_AddObjC(__pyx_cur_scope->__pyx_v_src_idx, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_cxt_regex);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_cxt_regex);
@@ -6169,13 +6145,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
     __Pyx_GIVEREF(__pyx_t_6);
     PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_6);
     __pyx_t_6 = 0;
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mregex); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mregex); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    if (unlikely(PyObject_SetItem(__pyx_t_6, __pyx_v_mname, __pyx_t_7) < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_t_6, __pyx_v_mname, __pyx_t_7) < 0)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":143
+    /* "models/Phonology.py":141
  *     def regex_mappings(self):
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():             # <<<<<<<<<<<<<<
@@ -6185,7 +6161,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":141
+  /* "models/Phonology.py":139
  *         return seq_config
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -6228,7 +6204,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_mappings(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":163
+/* "models/Phonology.py":161
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -6272,11 +6248,11 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_19regex_apply(PyObject *__pyx_s
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tokens)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("regex_apply", 1, 2, 2, 1); __PYX_ERR(0, 163, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("regex_apply", 1, 2, 2, 1); __PYX_ERR(0, 161, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "regex_apply") < 0)) __PYX_ERR(0, 163, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "regex_apply") < 0)) __PYX_ERR(0, 161, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -6289,13 +6265,13 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_19regex_apply(PyObject *__pyx_s
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("regex_apply", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 163, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("regex_apply", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 161, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.regex_apply", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tokens), (&PyString_Type), 1, "tokens", 1))) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tokens), (&PyString_Type), 1, "tokens", 1))) __PYX_ERR(0, 161, __pyx_L1_error)
   __pyx_r = __pyx_pf_5optim_9Phonology_3SPE_18regex_apply(__pyx_self, __pyx_v_self, __pyx_v_tokens);
 
   /* function exit code */
@@ -6307,7 +6283,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_19regex_apply(PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "models/Phonology.py":168
+/* "models/Phonology.py":166
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)             # <<<<<<<<<<<<<<
@@ -6346,11 +6322,11 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   __pyx_outer_scope = (struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_4_regex_apply *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 168, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 166, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_tf_regex)) { __Pyx_RaiseClosureNameError("tf_regex"); __PYX_ERR(0, 168, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_idx)) { __Pyx_RaiseClosureNameError("idx"); __PYX_ERR(0, 168, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_tf_regex)) { __Pyx_RaiseClosureNameError("tf_regex"); __PYX_ERR(0, 166, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_idx)) { __Pyx_RaiseClosureNameError("idx"); __PYX_ERR(0, 166, __pyx_L1_error) }
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6366,7 +6342,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_x, __pyx_cur_scope->__pyx_v_tf_regex, __pyx_cur_scope->__pyx_v_idx};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -6374,13 +6350,13 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_x, __pyx_cur_scope->__pyx_v_tf_regex, __pyx_cur_scope->__pyx_v_idx};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 3+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6394,7 +6370,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_idx);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_idx);
     PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_4, __pyx_cur_scope->__pyx_v_idx);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -6417,7 +6393,7 @@ static PyObject *__pyx_lambda_funcdef_lambda3(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "models/Phonology.py":163
+/* "models/Phonology.py":161
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -6450,7 +6426,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_4_regex_apply *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 163, __pyx_L1_error)
+    __PYX_ERR(0, 161, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -6459,14 +6435,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_INCREF(__pyx_v_tokens);
 
-  /* "models/Phonology.py":165
+  /* "models/Phonology.py":163
  *     def regex_apply(self, tokens: str):
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()             # <<<<<<<<<<<<<<
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_get_current_mhyp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_get_current_mhyp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6480,13 +6456,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_mhyp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":166
+  /* "models/Phonology.py":164
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:             # <<<<<<<<<<<<<<
@@ -6497,26 +6473,26 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
     __pyx_t_1 = __pyx_v_mhyp; __Pyx_INCREF(__pyx_t_1); __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_mhyp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_mhyp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_5 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 164, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       } else {
         if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
         #else
-        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         #endif
       }
@@ -6526,7 +6502,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 166, __pyx_L1_error)
+          else __PYX_ERR(0, 164, __pyx_L1_error)
         }
         break;
       }
@@ -6535,14 +6511,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
     __Pyx_XDECREF_SET(__pyx_v_mname, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":167
+    /* "models/Phonology.py":165
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)             # <<<<<<<<<<<<<<
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)
  *         return tokens
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mname2mregex_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_n_s_mname2mregex_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -6556,7 +6532,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
     }
     __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_6, __pyx_v_mname) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_mname);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
@@ -6565,7 +6541,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 167, __pyx_L1_error)
+        __PYX_ERR(0, 165, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -6581,17 +6557,17 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
       __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(__pyx_t_7);
       #else
-      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_6 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -6601,7 +6577,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
       __Pyx_GOTREF(__pyx_t_6);
       index = 2; __pyx_t_7 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_7)) goto __pyx_L5_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_7);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 3) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
       __pyx_t_9 = NULL;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       goto __pyx_L6_unpacking_done;
@@ -6609,7 +6585,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_9 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 167, __pyx_L1_error)
+      __PYX_ERR(0, 165, __pyx_L1_error)
       __pyx_L6_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_cxt_regex, __pyx_t_3);
@@ -6623,19 +6599,19 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
     __Pyx_GIVEREF(__pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":168
+    /* "models/Phonology.py":166
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)             # <<<<<<<<<<<<<<
  *         return tokens
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_re); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_re); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_sub); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_sub); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_11regex_apply_lambda3, 0, __pyx_n_s_SPE_regex_apply_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_n_s_optim_Phonology, __pyx_d, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 168, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_11regex_apply_lambda3, 0, __pyx_n_s_SPE_regex_apply_locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_n_s_optim_Phonology, __pyx_d, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_3 = NULL;
     __pyx_t_10 = 0;
@@ -6652,7 +6628,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_cxt_regex, __pyx_t_7, __pyx_v_tokens};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -6661,14 +6637,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_v_cxt_regex, __pyx_t_7, __pyx_v_tokens};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_10, 3+__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(3+__pyx_t_10); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_3) {
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6682,16 +6658,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
       __Pyx_GIVEREF(__pyx_v_tokens);
       PyTuple_SET_ITEM(__pyx_t_8, 2+__pyx_t_10, __pyx_v_tokens);
       __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 168, __pyx_L1_error)
+    if (!(likely(PyString_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_2)->tp_name), 0))) __PYX_ERR(0, 166, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_tokens, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":166
+    /* "models/Phonology.py":164
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:             # <<<<<<<<<<<<<<
@@ -6701,7 +6677,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":169
+  /* "models/Phonology.py":167
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)
  *         return tokens             # <<<<<<<<<<<<<<
@@ -6713,7 +6689,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
   __pyx_r = __pyx_v_tokens;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":163
+  /* "models/Phonology.py":161
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -6742,7 +6718,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18regex_apply(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Phonology.py":171
+/* "models/Phonology.py":169
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
@@ -6792,23 +6768,23 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_21tf(PyObject *__pyx_self, PyOb
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_match)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, 1); __PYX_ERR(0, 171, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, 1); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_tf_regex)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, 2); __PYX_ERR(0, 171, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, 2); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, 3); __PYX_ERR(0, 171, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, 3); __PYX_ERR(0, 169, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "tf") < 0)) __PYX_ERR(0, 171, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "tf") < 0)) __PYX_ERR(0, 169, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -6825,13 +6801,13 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_21tf(PyObject *__pyx_self, PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 171, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("tf", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 169, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.tf", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tf_regex), (&PyDict_Type), 1, "tf_regex", 1))) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_tf_regex), (&PyDict_Type), 1, "tf_regex", 1))) __PYX_ERR(0, 169, __pyx_L1_error)
   __pyx_r = __pyx_pf_5optim_9Phonology_3SPE_20tf(__pyx_self, __pyx_v_self, __pyx_v_match, __pyx_v_tf_regex, __pyx_v_idx);
 
   /* function exit code */
@@ -6856,7 +6832,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20tf(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tf", 0);
 
-  /* "models/Phonology.py":173
+  /* "models/Phonology.py":171
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):
  *         """Returns a different regular expression depending on the match"""
  *         return match.expand(tf_regex[match.group(idx)])             # <<<<<<<<<<<<<<
@@ -6864,13 +6840,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20tf(CYTHON_UNUSED PyObject *__
  *     def compute_prior(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_match, __pyx_n_s_expand); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_match, __pyx_n_s_expand); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (unlikely(__pyx_v_tf_regex == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 173, __pyx_L1_error)
+    __PYX_ERR(0, 171, __pyx_L1_error)
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_match, __pyx_n_s_group); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_match, __pyx_n_s_group); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -6884,10 +6860,10 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20tf(CYTHON_UNUSED PyObject *__
   }
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_v_idx) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_idx);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_tf_regex, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_GetItem(__pyx_v_tf_regex, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -6903,14 +6879,14 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20tf(CYTHON_UNUSED PyObject *__
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":171
+  /* "models/Phonology.py":169
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
@@ -6933,7 +6909,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20tf(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "models/Phonology.py":175
+/* "models/Phonology.py":173
  *         return match.expand(tf_regex[match.group(idx)])
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
@@ -6961,7 +6937,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_22compute_prior(CYTHON_UNUSED P
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("compute_prior", 0);
 
-  /* "models/Phonology.py":177
+  /* "models/Phonology.py":175
  *     def compute_prior(self):
  *         """Computes the prior for the current rule hypothesis"""
  *         return 1             # <<<<<<<<<<<<<<
@@ -6973,7 +6949,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_22compute_prior(CYTHON_UNUSED P
   __pyx_r = __pyx_int_1;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":175
+  /* "models/Phonology.py":173
  *         return match.expand(tf_regex[match.group(idx)])
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
@@ -6988,7 +6964,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_22compute_prior(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Phonology.py":181
+/* "models/Phonology.py":179
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
@@ -7020,7 +6996,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_24nms(CYTHON_UNUSED PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nms", 0);
 
-  /* "models/Phonology.py":183
+  /* "models/Phonology.py":181
  *     def nms(self):
  *         """Returns the number of rules in the hypothesis space"""
  *         return self._nms             # <<<<<<<<<<<<<<
@@ -7028,13 +7004,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_24nms(CYTHON_UNUSED PyObject *_
  *     def mnames(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nms); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":181
+  /* "models/Phonology.py":179
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
@@ -7053,7 +7029,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_24nms(CYTHON_UNUSED PyObject *_
   return __pyx_r;
 }
 
-/* "models/Phonology.py":185
+/* "models/Phonology.py":183
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
@@ -7085,7 +7061,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_26mnames(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mnames", 0);
 
-  /* "models/Phonology.py":187
+  /* "models/Phonology.py":185
  *     def mnames(self):
  *         """Returns the rule names in the hypothesis space"""
  *         return self._mnames             # <<<<<<<<<<<<<<
@@ -7093,13 +7069,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_26mnames(CYTHON_UNUSED PyObject
  *     def mdefs(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mnames_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mnames_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":185
+  /* "models/Phonology.py":183
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
@@ -7118,7 +7094,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_26mnames(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Phonology.py":189
+/* "models/Phonology.py":187
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
@@ -7150,7 +7126,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_28mdefs(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mdefs", 0);
 
-  /* "models/Phonology.py":191
+  /* "models/Phonology.py":189
  *     def mdefs(self):
  *         """Returns the dictionary from rule names to rule definitions"""
  *         return self._mdefs             # <<<<<<<<<<<<<<
@@ -7158,13 +7134,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_28mdefs(CYTHON_UNUSED PyObject 
  *     def mname2mconfig(self, mname: np.str_):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mdefs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mdefs_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":189
+  /* "models/Phonology.py":187
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
@@ -7183,7 +7159,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_28mdefs(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":193
+/* "models/Phonology.py":191
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -7227,11 +7203,11 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_31mname2mconfig(PyObject *__pyx
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mname)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("mname2mconfig", 1, 2, 2, 1); __PYX_ERR(0, 193, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("mname2mconfig", 1, 2, 2, 1); __PYX_ERR(0, 191, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "mname2mconfig") < 0)) __PYX_ERR(0, 193, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "mname2mconfig") < 0)) __PYX_ERR(0, 191, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7244,7 +7220,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_31mname2mconfig(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("mname2mconfig", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 193, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("mname2mconfig", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 191, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.mname2mconfig", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7267,7 +7243,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_30mname2mconfig(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mname2mconfig", 0);
 
-  /* "models/Phonology.py":195
+  /* "models/Phonology.py":193
  *     def mname2mconfig(self, mname: np.str_):
  *         """Returns the rule configuration given the rule name"""
  *         return self._mname2mconfig[mname]             # <<<<<<<<<<<<<<
@@ -7275,16 +7251,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_30mname2mconfig(CYTHON_UNUSED P
  *     def mname2mregex(self, mname: np.str_):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":193
+  /* "models/Phonology.py":191
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -7304,7 +7280,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_30mname2mconfig(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Phonology.py":197
+/* "models/Phonology.py":195
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -7348,11 +7324,11 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_33mname2mregex(PyObject *__pyx_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_mname)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("mname2mregex", 1, 2, 2, 1); __PYX_ERR(0, 197, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("mname2mregex", 1, 2, 2, 1); __PYX_ERR(0, 195, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "mname2mregex") < 0)) __PYX_ERR(0, 197, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "mname2mregex") < 0)) __PYX_ERR(0, 195, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -7365,7 +7341,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_33mname2mregex(PyObject *__pyx_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("mname2mregex", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 197, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("mname2mregex", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 195, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("optim.Phonology.SPE.mname2mregex", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7388,7 +7364,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_32mname2mregex(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mname2mregex", 0);
 
-  /* "models/Phonology.py":199
+  /* "models/Phonology.py":197
  *     def mname2mregex(self, mname: np.str_):
  *         """Retrusn the rule regex given the rule name"""
  *         return self._mname2mregex[mname]             # <<<<<<<<<<<<<<
@@ -7396,16 +7372,16 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_32mname2mregex(CYTHON_UNUSED Py
  *     def nmhyps(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mregex); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mname2mregex); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_mname); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":197
+  /* "models/Phonology.py":195
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -7425,7 +7401,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_32mname2mregex(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Phonology.py":201
+/* "models/Phonology.py":199
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
@@ -7457,7 +7433,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_34nmhyps(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nmhyps", 0);
 
-  /* "models/Phonology.py":203
+  /* "models/Phonology.py":201
  *     def nmhyps(self):
  *         """Returns the number of rule hypotheses"""
  *         return self._nmhyps             # <<<<<<<<<<<<<<
@@ -7465,13 +7441,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_34nmhyps(CYTHON_UNUSED PyObject
  *     def mhyps(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":201
+  /* "models/Phonology.py":199
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
@@ -7490,7 +7466,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_34nmhyps(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Phonology.py":205
+/* "models/Phonology.py":203
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
@@ -7522,7 +7498,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_36mhyps(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mhyps", 0);
 
-  /* "models/Phonology.py":207
+  /* "models/Phonology.py":205
  *     def mhyps(self):
  *         """Returns the rule hypotheses"""
  *         return self._mhyps             # <<<<<<<<<<<<<<
@@ -7530,13 +7506,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_36mhyps(CYTHON_UNUSED PyObject 
  *     def mhyp_idx(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":205
+  /* "models/Phonology.py":203
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
@@ -7555,7 +7531,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_36mhyps(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":209
+/* "models/Phonology.py":207
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
@@ -7587,7 +7563,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_38mhyp_idx(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mhyp_idx", 0);
 
-  /* "models/Phonology.py":211
+  /* "models/Phonology.py":209
  *     def mhyp_idx(self):
  *         """Returns the index to the current rule hypothesis"""
  *         return self._mhyp_idx             # <<<<<<<<<<<<<<
@@ -7595,13 +7571,13 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_38mhyp_idx(CYTHON_UNUSED PyObje
  *     def get_current_mhyp(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":209
+  /* "models/Phonology.py":207
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
@@ -7620,7 +7596,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_38mhyp_idx(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Phonology.py":213
+/* "models/Phonology.py":211
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
@@ -7654,7 +7630,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_40get_current_mhyp(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_current_mhyp", 0);
 
-  /* "models/Phonology.py":215
+  /* "models/Phonology.py":213
  *     def get_current_mhyp(self):
  *         """Gets the current rule hypothesis"""
  *         return self._mhyps[self._mhyp_idx]             # <<<<<<<<<<<<<<
@@ -7662,11 +7638,11 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_40get_current_mhyp(CYTHON_UNUSE
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7674,7 +7650,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_40get_current_mhyp(CYTHON_UNUSE
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":213
+  /* "models/Phonology.py":211
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
@@ -7695,7 +7671,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_40get_current_mhyp(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "models/Phonology.py":219
+/* "models/Phonology.py":217
  * 
  * class OT:
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -8481,11 +8457,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_dict, __pyx_k_dict, sizeof(__pyx_k_dict), 0, 0, 1, 1},
   {&__pyx_n_u_dict_2, __pyx_k_dict_2, sizeof(__pyx_k_dict_2), 0, 1, 0, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
-  {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_expand, __pyx_k_expand, sizeof(__pyx_k_expand), 0, 0, 1, 1},
   {&__pyx_n_s_feats, __pyx_k_feats, sizeof(__pyx_k_feats), 0, 0, 1, 1},
-  {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_generate_hypotheses, __pyx_k_generate_hypotheses, sizeof(__pyx_k_generate_hypotheses), 0, 0, 1, 1},
   {&__pyx_n_s_generate_seq_config, __pyx_k_generate_seq_config, sizeof(__pyx_k_generate_seq_config), 0, 0, 1, 1},
   {&__pyx_n_s_genexpr, __pyx_k_genexpr, sizeof(__pyx_k_genexpr), 0, 0, 1, 1},
@@ -8494,7 +8468,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_get_current_mhyp, __pyx_k_get_current_mhyp, sizeof(__pyx_k_get_current_mhyp), 0, 0, 1, 1},
   {&__pyx_n_s_group, __pyx_k_group, sizeof(__pyx_k_group), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
-  {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
   {&__pyx_n_s_idx, __pyx_k_idx, sizeof(__pyx_k_idx), 0, 0, 1, 1},
   {&__pyx_n_s_idxs, __pyx_k_idxs, sizeof(__pyx_k_idxs), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
@@ -8541,7 +8514,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_optim_Phonology, __pyx_k_optim_Phonology, sizeof(__pyx_k_optim_Phonology), 0, 0, 1, 1},
   {&__pyx_n_s_permutations, __pyx_k_permutations, sizeof(__pyx_k_permutations), 0, 0, 1, 1},
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
-  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_qualname, __pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 0, 1, 1},
   {&__pyx_n_s_random, __pyx_k_random, sizeof(__pyx_k_random), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
@@ -8595,10 +8567,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 27, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 41, __pyx_L1_error)
-  __pyx_builtin_id = __Pyx_GetBuiltinName(__pyx_n_s_id); if (!__pyx_builtin_id) __PYX_ERR(0, 66, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 87, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 120, __pyx_L1_error)
-  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_builtin_map = __Pyx_GetBuiltinName(__pyx_n_s_map); if (!__pyx_builtin_map) __PYX_ERR(0, 119, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -8608,41 +8579,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "models/Phonology.py":95
+  /* "models/Phonology.py":93
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
  *             """Splits string sequence of string natural classes into a
  *             list of string natural classes
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_str_seq_str_nat_classes); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_str_seq_str_nat_classes); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_str_seq, 95, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_str_seq, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 93, __pyx_L1_error)
 
-  /* "models/Phonology.py":101
+  /* "models/Phonology.py":99
  *             return str_seq_str_nat_classes.split(".")
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
  *             """Splits string sequence of features representing a natural class
  *             into a list of string features
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_n_s_str_nat_classes); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_n_s_str_nat_classes); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_str_nat_class, 101, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_str_nat_class, 99, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 99, __pyx_L1_error)
 
-  /* "models/Phonology.py":107
+  /* "models/Phonology.py":105
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
  *             """Takes in a sequence of string natural class(es) and returns its
  *             feature configuration. If there is a ':' delimiter between
  */
-  __pyx_tuple__7 = PyTuple_Pack(5, __pyx_n_s_seq_str_nat_classes, __pyx_n_s_seq_config, __pyx_n_s_str_nat_classes, __pyx_n_s_str_feats, __pyx_n_s_config); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(5, __pyx_n_s_seq_str_nat_classes, __pyx_n_s_seq_config, __pyx_n_s_str_nat_classes, __pyx_n_s_str_feats, __pyx_n_s_config); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_generate_seq_config, 107, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 107, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(1, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_generate_seq_config, 105, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 105, __pyx_L1_error)
 
   /* "models/Phonology.py":16
  *     """========== INITIALIZATION ======================================="""
@@ -8680,232 +8651,232 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__18);
   __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_deepcopy_2, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 60, __pyx_L1_error)
 
-  /* "models/Phonology.py":74
+  /* "models/Phonology.py":72
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
  *         """Updates the rule hypothesis to the index corresponding to the name"""
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  */
-  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mhyp); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mhyp); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_update_mhyp, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_update_mhyp, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 72, __pyx_L1_error)
 
-  /* "models/Phonology.py":78
+  /* "models/Phonology.py":76
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
  *         """Updates the rule hypothesis index"""
  *         self._mhyp_idx = idx
  */
-  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_update_mhyp_idx, 78, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_update_mhyp_idx, 76, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 76, __pyx_L1_error)
 
-  /* "models/Phonology.py":82
+  /* "models/Phonology.py":80
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
  *         """Given the set of rule (names), generate the space of
  *         possible mapping hypotheses. A random rule hypothesis is chosen
  */
-  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_n); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_n); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_generate_hypotheses, 82, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_generate_hypotheses, 80, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 80, __pyx_L1_error)
 
-  /* "models/Phonology.py":92
+  /* "models/Phonology.py":90
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def configure_mappings(self):             # <<<<<<<<<<<<<<
  *         """Converts mappings into vector notation for process application"""
  * 
  */
-  __pyx_tuple__26 = PyTuple_Pack(15, __pyx_n_s_self, __pyx_n_s_split_str_seq, __pyx_n_s_split_str_seq, __pyx_n_s_split_str_nat_class, __pyx_n_s_split_str_nat_class, __pyx_n_s_generate_seq_config, __pyx_n_s_generate_seq_config, __pyx_n_s_mname, __pyx_n_s_rdef, __pyx_n_s_src, __pyx_n_s_tgt, __pyx_n_s_cxt, __pyx_n_s_idx, __pyx_n_s_tgt_config, __pyx_n_s_cxt_config); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(15, __pyx_n_s_self, __pyx_n_s_split_str_seq, __pyx_n_s_split_str_seq, __pyx_n_s_split_str_nat_class, __pyx_n_s_split_str_nat_class, __pyx_n_s_generate_seq_config, __pyx_n_s_generate_seq_config, __pyx_n_s_mname, __pyx_n_s_rdef, __pyx_n_s_src, __pyx_n_s_tgt, __pyx_n_s_cxt, __pyx_n_s_idx, __pyx_n_s_tgt_config, __pyx_n_s_cxt_config); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_configure_mappings, 92, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_configure_mappings, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-  /* "models/Phonology.py":128
+  /* "models/Phonology.py":126
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
  * 
  *     def config_apply(self, seq_config: list):             # <<<<<<<<<<<<<<
  *         """Applies the phonological mapping given a sequence of feature
  *         configurations corresponding to some sequence of tokens
  */
-  __pyx_tuple__28 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_seq_config, __pyx_n_s_mhyp, __pyx_n_s_mname, __pyx_n_s_seq_cxt_config, __pyx_n_s_src_idx, __pyx_n_s_tgt_config, __pyx_n_s_idxs); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_tuple__28 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_seq_config, __pyx_n_s_mhyp, __pyx_n_s_mname, __pyx_n_s_seq_cxt_config, __pyx_n_s_src_idx, __pyx_n_s_tgt_config, __pyx_n_s_idxs); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_config_apply, 128, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_config_apply, 126, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 126, __pyx_L1_error)
 
-  /* "models/Phonology.py":141
+  /* "models/Phonology.py":139
  *         return seq_config
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():
  */
-  __pyx_tuple__30 = PyTuple_Pack(21, __pyx_n_s_self, __pyx_n_s_mname, __pyx_n_s_cxt_config, __pyx_n_s_src_idx, __pyx_n_s_tgt_config, __pyx_n_s_cxt_token_configs, __pyx_n_s_x, __pyx_n_s_cxt_regex, __pyx_n_s_src_token_configs, __pyx_n_s_y, __pyx_n_s_src_regex, __pyx_n_s_tgt_token_configs, __pyx_n_s_tgt_regex, __pyx_n_s_tf_regex, __pyx_n_s_c, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_tgt, __pyx_n_s_genexpr, __pyx_n_s_src, __pyx_n_s_tgt); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_tuple__30 = PyTuple_Pack(21, __pyx_n_s_self, __pyx_n_s_mname, __pyx_n_s_cxt_config, __pyx_n_s_src_idx, __pyx_n_s_tgt_config, __pyx_n_s_cxt_token_configs, __pyx_n_s_x, __pyx_n_s_cxt_regex, __pyx_n_s_src_token_configs, __pyx_n_s_y, __pyx_n_s_src_regex, __pyx_n_s_tgt_token_configs, __pyx_n_s_tgt_regex, __pyx_n_s_tf_regex, __pyx_n_s_c, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_tgt, __pyx_n_s_genexpr, __pyx_n_s_src, __pyx_n_s_tgt); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_regex_mappings, 141, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(1, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_regex_mappings, 139, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 139, __pyx_L1_error)
 
-  /* "models/Phonology.py":163
+  /* "models/Phonology.py":161
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()
  */
-  __pyx_tuple__32 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_mhyp, __pyx_n_s_mname, __pyx_n_s_cxt_regex, __pyx_n_s_tf_regex, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_mhyp, __pyx_n_s_mname, __pyx_n_s_cxt_regex, __pyx_n_s_tf_regex, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_regex_apply, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_regex_apply, 161, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 161, __pyx_L1_error)
 
-  /* "models/Phonology.py":171
+  /* "models/Phonology.py":169
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
  *         """Returns a different regular expression depending on the match"""
  *         return match.expand(tf_regex[match.group(idx)])
  */
-  __pyx_tuple__34 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_match, __pyx_n_s_tf_regex, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_match, __pyx_n_s_tf_regex, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_tf, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_tf, 169, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 169, __pyx_L1_error)
 
-  /* "models/Phonology.py":175
+  /* "models/Phonology.py":173
  *         return match.expand(tf_regex[match.group(idx)])
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
  *         """Computes the prior for the current rule hypothesis"""
  *         return 1
  */
-  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_compute_prior, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_compute_prior, 173, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 173, __pyx_L1_error)
 
-  /* "models/Phonology.py":181
+  /* "models/Phonology.py":179
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
  *         """Returns the number of rules in the hypothesis space"""
  *         return self._nms
  */
-  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_nms_2, 181, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_nms_2, 179, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 179, __pyx_L1_error)
 
-  /* "models/Phonology.py":185
+  /* "models/Phonology.py":183
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
  *         """Returns the rule names in the hypothesis space"""
  *         return self._mnames
  */
-  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mnames, 185, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mnames, 183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 183, __pyx_L1_error)
 
-  /* "models/Phonology.py":189
+  /* "models/Phonology.py":187
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
  *         """Returns the dictionary from rule names to rule definitions"""
  *         return self._mdefs
  */
-  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_tuple__42 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mdefs, 189, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mdefs, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 187, __pyx_L1_error)
 
-  /* "models/Phonology.py":193
+  /* "models/Phonology.py":191
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the rule configuration given the rule name"""
  *         return self._mname2mconfig[mname]
  */
-  __pyx_tuple__44 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mname); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mname); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__44);
   __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mname2mconfig_2, 193, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mname2mconfig_2, 191, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 191, __pyx_L1_error)
 
-  /* "models/Phonology.py":197
+  /* "models/Phonology.py":195
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
  *         """Retrusn the rule regex given the rule name"""
  *         return self._mname2mregex[mname]
  */
-  __pyx_tuple__46 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mname); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_tuple__46 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mname); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mname2mregex_2, 197, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mname2mregex_2, 195, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 195, __pyx_L1_error)
 
-  /* "models/Phonology.py":201
+  /* "models/Phonology.py":199
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
  *         """Returns the number of rule hypotheses"""
  *         return self._nmhyps
  */
-  __pyx_tuple__48 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_tuple__48 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__48);
   __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_nmhyps_2, 201, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_nmhyps_2, 199, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 199, __pyx_L1_error)
 
-  /* "models/Phonology.py":205
+  /* "models/Phonology.py":203
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
  *         """Returns the rule hypotheses"""
  *         return self._mhyps
  */
-  __pyx_tuple__50 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_tuple__50 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__50);
   __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mhyps_2, 205, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mhyps_2, 203, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 203, __pyx_L1_error)
 
-  /* "models/Phonology.py":209
+  /* "models/Phonology.py":207
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
  *         """Returns the index to the current rule hypothesis"""
  *         return self._mhyp_idx
  */
-  __pyx_tuple__52 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_tuple__52 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__52);
   __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mhyp_idx_2, 209, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mhyp_idx_2, 207, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 207, __pyx_L1_error)
 
-  /* "models/Phonology.py":213
+  /* "models/Phonology.py":211
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
  *         """Gets the current rule hypothesis"""
  *         return self._mhyps[self._mhyp_idx]
  */
-  __pyx_tuple__54 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_tuple__54 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__54);
   __Pyx_GIVEREF(__pyx_tuple__54);
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_get_current_mhyp, 213, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_get_current_mhyp, 211, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 211, __pyx_L1_error)
 
-  /* "models/Phonology.py":219
+  /* "models/Phonology.py":217
  * 
  * class OT:
  *     def __init__(self):             # <<<<<<<<<<<<<<
  *         pass
  */
-  __pyx_tuple__56 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_tuple__56 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__56);
   __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_init, 219, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_init, 217, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -8961,7 +8932,7 @@ static int __Pyx_modinit_type_init_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct__configure_mappings) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct__configure_mappings) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_9Phonology___pyx_scope_struct__configure_mappings.tp_print = 0;
   #endif
@@ -8969,7 +8940,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5optim_9Phonology___pyx_scope_struct__configure_mappings.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5optim_9Phonology___pyx_scope_struct__configure_mappings = &__pyx_type_5optim_9Phonology___pyx_scope_struct__configure_mappings;
-  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_1_regex_mappings) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_1_regex_mappings) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_9Phonology___pyx_scope_struct_1_regex_mappings.tp_print = 0;
   #endif
@@ -8977,7 +8948,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5optim_9Phonology___pyx_scope_struct_1_regex_mappings.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5optim_9Phonology___pyx_scope_struct_1_regex_mappings = &__pyx_type_5optim_9Phonology___pyx_scope_struct_1_regex_mappings;
-  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_2_genexpr) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_9Phonology___pyx_scope_struct_2_genexpr.tp_print = 0;
   #endif
@@ -8985,7 +8956,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5optim_9Phonology___pyx_scope_struct_2_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5optim_9Phonology___pyx_scope_struct_2_genexpr = &__pyx_type_5optim_9Phonology___pyx_scope_struct_2_genexpr;
-  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 155, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_3_genexpr) < 0) __PYX_ERR(0, 153, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_9Phonology___pyx_scope_struct_3_genexpr.tp_print = 0;
   #endif
@@ -8993,7 +8964,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_5optim_9Phonology___pyx_scope_struct_3_genexpr.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_5optim_9Phonology___pyx_scope_struct_3_genexpr = &__pyx_type_5optim_9Phonology___pyx_scope_struct_3_genexpr;
-  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_4_regex_apply) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5optim_9Phonology___pyx_scope_struct_4_regex_apply) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5optim_9Phonology___pyx_scope_struct_4_regex_apply.tp_print = 0;
   #endif
@@ -9241,7 +9212,7 @@ if (!__Pyx_RefNanny) {
   /* "models/Phonology.py":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import re
- * from copy import deepcopy
+ * from copy import copy, deepcopy
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -9251,7 +9222,7 @@ if (!__Pyx_RefNanny) {
   /* "models/Phonology.py":2
  * import numpy as np
  * import re             # <<<<<<<<<<<<<<
- * from copy import deepcopy
+ * from copy import copy, deepcopy
  * from itertools import permutations
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_re, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
@@ -9262,17 +9233,24 @@ if (!__Pyx_RefNanny) {
   /* "models/Phonology.py":3
  * import numpy as np
  * import re
- * from copy import deepcopy             # <<<<<<<<<<<<<<
+ * from copy import copy, deepcopy             # <<<<<<<<<<<<<<
  * from itertools import permutations
  * from optim.Inventory import Inventory
  */
-  __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(__pyx_n_s_copy);
+  __Pyx_GIVEREF(__pyx_n_s_copy);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_copy);
   __Pyx_INCREF(__pyx_n_s_deepcopy);
   __Pyx_GIVEREF(__pyx_n_s_deepcopy);
-  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_deepcopy);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_deepcopy);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_copy, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_copy, __pyx_t_1) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -9282,7 +9260,7 @@ if (!__Pyx_RefNanny) {
 
   /* "models/Phonology.py":4
  * import re
- * from copy import deepcopy
+ * from copy import copy, deepcopy
  * from itertools import permutations             # <<<<<<<<<<<<<<
  * from optim.Inventory import Inventory
  * from optim.Distributions import Binomial, Bernoulli, Uniform
@@ -9302,7 +9280,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "models/Phonology.py":5
- * from copy import deepcopy
+ * from copy import copy, deepcopy
  * from itertools import permutations
  * from optim.Inventory import Inventory             # <<<<<<<<<<<<<<
  * from optim.Distributions import Binomial, Bernoulli, Uniform
@@ -9504,275 +9482,275 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_deepcopy_2, __pyx_t_7) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":74
+  /* "models/Phonology.py":72
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
  *         """Updates the rule hypothesis to the index corresponding to the name"""
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_mhyp, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_7update_mhyp, 0, __pyx_n_s_SPE_update_mhyp, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_mhyp, __pyx_n_u_tuple) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_7update_mhyp, 0, __pyx_n_s_SPE_update_mhyp, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_mhyp, __pyx_t_5) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_mhyp, __pyx_t_5) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":78
+  /* "models/Phonology.py":76
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
  *         """Updates the rule hypothesis index"""
  *         self._mhyp_idx = idx
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_idx, __pyx_n_u_int) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_9update_mhyp_idx, 0, __pyx_n_s_SPE_update_mhyp_idx, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_idx, __pyx_n_u_int) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_9update_mhyp_idx, 0, __pyx_n_s_SPE_update_mhyp_idx, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_mhyp_idx, __pyx_t_7) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_mhyp_idx, __pyx_t_7) < 0) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":82
+  /* "models/Phonology.py":80
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
  *         """Given the set of rule (names), generate the space of
  *         possible mapping hypotheses. A random rule hypothesis is chosen
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_11generate_hypotheses, 0, __pyx_n_s_SPE_generate_hypotheses, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_11generate_hypotheses, 0, __pyx_n_s_SPE_generate_hypotheses, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_generate_hypotheses, __pyx_t_7) < 0) __PYX_ERR(0, 82, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_generate_hypotheses, __pyx_t_7) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":92
+  /* "models/Phonology.py":90
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def configure_mappings(self):             # <<<<<<<<<<<<<<
  *         """Converts mappings into vector notation for process application"""
  * 
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_13configure_mappings, 0, __pyx_n_s_SPE_configure_mappings, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_13configure_mappings, 0, __pyx_n_s_SPE_configure_mappings, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_configure_mappings, __pyx_t_7) < 0) __PYX_ERR(0, 92, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_configure_mappings, __pyx_t_7) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":128
+  /* "models/Phonology.py":126
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
  * 
  *     def config_apply(self, seq_config: list):             # <<<<<<<<<<<<<<
  *         """Applies the phonological mapping given a sequence of feature
  *         configurations corresponding to some sequence of tokens
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_seq_config, __pyx_n_u_list) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_15config_apply, 0, __pyx_n_s_SPE_config_apply, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_seq_config, __pyx_n_u_list) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_15config_apply, 0, __pyx_n_s_SPE_config_apply, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__29)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_config_apply, __pyx_t_5) < 0) __PYX_ERR(0, 128, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_config_apply, __pyx_t_5) < 0) __PYX_ERR(0, 126, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":141
+  /* "models/Phonology.py":139
  *         return seq_config
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():
  */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_17regex_mappings, 0, __pyx_n_s_SPE_regex_mappings, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_17regex_mappings, 0, __pyx_n_s_SPE_regex_mappings, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__31)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_regex_mappings, __pyx_t_5) < 0) __PYX_ERR(0, 141, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_regex_mappings, __pyx_t_5) < 0) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":163
+  /* "models/Phonology.py":161
  *             self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_tokens, __pyx_n_u_str_2) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_19regex_apply, 0, __pyx_n_s_SPE_regex_apply, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_tokens, __pyx_n_u_str_2) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_19regex_apply, 0, __pyx_n_s_SPE_regex_apply, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_regex_apply, __pyx_t_7) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_regex_apply, __pyx_t_7) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":171
+  /* "models/Phonology.py":169
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
  *         """Returns a different regular expression depending on the match"""
  *         return match.expand(tf_regex[match.group(idx)])
  */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_re); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_re); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_Match); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_Match); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_match, __pyx_t_6) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_match, __pyx_t_6) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_tf_regex, __pyx_n_u_dict_2) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_idx, __pyx_n_u_int) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_21tf, 0, __pyx_n_s_SPE_tf, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_tf_regex, __pyx_n_u_dict_2) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_n_s_idx, __pyx_n_u_int) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_21tf, 0, __pyx_n_s_SPE_tf, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_6, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_tf, __pyx_t_6) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_tf, __pyx_t_6) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":175
+  /* "models/Phonology.py":173
  *         return match.expand(tf_regex[match.group(idx)])
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
  *         """Computes the prior for the current rule hypothesis"""
  *         return 1
  */
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_23compute_prior, 0, __pyx_n_s_SPE_compute_prior, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_23compute_prior, 0, __pyx_n_s_SPE_compute_prior, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__37)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_prior, __pyx_t_6) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_prior, __pyx_t_6) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":181
+  /* "models/Phonology.py":179
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
  *         """Returns the number of rules in the hypothesis space"""
  *         return self._nms
  */
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_25nms, 0, __pyx_n_s_SPE_nms, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_25nms, 0, __pyx_n_s_SPE_nms, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__39)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_nms_2, __pyx_t_6) < 0) __PYX_ERR(0, 181, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_nms_2, __pyx_t_6) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":185
+  /* "models/Phonology.py":183
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
  *         """Returns the rule names in the hypothesis space"""
  *         return self._mnames
  */
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_27mnames, 0, __pyx_n_s_SPE_mnames, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_27mnames, 0, __pyx_n_s_SPE_mnames, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__41)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mnames, __pyx_t_6) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mnames, __pyx_t_6) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":189
+  /* "models/Phonology.py":187
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
  *         """Returns the dictionary from rule names to rule definitions"""
  *         return self._mdefs
  */
-  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_29mdefs, 0, __pyx_n_s_SPE_mdefs, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_29mdefs, 0, __pyx_n_s_SPE_mdefs, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mdefs, __pyx_t_6) < 0) __PYX_ERR(0, 189, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mdefs, __pyx_t_6) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":193
+  /* "models/Phonology.py":191
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
  *         """Returns the rule configuration given the rule name"""
  *         return self._mname2mconfig[mname]
  */
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_str); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_mname, __pyx_t_5) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_mname, __pyx_t_5) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_31mname2mconfig, 0, __pyx_n_s_SPE_mname2mconfig, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_31mname2mconfig, 0, __pyx_n_s_SPE_mname2mconfig, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_5, __pyx_t_6);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mname2mconfig_2, __pyx_t_5) < 0) __PYX_ERR(0, 193, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mname2mconfig_2, __pyx_t_5) < 0) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":197
+  /* "models/Phonology.py":195
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
  *         """Retrusn the rule regex given the rule name"""
  *         return self._mname2mregex[mname]
  */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_str); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_mname, __pyx_t_7) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_mname, __pyx_t_7) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_33mname2mregex, 0, __pyx_n_s_SPE_mname2mregex, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 197, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_33mname2mregex, 0, __pyx_n_s_SPE_mname2mregex, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_7, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mname2mregex_2, __pyx_t_7) < 0) __PYX_ERR(0, 197, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mname2mregex_2, __pyx_t_7) < 0) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":201
+  /* "models/Phonology.py":199
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
  *         """Returns the number of rule hypotheses"""
  *         return self._nmhyps
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_35nmhyps, 0, __pyx_n_s_SPE_nmhyps, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_35nmhyps, 0, __pyx_n_s_SPE_nmhyps, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__49)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_nmhyps_2, __pyx_t_7) < 0) __PYX_ERR(0, 201, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_nmhyps_2, __pyx_t_7) < 0) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":205
+  /* "models/Phonology.py":203
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
  *         """Returns the rule hypotheses"""
  *         return self._mhyps
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_37mhyps, 0, __pyx_n_s_SPE_mhyps, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_37mhyps, 0, __pyx_n_s_SPE_mhyps, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mhyps_2, __pyx_t_7) < 0) __PYX_ERR(0, 205, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mhyps_2, __pyx_t_7) < 0) __PYX_ERR(0, 203, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":209
+  /* "models/Phonology.py":207
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
  *         """Returns the index to the current rule hypothesis"""
  *         return self._mhyp_idx
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_39mhyp_idx, 0, __pyx_n_s_SPE_mhyp_idx, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_39mhyp_idx, 0, __pyx_n_s_SPE_mhyp_idx, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mhyp_idx_2, __pyx_t_7) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mhyp_idx_2, __pyx_t_7) < 0) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":213
+  /* "models/Phonology.py":211
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
  *         """Gets the current rule hypothesis"""
  *         return self._mhyps[self._mhyp_idx]
  */
-  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_41get_current_mhyp, 0, __pyx_n_s_SPE_get_current_mhyp, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_3SPE_41get_current_mhyp, 0, __pyx_n_s_SPE_get_current_mhyp, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_current_mhyp, __pyx_t_7) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_current_mhyp, __pyx_t_7) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
   /* "models/Phonology.py":13
@@ -9792,44 +9770,44 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":218
+  /* "models/Phonology.py":216
  * 
  * 
  * class OT:             # <<<<<<<<<<<<<<
  *     def __init__(self):
  *         pass
  */
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_OT, __pyx_n_s_OT, (PyObject *) NULL, __pyx_n_s_optim_Phonology, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_OT, __pyx_n_s_OT, (PyObject *) NULL, __pyx_n_s_optim_Phonology, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "models/Phonology.py":219
+  /* "models/Phonology.py":217
  * 
  * class OT:
  *     def __init__(self):             # <<<<<<<<<<<<<<
  *         pass
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_2OT_1__init__, 0, __pyx_n_s_OT___init, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_9Phonology_2OT_1__init__, 0, __pyx_n_s_OT___init, NULL, __pyx_n_s_optim_Phonology, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 217, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":218
+  /* "models/Phonology.py":216
  * 
  * 
  * class OT:             # <<<<<<<<<<<<<<
  *     def __init__(self):
  *         pass
  */
-  __pyx_t_1 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_OT, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_OT, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OT, __pyx_t_1) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_OT, __pyx_t_1) < 0) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "models/Phonology.py":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import re
- * from copy import deepcopy
+ * from copy import copy, deepcopy
  */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -12080,149 +12058,6 @@ bad:
     Py_XDECREF(py_code);
     Py_XDECREF(py_frame);
 }
-
-/* Print */
-#if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static PyObject *__Pyx_GetStdout(void) {
-    PyObject *f = PySys_GetObject((char *)"stdout");
-    if (!f) {
-        PyErr_SetString(PyExc_RuntimeError, "lost sys.stdout");
-    }
-    return f;
-}
-static int __Pyx_Print(PyObject* f, PyObject *arg_tuple, int newline) {
-    int i;
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    for (i=0; i < PyTuple_GET_SIZE(arg_tuple); i++) {
-        PyObject* v;
-        if (PyFile_SoftSpace(f, 1)) {
-            if (PyFile_WriteString(" ", f) < 0)
-                goto error;
-        }
-        v = PyTuple_GET_ITEM(arg_tuple, i);
-        if (PyFile_WriteObject(v, f, Py_PRINT_RAW) < 0)
-            goto error;
-        if (PyString_Check(v)) {
-            char *s = PyString_AsString(v);
-            Py_ssize_t len = PyString_Size(v);
-            if (len > 0) {
-                switch (s[len-1]) {
-                    case ' ': break;
-                    case '\f': case '\r': case '\n': case '\t': case '\v':
-                        PyFile_SoftSpace(f, 0);
-                        break;
-                    default:  break;
-                }
-            }
-        }
-    }
-    if (newline) {
-        if (PyFile_WriteString("\n", f) < 0)
-            goto error;
-        PyFile_SoftSpace(f, 0);
-    }
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-}
-#else
-static int __Pyx_Print(PyObject* stream, PyObject *arg_tuple, int newline) {
-    PyObject* kwargs = 0;
-    PyObject* result = 0;
-    PyObject* end_string;
-    if (unlikely(!__pyx_print)) {
-        __pyx_print = PyObject_GetAttr(__pyx_b, __pyx_n_s_print);
-        if (!__pyx_print)
-            return -1;
-    }
-    if (stream) {
-        kwargs = PyDict_New();
-        if (unlikely(!kwargs))
-            return -1;
-        if (unlikely(PyDict_SetItem(kwargs, __pyx_n_s_file, stream) < 0))
-            goto bad;
-        if (!newline) {
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                goto bad;
-            if (PyDict_SetItem(kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                goto bad;
-            }
-            Py_DECREF(end_string);
-        }
-    } else if (!newline) {
-        if (unlikely(!__pyx_print_kwargs)) {
-            __pyx_print_kwargs = PyDict_New();
-            if (unlikely(!__pyx_print_kwargs))
-                return -1;
-            end_string = PyUnicode_FromStringAndSize(" ", 1);
-            if (unlikely(!end_string))
-                return -1;
-            if (PyDict_SetItem(__pyx_print_kwargs, __pyx_n_s_end, end_string) < 0) {
-                Py_DECREF(end_string);
-                return -1;
-            }
-            Py_DECREF(end_string);
-        }
-        kwargs = __pyx_print_kwargs;
-    }
-    result = PyObject_Call(__pyx_print, arg_tuple, kwargs);
-    if (unlikely(kwargs) && (kwargs != __pyx_print_kwargs))
-        Py_DECREF(kwargs);
-    if (!result)
-        return -1;
-    Py_DECREF(result);
-    return 0;
-bad:
-    if (kwargs != __pyx_print_kwargs)
-        Py_XDECREF(kwargs);
-    return -1;
-}
-#endif
-
-/* PrintOne */
-#if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
-static int __Pyx_PrintOne(PyObject* f, PyObject *o) {
-    if (!f) {
-        if (!(f = __Pyx_GetStdout()))
-            return -1;
-    }
-    Py_INCREF(f);
-    if (PyFile_SoftSpace(f, 0)) {
-        if (PyFile_WriteString(" ", f) < 0)
-            goto error;
-    }
-    if (PyFile_WriteObject(o, f, Py_PRINT_RAW) < 0)
-        goto error;
-    if (PyFile_WriteString("\n", f) < 0)
-        goto error;
-    Py_DECREF(f);
-    return 0;
-error:
-    Py_DECREF(f);
-    return -1;
-    /* the line below is just to avoid C compiler
-     * warnings about unused functions */
-    return __Pyx_Print(f, NULL, 0);
-}
-#else
-static int __Pyx_PrintOne(PyObject* stream, PyObject *o) {
-    int res;
-    PyObject* arg_tuple = PyTuple_Pack(1, o);
-    if (unlikely(!arg_tuple))
-        return -1;
-    res = __Pyx_Print(stream, arg_tuple, 1);
-    Py_DECREF(arg_tuple);
-    return res;
-}
-#endif
 
 /* CIntToPy */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {

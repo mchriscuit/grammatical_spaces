@@ -83,14 +83,13 @@ class Grammar:
         """Exports the current model parameters and predictions"""
 
         ## Export the clxs
-        clxs = self.clxs()
-        clxs = ["-".join(cxs) for cxs in clxs]
+        clxs = ["-".join(cxs) for cxs in self.clxs()]
 
         ## Export the rule names
         mnames = self.M.get_current_mhyp()
 
         ## Get the URs
-        urs = [self.L.str_cxt_ur(clx, "-") for clx in clxs]
+        urs = [self.L.str_cxt_ur(clx, "-") for clx in self.clxs()]
 
         ## Get the predicted SRs
         pred_srs = self.predict_srs()

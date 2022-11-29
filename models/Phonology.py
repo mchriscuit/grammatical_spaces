@@ -1,6 +1,6 @@
 import numpy as np
 import re
-from copy import deepcopy
+from copy import copy, deepcopy
 from itertools import permutations
 from optim.Inventory import Inventory
 from optim.Distributions import Binomial, Bernoulli, Uniform
@@ -63,7 +63,7 @@ class SPE(Inventory):
         ## Initialize a new class object
         cls = self.__class__
         cp = cls.__new__(cls)
-        memo[id(self)] = cp
+        cp.__dict__.update(self.__dict__)
 
         return  cp
 
