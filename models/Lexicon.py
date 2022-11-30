@@ -73,6 +73,7 @@ class Lexicon(Inventory):
         """Overloads the deepcopy function to only copy the list of
         UR hypotheses and priors, keeping a shallow copy of everything else
         """
+       
         ## Initialize a new class object
         cls = self.__class__
         cp = cls.__new__(cls)
@@ -159,9 +160,7 @@ class Lexicon(Inventory):
         pro_ur_new = self.D.erv(pro_ur_old)
 
         ## Calculate the prior for the new prototype UR
-        pro_len = len(pro_ur_new)
-        pro_pr = Binomial.pmf(pro_len, self._ml, self._th)
-        pro_pr *= Uniform.pmf(self.nsegs()) ** pro_len
+        pro_pr = self.compute_pr(pro_ur_new)
         pr = {self.pro(): pro_pr}
 
         ## Calculate the prior for each contextual UR given the newly-sampled UR

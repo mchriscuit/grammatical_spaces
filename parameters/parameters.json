@@ -26,7 +26,7 @@
   },
   "MCMC": {
     "anneal": 8,
-    "gs_iterations": 200000,
+    "gs_iterations": 10,
     "mh_iterations": 10
   }
 }

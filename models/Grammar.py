@@ -1,5 +1,6 @@
 import numpy as np
 import re
+from copy import deepcopy
 from Levenshtein import distance
 from optim.Lexicon import Lexicon
 from optim.Phonology import SPE, OT
@@ -37,6 +38,25 @@ class Grammar:
         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._clx2id = {clx: i for i, clx in enumerate(clxs)}
         self._sr2id = {sr: i for i, sr in enumerate(srs)}
+
+    """ ========== OVERLOADING METHODS ================================== """
+   
+    def __deepcopy__(self, memo):
+        """Overloads the deepcopy function to only copy the Mapping and 
+        Lexicon objects, keeping a shallow copy of everything else
+        """
+      
+        ## Initialize a new class object
+        cls = self.__class__
+        cp = cls.__new__(cls)
+        cp.__dict__.update(self.__dict__)
+        memo[id(self)] = cp
+
+        ## Create deep copies of the L and M attributes
+        setattr(cp, "L", deepcopy(self.__dict__["L"], memo))
+        setattr(cp, "M", deepcopy(self.__dict__["M"], memo))
+        
+        return cp
 
     """ ========== INSTANCE METHODS ===================================== """
 
