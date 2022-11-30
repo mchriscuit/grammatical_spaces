@@ -99,6 +99,7 @@ class MCMC:
                 pro_ur_old = G.L.pro_ur(lx)
                 pr_old = deepcopy(G.L.lx_pr(lx))
                 prod_pr_old = np.prod(list(pr_old.values()))
+                cxt_ur_old = G.L.lx_ur(lx)
 
                 ## Loop for mh_iterations
                 for mh_iteration in range(mh_iterations):

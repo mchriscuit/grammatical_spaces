@@ -130,14 +130,14 @@ class Distance(Distributions):
 
         for i in tqdm(range(n + 1)):
             X = list(map("".join, product(self._segs, repeat=i)))
-            A = set(X)
-            Y = set()
-            for j in range(k):
-                A = [gen_ealns(a) for a in list(A)]
-                A = set.union(*A)
-                Y = Y.union(A)
-            Y = [y for y in sorted(Y) if len(y) < self._n]
             for x in X:
+                A = set([x])
+                Y = set()
+                for j in range(k):
+                    A = [gen_ealns(a) for a in list(A)]
+                    A = set.union(*A)
+                    Y = Y.union(A)
+                Y = [y for y in sorted(Y) if len(y) < self._n]
                 self._ealns[x] = np.array(Y, dtype=object)
                 self._eprbs[x] = [np.exp(-self._de * distance(x, y)) for y in Y]
                 self._eprbs[x] = np.array(self._eprbs[x]) / sum(self._eprbs[x])
