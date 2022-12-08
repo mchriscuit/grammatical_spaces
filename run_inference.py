@@ -127,15 +127,6 @@ def load_surface_forms(surface_forms_fn):
     return lxs, lx_clxs, clxs, srs, nobs
 
 
-
-
-
-
-
-
-
-
-
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 GRAMMAR INSTANTIATION
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
@@ -229,27 +220,18 @@ def main():
     ## Write to file
     acceptances_fn = f"{output_path}/acceptances.csv"
     with open(acceptances_fn, "w") as f:
-        f.write("lx,")
         f.write("gs,")
-        f.write("mh,")
+        f.write("lx,")
         f.write("mhyp,")
-        f.write("ur_old,")
-        f.write("post_old,")
-        f.write("ur_new,")
-        f.write("post_new,")
-        f.write("accepted\n")
-        for lx, acs in lx_as.items():
-            for gsi, ac in enumerate(acs):
-                for mhi, (m, uo, po, un, pn, ad) in enumerate(ac):
-                    f.write(f"{lx},")
-                    f.write(f"{gsi},")
-                    f.write(f"{mhi},")
-                    f.write(f"{m},")
-                    f.write(f"{'-'.join(uo)},")
-                    f.write(f"{po},")
-                    f.write(f"{'-'.join(un)},")
-                    f.write(f"{pn},")
-                    f.write(f"{ad}\n")
+        f.write("pro_ur,")
+        f.write("cxt_ur\n")
+        for lx, g in lx_as.items():
+            for gsi, (m, u) in enumerate(g):
+                f.write(f"{gsi},")
+                f.write(f"{lx},")
+                f.write(f"{'-'.join(m)},")
+                f.write(f"{'.'.join(['-'.join(p) for p in u.keys()])},")
+                f.write(f"{'.'.join(u.values())}\n")
 
     posterior_fn = f"{output_path}/posterior.csv"
     with open(posterior_fn, "w") as f:

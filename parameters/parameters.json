@@ -1,20 +1,20 @@
 {
   "surface_forms" : {
-    "fn": "prickett-f.csv",
+    "fn": "ex-surface-forms.csv",
     "lambda": 4
   },
   "inventory" : {
-    "fn": "prickett-inventory.csv"
+    "fn": "ex-inventory.csv"
   },
   "mappings" : {
-    "fn": "prickett-rules.csv"
+    "fn": "ex-rules.csv"
   },
   "lexicon" : {
-    "fn": "prickett-f.csv",
+    "fn": "ex-lexicon.csv",
     "params" : {
       "max_len": 5,
       "max_eds": 2,
-      "theta": 0.5,
+      "theta": 0.75,
       "psi": 5,
       "phi": 3,
       "costs": {
@@ -25,8 +25,8 @@
     }
   },
   "MCMC": {
-    "anneal": 8,
-    "gs_iterations": 10,
+    "anneal": 10,
+    "gs_iterations": 50000,
     "mh_iterations": 10
   }
 }

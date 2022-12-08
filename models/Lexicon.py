@@ -73,7 +73,7 @@ class Lexicon(Inventory):
         """Overloads the deepcopy function to only copy the list of
         UR hypotheses and priors, keeping a shallow copy of everything else
         """
-       
+
         ## Initialize a new class object
         cls = self.__class__
         cp = cls.__new__(cls)
@@ -106,6 +106,9 @@ class Lexicon(Inventory):
 
         ## Otherwise, update the UR hypothesis and prior
         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):
+
+            ## First, update the dictionary for all the URs for all contexts
+            ## Calculate the prior of each UR as well
             self._lx2ur[init_lx] = {
                 init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
             }
@@ -116,15 +119,86 @@ class Lexicon(Inventory):
                 for init_cx, init_u in zip(init_clx, init_ur)
             }
 
-    def set_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):
-        """Set the given lexeme in a given lexical sequence to the given UR"""
-        self._lx2ur[lx][clx] = ur
-        self._lx2pr[lx][clx] = pr
+            ## Go through each of the contextual URs and denote whether
+            ## the UR matches the proto-UR: mark it as such if so
+            self._lx2ur[init_lx] = {
+                init_cx: init_u if self.is_pro(init_cx) else
+                    (init_u, self.is_default(init_lx, init_u))
+                for init_cx, init_u in self._lx2ur[init_lx].items()
+            }
 
-    def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):
-        """Set the given lexeme to the given prototype UR"""
-        self._lx2ur[lx][self.pro()] = ur
-        self._lx2pr[lx].update(pr)
+    """ ========== SAMPLING METHODS ===================================== """
+
+    def sample_pro_ur(self, lx, inplace=True):
+        """Samples a prototype underlying form for a given lexeme. Also
+        returns the prior of the proposed UR
+        """
+
+        ## Retrieve the old prototype UR
+        pro_ur_old = self.pro_ur(lx)
+
+        ## Sample a new prototype UR
+        pro_ur_new = self.D.erv(pro_ur_old)
+
+        ## Calculate the prior for the new prototype UR
+        pro_pr = self.compute_pr(pro_ur_new)
+
+        ## Update the dictionary
+        ur = {self.pro(): pro_ur_new}
+        pr = {self.pro(): pro_pr}
+
+        ## Loop through each contextual UR
+        for clx in self.lx2clxs(lx):
+
+            ## Make sure that it is a contextual UR
+            if self.is_cxt(clx):
+                clx_ur, clx_default = self.lx_clx_ur(lx, clx)
+
+                ## If it is marked as default, change the UR to match
+                ## the proto UR
+                if clx_default:
+                    clx_ur = pro_ur_new
+
+                ## Calculate the prior for each contextual UR given the newly-sampled UR
+                clx_pr = self.compute_pr(pro_ur_new, clx_ur)
+
+                ## Update the dictionary
+                ur[clx] = (clx_ur, clx_default)
+                pr[clx] = clx_pr
+
+        ## Check if inplace: if so, update the cache
+        if inplace:
+            self.set_ur(lx, ur, pr)
+
+        return ur, pr
+
+    def sample_cxt_ur(self, clx, inplace=True):
+        """Samples a UR for a given lexical sequence given the
+        proposal distribution. Also returns the prior of the proposed UR
+        """
+        cxt_ur_new = []
+        cxt_pr_new = []
+
+        ## For each lexeme in the lexical item
+        for lx in clx:
+
+            ## Retrieve the prototype UR
+            pro_ur = self.pro_ur(lx)
+
+            ## Retrieve the old contextual UR and sample a new UR
+            lx_clx_ur_old, lx_clx_default_old = self.lx_clx_ur(lx, clx)
+            lx_clx_ur_new = self.D.erv(lx_clx_ur_old)
+            cxt_ur_new.append(lx_clx_ur_new)
+
+            ## Calculate the prior of the contextual UR given the prototype UR
+            lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)
+            cxt_pr_new.append(lx_clx_pr_new)
+
+            ## Update the dictionary of URs, if specified
+            if inplace:
+                self.set_clx_ur(lx, clx, lx_clx_ur_new, lx_clx_pr_new)
+
+        return cxt_ur_new, cxt_pr_new
 
     def compute_pr(self, pro_ur, cxt_ur=None):
         """Returns the prior probability of the given UR"""
@@ -148,60 +222,29 @@ class Lexicon(Inventory):
         """Returns the transition probability between the current and new UR"""
         return self.D.epmf(ur_old, ur_new)
 
-    def sample_pro_ur(self, lx, inplace=True):
-        """Samples a prototype underlying form for a given lexeme. Also
-        returns the prior of the proposed UR
-        """
+    """ ========== MUTATORS ============================================= """
 
-        ## Retrieve the old prototype UR
-        pro_ur_old = self.pro_ur(lx)
+    def set_ur(self, lx: np.str_, ur: dict, pr: dict):
+        """Set the given lexeme to the given URs"""
+        self._lx2ur[lx].update(ur)
+        self._lx2pr[lx].update(pr)
 
-        ## Sample a new prototype UR
-        pro_ur_new = self.D.erv(pro_ur_old)
+    def set_pro_ur(self, lx: np.str_, ur: np.str_, pr: dict):
+        """Set the given lexeme to the given prototype UR"""
+        self._lx2ur[lx][self.pro()] = ur
+        self._lx2pr[lx].update(pr)
 
-        ## Calculate the prior for the new prototype UR
-        pro_pr = self.compute_pr(pro_ur_new)
-        pr = {self.pro(): pro_pr}
+    def set_clx_ur(self, lx: np.str_, clx: tuple, ur: np.str_, pr: float):
+        """Set the given lexeme in a given lexical sequence to the given UR"""
 
-        ## Calculate the prior for each contextual UR given the newly-sampled UR
-        for clx, cxt_ur in self.lx_ur(lx).items():
-            if self.is_cxt(clx):
-                cxt_pr = self.compute_pr(pro_ur_new, cxt_ur)
-                pr[clx] = cxt_pr
+        ## Check whether the provided clx is not PROTO
+        assert self.is_cxt(clx), f"Provided context is not valid: {clx}"
 
-        ## Update the dictionary
-        if inplace:
-            self.set_pro_ur(lx, pro_ur_new, pr)
+        ## Check whether the prototype UR is identical to the UR to be set
+        self._lx2ur[lx][clx] = (ur, self.is_default(lx, ur))
 
-        return pro_ur_new, pr
-
-    def sample_cxt_ur(self, clx, inplace=True):
-        """Samples a UR for a given lexical sequence given the
-        proposal distribution. Also returns the prior of the proposed UR
-        """
-        cxt_ur_new = []
-        cxt_pr_new = []
-
-        ## For each lexeme in the lexical item
-        for lx in clx:
-
-            ## Retrieve the prototype UR
-            pro_ur = self.pro_ur(lx)
-
-            ## Retrieve the old contextual UR and sample a new UR
-            lx_clx_ur_old = self.lx_clx_ur(lx, clx)
-            lx_clx_ur_new = self.D.erv(lx_clx_ur_old)
-            cxt_ur_new.append(lx_clx_ur_new)
-
-            ## Calculate the prior of the contextual UR given the prototype UR
-            lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)
-            cxt_pr_new.append(lx_clx_pr_new)
-
-            ## Update the dictionary of URs, if specified
-            if inplace:
-                self.set_ur(lx, clx, lx_clx_ur_new, lx_clx_pr_new)
-
-        return cxt_ur_new, cxt_pr_new
+        ## Update the probability of that contextual UR
+        self._lx2pr[lx][clx] = pr
 
     def add_padding(self, ss, token="#"):
         """Pads the string with the specified token"""
@@ -222,6 +265,9 @@ class Lexicon(Inventory):
         """Checks whether the clx is the contextual context"""
         return not self.is_pro(clx)
 
+    def is_default(self, lx: np.str_, ur: np.str_):
+        """Checks whether the ur is equal to the prototype UR"""
+        return self.pro_ur(lx) == ur
 
     ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
     def pro(self):
@@ -269,7 +315,7 @@ class Lexicon(Inventory):
     ## (2) Contextual URs
     def cxt_ur(self, clx: tuple):
         """Returns a list containing the URs of all the lexemes in a clx"""
-        return [self.lx_clx_ur(lx, clx) for lx in clx]
+        return [self.lx_clx_ur(lx, clx)[0] for lx in clx]
 
     def str_cxt_ur(self, clx: tuple, sep=""):
         """Returns the concatenated URs of all the lexemes in a clx"""

@@ -84,7 +84,7 @@ class MCMC:
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
                         for lx, cxt_u_old, cxt_p_old in zip(clx, cxt_ur_old, cxt_pr_old):
-                            G.L.set_ur(lx, clx, cxt_u_old, cxt_p_old)
+                            G.L.set_clx_ur(lx, clx, cxt_u_old, cxt_p_old)
 
                     ## Otherwise, update the new hypothesis
                     else:
@@ -97,15 +97,20 @@ class MCMC:
 
                 ## Retrieve the old prototype UR and prior
                 pro_ur_old = G.L.pro_ur(lx)
+                ur_old = deepcopy(G.L.lx_ur(lx))
                 pr_old = deepcopy(G.L.lx_pr(lx))
                 prod_pr_old = np.prod(list(pr_old.values()))
-                cxt_ur_old = G.L.lx_ur(lx)
+
+                ## Calculate the likelihood of the data
+                likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
 
                 ## Loop for mh_iterations
                 for mh_iteration in range(mh_iterations):
 
                     ## Sample a new prototype underlying form
                     G.L.sample_pro_ur(lx)
+
+                    ## Retrieve the prototype UR and prior
                     pro_ur_new = G.L.pro_ur(lx)
                     pr_new = G.L.lx_pr(lx)
                     prod_pr_new = np.prod(list(pr_new.values()))
@@ -114,20 +119,33 @@ class MCMC:
                     tp_old = G.L.compute_tp(pro_ur_new, pro_ur_old)
                     tp_new = G.L.compute_tp(pro_ur_old, pro_ur_new)
 
+                    ## Calculate the likelihood of the data
+                    likelihood_new = G.compute_likelihoods(lx, G.levenshtein)
+
                     ## Accept or reject the sample
-                    post_old = (prod_pr_old ** power) * tp_new
-                    post_new = (prod_pr_new ** power) * tp_old
+                    post_old = (likelihood_old * prod_pr_old) ** power * tp_new
+                    post_new = (likelihood_new * prod_pr_new) ** power * tp_old
                     accepted = MCMC.acceptance(post_old, post_new)
 
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
-                        G.L.set_pro_ur(lx, pro_ur_old, pr_old)
+                        G.L.set_ur(lx, ur_old, pr_old)
 
                     ## Otherwise, update the new hypothesis
                     else:
                         pro_ur_old = G.L.pro_ur(lx)
+                        ur_old = deepcopy(G.L.lx_ur(lx))
                         pr_old = deepcopy(G.L.lx_pr(lx))
                         prod_pr_old = np.prod(list(pr_old.values()))
+                        likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
+
+                ## Append the sampled UR hypotheses
+                m = G.M.get_current_mhyp()
+                u = {
+                    cx: ur if G.L.is_pro(cx) else ur[0]
+                    for cx, ur in G.L.lx_ur(lx).items()
+                    }
+                lx_acceptances[lx].append((m, u))
 
             ## Loop through each mapping hypothesis
             nmhyps = G.M.nmhyps()
