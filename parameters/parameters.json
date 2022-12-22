@@ -1,22 +1,24 @@
 {
   "surface_forms" : {
-    "fn": "ex-surface-forms.csv",
-    "lambda": 4
+    "fn": "ettlinger-cb.csv",
+    "lambda": 3
   },
   "inventory" : {
-    "fn": "ex-inventory.csv"
+    "fn": "ettlinger-inventory.csv"
   },
   "mappings" : {
-    "fn": "ex-rules.csv"
+    "fn": "ettlinger-rules.csv"
   },
   "lexicon" : {
-    "fn": "ex-lexicon.csv",
+    "fn": "ettlinger-cb.csv",
     "params" : {
       "max_len": 5,
-      "max_eds": 2,
+      "max_eds": 3,
       "theta": 0.75,
       "psi": 5,
       "phi": 3,
+      "alpha": 0.75,
+      "beta": 0.5,
       "costs": {
         "I": 1,
         "D": 1,
@@ -25,8 +27,8 @@
     }
   },
   "MCMC": {
-    "anneal": 10,
-    "gs_iterations": 50000,
+    "anneal": 12,
+    "gs_iterations": 300000,
     "mh_iterations": 10
   }
 }

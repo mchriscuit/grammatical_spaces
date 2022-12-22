@@ -57,7 +57,7 @@ class MCMC:
             for clx in G.clxs():
 
                 ## Retrieve the prior and likelihood of the old UR
-                cxt_ur_old = G.L.cxt_ur(clx)
+                cxt_ur_old = G.L.cxt_ur_full(clx)
                 cxt_pr_old = G.L.cxt_pr(clx)
                 likelihood_old = G.compute_likelihood(clx, G.levenshtein)
 
@@ -70,10 +70,10 @@ class MCMC:
 
                     ## Calculate the transition probability of the hypotheses
                     tp_old = np.prod(
-                        [G.L.compute_tp(n, o) for n, o in zip(cxt_ur_new, cxt_ur_old)]
+                        [G.L.compute_cxt_tp(n[0], o[0], n[1], o[1]) for n, o in zip(cxt_ur_new, cxt_ur_old)]
                     )
                     tp_new = np.prod(
-                        [G.L.compute_tp(o, n) for o, n in zip(cxt_ur_old, cxt_ur_new)]
+                        [G.L.compute_cxt_tp(o[0], n[0], o[1], n[1]) for o, n in zip(cxt_ur_old, cxt_ur_new)]
                     )
 
                     ## Accept or reject the sample
@@ -88,7 +88,7 @@ class MCMC:
 
                     ## Otherwise, update the new hypothesis
                     else:
-                        cxt_ur_old = G.L.cxt_ur(clx)
+                        cxt_ur_old = G.L.cxt_ur_full(clx)
                         cxt_pr_old = G.L.cxt_pr(clx)
                         likelihood_old = likelihood_new
 
@@ -116,8 +116,8 @@ class MCMC:
                     prod_pr_new = np.prod(list(pr_new.values()))
 
                     ## Calculate the transition probability of the hypotheses
-                    tp_old = G.L.compute_tp(pro_ur_new, pro_ur_old)
-                    tp_new = G.L.compute_tp(pro_ur_old, pro_ur_new)
+                    tp_old = G.L.compute_pro_tp(pro_ur_new, pro_ur_old)
+                    tp_new = G.L.compute_pro_tp(pro_ur_old, pro_ur_new)
 
                     ## Calculate the likelihood of the data
                     likelihood_new = G.compute_likelihoods(lx, G.levenshtein)

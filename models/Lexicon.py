@@ -33,10 +33,11 @@ class Lexicon(Inventory):
         self._ml = pars["max_len"]
         self._th = pars["theta"]
         self._ps = pars["psi"]
+        self._al = pars["alpha"]
 
         """Proposal"""
-        self._me = pars["max_eds"]
         self._ph = pars["phi"]
+        self._bt = pars["beta"]
 
         """Costs"""
         self._ct = pars["costs"]
@@ -46,7 +47,6 @@ class Lexicon(Inventory):
             self.segs(),
             self._ct,
             self._ml,
-            self._me,
             self._ps,
             self._ph
             )
@@ -101,33 +101,36 @@ class Lexicon(Inventory):
         ## Check that the given lexical contexts match the lexical contexts
         ## seen in the data
         assert all(
-            set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)
+            set(self._lx2clxs[lx]) == set(init_clxs[i])
+            for i, lx in enumerate(init_lxs)
         ), "Given lexical contexts and observed lexical contexts not equal"
 
         ## Otherwise, update the UR hypothesis and prior
         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):
 
             ## First, update the dictionary for all the URs for all contexts
-            ## Calculate the prior of each UR as well
-            self._lx2ur[init_lx] = {
-                init_cx: init_u for init_cx, init_u in zip(init_clx, init_ur)
-            }
-            self._lx2pr[init_lx] = {
-                init_cx:
-                    self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
-                    self.compute_pr(self.pro_ur(init_lx), init_u)
-                for init_cx, init_u in zip(init_clx, init_ur)
-            }
-
             ## Go through each of the contextual URs and denote whether
             ## the UR matches the proto-UR: mark it as such if so
             self._lx2ur[init_lx] = {
-                init_cx: init_u if self.is_pro(init_cx) else
-                    (init_u, self.is_default(init_lx, init_u))
+                init_cx:
+                    init_u[0] if self.is_pro(init_cx) else
+                    (init_u[0], int(init_u[1]))
+                    for init_cx, init_u in zip(init_clx, init_ur)
+            }
+
+            ## Calculate the prior of each UR as well
+            self._lx2pr[init_lx] = {
+                init_cx:
+                    self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
+                    self.compute_pr(self.pro_ur(init_lx), init_u[0], init_u[1])
                 for init_cx, init_u in self._lx2ur[init_lx].items()
             }
 
     """ ========== SAMPLING METHODS ===================================== """
+
+    def sample_default(self):
+        """Samples whether a contextual UR is a default UR"""
+        return Bernoulli.rv(self._bt)
 
     def sample_pro_ur(self, lx, inplace=True):
         """Samples a prototype underlying form for a given lexeme. Also
@@ -138,7 +141,7 @@ class Lexicon(Inventory):
         pro_ur_old = self.pro_ur(lx)
 
         ## Sample a new prototype UR
-        pro_ur_new = self.D.erv(pro_ur_old)
+        pro_ur_new = self.D.tprv(pro_ur_old)
 
         ## Calculate the prior for the new prototype UR
         pro_pr = self.compute_pr(pro_ur_new)
@@ -160,7 +163,7 @@ class Lexicon(Inventory):
                     clx_ur = pro_ur_new
 
                 ## Calculate the prior for each contextual UR given the newly-sampled UR
-                clx_pr = self.compute_pr(pro_ur_new, clx_ur)
+                clx_pr = self.compute_pr(pro_ur_new, clx_ur, clx_default)
 
                 ## Update the dictionary
                 ur[clx] = (clx_ur, clx_default)
@@ -185,13 +188,23 @@ class Lexicon(Inventory):
             ## Retrieve the prototype UR
             pro_ur = self.pro_ur(lx)
 
-            ## Retrieve the old contextual UR and sample a new UR
+            ## Retrieve the old contextual UR
             lx_clx_ur_old, lx_clx_default_old = self.lx_clx_ur(lx, clx)
-            lx_clx_ur_new = self.D.erv(lx_clx_ur_old)
-            cxt_ur_new.append(lx_clx_ur_new)
 
-            ## Calculate the prior of the contextual UR given the prototype UR
-            lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)
+            ## Sample a new default value
+            lx_clx_default_new = self.sample_default()
+
+            ## Sample a new contextual UR given the default value
+            if lx_clx_default_new:
+                lx_clx_ur_new = pro_ur
+                lx_clx_pr_new = 1
+            else:
+                lx_clx_ur_new = self.D.tprv(lx_clx_ur_old)
+                lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)
+
+            ## Append the sample values
+            lx_clx_ur_new = (lx_clx_ur_new, lx_clx_default_new)
+            cxt_ur_new.append(lx_clx_ur_new)
             cxt_pr_new.append(lx_clx_pr_new)
 
             ## Update the dictionary of URs, if specified
@@ -200,7 +213,7 @@ class Lexicon(Inventory):
 
         return cxt_ur_new, cxt_pr_new
 
-    def compute_pr(self, pro_ur, cxt_ur=None):
+    def compute_pr(self, pro_ur, cxt_ur=None, cxt_id=0):
         """Returns the prior probability of the given UR"""
         pr = 1
 
@@ -215,12 +228,23 @@ class Lexicon(Inventory):
         ## Otherwise, calculate the probability of generating the
         ## specified contextual UR given the proto UR
         else:
-            pr *= self.D.lpmf(pro_ur, cxt_ur)
+            pr *= self.D.prpmf(pro_ur, cxt_ur) ** (1-cxt_id)
+            pr *= Bernoulli.pmf(1, self._al) ** cxt_id
+            pr *= (1-Bernoulli.pmf(1, self._al)) ** (1-cxt_id)
             return pr
 
-    def compute_tp(self, ur_old, ur_new):
+    def compute_pro_tp(self, ur_old, ur_new):
         """Returns the transition probability between the current and new UR"""
-        return self.D.epmf(ur_old, ur_new)
+        return self.D.tppmf(ur_old, ur_new)
+
+    def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):
+        """Returns the transition probability between the current and new UR"""
+        if id_old == id_new:
+            tp = Bernoulli.pmf(1, self._bt)
+        else:
+            tp = 1-Bernoulli.pmf(1, self._bt)
+        tp *= self.D.tppmf(ur_old, ur_new)
+        return tp
 
     """ ========== MUTATORS ============================================= """
 
@@ -241,7 +265,7 @@ class Lexicon(Inventory):
         assert self.is_cxt(clx), f"Provided context is not valid: {clx}"
 
         ## Check whether the prototype UR is identical to the UR to be set
-        self._lx2ur[lx][clx] = (ur, self.is_default(lx, ur))
+        self._lx2ur[lx][clx] = ur
 
         ## Update the probability of that contextual UR
         self._lx2pr[lx][clx] = pr
@@ -313,6 +337,10 @@ class Lexicon(Inventory):
         return self.lx_clx_pr(lx, self.pro())
 
     ## (2) Contextual URs
+    def cxt_ur_full(self, clx: tuple):
+        """Returns a list containing the URs of all the lexemes in a clx"""
+        return [self.lx_clx_ur(lx, clx) for lx in clx]
+
     def cxt_ur(self, clx: tuple):
         """Returns a list containing the URs of all the lexemes in a clx"""
         return [self.lx_clx_ur(lx, clx)[0] for lx in clx]

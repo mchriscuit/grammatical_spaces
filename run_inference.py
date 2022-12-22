@@ -72,7 +72,7 @@ def load_lexicon(lexicon_fn):
     init_lxs, init_clxs, init_urs = zip(*lexicon)
     init_lxs = list(init_lxs)
     init_clxs = [[tuple(x.split(":")) for x in cx.split(".")] for cx in init_clxs]
-    init_urs = [ur.split(".") for ur in init_urs]
+    init_urs = [[tuple(u.split(":")) for u in ur.split(".")] for ur in init_urs]
     return init_lxs, init_clxs, init_urs
 
 
@@ -168,7 +168,7 @@ def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
     lexicon_fn = lexicon["fn"]
     L.initialize_urs(load_lexicon(lexicon_fn))
 
-    ## Load and return grammar object
+    ## Instantiate a Grammar object
     lm = surface_forms["lambda"]
     G = Grammar(clxs, srs, nobs, lm, L, M)
 
