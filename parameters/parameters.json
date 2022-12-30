@@ -1,16 +1,16 @@
 {
   "surface_forms" : {
-    "fn": "ettlinger-cb.csv",
-    "lambda": 3
+    "fn": "prickett-b.csv",
+    "lambda": 2
   },
   "inventory" : {
-    "fn": "ettlinger-inventory.csv"
+    "fn": "prickett-inventory.csv"
   },
   "mappings" : {
-    "fn": "ettlinger-rules.csv"
+    "fn": "prickett-rules.csv"
   },
   "lexicon" : {
-    "fn": "ettlinger-cb.csv",
+    "fn": "prickett-b.csv",
     "params" : {
       "max_len": 5,
       "max_eds": 3,

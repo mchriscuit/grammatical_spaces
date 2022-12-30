@@ -239,7 +239,7 @@ class Lexicon(Inventory):
 
     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):
         """Returns the transition probability between the current and new UR"""
-        if id_old == id_new:
+        if id_old != id_new:
             tp = Bernoulli.pmf(1, self._bt)
         else:
             tp = 1-Bernoulli.pmf(1, self._bt)

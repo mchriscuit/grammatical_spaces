@@ -6835,7 +6835,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_16compute_pro_tp(CYTHON_UNUSE
  * 
  *     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):             # <<<<<<<<<<<<<<
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:
+ *         if id_old != id_new:
  */
 
 /* Python wrapper */
@@ -6956,18 +6956,18 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18compute_cxt_tp(CYTHON_UNUSE
   /* "models/Lexicon.py":242
  *     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:             # <<<<<<<<<<<<<<
+ *         if id_old != id_new:             # <<<<<<<<<<<<<<
  *             tp = Bernoulli.pmf(1, self._bt)
  *         else:
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_id_old, __pyx_v_id_new, Py_EQ); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_id_old, __pyx_v_id_new, Py_NE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L1_error)
   __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
     /* "models/Lexicon.py":243
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:
+ *         if id_old != id_new:
  *             tp = Bernoulli.pmf(1, self._bt)             # <<<<<<<<<<<<<<
  *         else:
  *             tp = 1-Bernoulli.pmf(1, self._bt)
@@ -7032,7 +7032,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18compute_cxt_tp(CYTHON_UNUSE
     /* "models/Lexicon.py":242
  *     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:             # <<<<<<<<<<<<<<
+ *         if id_old != id_new:             # <<<<<<<<<<<<<<
  *             tp = Bernoulli.pmf(1, self._bt)
  *         else:
  */
@@ -7189,7 +7189,7 @@ static PyObject *__pyx_pf_5optim_7Lexicon_7Lexicon_18compute_cxt_tp(CYTHON_UNUSE
  * 
  *     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):             # <<<<<<<<<<<<<<
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:
+ *         if id_old != id_new:
  */
 
   /* function exit code */
@@ -11415,7 +11415,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):             # <<<<<<<<<<<<<<
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:
+ *         if id_old != id_new:
  */
   __pyx_tuple__25 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_ur_old, __pyx_n_s_ur_new, __pyx_n_s_id_old, __pyx_n_s_id_new, __pyx_n_s_tp); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
@@ -12359,7 +12359,7 @@ if (!__Pyx_RefNanny) {
  * 
  *     def compute_cxt_tp(self, ur_old, ur_new, id_old, id_new):             # <<<<<<<<<<<<<<
  *         """Returns the transition probability between the current and new UR"""
- *         if id_old == id_new:
+ *         if id_old != id_new:
  */
   __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5optim_7Lexicon_7Lexicon_19compute_cxt_tp, 0, __pyx_n_s_Lexicon_compute_cxt_tp, NULL, __pyx_n_s_optim_Lexicon, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);

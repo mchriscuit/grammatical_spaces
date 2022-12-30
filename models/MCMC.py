@@ -140,12 +140,12 @@ class MCMC:
                         likelihood_old = G.compute_likelihoods(lx, G.levenshtein)
 
                 ## Append the sampled UR hypotheses
-                m = G.M.get_current_mhyp()
-                u = {
-                    cx: ur if G.L.is_pro(cx) else ur[0]
-                    for cx, ur in G.L.lx_ur(lx).items()
-                    }
-                lx_acceptances[lx].append((m, u))
+                # m = G.M.get_current_mhyp()
+                # u = {
+                #     cx: ur if G.L.is_pro(cx) else ur[0]
+                #     for cx, ur in G.L.lx_ur(lx).items()
+                #     }
+                # lx_acceptances[lx].append((m, u))
 
             ## Loop through each mapping hypothesis
             nmhyps = G.M.nmhyps()
