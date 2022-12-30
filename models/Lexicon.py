@@ -128,9 +128,9 @@ class Lexicon(Inventory):
 
     """ ========== SAMPLING METHODS ===================================== """
 
-    def sample_default(self):
+    def sample_default(self, default_old):
         """Samples whether a contextual UR is a default UR"""
-        return Bernoulli.rv(self._bt)
+        return abs(default_old - Bernoulli.rv(self._bt))
 
     def sample_pro_ur(self, lx, inplace=True):
         """Samples a prototype underlying form for a given lexeme. Also
@@ -192,15 +192,21 @@ class Lexicon(Inventory):
             lx_clx_ur_old, lx_clx_default_old = self.lx_clx_ur(lx, clx)
 
             ## Sample a new default value
-            lx_clx_default_new = self.sample_default()
+            lx_clx_default_new = self.sample_default(lx_clx_default_old)
 
             ## Sample a new contextual UR given the default value
             if lx_clx_default_new:
                 lx_clx_ur_new = pro_ur
-                lx_clx_pr_new = 1
             else:
                 lx_clx_ur_new = self.D.tprv(lx_clx_ur_old)
-                lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new)
+
+            ## Calculate the prior given the sampled default value and
+            ## prototype underlying form
+            lx_clx_pr_new = self.compute_pr(
+                pro_ur,
+                lx_clx_ur_new,
+                lx_clx_default_new
+            )
 
             ## Append the sample values
             lx_clx_ur_new = (lx_clx_ur_new, lx_clx_default_new)
@@ -228,9 +234,15 @@ class Lexicon(Inventory):
         ## Otherwise, calculate the probability of generating the
         ## specified contextual UR given the proto UR
         else:
-            pr *= self.D.prpmf(pro_ur, cxt_ur) ** (1-cxt_id)
-            pr *= Bernoulli.pmf(1, self._al) ** cxt_id
+
+            ## If cxt_id = 0, then generate a contextual underlying form
             pr *= (1-Bernoulli.pmf(1, self._al)) ** (1-cxt_id)
+            pr *= self.D.prpmf(pro_ur, cxt_ur) ** (1-cxt_id)
+
+            ## If cxt_id = 1, then check that the prototype underlying form
+            ## an the contextual underlying form are identical
+            pr *= Bernoulli.pmf(1, self._al) ** cxt_id
+            pr *= float(pro_ur == cxt_ur) ** cxt_id
             return pr
 
     def compute_pro_tp(self, ur_old, ur_new):
