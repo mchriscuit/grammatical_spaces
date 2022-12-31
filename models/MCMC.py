@@ -81,10 +81,6 @@ class MCMC:
                     post_new = tp_old * (likelihood_new * np.prod(cxt_pr_new)) ** power
                     accepted = MCMC.acceptance(post_old, post_new)
 
-                    print(f'OLD', clx, cxt_ur_old, cxt_pr_old)
-                    print(f'NEW', clx, cxt_ur_new, cxt_pr_new)
-
-
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
                         for lx, cxt_u_old, cxt_p_old in zip(clx, cxt_ur_old, cxt_pr_old):
@@ -95,7 +91,7 @@ class MCMC:
                         cxt_ur_old = G.L.cxt_ur_full(clx)
                         cxt_pr_old = G.L.cxt_pr(clx)
                         likelihood_old = likelihood_new
-                    assert(False)
+
 
             ## Loop through each prototype UR
             for lx in G.lxs():
