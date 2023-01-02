@@ -4,7 +4,7 @@
 {
     "distutils": {
         "include_dirs": [
-            "/usr/local/lib/python3.10/site-packages/numpy/core/include"
+            "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/numpy/core/include"
         ],
         "name": "optim.MCMC",
         "sources": [
