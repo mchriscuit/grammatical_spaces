@@ -1,16 +1,16 @@
 {
   "surface_forms" : {
-    "fn": "prickett-b.csv",
-    "lambda": 2
+    "fn": "kim-surface-forms.csv",
+    "lambda": 3
   },
   "inventory" : {
-    "fn": "prickett-inventory.csv"
+    "fn": "kim-inventory.csv"
   },
   "mappings" : {
-    "fn": "prickett-rules.csv"
+    "fn": "kim-rules.csv"
   },
   "lexicon" : {
-    "fn": "prickett-b.csv",
+    "fn": "kim-lexicon.csv",
     "params" : {
       "max_len": 5,
       "max_eds": 3,
@@ -28,7 +28,7 @@
   },
   "MCMC": {
     "anneal": 12,
-    "gs_iterations": 400000,
+    "gs_iterations": 100000,
     "mh_iterations": 10
   }
 }

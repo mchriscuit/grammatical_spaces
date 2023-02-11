@@ -116,47 +116,64 @@ class SPE(Inventory):
             return np.array(seq_config)
 
         for mname, rdef in zip(self.mnames(), self.mdefs()):
+
+            ## Retrieve the source, target, and context
             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
             idx = cxt.index("_")
-            cxt[idx : idx + 1] = src
+            
+            ## Insertions behave differently from substitutions and 
+            ## deletions, so we check what kind of rule it is
+            ds = bool("" not in src)
+            if ds:
+                cxt[idx : idx+1] = src
+            else:
+                del cxt[idx]
+            
+            ## Generate the feature configurations for each component
             tgt_config = generate_seq_config(tgt)
             cxt_config = generate_seq_config(cxt)
-            self._mname2mconfig[mname] = (cxt_config, idx, tgt_config)
-
-    def config_apply(self, seq_config: list):
-        """Applies the phonological mapping given a sequence of feature
-        configurations corresponding to some sequence of tokens
-        """
-        mhyp = self.get_current_mhyp()
-        for mname in mhyp:
-            seq_cxt_config, src_idx, tgt_config = self.mname2mconfig(mname)
-            idxs = self.get_compatible_idxs(seq_config, seq_cxt_config)
-            idxs += src_idx
-            if len(idxs) != 0:
-                seq_config = self.update_configs(seq_config, tgt_config, idxs)
-        return seq_config
+            self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, ds)
 
     def regex_mappings(self):
         """Converts mappings into regular expressions for process application"""
         for mname in self.mnames():
-            cxt_config, src_idx, tgt_config = self._mname2mconfig[mname]
+
+            ## Retrieve the feature configurations for the rules
+            cxt_config, src_idx, tgt_config, ds = self._mname2mconfig[mname]
             cxt_token_configs = self.get_compatible_tokens(cxt_config)
+
+            ## Get the regular expression of the context
             x = np.arange(len(cxt_token_configs))
             cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
             cxt_regex = "".join(f"([{c}])" for c in cxt_regex)
-            src_token_configs = cxt_token_configs[src_idx]
-            y = np.arange(len(src_token_configs))
-            src_regex = self.seq_config2tokens(src_token_configs)
-            tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
-            tgt_regex = self.seq_config2list(tgt_token_configs)
-            tgt_regex = [
-                "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
-                for tgt in tgt_regex
-            ]
-            tf_regex = {
-                src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)
-            }
-            self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
+
+            ## If it is a deletion or substitution, then apply the transformation
+            if ds:
+                src_token_configs = cxt_token_configs[src_idx]
+                y = np.arange(len(src_token_configs))
+                src_regex = self.seq_config2tokens(src_token_configs)
+                tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
+                tgt_regex = self.seq_config2list(tgt_token_configs)
+                tgt_regex = [
+                    "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
+                    for tgt in tgt_regex
+                ]
+                tf_regex = {
+                    src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)
+                }
+                self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
+            
+            ## Otherwise, forgo generating the source and instead look at compatible
+            ## insertion candidates
+            else:
+                tgt_token_configs = self.get_compatible_tokens(tgt_config)
+                tgt_regex = [self.seq_config2tokens(t) for t in tgt_token_configs]
+                tgt_regex = [
+                    "".join(rf"\{i+1}" if i != src_idx else rf"{tgt}\{i+1}" for i in x)
+                    for tgt in tgt_regex
+                ]
+                tf_regex = {"": t for t in tgt_regex}
+                self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
 
     def regex_apply(self, tokens: str):
         """Applies the phonological mapping given a sequence of tokens"""
@@ -168,7 +185,7 @@ class SPE(Inventory):
 
     def tf(self, match: re.Match, tf_regex: dict, idx: int):
         """Returns a different regular expression depending on the match"""
-        return match.expand(tf_regex[match.group(idx)])
+        return match.expand(tf_regex.get(match.group(idx), tf_regex[""]))
 
     def compute_prior(self):
         """Computes the prior for the current rule hypothesis"""
