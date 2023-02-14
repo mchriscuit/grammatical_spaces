@@ -49,13 +49,11 @@ class MCMC:
         ## Initialize list to store grammars at the end of each iteration
         sampled_grammars = []
         for gs_iteration in tqdm(range(gs_iterations)):
-
             ## Compute annealing exponent
             power = min(np.log(gs_iteration + 2) / anneal, 1)
 
             ## Loop through each contextual UR
             for clx in G.clxs():
-
                 ## Retrieve the prior and likelihood of the old UR
                 cxt_ur_old = G.L.cxt_ur_full(clx)
                 cxt_pr_old = G.L.cxt_pr(clx)
@@ -63,17 +61,22 @@ class MCMC:
 
                 ## Loop for mh_iterations
                 for mh_iteration in range(mh_iterations):
-
                     ## Sample a new contextual UR
                     cxt_ur_new, cxt_pr_new = G.L.sample_cxt_ur(clx)
                     likelihood_new = G.compute_likelihood(clx, G.levenshtein)
 
                     ## Calculate the transition probability of the hypotheses
                     tp_old = np.prod(
-                        [G.L.compute_cxt_tp(n[0], o[0], n[1], o[1]) for n, o in zip(cxt_ur_new, cxt_ur_old)]
+                        [
+                            G.L.compute_cxt_tp(n[0], o[0], n[1], o[1])
+                            for n, o in zip(cxt_ur_new, cxt_ur_old)
+                        ]
                     )
                     tp_new = np.prod(
-                        [G.L.compute_cxt_tp(o[0], n[0], o[1], n[1]) for o, n in zip(cxt_ur_old, cxt_ur_new)]
+                        [
+                            G.L.compute_cxt_tp(o[0], n[0], o[1], n[1])
+                            for o, n in zip(cxt_ur_old, cxt_ur_new)
+                        ]
                     )
 
                     ## Accept or reject the sample
@@ -83,7 +86,9 @@ class MCMC:
 
                     ## If we do not accept, revert to the old UR hypothesis
                     if not accepted:
-                        for lx, cxt_u_old, cxt_p_old in zip(clx, cxt_ur_old, cxt_pr_old):
+                        for lx, cxt_u_old, cxt_p_old in zip(
+                            clx, cxt_ur_old, cxt_pr_old
+                        ):
                             G.L.set_clx_ur(lx, clx, cxt_u_old, cxt_p_old)
 
                     ## Otherwise, update the new hypothesis
@@ -92,10 +97,8 @@ class MCMC:
                         cxt_pr_old = G.L.cxt_pr(clx)
                         likelihood_old = likelihood_new
 
-
             ## Loop through each prototype UR
             for lx in G.lxs():
-
                 ## Retrieve the old prototype UR and prior
                 pro_ur_old = G.L.pro_ur(lx)
                 ur_old = deepcopy(G.L.lx_ur(lx))
@@ -107,7 +110,6 @@ class MCMC:
 
                 ## Loop for mh_iterations
                 for mh_iteration in range(mh_iterations):
-
                     ## Sample a new prototype underlying form
                     G.L.sample_pro_ur(lx)
 
@@ -152,16 +154,12 @@ class MCMC:
             nmhyps = G.M.nmhyps()
             pmhyps = np.ones(nmhyps)
             for mhyp_idx in range(nmhyps):
-
                 ## Update the mapping hypothesis internally
                 G.M.update_mhyp_idx(mhyp_idx)
 
                 ## Calculate the likelihood and prior of the mapping hypothesis
                 likelihood = np.prod(
-                    [
-                        G.compute_likelihood(clx, G.levenshtein)
-                        for clx in G.clxs()
-                    ]
+                    [G.compute_likelihood(clx, G.levenshtein) for clx in G.clxs()]
                 )
                 prior = G.M.compute_prior()
                 pmhyps[mhyp_idx] = (likelihood * prior) ** power
@@ -176,7 +174,7 @@ class MCMC:
             G.M.update_mhyp_idx(sampled_mhyp_idx)
 
             ## Append to sample
-            sampled_grammars.append(deepcopy(G))
+            sampled_grammars.append(G.export())
 
         return sampled_grammars, lx_acceptances
 
@@ -202,9 +200,8 @@ class MCMC:
 
         ## Populate dictionaries
         for grammar in tqdm(burned_in):
-
             ## Retrieve the information from the grammar
-            clxs, mnames, urs, pred_srs, obs_srs = grammar.export()
+            clxs, mnames, urs, pred_srs, obs_srs = grammar
 
             ## Count each predicted SR for each clx
             for clx, pred_sr in zip(clxs, pred_srs):
@@ -225,8 +222,7 @@ class MCMC:
         post = {fg: count / sum(post.values()) for fg, count in post.items()}
         pred = {
             clx: {
-                sr: count / sum(pred[clx].values())
-                for sr, count in pred[clx].items()
+                sr: count / sum(pred[clx].values()) for sr, count in pred[clx].items()
             }
             for clx in pred
         }

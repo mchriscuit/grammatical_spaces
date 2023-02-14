@@ -1,7 +1,7 @@
 import numpy as np
 from itertools import product
 from Levenshtein import distance
-from scipy.stats import binom
+from scipy.stats import binom, geom
 from tqdm import tqdm
 
 
@@ -54,13 +54,31 @@ class Uniform(Distributions):
         return 1.0 / n
 
 
+class Geometric(Distributions):
+    """========== INITIALIZATION =========================================="""
+
+    def __init__(self, n, p):
+        self._m = n+1
+        self._a = list(range(self._m))
+        self._p = np.array([geom.pmf(i, p, loc=-1) for i in self._a])
+        self._p = self._p / sum(self._p)
+
+    """========== INSTANCE METHODS ========================================"""
+
+    def rv(self):
+        return self.rng.choice(a=self._a, p=self._p)
+
+    def pmf(self, k):
+        assert self._m >= k, f"Invalid number of successes; {self._m} !>= {k}"
+        return self._p[k]
+    
+
 class Distance(Distributions):
     """========== INITIALIZATION =========================================="""
 
     def __init__(
         self,
         segs: np.ndarray,
-        costs: dict,
         n: int,
         dl: int,
         de: int,
@@ -72,9 +90,6 @@ class Distance(Distributions):
         self._n = n
         self._dl = dl
         self._de = de
-
-        ## Cost function
-        self._costs = costs
 
         """=============== PRIOR DISTRIBUTION ======================= """
         self._pralns, self._prprbs = self.init_all_alns(self._n, self._dl)

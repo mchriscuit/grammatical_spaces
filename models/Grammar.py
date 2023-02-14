@@ -14,15 +14,14 @@ class Grammar:
     """========== INITIALIZATION ======================================="""
 
     def __init__(
-            self,
-            clxs: np.ndarray,
-            srs: np.ndarray,
-            nobs: np.ndarray,
-            lm: float,
-            L,
-            M,
+        self,
+        clxs: np.ndarray,
+        srs: np.ndarray,
+        nobs: np.ndarray,
+        lm: float,
+        L,
+        M,
     ):
-
         ## *=*=*= OBJECT "INHERITENCE" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self.L = L
         self.M = M
@@ -40,12 +39,12 @@ class Grammar:
         self._sr2id = {sr: i for i, sr in enumerate(srs)}
 
     """ ========== OVERLOADING METHODS ================================== """
-   
+
     def __deepcopy__(self, memo):
-        """Overloads the deepcopy function to only copy the Mapping and 
+        """Overloads the deepcopy function to only copy the Mapping and
         Lexicon objects, keeping a shallow copy of everything else
         """
-      
+
         ## Initialize a new class object
         cls = self.__class__
         cp = cls.__new__(cls)
@@ -55,7 +54,7 @@ class Grammar:
         ## Create deep copies of the L and M attributes
         setattr(cp, "L", deepcopy(self.__dict__["L"], memo))
         setattr(cp, "M", deepcopy(self.__dict__["M"], memo))
-        
+
         return cp
 
     """ ========== INSTANCE METHODS ===================================== """

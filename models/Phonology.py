@@ -185,7 +185,7 @@ class SPE(Inventory):
 
     def tf(self, match: re.Match, tf_regex: dict, idx: int):
         """Returns a different regular expression depending on the match"""
-        return match.expand(tf_regex.get(match.group(idx), tf_regex[""]))
+        return match.expand(tf_regex.get(match.group(idx), tf_regex.get("")))
 
     def compute_prior(self):
         """Computes the prior for the current rule hypothesis"""

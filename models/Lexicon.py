@@ -2,7 +2,7 @@ import numpy as np
 import re
 from copy import copy, deepcopy
 from optim.Inventory import Inventory
-from optim.Distributions import Binomial, Bernoulli, Uniform, Distance
+from optim.Distributions import Binomial, Geometric, Bernoulli, Uniform, Distance
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                 LEXICON DEFINITION
@@ -21,7 +21,6 @@ class Lexicon(Inventory):
         feats: np.ndarray,
         configs: np.ndarray,
     ):
-
         self._rng = np.random.default_rng()
         self._pro = ("PROTO",)
 
@@ -29,27 +28,21 @@ class Lexicon(Inventory):
         super().__init__(tokens, feats, configs)
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        """Prior"""
+        """Prior Distribution"""
         self._ml = pars["max_len"]
         self._th = pars["theta"]
         self._ps = pars["psi"]
         self._al = pars["alpha"]
 
-        """Proposal"""
+        """Initializing Geometric Distribution"""
+        self.G = Geometric(self._ml, self._th)
+
+        """Proposal Distribution"""
         self._ph = pars["phi"]
         self._bt = pars["beta"]
 
-        """Costs"""
-        self._ct = pars["costs"]
-
-        """Initializing distance metric"""
-        self.D = Distance(
-            self.segs(),
-            self._ct,
-            self._ml,
-            self._ps,
-            self._ph
-            )
+        """Initializing Distance Metric"""
+        self.D = Distance(self.segs(), self._ml, self._ps, self._ph)
 
         ## *=*=*= BASIC LEXICAL INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._lxs = lxs
@@ -101,28 +94,26 @@ class Lexicon(Inventory):
         ## Check that the given lexical contexts match the lexical contexts
         ## seen in the data
         assert all(
-            set(self._lx2clxs[lx]) == set(init_clxs[i])
-            for i, lx in enumerate(init_lxs)
+            set(self._lx2clxs[lx]) == set(init_clxs[i]) for i, lx in enumerate(init_lxs)
         ), "Given lexical contexts and observed lexical contexts not equal"
 
         ## Otherwise, update the UR hypothesis and prior
         for init_lx, init_clx, init_ur in zip(init_lxs, init_clxs, init_urs):
-
             ## First, update the dictionary for all the URs for all contexts
             ## Go through each of the contextual URs and denote whether
             ## the UR matches the proto-UR: mark it as such if so
             self._lx2ur[init_lx] = {
-                init_cx:
-                    init_u[0] if self.is_pro(init_cx) else
-                    (init_u[0], int(init_u[1]))
-                    for init_cx, init_u in zip(init_clx, init_ur)
+                init_cx: init_u[0]
+                if self.is_pro(init_cx)
+                else (init_u[0], int(init_u[1]))
+                for init_cx, init_u in zip(init_clx, init_ur)
             }
 
             ## Calculate the prior of each UR as well
             self._lx2pr[init_lx] = {
-                init_cx:
-                    self.compute_pr(self.pro_ur(init_lx)) if self.is_pro(init_cx) else
-                    self.compute_pr(self.pro_ur(init_lx), init_u[0], init_u[1])
+                init_cx: self.compute_pr(self.pro_ur(init_lx))
+                if self.is_pro(init_cx)
+                else self.compute_pr(self.pro_ur(init_lx), init_u[0], init_u[1])
                 for init_cx, init_u in self._lx2ur[init_lx].items()
             }
 
@@ -152,7 +143,6 @@ class Lexicon(Inventory):
 
         ## Loop through each contextual UR
         for clx in self.lx2clxs(lx):
-
             ## Make sure that it is a contextual UR
             if self.is_cxt(clx):
                 clx_ur, clx_default = self.lx_clx_ur(lx, clx)
@@ -184,7 +174,6 @@ class Lexicon(Inventory):
 
         ## For each lexeme in the lexical item
         for lx in clx:
-
             ## Retrieve the prototype UR
             pro_ur = self.pro_ur(lx)
 
@@ -202,11 +191,7 @@ class Lexicon(Inventory):
 
             ## Calculate the prior given the sampled default value and
             ## prototype underlying form
-            lx_clx_pr_new = self.compute_pr(
-                pro_ur,
-                lx_clx_ur_new,
-                lx_clx_default_new
-            )
+            lx_clx_pr_new = self.compute_pr(pro_ur, lx_clx_ur_new, lx_clx_default_new)
 
             ## Append the sample values
             lx_clx_ur_new = (lx_clx_ur_new, lx_clx_default_new)
@@ -227,17 +212,16 @@ class Lexicon(Inventory):
         ## probability of generating the proto UR
         if cxt_ur is None:
             pro_len = len(pro_ur)
-            pr *= Binomial.pmf(pro_len, self._ml, self._th)
+            pr *= self.G.pmf(pro_len)
             pr *= Uniform.pmf(self.nsegs()) ** pro_len
             return pr
 
         ## Otherwise, calculate the probability of generating the
         ## specified contextual UR given the proto UR
         else:
-
             ## If cxt_id = 0, then generate a contextual underlying form
-            pr *= (1-Bernoulli.pmf(1, self._al)) ** (1-cxt_id)
-            pr *= self.D.prpmf(pro_ur, cxt_ur) ** (1-cxt_id)
+            pr *= (1 - Bernoulli.pmf(1, self._al)) ** (1 - cxt_id)
+            pr *= self.D.prpmf(pro_ur, cxt_ur) ** (1 - cxt_id)
 
             ## If cxt_id = 1, then check that the prototype underlying form
             ## an the contextual underlying form are identical
@@ -254,7 +238,7 @@ class Lexicon(Inventory):
         if id_old != id_new:
             tp = Bernoulli.pmf(1, self._bt)
         else:
-            tp = 1-Bernoulli.pmf(1, self._bt)
+            tp = 1 - Bernoulli.pmf(1, self._bt)
         tp *= self.D.tppmf(ur_old, ur_new)
         return tp
 

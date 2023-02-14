@@ -208,12 +208,13 @@ def main():
     lm = surface_forms["lambda"]
     psi = lexicon["params"]["psi"]
     phi = lexicon["params"]["phi"]
+    alpha = lexicon["params"]["alpha"]
 
     ## Generate new directory
     output_path = f"./output/"
     output_path += f"{re.sub('.csv', '', surface_forms['fn'])}"
     output_path += f"-gs{gs_iterations}-mh{mh_iterations}"
-    output_path += f"-lm{lm}-psi{psi}-phi{phi}"
+    output_path += f"-lamda{lm}-psi{psi}-phi{phi}-alpha{alpha}"
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
