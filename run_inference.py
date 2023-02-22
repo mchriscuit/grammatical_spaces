@@ -214,7 +214,7 @@ def main():
     output_path = f"./output/"
     output_path += f"{re.sub('.csv', '', surface_forms['fn'])}"
     output_path += f"-gs{gs_iterations}-mh{mh_iterations}"
-    output_path += f"-lamda{lm}-psi{psi}-phi{phi}-alpha{alpha}"
+    output_path += f"-lambda{lm}-psi{psi}-phi{phi}-alpha{alpha}"
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
