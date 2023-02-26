@@ -108,7 +108,7 @@ class Inventory:
         a vector of Nones
         """
         seq_token_config = deepcopy(seq_token_config)
-        if tgt_config.all() == None:
+        if len(tgt_config) == 0:
             seq_token_config[idxs] = None
         else:
             m = ~np.isnan(tgt_config)
@@ -145,7 +145,7 @@ class Inventory:
         return np.array(compatible_idxs)
 
     def get_compatible_tokens(self, seq_config: np.ndarray):
-        """Takes in a vector of feature configurations and returns all
+        """Takes in a vector (or list) of feature configurations and returns all
         token configurations compatible with that configuration. Compatible
         tokens are determined by seeing whether all of the non-NaN values are
         matched in the segment

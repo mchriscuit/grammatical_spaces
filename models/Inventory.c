@@ -4444,8 +4444,8 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  int __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
+  Py_ssize_t __pyx_t_4;
+  int __pyx_t_5;
   PyObject *(*__pyx_t_6)(PyObject *);
   PyObject *__pyx_t_7 = NULL;
   int __pyx_lineno = 0;
@@ -4458,7 +4458,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
  *         a vector of Nones
  *         """
  *         seq_token_config = deepcopy(seq_token_config)             # <<<<<<<<<<<<<<
- *         if tgt_config.all() == None:
+ *         if len(tgt_config) == 0:
  *             seq_token_config[idxs] = None
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_deepcopy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
@@ -4484,36 +4484,17 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   /* "models/Inventory.py":111
  *         """
  *         seq_token_config = deepcopy(seq_token_config)
- *         if tgt_config.all() == None:             # <<<<<<<<<<<<<<
+ *         if len(tgt_config) == 0:             # <<<<<<<<<<<<<<
  *             seq_token_config[idxs] = None
  *         else:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_tgt_config, __pyx_n_s_all); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 111, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_4) {
+  __pyx_t_4 = PyObject_Length(__pyx_v_tgt_config); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_5 = ((__pyx_t_4 == 0) != 0);
+  if (__pyx_t_5) {
 
     /* "models/Inventory.py":112
  *         seq_token_config = deepcopy(seq_token_config)
- *         if tgt_config.all() == None:
+ *         if len(tgt_config) == 0:
  *             seq_token_config[idxs] = None             # <<<<<<<<<<<<<<
  *         else:
  *             m = ~np.isnan(tgt_config)
@@ -4523,7 +4504,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
     /* "models/Inventory.py":111
  *         """
  *         seq_token_config = deepcopy(seq_token_config)
- *         if tgt_config.all() == None:             # <<<<<<<<<<<<<<
+ *         if len(tgt_config) == 0:             # <<<<<<<<<<<<<<
  *             seq_token_config[idxs] = None
  *         else:
  */
@@ -4538,29 +4519,29 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
  *                 seq_token_config[np.newaxis, idx][m] = tgt_config[m].astype(int)
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_isnan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_isnan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = NULL;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_2 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_1)) {
+      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_2)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_1);
+        __Pyx_INCREF(__pyx_t_2);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_3, function);
       }
     }
-    __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_1, __pyx_v_tgt_config) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_tgt_config);
-    __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_v_tgt_config) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_tgt_config);
+    __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyNumber_Invert(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Invert(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_m = __pyx_t_3;
     __pyx_t_3 = 0;
 
@@ -4572,35 +4553,35 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
  *         return seq_token_config
  */
     if (likely(PyList_CheckExact(__pyx_v_idxs)) || PyTuple_CheckExact(__pyx_v_idxs)) {
-      __pyx_t_3 = __pyx_v_idxs; __Pyx_INCREF(__pyx_t_3); __pyx_t_5 = 0;
+      __pyx_t_3 = __pyx_v_idxs; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
       __pyx_t_6 = NULL;
     } else {
-      __pyx_t_5 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_idxs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_idxs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_6 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 115, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_6)) {
         if (likely(PyList_CheckExact(__pyx_t_3))) {
-          if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_3)) break;
+          if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
-          if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
+          if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_5); __Pyx_INCREF(__pyx_t_2); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_1); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_2);
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
           #endif
         }
       } else {
-        __pyx_t_2 = __pyx_t_6(__pyx_t_3);
-        if (unlikely(!__pyx_t_2)) {
+        __pyx_t_1 = __pyx_t_6(__pyx_t_3);
+        if (unlikely(!__pyx_t_1)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
@@ -4608,10 +4589,10 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
           }
           break;
         }
-        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GOTREF(__pyx_t_1);
       }
-      __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_2);
-      __pyx_t_2 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_1);
+      __pyx_t_1 = 0;
 
       /* "models/Inventory.py":116
  *             m = ~np.isnan(tgt_config)
@@ -4620,45 +4601,45 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
  *         return seq_token_config
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_tgt_config, __pyx_v_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_astype); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_tgt_config, __pyx_v_m); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_astype); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = NULL;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_7);
-        if (likely(__pyx_t_1)) {
+        __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_7);
+        if (likely(__pyx_t_2)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_2);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_7, function);
         }
       }
-      __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_1, ((PyObject *)(&PyInt_Type))) : __Pyx_PyObject_CallOneArg(__pyx_t_7, ((PyObject *)(&PyInt_Type)));
-      __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_2, ((PyObject *)(&PyInt_Type))) : __Pyx_PyObject_CallOneArg(__pyx_t_7, ((PyObject *)(&PyInt_Type)));
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_newaxis); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __Pyx_GIVEREF(__pyx_t_1);
-      PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_1);
+      __Pyx_GIVEREF(__pyx_t_2);
+      PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2);
       __Pyx_INCREF(__pyx_v_idx);
       __Pyx_GIVEREF(__pyx_v_idx);
       PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_idx);
-      __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_seq_token_config, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_seq_token_config, __pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_v_m, __pyx_t_2) < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      if (unlikely(PyObject_SetItem(__pyx_t_2, __pyx_v_m, __pyx_t_1) < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
       /* "models/Inventory.py":115
  *         else:
@@ -5404,13 +5385,13 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
- *         """Takes in a vector of feature configurations and returns all
+ *         """Takes in a vector (or list) of feature configurations and returns all
  *         token configurations compatible with that configuration. Compatible
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_5optim_9Inventory_9Inventory_23get_compatible_tokens(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_5optim_9Inventory_9Inventory_22get_compatible_tokens[] = "Takes in a vector of feature configurations and returns all\n        token configurations compatible with that configuration. Compatible\n        tokens are determined by seeing whether all of the non-NaN values are\n        matched in the segment\n        ";
+static char __pyx_doc_5optim_9Inventory_9Inventory_22get_compatible_tokens[] = "Takes in a vector (or list) of feature configurations and returns all\n        token configurations compatible with that configuration. Compatible\n        tokens are determined by seeing whether all of the non-NaN values are\n        matched in the segment\n        ";
 static PyMethodDef __pyx_mdef_5optim_9Inventory_9Inventory_23get_compatible_tokens = {"get_compatible_tokens", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_5optim_9Inventory_9Inventory_23get_compatible_tokens, METH_VARARGS|METH_KEYWORDS, __pyx_doc_5optim_9Inventory_9Inventory_22get_compatible_tokens};
 static PyObject *__pyx_pw_5optim_9Inventory_9Inventory_23get_compatible_tokens(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
@@ -5707,7 +5688,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
- *         """Takes in a vector of feature configurations and returns all
+ *         """Takes in a vector (or list) of feature configurations and returns all
  *         token configurations compatible with that configuration. Compatible
  */
 
@@ -7062,7 +7043,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
- *         """Takes in a vector of feature configurations and returns all
+ *         """Takes in a vector (or list) of feature configurations and returns all
  *         token configurations compatible with that configuration. Compatible
  */
   __pyx_tuple__30 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_seq_config, __pyx_n_s_tconfigs_2, __pyx_n_s_compatible_segs, __pyx_n_s_config, __pyx_n_s_m, __pyx_n_s_compatible_configs); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 147, __pyx_L1_error)
@@ -7876,7 +7857,7 @@ if (!__Pyx_RefNanny) {
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
- *         """Takes in a vector of feature configurations and returns all
+ *         """Takes in a vector (or list) of feature configurations and returns all
  *         token configurations compatible with that configuration. Compatible
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)

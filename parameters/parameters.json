@@ -1,7 +1,7 @@
 {
   "surface_forms" : {
     "fn": "kim-surface-forms.csv",
-    "lambda": 10
+    "lambda": 5
   },
   "inventory" : {
     "fn": "kim-inventory.csv"
