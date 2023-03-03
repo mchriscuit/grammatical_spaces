@@ -8,7 +8,7 @@
         ],
         "name": "optim.Phonology",
         "sources": [
-            "models/Phonology.py"
+            "models/Phonology.pyx"
         ]
     },
     "module_name": "optim.Phonology"
@@ -965,7 +965,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "models/Phonology.py",
+  "models/Phonology.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -981,7 +981,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_8_genexpr;
 struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_9_genexpr;
 struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_10_regex_apply;
 
-/* "models/Phonology.py":87
+/* "models/Phonology.pyx":87
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def config_mappings(self):             # <<<<<<<<<<<<<<
@@ -997,7 +997,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct__config_mappings {
 };
 
 
-/* "models/Phonology.py":114
+/* "models/Phonology.pyx":114
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -1011,7 +1011,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_1_generate_seq_config {
 };
 
 
-/* "models/Phonology.py":132
+/* "models/Phonology.pyx":132
  *                 config = (
  *                     [np.array([self.str_feats2config(y) for y in x]) for x in str_feats]
  *                     if all(isinstance(x, list) for x in str_feats)             # <<<<<<<<<<<<<<
@@ -1025,7 +1025,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_2_genexpr {
 };
 
 
-/* "models/Phonology.py":163
+/* "models/Phonology.pyx":163
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -1042,7 +1042,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_3_regex_mappings {
 };
 
 
-/* "models/Phonology.py":174
+/* "models/Phonology.pyx":174
  *             ## as usual. If it is a list of lists of np.ndarrays, generate
  *             ## the alternative environments
  *             if any(isinstance(x, list) for x in cxt_config):             # <<<<<<<<<<<<<<
@@ -1056,7 +1056,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_4_genexpr {
 };
 
 
-/* "models/Phonology.py":189
+/* "models/Phonology.pyx":189
  *                 cxt_regex = "".join([
  *                     f"([{''.join(y for y in x)}])"
  *                     if all(isinstance(y, str) for y in x)             # <<<<<<<<<<<<<<
@@ -1070,7 +1070,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_5_genexpr {
 };
 
 
-/* "models/Phonology.py":188
+/* "models/Phonology.pyx":188
  *                 ]
  *                 cxt_regex = "".join([
  *                     f"([{''.join(y for y in x)}])"             # <<<<<<<<<<<<<<
@@ -1087,7 +1087,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_6_genexpr {
 };
 
 
-/* "models/Phonology.py":196
+/* "models/Phonology.pyx":196
  *                 cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *                 cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *                 cxt_regex = "".join(f"([{c}])" for c in cxt_regex)             # <<<<<<<<<<<<<<
@@ -1104,7 +1104,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_7_genexpr {
 };
 
 
-/* "models/Phonology.py":220
+/* "models/Phonology.pyx":220
  *                 tgt_regex = self.seq_config2list(tgt_token_configs)
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)             # <<<<<<<<<<<<<<
@@ -1121,7 +1121,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_8_genexpr {
 };
 
 
-/* "models/Phonology.py":238
+/* "models/Phonology.pyx":238
  *                 tgt_regex = [self.seq_config2tokens(t) for t in tgt_token_configs]
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else rf"{tgt}\{i+1}" for i in x)             # <<<<<<<<<<<<<<
@@ -1138,7 +1138,7 @@ struct __pyx_obj_5optim_9Phonology___pyx_scope_struct_9_genexpr {
 };
 
 
-/* "models/Phonology.py":244
+/* "models/Phonology.pyx":244
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -2032,12 +2032,12 @@ static const char __pyx_k_SPE_config_mappings[] = "SPE.config_mappings";
 static const char __pyx_k_SPE_update_mhyp_idx[] = "SPE.update_mhyp_idx";
 static const char __pyx_k_generate_hypotheses[] = "generate_hypotheses";
 static const char __pyx_k_generate_seq_config[] = "generate_seq_config";
-static const char __pyx_k_models_Phonology_py[] = "models/Phonology.py";
 static const char __pyx_k_optim_Distributions[] = "optim.Distributions";
 static const char __pyx_k_seq_str_nat_classes[] = "seq_str_nat_classes";
 static const char __pyx_k_split_opt_nat_class[] = "split_opt_nat_class";
 static const char __pyx_k_split_str_nat_class[] = "split_str_nat_class";
 static const char __pyx_k_SPE_get_current_mhyp[] = "SPE.get_current_mhyp";
+static const char __pyx_k_models_Phonology_pyx[] = "models/Phonology.pyx";
 static const char __pyx_k_get_compatible_tokens[] = "get_compatible_tokens";
 static const char __pyx_k_SPE_generate_hypotheses[] = "SPE.generate_hypotheses";
 static const char __pyx_k_str_seq_str_nat_classes[] = "str_seq_str_nat_classes";
@@ -2167,7 +2167,7 @@ static PyObject *__pyx_n_s_mname2mregex;
 static PyObject *__pyx_n_s_mname2mregex_2;
 static PyObject *__pyx_n_s_mnames;
 static PyObject *__pyx_n_s_mnames_2;
-static PyObject *__pyx_kp_s_models_Phonology_py;
+static PyObject *__pyx_kp_s_models_Phonology_pyx;
 static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_n;
 static PyObject *__pyx_n_s_name;
@@ -2340,7 +2340,7 @@ static PyObject *__pyx_codeobj__63;
 static PyObject *__pyx_codeobj__65;
 /* Late includes */
 
-/* "models/Phonology.py":16
+/* "models/Phonology.pyx":16
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
@@ -2474,7 +2474,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "models/Phonology.py":24
+  /* "models/Phonology.pyx":24
  *         configs: np.ndarray,
  *     ):
  *         self._rng = np.random.default_rng()             # <<<<<<<<<<<<<<
@@ -2507,7 +2507,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_rng, __pyx_t_1) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":27
+  /* "models/Phonology.pyx":27
  * 
  *         ## *=*=*= INHERITENCE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
  *         super().__init__(tokens, feats, configs)             # <<<<<<<<<<<<<<
@@ -2581,7 +2581,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":30
+  /* "models/Phonology.pyx":30
  * 
  *         ## *=*=*= BASIC RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._nms = len(mnames)             # <<<<<<<<<<<<<<
@@ -2594,7 +2594,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nms, __pyx_t_1) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":31
+  /* "models/Phonology.pyx":31
  *         ## *=*=*= BASIC RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._nms = len(mnames)
  *         self._mnames = np.array(mnames)             # <<<<<<<<<<<<<<
@@ -2624,7 +2624,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mnames_2, __pyx_t_1) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":32
+  /* "models/Phonology.pyx":32
  *         self._nms = len(mnames)
  *         self._mnames = np.array(mnames)
  *         self._mdefs = np.array(mdefs)             # <<<<<<<<<<<<<<
@@ -2654,7 +2654,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mdefs_2, __pyx_t_1) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":35
+  /* "models/Phonology.pyx":35
  * 
  *         ## *=*=*= INITIALIZE RULE HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._mhyps = []             # <<<<<<<<<<<<<<
@@ -2666,7 +2666,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyps, __pyx_t_1) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":36
+  /* "models/Phonology.pyx":36
  *         ## *=*=*= INITIALIZE RULE HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._mhyps = []
  *         self._nmhyps = 0             # <<<<<<<<<<<<<<
@@ -2675,7 +2675,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps, __pyx_int_0) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
 
-  /* "models/Phonology.py":37
+  /* "models/Phonology.pyx":37
  *         self._mhyps = []
  *         self._nmhyps = 0
  *         self._mhyp_idx = 0             # <<<<<<<<<<<<<<
@@ -2684,7 +2684,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_int_0) < 0) __PYX_ERR(0, 37, __pyx_L1_error)
 
-  /* "models/Phonology.py":38
+  /* "models/Phonology.pyx":38
  *         self._nmhyps = 0
  *         self._mhyp_idx = 0
  *         self.generate_hypotheses()             # <<<<<<<<<<<<<<
@@ -2710,7 +2710,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":41
+  /* "models/Phonology.pyx":41
  * 
  *         ## *=*=*= INITIALIZE RULE DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._mhyp2idx = {mhyp: i for i, mhyp in enumerate(self._mhyps)}             # <<<<<<<<<<<<<<
@@ -2789,7 +2789,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp2idx, __pyx_t_1) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":44
+  /* "models/Phonology.pyx":44
  * 
  *         ## *=*=*= INITIALIZE RULE CONFIGURATIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._mname2mconfig = {}             # <<<<<<<<<<<<<<
@@ -2801,7 +2801,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mname2mconfig, __pyx_t_1) < 0) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":45
+  /* "models/Phonology.pyx":45
  *         ## *=*=*= INITIALIZE RULE CONFIGURATIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._mname2mconfig = {}
  *         self.config_mappings()             # <<<<<<<<<<<<<<
@@ -2827,7 +2827,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":48
+  /* "models/Phonology.pyx":48
  * 
  *         ## *=*=*= INITIALIZE RULE REGULAR EXPRESSIONS *=*=*=*=*=*=*=*=*=*=*=*
  *         self._mname2mregex = {}             # <<<<<<<<<<<<<<
@@ -2839,7 +2839,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mname2mregex, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":49
+  /* "models/Phonology.pyx":49
  *         ## *=*=*= INITIALIZE RULE REGULAR EXPRESSIONS *=*=*=*=*=*=*=*=*=*=*=*
  *         self._mname2mregex = {}
  *         self.regex_mappings()             # <<<<<<<<<<<<<<
@@ -2865,7 +2865,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":16
+  /* "models/Phonology.pyx":16
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
@@ -2891,7 +2891,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE___init__(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Phonology.py":53
+/* "models/Phonology.pyx":53
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
  *     def __copy__(self):             # <<<<<<<<<<<<<<
@@ -2928,7 +2928,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__copy__", 0);
 
-  /* "models/Phonology.py":55
+  /* "models/Phonology.pyx":55
  *     def __copy__(self):
  *         """Overloads the copy function"""
  *         cls = self.__class__             # <<<<<<<<<<<<<<
@@ -2940,7 +2940,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
   __pyx_v_cls = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":56
+  /* "models/Phonology.pyx":56
  *         """Overloads the copy function"""
  *         cls = self.__class__
  *         cp = cls.__new__(cls)             # <<<<<<<<<<<<<<
@@ -2967,7 +2967,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
   __pyx_v_cp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":57
+  /* "models/Phonology.pyx":57
  *         cls = self.__class__
  *         cp = cls.__new__(cls)
  *         cp.__dict__.update(self.__dict__)             # <<<<<<<<<<<<<<
@@ -2999,7 +2999,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":58
+  /* "models/Phonology.pyx":58
  *         cp = cls.__new__(cls)
  *         cp.__dict__.update(self.__dict__)
  *         return cp             # <<<<<<<<<<<<<<
@@ -3011,7 +3011,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
   __pyx_r = __pyx_v_cp;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":53
+  /* "models/Phonology.pyx":53
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
  *     def __copy__(self):             # <<<<<<<<<<<<<<
@@ -3035,7 +3035,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
   return __pyx_r;
 }
 
-/* "models/Phonology.py":60
+/* "models/Phonology.pyx":60
  *         return cp
  * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
@@ -3123,7 +3123,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__deepcopy__", 0);
 
-  /* "models/Phonology.py":62
+  /* "models/Phonology.pyx":62
  *     def __deepcopy__(self, memo):
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__             # <<<<<<<<<<<<<<
@@ -3135,7 +3135,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   __pyx_v_cls = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":63
+  /* "models/Phonology.pyx":63
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__
  *         cp = cls.__new__(cls)             # <<<<<<<<<<<<<<
@@ -3162,7 +3162,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   __pyx_v_cp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":64
+  /* "models/Phonology.pyx":64
  *         cls = self.__class__
  *         cp = cls.__new__(cls)
  *         cp.__dict__.update(self.__dict__)             # <<<<<<<<<<<<<<
@@ -3194,7 +3194,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":65
+  /* "models/Phonology.pyx":65
  *         cp = cls.__new__(cls)
  *         cp.__dict__.update(self.__dict__)
  *         return cp             # <<<<<<<<<<<<<<
@@ -3206,7 +3206,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   __pyx_r = __pyx_v_cp;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":60
+  /* "models/Phonology.pyx":60
  *         return cp
  * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
@@ -3230,7 +3230,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Phonology.py":69
+/* "models/Phonology.pyx":69
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
@@ -3319,7 +3319,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_mhyp", 0);
 
-  /* "models/Phonology.py":71
+  /* "models/Phonology.pyx":71
  *     def update_mhyp(self, mhyp: tuple):
  *         """Updates the rule hypothesis to the index corresponding to the name"""
  *         self._mhyp_idx = self._mhyp2idx[mhyp]             # <<<<<<<<<<<<<<
@@ -3334,7 +3334,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(CYTHON_UNUSED PyOb
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_t_2) < 0) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":69
+  /* "models/Phonology.pyx":69
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
@@ -3356,7 +3356,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_6update_mhyp(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "models/Phonology.py":73
+/* "models/Phonology.pyx":73
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
@@ -3438,7 +3438,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_8update_mhyp_idx(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update_mhyp_idx", 0);
 
-  /* "models/Phonology.py":75
+  /* "models/Phonology.pyx":75
  *     def update_mhyp_idx(self, idx: int):
  *         """Updates the rule hypothesis index"""
  *         self._mhyp_idx = idx             # <<<<<<<<<<<<<<
@@ -3447,7 +3447,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_8update_mhyp_idx(CYTHON_UNUSED 
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_v_idx) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
 
-  /* "models/Phonology.py":73
+  /* "models/Phonology.pyx":73
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
@@ -3467,7 +3467,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_8update_mhyp_idx(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":77
+/* "models/Phonology.pyx":77
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
@@ -3509,7 +3509,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("generate_hypotheses", 0);
 
-  /* "models/Phonology.py":82
+  /* "models/Phonology.pyx":82
  *         as the initial rule hypothesis
  *         """
  *         for n in range(self.nms() + 1):             # <<<<<<<<<<<<<<
@@ -3582,7 +3582,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
     __Pyx_XDECREF_SET(__pyx_v_n, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":83
+    /* "models/Phonology.pyx":83
  *         """
  *         for n in range(self.nms() + 1):
  *             self._mhyps += permutations(self.mnames(), n)             # <<<<<<<<<<<<<<
@@ -3664,7 +3664,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
     if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyps, __pyx_t_6) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "models/Phonology.py":82
+    /* "models/Phonology.pyx":82
  *         as the initial rule hypothesis
  *         """
  *         for n in range(self.nms() + 1):             # <<<<<<<<<<<<<<
@@ -3674,7 +3674,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":84
+  /* "models/Phonology.pyx":84
  *         for n in range(self.nms() + 1):
  *             self._mhyps += permutations(self.mnames(), n)
  *         self._nmhyps = len(self.mhyps())             # <<<<<<<<<<<<<<
@@ -3705,7 +3705,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nmhyps, __pyx_t_2) < 0) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":85
+  /* "models/Phonology.pyx":85
  *             self._mhyps += permutations(self.mnames(), n)
  *         self._nmhyps = len(self.mhyps())
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())             # <<<<<<<<<<<<<<
@@ -3753,7 +3753,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_mhyp_idx, __pyx_t_2) < 0) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":77
+  /* "models/Phonology.pyx":77
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
@@ -3781,7 +3781,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_10generate_hypotheses(CYTHON_UN
   return __pyx_r;
 }
 
-/* "models/Phonology.py":87
+/* "models/Phonology.pyx":87
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def config_mappings(self):             # <<<<<<<<<<<<<<
@@ -3804,7 +3804,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_13config_mappings(PyObject *__p
   return __pyx_r;
 }
 
-/* "models/Phonology.py":90
+/* "models/Phonology.pyx":90
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3840,7 +3840,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_split_str_seq
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split_str_seq", 0);
 
-  /* "models/Phonology.py":96
+  /* "models/Phonology.pyx":96
  *             within parentheses
  *             """
  *             return re.findall(             # <<<<<<<<<<<<<<
@@ -3854,7 +3854,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_split_str_seq
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":97
+  /* "models/Phonology.pyx":97
  *             """
  *             return re.findall(
  *                 r"(?:\.|^)(\(.*\)|.+?)(?:(?=\.|$))", str_seq_str_nat_classes             # <<<<<<<<<<<<<<
@@ -3910,7 +3910,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_split_str_seq
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":90
+  /* "models/Phonology.pyx":90
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3932,7 +3932,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_split_str_seq
   return __pyx_r;
 }
 
-/* "models/Phonology.py":100
+/* "models/Phonology.pyx":100
  *             )
  * 
  *         def split_opt_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -3980,7 +3980,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_2split_opt_na
   __pyx_outer_scope = (struct __pyx_obj_5optim_9Phonology___pyx_scope_struct__config_mappings *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "models/Phonology.py":103
+  /* "models/Phonology.pyx":103
  *             """Splits string sequence of features representing optional
  *             natural classes into a list of list of string features"""
  *             return [             # <<<<<<<<<<<<<<
@@ -3991,7 +3991,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_2split_opt_na
   __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "models/Phonology.py":105
+  /* "models/Phonology.pyx":105
  *             return [
  *                 [split_str_nat_class(nc) for nc in snc.split(".")]
  *                 for snc in re.sub(r"[\(\)]", "", str_nat_classes).split("|")             # <<<<<<<<<<<<<<
@@ -4112,7 +4112,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_2split_opt_na
     __Pyx_XDECREF_SET(__pyx_v_snc, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":104
+    /* "models/Phonology.pyx":104
  *             natural classes into a list of list of string features"""
  *             return [
  *                 [split_str_nat_class(nc) for nc in snc.split(".")]             # <<<<<<<<<<<<<<
@@ -4190,7 +4190,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_2split_opt_na
     if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_2))) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":105
+    /* "models/Phonology.pyx":105
  *             return [
  *                 [split_str_nat_class(nc) for nc in snc.split(".")]
  *                 for snc in re.sub(r"[\(\)]", "", str_nat_classes).split("|")             # <<<<<<<<<<<<<<
@@ -4203,7 +4203,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_2split_opt_na
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":100
+  /* "models/Phonology.pyx":100
  *             )
  * 
  *         def split_opt_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -4229,7 +4229,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_2split_opt_na
   return __pyx_r;
 }
 
-/* "models/Phonology.py":108
+/* "models/Phonology.pyx":108
  *             ]
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -4263,7 +4263,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_4split_str_na
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("split_str_nat_class", 0);
 
-  /* "models/Phonology.py":112
+  /* "models/Phonology.pyx":112
  *             into a list of string features.
  *             """
  *             return str_nat_classes.split(":")             # <<<<<<<<<<<<<<
@@ -4292,7 +4292,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_4split_str_na
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":108
+  /* "models/Phonology.pyx":108
  *             ]
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -4313,7 +4313,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_4split_str_na
   return __pyx_r;
 }
 
-/* "models/Phonology.py":114
+/* "models/Phonology.pyx":114
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -4345,7 +4345,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_15config_mappings_7generate_seq
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_15config_mappings_19generate_seq_config_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":132
+/* "models/Phonology.pyx":132
  *                 config = (
  *                     [np.array([self.str_feats2config(y) for y in x]) for x in str_feats]
  *                     if all(isinstance(x, list) for x in str_feats)             # <<<<<<<<<<<<<<
@@ -4493,7 +4493,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_15config_mappings_19generate_se
   return __pyx_r;
 }
 
-/* "models/Phonology.py":114
+/* "models/Phonology.pyx":114
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -4546,7 +4546,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
 
-  /* "models/Phonology.py":123
+  /* "models/Phonology.pyx":123
  *             represented as a vector of 0s
  *             """
  *             seq_config = []             # <<<<<<<<<<<<<<
@@ -4558,7 +4558,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
   __pyx_v_seq_config = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":124
+  /* "models/Phonology.pyx":124
  *             """
  *             seq_config = []
  *             for str_nat_classes in seq_str_nat_classes:             # <<<<<<<<<<<<<<
@@ -4581,7 +4581,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
     __Pyx_XDECREF_SET(__pyx_v_str_nat_classes, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":127
+    /* "models/Phonology.pyx":127
  *                 str_feats = (
  *                     split_opt_nat_class(str_nat_classes)
  *                     if re.search(r"\|", str_nat_classes)             # <<<<<<<<<<<<<<
@@ -4642,7 +4642,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_9) {
 
-      /* "models/Phonology.py":126
+      /* "models/Phonology.pyx":126
  *             for str_nat_classes in seq_str_nat_classes:
  *                 str_feats = (
  *                     split_opt_nat_class(str_nat_classes)             # <<<<<<<<<<<<<<
@@ -4656,7 +4656,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
       __pyx_t_4 = 0;
     } else {
 
-      /* "models/Phonology.py":128
+      /* "models/Phonology.pyx":128
  *                     split_opt_nat_class(str_nat_classes)
  *                     if re.search(r"\|", str_nat_classes)
  *                     else split_str_nat_class(str_nat_classes)             # <<<<<<<<<<<<<<
@@ -4674,7 +4674,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
     __Pyx_GIVEREF(__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":132
+    /* "models/Phonology.pyx":132
  *                 config = (
  *                     [np.array([self.str_feats2config(y) for y in x]) for x in str_feats]
  *                     if all(isinstance(x, list) for x in str_feats)             # <<<<<<<<<<<<<<
@@ -4690,7 +4690,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_9) {
 
-      /* "models/Phonology.py":131
+      /* "models/Phonology.pyx":131
  *                 )
  *                 config = (
  *                     [np.array([self.str_feats2config(y) for y in x]) for x in str_feats]             # <<<<<<<<<<<<<<
@@ -4834,7 +4834,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
       __pyx_t_6 = 0;
     } else {
 
-      /* "models/Phonology.py":133
+      /* "models/Phonology.pyx":133
  *                     [np.array([self.str_feats2config(y) for y in x]) for x in str_feats]
  *                     if all(isinstance(x, list) for x in str_feats)
  *                     else self.str_feats2config(str_feats)             # <<<<<<<<<<<<<<
@@ -4865,7 +4865,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
     __Pyx_XDECREF_SET(__pyx_v_config, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Phonology.py":135
+    /* "models/Phonology.pyx":135
  *                     else self.str_feats2config(str_feats)
  *                 )
  *                 seq_config.append(config)             # <<<<<<<<<<<<<<
@@ -4874,7 +4874,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
  */
     __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_seq_config, __pyx_v_config); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 135, __pyx_L1_error)
 
-    /* "models/Phonology.py":124
+    /* "models/Phonology.pyx":124
  *             """
  *             seq_config = []
  *             for str_nat_classes in seq_str_nat_classes:             # <<<<<<<<<<<<<<
@@ -4884,7 +4884,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":136
+  /* "models/Phonology.pyx":136
  *                 )
  *                 seq_config.append(config)
  *             return seq_config             # <<<<<<<<<<<<<<
@@ -4896,7 +4896,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
   __pyx_r = __pyx_v_seq_config;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":114
+  /* "models/Phonology.pyx":114
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -4932,7 +4932,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_15config_mappings_6generate_seq
   return __pyx_r;
 }
 
-/* "models/Phonology.py":142
+/* "models/Phonology.pyx":142
  * 
  *             ## Retrieve the source, target, and context
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)             # <<<<<<<<<<<<<<
@@ -4985,7 +4985,7 @@ static PyObject *__pyx_lambda_funcdef_lambda1(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "models/Phonology.py":87
+/* "models/Phonology.pyx":87
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def config_mappings(self):             # <<<<<<<<<<<<<<
@@ -5034,7 +5034,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
 
-  /* "models/Phonology.py":90
+  /* "models/Phonology.pyx":90
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -5058,7 +5058,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   __pyx_cur_scope->__pyx_v_split_str_seq = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "models/Phonology.py":100
+  /* "models/Phonology.pyx":100
  *             )
  * 
  *         def split_opt_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -5082,7 +5082,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   __pyx_cur_scope->__pyx_v_split_opt_nat_class = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":108
+  /* "models/Phonology.pyx":108
  *             ]
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -5106,7 +5106,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   __pyx_cur_scope->__pyx_v_split_str_nat_class = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":114
+  /* "models/Phonology.pyx":114
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -5123,7 +5123,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   __pyx_v_generate_seq_config = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":139
+  /* "models/Phonology.pyx":139
  * 
  *         """Main function definition"""
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):             # <<<<<<<<<<<<<<
@@ -5266,7 +5266,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_rdef, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Phonology.py":142
+    /* "models/Phonology.pyx":142
  * 
  *             ## Retrieve the source, target, and context
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)             # <<<<<<<<<<<<<<
@@ -5346,7 +5346,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_cxt, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":143
+    /* "models/Phonology.pyx":143
  *             ## Retrieve the source, target, and context
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
  *             idx = cxt.index("_")             # <<<<<<<<<<<<<<
@@ -5373,7 +5373,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":144
+    /* "models/Phonology.pyx":144
  *             src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
  *             idx = cxt.index("_")
  *             sd = bool(len(src) > 0)             # <<<<<<<<<<<<<<
@@ -5387,7 +5387,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_sd, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":148
+    /* "models/Phonology.pyx":148
  *             ## Insertions behave differently from substitutions and
  *             ## deletions, so we check what kind of rule it is
  *             if sd:             # <<<<<<<<<<<<<<
@@ -5397,7 +5397,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_sd); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
     if (__pyx_t_11) {
 
-      /* "models/Phonology.py":149
+      /* "models/Phonology.pyx":149
  *             ## deletions, so we check what kind of rule it is
  *             if sd:
  *                 cxt[idx : idx + 1] = src             # <<<<<<<<<<<<<<
@@ -5409,7 +5409,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
       if (__Pyx_PyObject_SetSlice(__pyx_v_cxt, __pyx_v_src, 0, 0, &__pyx_v_idx, &__pyx_t_1, NULL, 0, 0, 1) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "models/Phonology.py":148
+      /* "models/Phonology.pyx":148
  *             ## Insertions behave differently from substitutions and
  *             ## deletions, so we check what kind of rule it is
  *             if sd:             # <<<<<<<<<<<<<<
@@ -5419,7 +5419,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
       goto __pyx_L9;
     }
 
-    /* "models/Phonology.py":151
+    /* "models/Phonology.pyx":151
  *                 cxt[idx : idx + 1] = src
  *             else:
  *                 del cxt[idx]             # <<<<<<<<<<<<<<
@@ -5431,7 +5431,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     }
     __pyx_L9:;
 
-    /* "models/Phonology.py":157
+    /* "models/Phonology.pyx":157
  *             ## be used for identifying what kind of natural class
  *             ## an item is later on
  *             tgt_config = generate_seq_config(tgt)             # <<<<<<<<<<<<<<
@@ -5444,7 +5444,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_tgt_config, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":158
+    /* "models/Phonology.pyx":158
  *             ## an item is later on
  *             tgt_config = generate_seq_config(tgt)
  *             cxt_config = generate_seq_config(cxt)             # <<<<<<<<<<<<<<
@@ -5457,7 +5457,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_XDECREF_SET(__pyx_v_cxt_config, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":161
+    /* "models/Phonology.pyx":161
  * 
  *             ## Save the feature configurations to its corresponding name
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)             # <<<<<<<<<<<<<<
@@ -5484,7 +5484,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":139
+    /* "models/Phonology.pyx":139
  * 
  *         """Main function definition"""
  *         for mname, rdef in zip(self.mnames(), self.mdefs()):             # <<<<<<<<<<<<<<
@@ -5494,7 +5494,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Phonology.py":87
+  /* "models/Phonology.pyx":87
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def config_mappings(self):             # <<<<<<<<<<<<<<
@@ -5531,7 +5531,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_12config_mappings(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "models/Phonology.py":163
+/* "models/Phonology.pyx":163
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -5555,7 +5555,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_15regex_mappings(PyObject *__py
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":174
+/* "models/Phonology.pyx":174
  *             ## as usual. If it is a list of lists of np.ndarrays, generate
  *             ## the alternative environments
  *             if any(isinstance(x, list) for x in cxt_config):             # <<<<<<<<<<<<<<
@@ -5704,7 +5704,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_2generator1(__
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":189
+/* "models/Phonology.pyx":189
  *                 cxt_regex = "".join([
  *                     f"([{''.join(y for y in x)}])"
  *                     if all(isinstance(y, str) for y in x)             # <<<<<<<<<<<<<<
@@ -5853,7 +5853,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_5generator2(__
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_8generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":188
+/* "models/Phonology.pyx":188
  *                 ]
  *                 cxt_regex = "".join([
  *                     f"([{''.join(y for y in x)}])"             # <<<<<<<<<<<<<<
@@ -6005,7 +6005,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_8generator3(__
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_11generator4(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":196
+/* "models/Phonology.pyx":196
  *                 cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *                 cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *                 cxt_regex = "".join(f"([{c}])" for c in cxt_regex)             # <<<<<<<<<<<<<<
@@ -6183,7 +6183,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_11generator4(_
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_14generator5(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":220
+/* "models/Phonology.pyx":220
  *                 tgt_regex = self.seq_config2list(tgt_token_configs)
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)             # <<<<<<<<<<<<<<
@@ -6360,7 +6360,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_14generator5(_
 }
 static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_17generator6(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "models/Phonology.py":238
+/* "models/Phonology.pyx":238
  *                 tgt_regex = [self.seq_config2tokens(t) for t in tgt_token_configs]
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else rf"{tgt}\{i+1}" for i in x)             # <<<<<<<<<<<<<<
@@ -6568,7 +6568,7 @@ static PyObject *__pyx_gb_5optim_9Phonology_3SPE_14regex_mappings_17generator6(_
   return __pyx_r;
 }
 
-/* "models/Phonology.py":163
+/* "models/Phonology.pyx":163
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -6640,7 +6640,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     __Pyx_GOTREF(__pyx_cur_scope);
   }
 
-  /* "models/Phonology.py":165
+  /* "models/Phonology.pyx":165
  *     def regex_mappings(self):
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():             # <<<<<<<<<<<<<<
@@ -6707,7 +6707,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_mname, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Phonology.py":168
+    /* "models/Phonology.pyx":168
  * 
  *             ## Retrieve the feature configurations for the rules
  *             cxt_config, src_idx, tgt_config, sd = self._mname2mconfig[mname]             # <<<<<<<<<<<<<<
@@ -6791,7 +6791,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     __Pyx_XDECREF_SET(__pyx_v_sd, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "models/Phonology.py":174
+    /* "models/Phonology.pyx":174
  *             ## as usual. If it is a list of lists of np.ndarrays, generate
  *             ## the alternative environments
  *             if any(isinstance(x, list) for x in cxt_config):             # <<<<<<<<<<<<<<
@@ -6807,7 +6807,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (__pyx_t_11) {
 
-      /* "models/Phonology.py":175
+      /* "models/Phonology.pyx":175
  *             ## the alternative environments
  *             if any(isinstance(x, list) for x in cxt_config):
  *                 cxt_token_configs = [             # <<<<<<<<<<<<<<
@@ -6817,7 +6817,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 175, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
 
-      /* "models/Phonology.py":179
+      /* "models/Phonology.pyx":179
  *                     if isinstance(c, np.ndarray)
  *                     else [self.get_compatible_tokens(x) for x in c]
  *                     for c in cxt_config             # <<<<<<<<<<<<<<
@@ -6866,7 +6866,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "models/Phonology.py":177
+        /* "models/Phonology.pyx":177
  *                 cxt_token_configs = [
  *                     self.get_compatible_tokens([c])
  *                     if isinstance(c, np.ndarray)             # <<<<<<<<<<<<<<
@@ -6882,7 +6882,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if ((__pyx_t_11 != 0)) {
 
-          /* "models/Phonology.py":176
+          /* "models/Phonology.pyx":176
  *             if any(isinstance(x, list) for x in cxt_config):
  *                 cxt_token_configs = [
  *                     self.get_compatible_tokens([c])             # <<<<<<<<<<<<<<
@@ -6916,7 +6916,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
           __pyx_t_1 = 0;
         } else {
 
-          /* "models/Phonology.py":178
+          /* "models/Phonology.pyx":178
  *                     self.get_compatible_tokens([c])
  *                     if isinstance(c, np.ndarray)
  *                     else [self.get_compatible_tokens(x) for x in c]             # <<<<<<<<<<<<<<
@@ -6995,7 +6995,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 175, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "models/Phonology.py":179
+        /* "models/Phonology.pyx":179
  *                     if isinstance(c, np.ndarray)
  *                     else [self.get_compatible_tokens(x) for x in c]
  *                     for c in cxt_config             # <<<<<<<<<<<<<<
@@ -7007,7 +7007,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_cxt_token_configs, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "models/Phonology.py":181
+      /* "models/Phonology.pyx":181
  *                     for c in cxt_config
  *                 ]
  *                 cxt_regex = [             # <<<<<<<<<<<<<<
@@ -7017,7 +7017,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 181, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
 
-      /* "models/Phonology.py":185
+      /* "models/Phonology.pyx":185
  *                     if isinstance(c, np.ndarray)
  *                     else [[self.seq_config2tokens(y) for y in x] for x in c]
  *                     for c in cxt_token_configs             # <<<<<<<<<<<<<<
@@ -7036,7 +7036,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_XDECREF_SET(__pyx_v_c, __pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "models/Phonology.py":183
+        /* "models/Phonology.pyx":183
  *                 cxt_regex = [
  *                     [self.seq_config2tokens(x) for x in c]
  *                     if isinstance(c, np.ndarray)             # <<<<<<<<<<<<<<
@@ -7052,7 +7052,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
         if ((__pyx_t_11 != 0)) {
 
-          /* "models/Phonology.py":182
+          /* "models/Phonology.pyx":182
  *                 ]
  *                 cxt_regex = [
  *                     [self.seq_config2tokens(x) for x in c]             # <<<<<<<<<<<<<<
@@ -7129,7 +7129,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
           __pyx_t_6 = 0;
         } else {
 
-          /* "models/Phonology.py":184
+          /* "models/Phonology.pyx":184
  *                     [self.seq_config2tokens(x) for x in c]
  *                     if isinstance(c, np.ndarray)
  *                     else [[self.seq_config2tokens(y) for y in x] for x in c]             # <<<<<<<<<<<<<<
@@ -7255,7 +7255,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 181, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "models/Phonology.py":185
+        /* "models/Phonology.pyx":185
  *                     if isinstance(c, np.ndarray)
  *                     else [[self.seq_config2tokens(y) for y in x] for x in c]
  *                     for c in cxt_token_configs             # <<<<<<<<<<<<<<
@@ -7269,7 +7269,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_GIVEREF(__pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "models/Phonology.py":187
+      /* "models/Phonology.pyx":187
  *                     for c in cxt_token_configs
  *                 ]
  *                 cxt_regex = "".join([             # <<<<<<<<<<<<<<
@@ -7279,7 +7279,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __pyx_t_8 = PyList_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 187, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
 
-      /* "models/Phonology.py":191
+      /* "models/Phonology.pyx":191
  *                     if all(isinstance(y, str) for y in x)
  *                     else f"({'|'.join([''.join([f'[{z}]' for z in y]) for y in x])})"
  *                     for x in cxt_regex             # <<<<<<<<<<<<<<
@@ -7300,7 +7300,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_GIVEREF(__pyx_t_7);
         __pyx_t_7 = 0;
 
-        /* "models/Phonology.py":189
+        /* "models/Phonology.pyx":189
  *                 cxt_regex = "".join([
  *                     f"([{''.join(y for y in x)}])"
  *                     if all(isinstance(y, str) for y in x)             # <<<<<<<<<<<<<<
@@ -7316,7 +7316,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (__pyx_t_11) {
 
-          /* "models/Phonology.py":188
+          /* "models/Phonology.pyx":188
  *                 ]
  *                 cxt_regex = "".join([
  *                     f"([{''.join(y for y in x)}])"             # <<<<<<<<<<<<<<
@@ -7355,7 +7355,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
           __pyx_t_6 = 0;
         } else {
 
-          /* "models/Phonology.py":190
+          /* "models/Phonology.pyx":190
  *                     f"([{''.join(y for y in x)}])"
  *                     if all(isinstance(y, str) for y in x)
  *                     else f"({'|'.join([''.join([f'[{z}]' for z in y]) for y in x])})"             # <<<<<<<<<<<<<<
@@ -7513,7 +7513,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         if (unlikely(__Pyx_ListComp_Append(__pyx_t_8, (PyObject*)__pyx_t_7))) __PYX_ERR(0, 187, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "models/Phonology.py":191
+        /* "models/Phonology.pyx":191
  *                     if all(isinstance(y, str) for y in x)
  *                     else f"({'|'.join([''.join([f'[{z}]' for z in y]) for y in x])})"
  *                     for x in cxt_regex             # <<<<<<<<<<<<<<
@@ -7523,7 +7523,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":187
+      /* "models/Phonology.pyx":187
  *                     for c in cxt_token_configs
  *                 ]
  *                 cxt_regex = "".join([             # <<<<<<<<<<<<<<
@@ -7538,7 +7538,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_GIVEREF(__pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":174
+      /* "models/Phonology.pyx":174
  *             ## as usual. If it is a list of lists of np.ndarrays, generate
  *             ## the alternative environments
  *             if any(isinstance(x, list) for x in cxt_config):             # <<<<<<<<<<<<<<
@@ -7548,7 +7548,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       goto __pyx_L7;
     }
 
-    /* "models/Phonology.py":194
+    /* "models/Phonology.pyx":194
  *                 ])
  *             else:
  *                 cxt_token_configs = self.get_compatible_tokens(cxt_config)             # <<<<<<<<<<<<<<
@@ -7576,7 +7576,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_cxt_token_configs, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":195
+      /* "models/Phonology.pyx":195
  *             else:
  *                 cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *                 cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]             # <<<<<<<<<<<<<<
@@ -7652,7 +7652,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_GIVEREF(__pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":196
+      /* "models/Phonology.pyx":196
  *                 cxt_token_configs = self.get_compatible_tokens(cxt_config)
  *                 cxt_regex = [self.seq_config2tokens(c) for c in cxt_token_configs]
  *                 cxt_regex = "".join(f"([{c}])" for c in cxt_regex)             # <<<<<<<<<<<<<<
@@ -7671,7 +7671,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     }
     __pyx_L7:;
 
-    /* "models/Phonology.py":199
+    /* "models/Phonology.pyx":199
  * 
  *             ## Configure the regular expression substitutions
  *             x = np.arange(len(cxt_token_configs))             # <<<<<<<<<<<<<<
@@ -7707,7 +7707,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     __Pyx_GIVEREF(__pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "models/Phonology.py":203
+    /* "models/Phonology.pyx":203
  *             ## If it is a deletion or substitution, then apply the transformation
  *             ## to the source sound(s)
  *             if sd:             # <<<<<<<<<<<<<<
@@ -7717,7 +7717,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_v_sd); if (unlikely(__pyx_t_11 < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
     if (__pyx_t_11) {
 
-      /* "models/Phonology.py":206
+      /* "models/Phonology.pyx":206
  * 
  *                 ## Retrieve the source sounds
  *                 src_token_configs = cxt_token_configs[src_idx]             # <<<<<<<<<<<<<<
@@ -7729,7 +7729,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_src_token_configs, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "models/Phonology.py":207
+      /* "models/Phonology.pyx":207
  *                 ## Retrieve the source sounds
  *                 src_token_configs = cxt_token_configs[src_idx]
  *                 y = np.arange(len(src_token_configs))             # <<<<<<<<<<<<<<
@@ -7763,7 +7763,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_y, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "models/Phonology.py":210
+      /* "models/Phonology.pyx":210
  * 
  *                 ## Format source sounds and get regular expressions
  *                 while src_token_configs.ndim > 2:             # <<<<<<<<<<<<<<
@@ -7779,7 +7779,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         if (!__pyx_t_11) break;
 
-        /* "models/Phonology.py":211
+        /* "models/Phonology.pyx":211
  *                 ## Format source sounds and get regular expressions
  *                 while src_token_configs.ndim > 2:
  *                     src_token_configs = src_token_configs.squeeze(0)             # <<<<<<<<<<<<<<
@@ -7807,7 +7807,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __pyx_t_3 = 0;
       }
 
-      /* "models/Phonology.py":212
+      /* "models/Phonology.pyx":212
  *                 while src_token_configs.ndim > 2:
  *                     src_token_configs = src_token_configs.squeeze(0)
  *                 src_regex = self.seq_config2tokens(src_token_configs)             # <<<<<<<<<<<<<<
@@ -7834,7 +7834,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_src_regex, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":216
+      /* "models/Phonology.pyx":216
  *                 ## Retrieve the target sounds and apply the transformation.
  *                 ## Save the transformation into the dictionary
  *                 tgt_config = np.array(tgt_config)             # <<<<<<<<<<<<<<
@@ -7864,7 +7864,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_DECREF_SET(__pyx_v_tgt_config, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":217
+      /* "models/Phonology.pyx":217
  *                 ## Save the transformation into the dictionary
  *                 tgt_config = np.array(tgt_config)
  *                 tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)             # <<<<<<<<<<<<<<
@@ -7924,7 +7924,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_tgt_token_configs, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":218
+      /* "models/Phonology.pyx":218
  *                 tgt_config = np.array(tgt_config)
  *                 tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
  *                 tgt_regex = self.seq_config2list(tgt_token_configs)             # <<<<<<<<<<<<<<
@@ -7951,7 +7951,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_tgt_regex, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":219
+      /* "models/Phonology.pyx":219
  *                 tgt_token_configs = self.update_config(src_token_configs, tgt_config, y)
  *                 tgt_regex = self.seq_config2list(tgt_token_configs)
  *                 tgt_regex = [             # <<<<<<<<<<<<<<
@@ -7961,7 +7961,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 219, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
 
-      /* "models/Phonology.py":221
+      /* "models/Phonology.pyx":221
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
  *                     for tgt in tgt_regex             # <<<<<<<<<<<<<<
@@ -8012,7 +8012,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_GIVEREF(__pyx_t_1);
         __pyx_t_1 = 0;
 
-        /* "models/Phonology.py":220
+        /* "models/Phonology.pyx":220
  *                 tgt_regex = self.seq_config2list(tgt_token_configs)
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)             # <<<<<<<<<<<<<<
@@ -8027,7 +8027,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 219, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "models/Phonology.py":221
+        /* "models/Phonology.pyx":221
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else tgt for i in x)
  *                     for tgt in tgt_regex             # <<<<<<<<<<<<<<
@@ -8039,7 +8039,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_DECREF_SET(__pyx_v_tgt_regex, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":223
+      /* "models/Phonology.pyx":223
  *                     for tgt in tgt_regex
  *                 ]
  *                 tf_regex = {             # <<<<<<<<<<<<<<
@@ -8050,7 +8050,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L35_error)
         __Pyx_GOTREF(__pyx_t_3);
 
-        /* "models/Phonology.py":224
+        /* "models/Phonology.pyx":224
  *                 ]
  *                 tf_regex = {
  *                     src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)             # <<<<<<<<<<<<<<
@@ -8182,7 +8182,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_tf_regex, ((PyObject*)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "models/Phonology.py":226
+      /* "models/Phonology.pyx":226
  *                     src: tgt if tgt else "" for src, tgt in zip(src_regex, tgt_regex)
  *                 }
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)             # <<<<<<<<<<<<<<
@@ -8208,7 +8208,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "models/Phonology.py":203
+      /* "models/Phonology.pyx":203
  *             ## If it is a deletion or substitution, then apply the transformation
  *             ## to the source sound(s)
  *             if sd:             # <<<<<<<<<<<<<<
@@ -8218,7 +8218,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       goto __pyx_L28;
     }
 
-    /* "models/Phonology.py":234
+    /* "models/Phonology.pyx":234
  *                 ## Retrieve the target sounds. Save the target sounds
  *                 ## into the dictionary
  *                 tgt_config = np.array(tgt_config)             # <<<<<<<<<<<<<<
@@ -8249,7 +8249,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_DECREF_SET(__pyx_v_tgt_config, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "models/Phonology.py":235
+      /* "models/Phonology.pyx":235
  *                 ## into the dictionary
  *                 tgt_config = np.array(tgt_config)
  *                 tgt_token_configs = self.get_compatible_tokens(tgt_config)             # <<<<<<<<<<<<<<
@@ -8276,7 +8276,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_tgt_token_configs, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "models/Phonology.py":236
+      /* "models/Phonology.pyx":236
  *                 tgt_config = np.array(tgt_config)
  *                 tgt_token_configs = self.get_compatible_tokens(tgt_config)
  *                 tgt_regex = [self.seq_config2tokens(t) for t in tgt_token_configs]             # <<<<<<<<<<<<<<
@@ -8350,7 +8350,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_tgt_regex, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "models/Phonology.py":237
+      /* "models/Phonology.pyx":237
  *                 tgt_token_configs = self.get_compatible_tokens(tgt_config)
  *                 tgt_regex = [self.seq_config2tokens(t) for t in tgt_token_configs]
  *                 tgt_regex = [             # <<<<<<<<<<<<<<
@@ -8360,7 +8360,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 237, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "models/Phonology.py":239
+      /* "models/Phonology.pyx":239
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else rf"{tgt}\{i+1}" for i in x)
  *                     for tgt in tgt_regex             # <<<<<<<<<<<<<<
@@ -8381,7 +8381,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         __Pyx_GIVEREF(__pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "models/Phonology.py":238
+        /* "models/Phonology.pyx":238
  *                 tgt_regex = [self.seq_config2tokens(t) for t in tgt_token_configs]
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else rf"{tgt}\{i+1}" for i in x)             # <<<<<<<<<<<<<<
@@ -8396,7 +8396,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
         if (unlikely(__Pyx_ListComp_Append(__pyx_t_7, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 237, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "models/Phonology.py":239
+        /* "models/Phonology.pyx":239
  *                 tgt_regex = [
  *                     "".join(rf"\{i+1}" if i != src_idx else rf"{tgt}\{i+1}" for i in x)
  *                     for tgt in tgt_regex             # <<<<<<<<<<<<<<
@@ -8408,7 +8408,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_DECREF_SET(__pyx_v_tgt_regex, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "models/Phonology.py":241
+      /* "models/Phonology.pyx":241
  *                     for tgt in tgt_regex
  *                 ]
  *                 tf_regex = {"": t for t in tgt_regex}             # <<<<<<<<<<<<<<
@@ -8472,7 +8472,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
       __Pyx_XDECREF_SET(__pyx_v_tf_regex, ((PyObject*)__pyx_t_7));
       __pyx_t_7 = 0;
 
-      /* "models/Phonology.py":242
+      /* "models/Phonology.pyx":242
  *                 ]
  *                 tf_regex = {"": t for t in tgt_regex}
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)             # <<<<<<<<<<<<<<
@@ -8500,7 +8500,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
     }
     __pyx_L28:;
 
-    /* "models/Phonology.py":165
+    /* "models/Phonology.pyx":165
  *     def regex_mappings(self):
  *         """Converts mappings into regular expressions for process application"""
  *         for mname in self.mnames():             # <<<<<<<<<<<<<<
@@ -8510,7 +8510,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":163
+  /* "models/Phonology.pyx":163
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -8564,7 +8564,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_14regex_mappings(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":244
+/* "models/Phonology.pyx":244
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -8643,7 +8643,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_17regex_apply(PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "models/Phonology.py":249
+/* "models/Phonology.pyx":249
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)             # <<<<<<<<<<<<<<
@@ -8753,7 +8753,7 @@ static PyObject *__pyx_lambda_funcdef_lambda8(PyObject *__pyx_self, PyObject *__
   return __pyx_r;
 }
 
-/* "models/Phonology.py":244
+/* "models/Phonology.pyx":244
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -8795,7 +8795,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_self);
   __Pyx_INCREF(__pyx_v_tokens);
 
-  /* "models/Phonology.py":246
+  /* "models/Phonology.pyx":246
  *     def regex_apply(self, tokens: str):
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()             # <<<<<<<<<<<<<<
@@ -8822,7 +8822,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
   __pyx_v_mhyp = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":247
+  /* "models/Phonology.pyx":247
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:             # <<<<<<<<<<<<<<
@@ -8871,7 +8871,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
     __Pyx_XDECREF_SET(__pyx_v_mname, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":248
+    /* "models/Phonology.pyx":248
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)             # <<<<<<<<<<<<<<
@@ -8959,7 +8959,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
     __Pyx_GIVEREF(__pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "models/Phonology.py":249
+    /* "models/Phonology.pyx":249
  *         for mname in mhyp:
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)             # <<<<<<<<<<<<<<
@@ -9027,7 +9027,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
     __Pyx_DECREF_SET(__pyx_v_tokens, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "models/Phonology.py":247
+    /* "models/Phonology.pyx":247
  *         """Applies the phonological mapping given a sequence of tokens"""
  *         mhyp = self.get_current_mhyp()
  *         for mname in mhyp:             # <<<<<<<<<<<<<<
@@ -9037,7 +9037,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":250
+  /* "models/Phonology.pyx":250
  *             cxt_regex, tf_regex, idx = self.mname2mregex(mname)
  *             tokens = re.sub(cxt_regex, lambda x: self.tf(x, tf_regex, idx), tokens)
  *         return tokens             # <<<<<<<<<<<<<<
@@ -9049,7 +9049,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
   __pyx_r = __pyx_v_tokens;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":244
+  /* "models/Phonology.pyx":244
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -9078,7 +9078,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_16regex_apply(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Phonology.py":252
+/* "models/Phonology.pyx":252
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
@@ -9192,7 +9192,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18tf(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tf", 0);
 
-  /* "models/Phonology.py":254
+  /* "models/Phonology.pyx":254
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):
  *         """Returns a different regular expression depending on the match"""
  *         return match.expand(tf_regex.get(match.group(idx), tf_regex.get("")))             # <<<<<<<<<<<<<<
@@ -9253,7 +9253,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18tf(CYTHON_UNUSED PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":252
+  /* "models/Phonology.pyx":252
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
@@ -9276,7 +9276,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_18tf(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "models/Phonology.py":256
+/* "models/Phonology.pyx":256
  *         return match.expand(tf_regex.get(match.group(idx), tf_regex.get("")))
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
@@ -9304,7 +9304,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20compute_prior(CYTHON_UNUSED P
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("compute_prior", 0);
 
-  /* "models/Phonology.py":258
+  /* "models/Phonology.pyx":258
  *     def compute_prior(self):
  *         """Computes the prior for the current rule hypothesis"""
  *         return 1             # <<<<<<<<<<<<<<
@@ -9316,7 +9316,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20compute_prior(CYTHON_UNUSED P
   __pyx_r = __pyx_int_1;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":256
+  /* "models/Phonology.pyx":256
  *         return match.expand(tf_regex.get(match.group(idx), tf_regex.get("")))
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
@@ -9331,7 +9331,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_20compute_prior(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Phonology.py":262
+/* "models/Phonology.pyx":262
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
@@ -9363,7 +9363,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_22nms(CYTHON_UNUSED PyObject *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nms", 0);
 
-  /* "models/Phonology.py":264
+  /* "models/Phonology.pyx":264
  *     def nms(self):
  *         """Returns the number of rules in the hypothesis space"""
  *         return self._nms             # <<<<<<<<<<<<<<
@@ -9377,7 +9377,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_22nms(CYTHON_UNUSED PyObject *_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":262
+  /* "models/Phonology.pyx":262
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
@@ -9396,7 +9396,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_22nms(CYTHON_UNUSED PyObject *_
   return __pyx_r;
 }
 
-/* "models/Phonology.py":266
+/* "models/Phonology.pyx":266
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
@@ -9428,7 +9428,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_24mnames(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mnames", 0);
 
-  /* "models/Phonology.py":268
+  /* "models/Phonology.pyx":268
  *     def mnames(self):
  *         """Returns the rule names in the hypothesis space"""
  *         return self._mnames             # <<<<<<<<<<<<<<
@@ -9442,7 +9442,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_24mnames(CYTHON_UNUSED PyObject
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":266
+  /* "models/Phonology.pyx":266
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
@@ -9461,7 +9461,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_24mnames(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Phonology.py":270
+/* "models/Phonology.pyx":270
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
@@ -9493,7 +9493,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_26mdefs(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mdefs", 0);
 
-  /* "models/Phonology.py":272
+  /* "models/Phonology.pyx":272
  *     def mdefs(self):
  *         """Returns the dictionary from rule names to rule definitions"""
  *         return self._mdefs             # <<<<<<<<<<<<<<
@@ -9507,7 +9507,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_26mdefs(CYTHON_UNUSED PyObject 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":270
+  /* "models/Phonology.pyx":270
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
@@ -9526,7 +9526,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_26mdefs(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":274
+/* "models/Phonology.pyx":274
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -9610,7 +9610,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_28mname2mconfig(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mname2mconfig", 0);
 
-  /* "models/Phonology.py":276
+  /* "models/Phonology.pyx":276
  *     def mname2mconfig(self, mname: np.str_):
  *         """Returns the rule configuration given the rule name"""
  *         return self._mname2mconfig[mname]             # <<<<<<<<<<<<<<
@@ -9627,7 +9627,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_28mname2mconfig(CYTHON_UNUSED P
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":274
+  /* "models/Phonology.pyx":274
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -9647,7 +9647,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_28mname2mconfig(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Phonology.py":278
+/* "models/Phonology.pyx":278
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -9731,7 +9731,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_30mname2mregex(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mname2mregex", 0);
 
-  /* "models/Phonology.py":280
+  /* "models/Phonology.pyx":280
  *     def mname2mregex(self, mname: np.str_):
  *         """Retrusn the rule regex given the rule name"""
  *         return self._mname2mregex[mname]             # <<<<<<<<<<<<<<
@@ -9748,7 +9748,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_30mname2mregex(CYTHON_UNUSED Py
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":278
+  /* "models/Phonology.pyx":278
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -9768,7 +9768,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_30mname2mregex(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Phonology.py":282
+/* "models/Phonology.pyx":282
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
@@ -9800,7 +9800,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_32nmhyps(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nmhyps", 0);
 
-  /* "models/Phonology.py":284
+  /* "models/Phonology.pyx":284
  *     def nmhyps(self):
  *         """Returns the number of rule hypotheses"""
  *         return self._nmhyps             # <<<<<<<<<<<<<<
@@ -9814,7 +9814,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_32nmhyps(CYTHON_UNUSED PyObject
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":282
+  /* "models/Phonology.pyx":282
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
@@ -9833,7 +9833,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_32nmhyps(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "models/Phonology.py":286
+/* "models/Phonology.pyx":286
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
@@ -9865,7 +9865,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_34mhyps(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mhyps", 0);
 
-  /* "models/Phonology.py":288
+  /* "models/Phonology.pyx":288
  *     def mhyps(self):
  *         """Returns the rule hypotheses"""
  *         return self._mhyps             # <<<<<<<<<<<<<<
@@ -9879,7 +9879,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_34mhyps(CYTHON_UNUSED PyObject 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":286
+  /* "models/Phonology.pyx":286
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
@@ -9898,7 +9898,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_34mhyps(CYTHON_UNUSED PyObject 
   return __pyx_r;
 }
 
-/* "models/Phonology.py":290
+/* "models/Phonology.pyx":290
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
@@ -9930,7 +9930,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_36mhyp_idx(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("mhyp_idx", 0);
 
-  /* "models/Phonology.py":292
+  /* "models/Phonology.pyx":292
  *     def mhyp_idx(self):
  *         """Returns the index to the current rule hypothesis"""
  *         return self._mhyp_idx             # <<<<<<<<<<<<<<
@@ -9944,7 +9944,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_36mhyp_idx(CYTHON_UNUSED PyObje
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":290
+  /* "models/Phonology.pyx":290
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
@@ -9963,7 +9963,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_36mhyp_idx(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "models/Phonology.py":294
+/* "models/Phonology.pyx":294
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
@@ -9997,7 +9997,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_38get_current_mhyp(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_current_mhyp", 0);
 
-  /* "models/Phonology.py":296
+  /* "models/Phonology.pyx":296
  *     def get_current_mhyp(self):
  *         """Gets the current rule hypothesis"""
  *         return self._mhyps[self._mhyp_idx]             # <<<<<<<<<<<<<<
@@ -10017,7 +10017,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_38get_current_mhyp(CYTHON_UNUSE
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "models/Phonology.py":294
+  /* "models/Phonology.pyx":294
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
@@ -10038,7 +10038,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_38get_current_mhyp(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "models/Phonology.py":300
+/* "models/Phonology.pyx":300
  * 
  * class OT:
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -11584,7 +11584,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_mname2mregex_2, __pyx_k_mname2mregex_2, sizeof(__pyx_k_mname2mregex_2), 0, 0, 1, 1},
   {&__pyx_n_s_mnames, __pyx_k_mnames, sizeof(__pyx_k_mnames), 0, 0, 1, 1},
   {&__pyx_n_s_mnames_2, __pyx_k_mnames_2, sizeof(__pyx_k_mnames_2), 0, 0, 1, 1},
-  {&__pyx_kp_s_models_Phonology_py, __pyx_k_models_Phonology_py, sizeof(__pyx_k_models_Phonology_py), 0, 0, 1, 0},
+  {&__pyx_kp_s_models_Phonology_pyx, __pyx_k_models_Phonology_pyx, sizeof(__pyx_k_models_Phonology_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
   {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
@@ -11673,7 +11673,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "models/Phonology.py":90
+  /* "models/Phonology.pyx":90
  *         """Converts mappings into vector notation for process application"""
  * 
  *         def split_str_seq(str_seq_str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -11683,9 +11683,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__8 = PyTuple_Pack(1, __pyx_n_s_str_seq_str_nat_classes); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_str_seq, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_split_str_seq, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-  /* "models/Phonology.py":100
+  /* "models/Phonology.pyx":100
  *             )
  * 
  *         def split_opt_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -11695,9 +11695,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__10 = PyTuple_Pack(3, __pyx_n_s_str_nat_classes, __pyx_n_s_snc, __pyx_n_s_nc); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_opt_nat_class, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_split_opt_nat_class, 100, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 100, __pyx_L1_error)
 
-  /* "models/Phonology.py":108
+  /* "models/Phonology.pyx":108
  *             ]
  * 
  *         def split_str_nat_class(str_nat_classes: np.str_):             # <<<<<<<<<<<<<<
@@ -11707,9 +11707,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__12 = PyTuple_Pack(1, __pyx_n_s_str_nat_classes); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_split_str_nat_class, 108, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_split_str_nat_class, 108, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 108, __pyx_L1_error)
 
-  /* "models/Phonology.py":114
+  /* "models/Phonology.pyx":114
  *             return str_nat_classes.split(":")
  * 
  *         def generate_seq_config(seq_str_nat_classes: list):             # <<<<<<<<<<<<<<
@@ -11719,9 +11719,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__14 = PyTuple_Pack(9, __pyx_n_s_seq_str_nat_classes, __pyx_n_s_seq_config, __pyx_n_s_str_nat_classes, __pyx_n_s_str_feats, __pyx_n_s_config, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_x, __pyx_n_s_y); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 114, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_generate_seq_config, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_generate_seq_config, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 114, __pyx_L1_error)
 
-  /* "models/Phonology.py":16
+  /* "models/Phonology.pyx":16
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
@@ -11731,9 +11731,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__24 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_mnames, __pyx_n_s_mdefs, __pyx_n_s_tokens, __pyx_n_s_feats, __pyx_n_s_configs, __pyx_n_s_i, __pyx_n_s_mhyp); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(6, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_init, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(6, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_init, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "models/Phonology.py":53
+  /* "models/Phonology.pyx":53
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
  *     def __copy__(self):             # <<<<<<<<<<<<<<
@@ -11743,9 +11743,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__26 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_cls, __pyx_n_s_cp); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_copy_2, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_copy_2, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 53, __pyx_L1_error)
 
-  /* "models/Phonology.py":60
+  /* "models/Phonology.pyx":60
  *         return cp
  * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
@@ -11755,9 +11755,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__28 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_memo, __pyx_n_s_cls, __pyx_n_s_cp); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_deepcopy_2, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_deepcopy_2, 60, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 60, __pyx_L1_error)
 
-  /* "models/Phonology.py":69
+  /* "models/Phonology.pyx":69
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
@@ -11767,9 +11767,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__30 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mhyp); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_update_mhyp, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_update_mhyp, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 69, __pyx_L1_error)
 
-  /* "models/Phonology.py":73
+  /* "models/Phonology.pyx":73
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
@@ -11779,9 +11779,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__32 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_update_mhyp_idx, 73, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_update_mhyp_idx, 73, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 73, __pyx_L1_error)
 
-  /* "models/Phonology.py":77
+  /* "models/Phonology.pyx":77
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
@@ -11791,9 +11791,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__34 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_n); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_generate_hypotheses, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_generate_hypotheses, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 77, __pyx_L1_error)
 
-  /* "models/Phonology.py":87
+  /* "models/Phonology.pyx":87
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def config_mappings(self):             # <<<<<<<<<<<<<<
@@ -11803,9 +11803,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__36 = PyTuple_Pack(18, __pyx_n_s_self, __pyx_n_s_split_str_seq, __pyx_n_s_split_str_seq, __pyx_n_s_split_opt_nat_class, __pyx_n_s_split_opt_nat_class, __pyx_n_s_split_str_nat_class, __pyx_n_s_split_str_nat_class, __pyx_n_s_generate_seq_config, __pyx_n_s_generate_seq_config, __pyx_n_s_mname, __pyx_n_s_rdef, __pyx_n_s_src, __pyx_n_s_tgt, __pyx_n_s_cxt, __pyx_n_s_idx, __pyx_n_s_sd, __pyx_n_s_tgt_config, __pyx_n_s_cxt_config); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_config_mappings, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_config_mappings, 87, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 87, __pyx_L1_error)
 
-  /* "models/Phonology.py":163
+  /* "models/Phonology.pyx":163
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -11815,9 +11815,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__38 = PyTuple_Pack(29, __pyx_n_s_self, __pyx_n_s_mname, __pyx_n_s_cxt_config, __pyx_n_s_src_idx, __pyx_n_s_tgt_config, __pyx_n_s_sd, __pyx_n_s_cxt_token_configs, __pyx_n_s_cxt_regex, __pyx_n_s_x, __pyx_n_s_src_token_configs, __pyx_n_s_y, __pyx_n_s_src_regex, __pyx_n_s_tgt_token_configs, __pyx_n_s_tgt_regex, __pyx_n_s_tf_regex, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_c, __pyx_n_s_genexpr, __pyx_n_s_genexpr, __pyx_n_s_z, __pyx_n_s_genexpr, __pyx_n_s_tgt, __pyx_n_s_genexpr, __pyx_n_s_src, __pyx_n_s_tgt, __pyx_n_s_t, __pyx_n_s_genexpr, __pyx_n_s_t); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 29, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_regex_mappings, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 29, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_regex_mappings, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 163, __pyx_L1_error)
 
-  /* "models/Phonology.py":244
+  /* "models/Phonology.pyx":244
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -11827,9 +11827,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__40 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_mhyp, __pyx_n_s_mname, __pyx_n_s_cxt_regex, __pyx_n_s_tf_regex, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_regex_apply, 244, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_regex_apply, 244, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 244, __pyx_L1_error)
 
-  /* "models/Phonology.py":252
+  /* "models/Phonology.pyx":252
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
@@ -11839,9 +11839,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__42 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_match, __pyx_n_s_tf_regex, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_tf, 252, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(4, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_tf, 252, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 252, __pyx_L1_error)
 
-  /* "models/Phonology.py":256
+  /* "models/Phonology.pyx":256
  *         return match.expand(tf_regex.get(match.group(idx), tf_regex.get("")))
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
@@ -11851,9 +11851,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__44 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__44);
   __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_compute_prior, 256, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_compute_prior, 256, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 256, __pyx_L1_error)
 
-  /* "models/Phonology.py":262
+  /* "models/Phonology.pyx":262
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
@@ -11863,9 +11863,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__46 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_nms_2, 262, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_nms_2, 262, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 262, __pyx_L1_error)
 
-  /* "models/Phonology.py":266
+  /* "models/Phonology.pyx":266
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
@@ -11875,9 +11875,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__48 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__48);
   __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mnames, 266, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 266, __pyx_L1_error)
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_mnames, 266, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 266, __pyx_L1_error)
 
-  /* "models/Phonology.py":270
+  /* "models/Phonology.pyx":270
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
@@ -11887,9 +11887,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__50 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__50);
   __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mdefs, 270, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 270, __pyx_L1_error)
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_mdefs, 270, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 270, __pyx_L1_error)
 
-  /* "models/Phonology.py":274
+  /* "models/Phonology.pyx":274
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -11899,9 +11899,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__52 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mname); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__52);
   __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mname2mconfig_2, 274, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_mname2mconfig_2, 274, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 274, __pyx_L1_error)
 
-  /* "models/Phonology.py":278
+  /* "models/Phonology.pyx":278
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -11911,9 +11911,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__54 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_mname); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__54);
   __Pyx_GIVEREF(__pyx_tuple__54);
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mname2mregex_2, 278, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_mname2mregex_2, 278, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 278, __pyx_L1_error)
 
-  /* "models/Phonology.py":282
+  /* "models/Phonology.pyx":282
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
@@ -11923,9 +11923,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__56 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__56);
   __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_nmhyps_2, 282, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 282, __pyx_L1_error)
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_nmhyps_2, 282, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 282, __pyx_L1_error)
 
-  /* "models/Phonology.py":286
+  /* "models/Phonology.pyx":286
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
@@ -11935,9 +11935,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__58 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__58);
   __Pyx_GIVEREF(__pyx_tuple__58);
-  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mhyps_2, 286, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_mhyps_2, 286, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 286, __pyx_L1_error)
 
-  /* "models/Phonology.py":290
+  /* "models/Phonology.pyx":290
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
@@ -11947,9 +11947,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__60 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__60);
   __Pyx_GIVEREF(__pyx_tuple__60);
-  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_mhyp_idx_2, 290, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 290, __pyx_L1_error)
+  __pyx_codeobj__61 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__60, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_mhyp_idx_2, 290, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__61)) __PYX_ERR(0, 290, __pyx_L1_error)
 
-  /* "models/Phonology.py":294
+  /* "models/Phonology.pyx":294
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
@@ -11959,9 +11959,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__62 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__62)) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__62);
   __Pyx_GIVEREF(__pyx_tuple__62);
-  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_get_current_mhyp, 294, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 294, __pyx_L1_error)
+  __pyx_codeobj__63 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__62, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_get_current_mhyp, 294, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__63)) __PYX_ERR(0, 294, __pyx_L1_error)
 
-  /* "models/Phonology.py":300
+  /* "models/Phonology.pyx":300
  * 
  * class OT:
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -11970,7 +11970,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__64 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__64);
   __Pyx_GIVEREF(__pyx_tuple__64);
-  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_py, __pyx_n_s_init, 300, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Phonology_pyx, __pyx_n_s_init, 300, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -12353,7 +12353,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "models/Phonology.py":1
+  /* "models/Phonology.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import re
  * from copy import copy, deepcopy
@@ -12363,7 +12363,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":2
+  /* "models/Phonology.pyx":2
  * import numpy as np
  * import re             # <<<<<<<<<<<<<<
  * from copy import copy, deepcopy
@@ -12374,7 +12374,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":3
+  /* "models/Phonology.pyx":3
  * import numpy as np
  * import re
  * from copy import copy, deepcopy             # <<<<<<<<<<<<<<
@@ -12402,7 +12402,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":4
+  /* "models/Phonology.pyx":4
  * import re
  * from copy import copy, deepcopy
  * from itertools import permutations             # <<<<<<<<<<<<<<
@@ -12423,7 +12423,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":5
+  /* "models/Phonology.pyx":5
  * from copy import copy, deepcopy
  * from itertools import permutations
  * from optim.Inventory import Inventory             # <<<<<<<<<<<<<<
@@ -12444,7 +12444,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":6
+  /* "models/Phonology.pyx":6
  * from itertools import permutations
  * from optim.Inventory import Inventory
  * from optim.Distributions import Binomial, Bernoulli, Uniform             # <<<<<<<<<<<<<<
@@ -12479,7 +12479,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":13
+  /* "models/Phonology.pyx":13
  * 
  * 
  * class SPE(Inventory):             # <<<<<<<<<<<<<<
@@ -12500,7 +12500,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "models/Phonology.py":16
+  /* "models/Phonology.pyx":16
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
@@ -12510,7 +12510,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_5 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
 
-  /* "models/Phonology.py":18
+  /* "models/Phonology.pyx":18
  *     def __init__(
  *         self,
  *         mnames: np.ndarray,             # <<<<<<<<<<<<<<
@@ -12525,7 +12525,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_mnames, __pyx_t_7) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":19
+  /* "models/Phonology.pyx":19
  *         self,
  *         mnames: np.ndarray,
  *         mdefs: np.ndarray,             # <<<<<<<<<<<<<<
@@ -12540,7 +12540,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_mdefs, __pyx_t_6) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":20
+  /* "models/Phonology.pyx":20
  *         mnames: np.ndarray,
  *         mdefs: np.ndarray,
  *         tokens: np.ndarray,             # <<<<<<<<<<<<<<
@@ -12555,7 +12555,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_tokens, __pyx_t_7) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":21
+  /* "models/Phonology.pyx":21
  *         mdefs: np.ndarray,
  *         tokens: np.ndarray,
  *         feats: np.ndarray,             # <<<<<<<<<<<<<<
@@ -12570,7 +12570,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_feats, __pyx_t_6) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":22
+  /* "models/Phonology.pyx":22
  *         tokens: np.ndarray,
  *         feats: np.ndarray,
  *         configs: np.ndarray,             # <<<<<<<<<<<<<<
@@ -12585,7 +12585,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_configs, __pyx_t_7) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":16
+  /* "models/Phonology.pyx":16
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(             # <<<<<<<<<<<<<<
@@ -12602,7 +12602,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_init, __pyx_t_7) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":53
+  /* "models/Phonology.pyx":53
  *     """ ========== OVERLOADING METHODS =================================== """
  * 
  *     def __copy__(self):             # <<<<<<<<<<<<<<
@@ -12614,7 +12614,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_copy_2, __pyx_t_7) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":60
+  /* "models/Phonology.pyx":60
  *         return cp
  * 
  *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
@@ -12626,7 +12626,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_deepcopy_2, __pyx_t_7) < 0) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":69
+  /* "models/Phonology.pyx":69
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def update_mhyp(self, mhyp: tuple):             # <<<<<<<<<<<<<<
@@ -12643,7 +12643,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_mhyp, __pyx_t_5) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":73
+  /* "models/Phonology.pyx":73
  *         self._mhyp_idx = self._mhyp2idx[mhyp]
  * 
  *     def update_mhyp_idx(self, idx: int):             # <<<<<<<<<<<<<<
@@ -12660,7 +12660,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_update_mhyp_idx, __pyx_t_7) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":77
+  /* "models/Phonology.pyx":77
  *         self._mhyp_idx = idx
  * 
  *     def generate_hypotheses(self):             # <<<<<<<<<<<<<<
@@ -12672,7 +12672,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_generate_hypotheses, __pyx_t_7) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":87
+  /* "models/Phonology.pyx":87
  *         self._mhyp_idx = self._rng.choice(self.nmhyps())
  * 
  *     def config_mappings(self):             # <<<<<<<<<<<<<<
@@ -12684,7 +12684,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_config_mappings, __pyx_t_7) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":163
+  /* "models/Phonology.pyx":163
  *             self._mname2mconfig[mname] = (cxt_config, idx, tgt_config, sd)
  * 
  *     def regex_mappings(self):             # <<<<<<<<<<<<<<
@@ -12696,7 +12696,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_regex_mappings, __pyx_t_7) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":244
+  /* "models/Phonology.pyx":244
  *                 self._mname2mregex[mname] = (cxt_regex, tf_regex, src_idx + 1)
  * 
  *     def regex_apply(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -12713,7 +12713,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_regex_apply, __pyx_t_5) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":252
+  /* "models/Phonology.pyx":252
  *         return tokens
  * 
  *     def tf(self, match: re.Match, tf_regex: dict, idx: int):             # <<<<<<<<<<<<<<
@@ -12738,7 +12738,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_tf, __pyx_t_6) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":256
+  /* "models/Phonology.pyx":256
  *         return match.expand(tf_regex.get(match.group(idx), tf_regex.get("")))
  * 
  *     def compute_prior(self):             # <<<<<<<<<<<<<<
@@ -12750,7 +12750,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_compute_prior, __pyx_t_6) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":262
+  /* "models/Phonology.pyx":262
  *     """ ========== ACCESSORS ========================================= """
  * 
  *     def nms(self):             # <<<<<<<<<<<<<<
@@ -12762,7 +12762,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_nms_2, __pyx_t_6) < 0) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":266
+  /* "models/Phonology.pyx":266
  *         return self._nms
  * 
  *     def mnames(self):             # <<<<<<<<<<<<<<
@@ -12774,7 +12774,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mnames, __pyx_t_6) < 0) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":270
+  /* "models/Phonology.pyx":270
  *         return self._mnames
  * 
  *     def mdefs(self):             # <<<<<<<<<<<<<<
@@ -12786,7 +12786,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mdefs, __pyx_t_6) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "models/Phonology.py":274
+  /* "models/Phonology.pyx":274
  *         return self._mdefs
  * 
  *     def mname2mconfig(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -12809,7 +12809,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mname2mconfig_2, __pyx_t_7) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "models/Phonology.py":278
+  /* "models/Phonology.pyx":278
  *         return self._mname2mconfig[mname]
  * 
  *     def mname2mregex(self, mname: np.str_):             # <<<<<<<<<<<<<<
@@ -12832,7 +12832,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mname2mregex_2, __pyx_t_5) < 0) __PYX_ERR(0, 278, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":282
+  /* "models/Phonology.pyx":282
  *         return self._mname2mregex[mname]
  * 
  *     def nmhyps(self):             # <<<<<<<<<<<<<<
@@ -12844,7 +12844,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_nmhyps_2, __pyx_t_5) < 0) __PYX_ERR(0, 282, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":286
+  /* "models/Phonology.pyx":286
  *         return self._nmhyps
  * 
  *     def mhyps(self):             # <<<<<<<<<<<<<<
@@ -12856,7 +12856,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mhyps_2, __pyx_t_5) < 0) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":290
+  /* "models/Phonology.pyx":290
  *         return self._mhyps
  * 
  *     def mhyp_idx(self):             # <<<<<<<<<<<<<<
@@ -12868,7 +12868,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_mhyp_idx_2, __pyx_t_5) < 0) __PYX_ERR(0, 290, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":294
+  /* "models/Phonology.pyx":294
  *         return self._mhyp_idx
  * 
  *     def get_current_mhyp(self):             # <<<<<<<<<<<<<<
@@ -12880,7 +12880,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_3, __pyx_n_s_get_current_mhyp, __pyx_t_5) < 0) __PYX_ERR(0, 294, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Phonology.py":13
+  /* "models/Phonology.pyx":13
  * 
  * 
  * class SPE(Inventory):             # <<<<<<<<<<<<<<
@@ -12897,7 +12897,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":299
+  /* "models/Phonology.pyx":299
  * 
  * 
  * class OT:             # <<<<<<<<<<<<<<
@@ -12907,7 +12907,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_OT, __pyx_n_s_OT, (PyObject *) NULL, __pyx_n_s_optim_Phonology, (PyObject *) NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "models/Phonology.py":300
+  /* "models/Phonology.pyx":300
  * 
  * class OT:
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -12918,7 +12918,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Phonology.py":299
+  /* "models/Phonology.pyx":299
  * 
  * 
  * class OT:             # <<<<<<<<<<<<<<
@@ -12931,7 +12931,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Phonology.py":1
+  /* "models/Phonology.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import re
  * from copy import copy, deepcopy

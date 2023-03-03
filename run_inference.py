@@ -197,7 +197,7 @@ def main():
     gs_iterations = params["MCMC"]["gs_iterations"]
     mh_iterations = params["MCMC"]["mh_iterations"]
     anneal = params["MCMC"]["anneal"]
-    sg, lx_as = MCMC.gibbs_sampler(G, anneal, gs_iterations, mh_iterations)
+    sg = MCMC.gibbs_sampler(G, anneal, gs_iterations, mh_iterations)
 
     """ ==================== BURN IN ======================================"""
     bi = MCMC.burn_in(sg)
@@ -217,22 +217,6 @@ def main():
     output_path += f"-lambda{lm}-psi{psi}-phi{phi}-alpha{alpha}"
     if not os.path.exists(output_path):
         os.makedirs(output_path)
-
-    ## Write to file
-    acceptances_fn = f"{output_path}/acceptances.csv"
-    with open(acceptances_fn, "w") as f:
-        f.write("gs,")
-        f.write("lx,")
-        f.write("mhyp,")
-        f.write("pro_ur,")
-        f.write("cxt_ur\n")
-        for lx, g in lx_as.items():
-            for gsi, (m, u) in enumerate(g):
-                f.write(f"{gsi},")
-                f.write(f"{lx},")
-                f.write(f"{'-'.join(m)},")
-                f.write(f"{'.'.join(['-'.join(p) for p in u.keys()])},")
-                f.write(f"{'.'.join(u.values())}\n")
 
     posterior_fn = f"{output_path}/posterior.csv"
     with open(posterior_fn, "w") as f:

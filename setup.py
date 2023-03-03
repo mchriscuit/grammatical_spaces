@@ -4,17 +4,17 @@ from Cython.Build import cythonize
 import numpy as np
 
 extensions = [
-    Extension("optim.Distributions", ["models/Distributions.py"],
+    Extension("optim.Distributions", ["models/Distributions.pyx"],
         include_dirs=[np.get_include()]),
-    Extension("optim.Inventory", ["models/Inventory.py"],
+    Extension("optim.Inventory", ["models/Inventory.pyx"],
         include_dirs=[np.get_include()]),
-    Extension("optim.Phonology", ["models/Phonology.py"],
+    Extension("optim.Phonology", ["models/Phonology.pyx"],
         include_dirs=[np.get_include()]),
-    Extension("optim.Lexicon", ["models/Lexicon.py"],
+    Extension("optim.Lexicon", ["models/Lexicon.pyx"],
         include_dirs=[np.get_include()]),
-    Extension("optim.Grammar", ["models/Grammar.py"],
+    Extension("optim.Grammar", ["models/Grammar.pyx"],
         include_dirs=[np.get_include()]),
-    Extension("optim.MCMC", ["models/MCMC.py"],
+    Extension("optim.MCMC", ["models/MCMC.pyx"],
         include_dirs=[np.get_include()]),
 ]
 

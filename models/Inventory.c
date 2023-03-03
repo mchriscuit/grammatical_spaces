@@ -8,7 +8,7 @@
         ],
         "name": "optim.Inventory",
         "sources": [
-            "models/Inventory.py"
+            "models/Inventory.pyx"
         ]
     },
     "module_name": "optim.Inventory"
@@ -965,7 +965,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "models/Inventory.py",
+  "models/Inventory.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -1633,7 +1633,7 @@ static const char __pyx_k_Inventory_tconfigs[] = "Inventory.tconfigs";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_compatible_configs[] = "compatible_configs";
 static const char __pyx_k_get_compatible_idxs[] = "get_compatible_idxs";
-static const char __pyx_k_models_Inventory_py[] = "models/Inventory.py";
+static const char __pyx_k_models_Inventory_pyx[] = "models/Inventory.pyx";
 static const char __pyx_k_sub_seq_token_config[] = "sub_seq_token_config";
 static const char __pyx_k_Inventory_sample_segs[] = "Inventory.sample_segs";
 static const char __pyx_k_get_compatible_tokens[] = "get_compatible_tokens";
@@ -1727,7 +1727,7 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_map;
 static PyObject *__pyx_n_s_match;
 static PyObject *__pyx_n_s_metaclass;
-static PyObject *__pyx_kp_s_models_Inventory_py;
+static PyObject *__pyx_kp_s_models_Inventory_pyx;
 static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_n_s_n;
 static PyObject *__pyx_n_s_name;
@@ -1865,7 +1865,7 @@ static PyObject *__pyx_codeobj__51;
 static PyObject *__pyx_codeobj__53;
 /* Late includes */
 
-/* "models/Inventory.py":13
+/* "models/Inventory.pyx":13
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):             # <<<<<<<<<<<<<<
@@ -1960,7 +1960,7 @@ static PyObject *__pyx_pw_5optim_9Inventory_9Inventory_1__init__(PyObject *__pyx
   return __pyx_r;
 }
 
-/* "models/Inventory.py":17
+/* "models/Inventory.pyx":17
  * 
  *         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         def is_seg(token):             # <<<<<<<<<<<<<<
@@ -1996,7 +1996,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8__init___is_seg(CYTHON_U
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_seg", 0);
 
-  /* "models/Inventory.py":18
+  /* "models/Inventory.pyx":18
  *         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         def is_seg(token):
  *             return bool(re.match("\w", token))             # <<<<<<<<<<<<<<
@@ -2062,7 +2062,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8__init___is_seg(CYTHON_U
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":17
+  /* "models/Inventory.pyx":17
  * 
  *         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         def is_seg(token):             # <<<<<<<<<<<<<<
@@ -2084,7 +2084,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8__init___is_seg(CYTHON_U
   return __pyx_r;
 }
 
-/* "models/Inventory.py":13
+/* "models/Inventory.pyx":13
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):             # <<<<<<<<<<<<<<
@@ -2113,7 +2113,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "models/Inventory.py":14
+  /* "models/Inventory.pyx":14
  * 
  *     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):
  *         self._rng = np.random.default_rng()             # <<<<<<<<<<<<<<
@@ -2146,7 +2146,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_rng, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":17
+  /* "models/Inventory.pyx":17
  * 
  *         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         def is_seg(token):             # <<<<<<<<<<<<<<
@@ -2158,7 +2158,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   __pyx_v_is_seg = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":21
+  /* "models/Inventory.pyx":21
  * 
  *         ## *=*=*= SEGMENTS AND FEATURES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._tokens = np.array(tokens)             # <<<<<<<<<<<<<<
@@ -2188,7 +2188,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tokens_2, __pyx_t_1) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":22
+  /* "models/Inventory.pyx":22
  *         ## *=*=*= SEGMENTS AND FEATURES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._tokens = np.array(tokens)
  *         self._segs = self._tokens[list(map(is_seg, self._tokens))]             # <<<<<<<<<<<<<<
@@ -2220,7 +2220,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_segs, __pyx_t_3) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":23
+  /* "models/Inventory.pyx":23
  *         self._tokens = np.array(tokens)
  *         self._segs = self._tokens[list(map(is_seg, self._tokens))]
  *         self._feats = np.array(feats)             # <<<<<<<<<<<<<<
@@ -2250,7 +2250,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feats_2, __pyx_t_3) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":24
+  /* "models/Inventory.pyx":24
  *         self._segs = self._tokens[list(map(is_seg, self._tokens))]
  *         self._feats = np.array(feats)
  *         self._tconfigs = np.array(configs).astype(int)             # <<<<<<<<<<<<<<
@@ -2298,7 +2298,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tconfigs, __pyx_t_3) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":25
+  /* "models/Inventory.pyx":25
  *         self._feats = np.array(feats)
  *         self._tconfigs = np.array(configs).astype(int)
  *         self._sconfigs = self._tconfigs[list(map(is_seg, self._tokens))]             # <<<<<<<<<<<<<<
@@ -2330,7 +2330,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_sconfigs, __pyx_t_4) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":28
+  /* "models/Inventory.pyx":28
  * 
  *         ## *=*=*= SEGMENTS COUNTS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._ntokens = len(self._tokens)             # <<<<<<<<<<<<<<
@@ -2346,7 +2346,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_ntokens, __pyx_t_4) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":29
+  /* "models/Inventory.pyx":29
  *         ## *=*=*= SEGMENTS COUNTS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         self._ntokens = len(self._tokens)
  *         self._nsegs = len(self._segs)             # <<<<<<<<<<<<<<
@@ -2362,7 +2362,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nsegs, __pyx_t_4) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":30
+  /* "models/Inventory.pyx":30
  *         self._ntokens = len(self._tokens)
  *         self._nsegs = len(self._segs)
  *         self._nfeats = len(self._feats)             # <<<<<<<<<<<<<<
@@ -2378,7 +2378,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_nfeats, __pyx_t_4) < 0) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":33
+  /* "models/Inventory.pyx":33
  * 
  *         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
  *         self._token2id = {s: i for i, s in enumerate(self._tokens)}             # <<<<<<<<<<<<<<
@@ -2457,7 +2457,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_token2id, __pyx_t_4) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":34
+  /* "models/Inventory.pyx":34
  *         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
  *         self._token2id = {s: i for i, s in enumerate(self._tokens)}
  *         self._feat2id = {f: i for i, f in enumerate(self._feats)}             # <<<<<<<<<<<<<<
@@ -2536,7 +2536,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_feat2id, __pyx_t_4) < 0) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":35
+  /* "models/Inventory.pyx":35
  *         self._token2id = {s: i for i, s in enumerate(self._tokens)}
  *         self._feat2id = {f: i for i, f in enumerate(self._feats)}
  *         self._tconfig2id = {tuple(c): i for i, c in enumerate(self._tconfigs)}             # <<<<<<<<<<<<<<
@@ -2618,7 +2618,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_tconfig2id, __pyx_t_4) < 0) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":13
+  /* "models/Inventory.pyx":13
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):             # <<<<<<<<<<<<<<
@@ -2649,7 +2649,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory___init__(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Inventory.py":40
+/* "models/Inventory.pyx":40
  * 
  *     @staticmethod
  *     def config_to_nan(config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -2684,7 +2684,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_2config_to_nan(CYTHON_UNU
   __Pyx_RefNannySetupContext("config_to_nan", 0);
   __Pyx_INCREF(__pyx_v_config);
 
-  /* "models/Inventory.py":44
+  /* "models/Inventory.pyx":44
  *         returns a vector where all 0 features are set to NaN
  *         """
  *         config = config.astype("float")             # <<<<<<<<<<<<<<
@@ -2711,7 +2711,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_2config_to_nan(CYTHON_UNU
   __Pyx_DECREF_SET(__pyx_v_config, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":45
+  /* "models/Inventory.pyx":45
  *         """
  *         config = config.astype("float")
  *         config[config == 0] = np.nan             # <<<<<<<<<<<<<<
@@ -2729,7 +2729,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_2config_to_nan(CYTHON_UNU
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Inventory.py":46
+  /* "models/Inventory.pyx":46
  *         config = config.astype("float")
  *         config[config == 0] = np.nan
  *         return config             # <<<<<<<<<<<<<<
@@ -2741,7 +2741,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_2config_to_nan(CYTHON_UNU
   __pyx_r = __pyx_v_config;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":40
+  /* "models/Inventory.pyx":40
  * 
  *     @staticmethod
  *     def config_to_nan(config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -2763,7 +2763,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_2config_to_nan(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "models/Inventory.py":50
+/* "models/Inventory.pyx":50
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def sample_sconfigs(self, n: int):             # <<<<<<<<<<<<<<
@@ -2851,7 +2851,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_4sample_sconfigs(CYTHON_U
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sample_sconfigs", 0);
 
-  /* "models/Inventory.py":52
+  /* "models/Inventory.pyx":52
  *     def sample_sconfigs(self, n: int):
  *         """Samples n configs uniformly from the inventory"""
  *         return self._rng.choice(self.sconfigs(), n)             # <<<<<<<<<<<<<<
@@ -2932,7 +2932,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_4sample_sconfigs(CYTHON_U
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":50
+  /* "models/Inventory.pyx":50
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def sample_sconfigs(self, n: int):             # <<<<<<<<<<<<<<
@@ -2955,7 +2955,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_4sample_sconfigs(CYTHON_U
   return __pyx_r;
 }
 
-/* "models/Inventory.py":54
+/* "models/Inventory.pyx":54
  *         return self._rng.choice(self.sconfigs(), n)
  * 
  *     def sample_segs(self, n: int):             # <<<<<<<<<<<<<<
@@ -3043,7 +3043,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_6sample_segs(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sample_segs", 0);
 
-  /* "models/Inventory.py":56
+  /* "models/Inventory.pyx":56
  *     def sample_segs(self, n: int):
  *         """Samples n segments uniformly from the inventory"""
  *         return self._rng.choice(self.segs(), n)             # <<<<<<<<<<<<<<
@@ -3124,7 +3124,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_6sample_segs(CYTHON_UNUSE
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":54
+  /* "models/Inventory.pyx":54
  *         return self._rng.choice(self.sconfigs(), n)
  * 
  *     def sample_segs(self, n: int):             # <<<<<<<<<<<<<<
@@ -3147,7 +3147,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_6sample_segs(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "models/Inventory.py":58
+/* "models/Inventory.pyx":58
  *         return self._rng.choice(self.segs(), n)
  * 
  *     def tokens2seq_config(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -3242,7 +3242,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8tokens2seq_config(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tokens2seq_config", 0);
 
-  /* "models/Inventory.py":62
+  /* "models/Inventory.pyx":62
  *         feature values
  *         """
  *         seq_config = [self.token2config(token) for token in tokens]             # <<<<<<<<<<<<<<
@@ -3293,7 +3293,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8tokens2seq_config(CYTHON
   __pyx_v_seq_config = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":63
+  /* "models/Inventory.pyx":63
  *         """
  *         seq_config = [self.token2config(token) for token in tokens]
  *         seq_config = np.array(seq_config)             # <<<<<<<<<<<<<<
@@ -3323,7 +3323,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8tokens2seq_config(CYTHON
   __Pyx_DECREF_SET(__pyx_v_seq_config, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":64
+  /* "models/Inventory.pyx":64
  *         seq_config = [self.token2config(token) for token in tokens]
  *         seq_config = np.array(seq_config)
  *         return seq_config             # <<<<<<<<<<<<<<
@@ -3335,7 +3335,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8tokens2seq_config(CYTHON
   __pyx_r = __pyx_v_seq_config;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":58
+  /* "models/Inventory.pyx":58
  *         return self._rng.choice(self.segs(), n)
  * 
  *     def tokens2seq_config(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -3360,7 +3360,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_8tokens2seq_config(CYTHON
   return __pyx_r;
 }
 
-/* "models/Inventory.py":66
+/* "models/Inventory.pyx":66
  *         return seq_config
  * 
  *     def seq_config2tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -3450,7 +3450,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("seq_config2tokens", 0);
 
-  /* "models/Inventory.py":70
+  /* "models/Inventory.pyx":70
  *         of tokens corresponding to each one
  *         """
  *         tokens = ""             # <<<<<<<<<<<<<<
@@ -3460,7 +3460,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
   __Pyx_INCREF(__pyx_kp_s__3);
   __pyx_v_tokens = __pyx_kp_s__3;
 
-  /* "models/Inventory.py":71
+  /* "models/Inventory.pyx":71
  *         """
  *         tokens = ""
  *         for config in seq_config:             # <<<<<<<<<<<<<<
@@ -3509,7 +3509,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
     __Pyx_XDECREF_SET(__pyx_v_config, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "models/Inventory.py":72
+    /* "models/Inventory.pyx":72
  *         tokens = ""
  *         for config in seq_config:
  *             tokens += self.config2token(config)             # <<<<<<<<<<<<<<
@@ -3539,7 +3539,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
     __Pyx_DECREF_SET(__pyx_v_tokens, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "models/Inventory.py":71
+    /* "models/Inventory.pyx":71
  *         """
  *         tokens = ""
  *         for config in seq_config:             # <<<<<<<<<<<<<<
@@ -3549,7 +3549,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":73
+  /* "models/Inventory.pyx":73
  *         for config in seq_config:
  *             tokens += self.config2token(config)
  *         return tokens             # <<<<<<<<<<<<<<
@@ -3561,7 +3561,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
   __pyx_r = __pyx_v_tokens;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":66
+  /* "models/Inventory.pyx":66
  *         return seq_config
  * 
  *     def seq_config2tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -3585,7 +3585,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_10seq_config2tokens(CYTHO
   return __pyx_r;
 }
 
-/* "models/Inventory.py":75
+/* "models/Inventory.pyx":75
  *         return tokens
  * 
  *     def seq_config2list(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -3676,7 +3676,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_12seq_config2list(CYTHON_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("seq_config2list", 0);
 
-  /* "models/Inventory.py":79
+  /* "models/Inventory.pyx":79
  *         of tokens corresponding to each one as a list
  *         """
  *         tokens = [self.config2token(config) for config in seq_config]             # <<<<<<<<<<<<<<
@@ -3750,7 +3750,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_12seq_config2list(CYTHON_
   __pyx_v_tokens = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":80
+  /* "models/Inventory.pyx":80
  *         """
  *         tokens = [self.config2token(config) for config in seq_config]
  *         tokens = np.array(tokens)             # <<<<<<<<<<<<<<
@@ -3780,7 +3780,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_12seq_config2list(CYTHON_
   __Pyx_DECREF_SET(__pyx_v_tokens, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":81
+  /* "models/Inventory.pyx":81
  *         tokens = [self.config2token(config) for config in seq_config]
  *         tokens = np.array(tokens)
  *         return tokens             # <<<<<<<<<<<<<<
@@ -3792,7 +3792,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_12seq_config2list(CYTHON_
   __pyx_r = __pyx_v_tokens;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":75
+  /* "models/Inventory.pyx":75
  *         return tokens
  * 
  *     def seq_config2list(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -3817,7 +3817,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_12seq_config2list(CYTHON_
   return __pyx_r;
 }
 
-/* "models/Inventory.py":83
+/* "models/Inventory.pyx":83
  *         return tokens
  * 
  *     def str_feats2config(self, str_feats: np.ndarray):             # <<<<<<<<<<<<<<
@@ -3916,7 +3916,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("str_feats2config", 0);
 
-  /* "models/Inventory.py":88
+  /* "models/Inventory.pyx":88
  *         with the denoted feature values.
  *         """
  *         config = np.full(self.nfeats(), None)             # <<<<<<<<<<<<<<
@@ -3995,7 +3995,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   __pyx_v_config = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":89
+  /* "models/Inventory.pyx":89
  *         """
  *         config = np.full(self.nfeats(), None)
  *         if str_feats == [""]:             # <<<<<<<<<<<<<<
@@ -4013,7 +4013,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_7) {
 
-    /* "models/Inventory.py":90
+    /* "models/Inventory.pyx":90
  *         config = np.full(self.nfeats(), None)
  *         if str_feats == [""]:
  *             return config             # <<<<<<<<<<<<<<
@@ -4025,7 +4025,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     __pyx_r = __pyx_v_config;
     goto __pyx_L0;
 
-    /* "models/Inventory.py":89
+    /* "models/Inventory.pyx":89
  *         """
  *         config = np.full(self.nfeats(), None)
  *         if str_feats == [""]:             # <<<<<<<<<<<<<<
@@ -4034,7 +4034,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
  */
   }
 
-  /* "models/Inventory.py":91
+  /* "models/Inventory.pyx":91
  *         if str_feats == [""]:
  *             return config
  *         config = np.zeros(self.nfeats())             # <<<<<<<<<<<<<<
@@ -4082,7 +4082,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   __Pyx_DECREF_SET(__pyx_v_config, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":92
+  /* "models/Inventory.pyx":92
  *             return config
  *         config = np.zeros(self.nfeats())
  *         if str_feats == ["#"]:             # <<<<<<<<<<<<<<
@@ -4100,7 +4100,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   if (__pyx_t_7) {
 
-    /* "models/Inventory.py":93
+    /* "models/Inventory.pyx":93
  *         config = np.zeros(self.nfeats())
  *         if str_feats == ["#"]:
  *             return config             # <<<<<<<<<<<<<<
@@ -4112,7 +4112,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     __pyx_r = __pyx_v_config;
     goto __pyx_L0;
 
-    /* "models/Inventory.py":92
+    /* "models/Inventory.pyx":92
  *             return config
  *         config = np.zeros(self.nfeats())
  *         if str_feats == ["#"]:             # <<<<<<<<<<<<<<
@@ -4121,7 +4121,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
  */
   }
 
-  /* "models/Inventory.py":94
+  /* "models/Inventory.pyx":94
  *         if str_feats == ["#"]:
  *             return config
  *         for str_feat in str_feats:             # <<<<<<<<<<<<<<
@@ -4170,7 +4170,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     __Pyx_XDECREF_SET(__pyx_v_str_feat, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Inventory.py":95
+    /* "models/Inventory.pyx":95
  *             return config
  *         for str_feat in str_feats:
  *             typ, *feat = str_feat             # <<<<<<<<<<<<<<
@@ -4204,7 +4204,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     __Pyx_XDECREF_SET(__pyx_v_feat, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":96
+    /* "models/Inventory.pyx":96
  *         for str_feat in str_feats:
  *             typ, *feat = str_feat
  *             feat = "".join(feat)             # <<<<<<<<<<<<<<
@@ -4216,7 +4216,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     __Pyx_DECREF_SET(__pyx_v_feat, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":97
+    /* "models/Inventory.pyx":97
  *             typ, *feat = str_feat
  *             feat = "".join(feat)
  *             id = self.feat2id(feat)             # <<<<<<<<<<<<<<
@@ -4243,7 +4243,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     __Pyx_XDECREF_SET(__pyx_v_id, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":98
+    /* "models/Inventory.pyx":98
  *             feat = "".join(feat)
  *             id = self.feat2id(feat)
  *             val = 1 if typ == "+" else -1             # <<<<<<<<<<<<<<
@@ -4258,7 +4258,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     }
     __pyx_v_val = __pyx_t_11;
 
-    /* "models/Inventory.py":99
+    /* "models/Inventory.pyx":99
  *             id = self.feat2id(feat)
  *             val = 1 if typ == "+" else -1
  *             config[id] = val             # <<<<<<<<<<<<<<
@@ -4270,7 +4270,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
     if (unlikely(PyObject_SetItem(__pyx_v_config, __pyx_v_id, __pyx_t_2) < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":94
+    /* "models/Inventory.pyx":94
  *         if str_feats == ["#"]:
  *             return config
  *         for str_feat in str_feats:             # <<<<<<<<<<<<<<
@@ -4280,7 +4280,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "models/Inventory.py":100
+  /* "models/Inventory.pyx":100
  *             val = 1 if typ == "+" else -1
  *             config[id] = val
  *         return Inventory.config_to_nan(config)             # <<<<<<<<<<<<<<
@@ -4312,7 +4312,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":83
+  /* "models/Inventory.pyx":83
  *         return tokens
  * 
  *     def str_feats2config(self, str_feats: np.ndarray):             # <<<<<<<<<<<<<<
@@ -4340,7 +4340,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_14str_feats2config(CYTHON
   return __pyx_r;
 }
 
-/* "models/Inventory.py":102
+/* "models/Inventory.pyx":102
  *         return Inventory.config_to_nan(config)
  * 
  *     def update_config(             # <<<<<<<<<<<<<<
@@ -4454,7 +4454,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   __Pyx_RefNannySetupContext("update_config", 0);
   __Pyx_INCREF(__pyx_v_seq_token_config);
 
-  /* "models/Inventory.py":110
+  /* "models/Inventory.pyx":110
  *         a vector of Nones
  *         """
  *         seq_token_config = deepcopy(seq_token_config)             # <<<<<<<<<<<<<<
@@ -4481,7 +4481,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   __Pyx_DECREF_SET(__pyx_v_seq_token_config, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":111
+  /* "models/Inventory.pyx":111
  *         """
  *         seq_token_config = deepcopy(seq_token_config)
  *         if len(tgt_config) == 0:             # <<<<<<<<<<<<<<
@@ -4492,7 +4492,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   __pyx_t_5 = ((__pyx_t_4 == 0) != 0);
   if (__pyx_t_5) {
 
-    /* "models/Inventory.py":112
+    /* "models/Inventory.pyx":112
  *         seq_token_config = deepcopy(seq_token_config)
  *         if len(tgt_config) == 0:
  *             seq_token_config[idxs] = None             # <<<<<<<<<<<<<<
@@ -4501,7 +4501,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
  */
     if (unlikely(PyObject_SetItem(__pyx_v_seq_token_config, __pyx_v_idxs, Py_None) < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
 
-    /* "models/Inventory.py":111
+    /* "models/Inventory.pyx":111
  *         """
  *         seq_token_config = deepcopy(seq_token_config)
  *         if len(tgt_config) == 0:             # <<<<<<<<<<<<<<
@@ -4511,7 +4511,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
     goto __pyx_L3;
   }
 
-  /* "models/Inventory.py":114
+  /* "models/Inventory.pyx":114
  *             seq_token_config[idxs] = None
  *         else:
  *             m = ~np.isnan(tgt_config)             # <<<<<<<<<<<<<<
@@ -4545,7 +4545,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
     __pyx_v_m = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "models/Inventory.py":115
+    /* "models/Inventory.pyx":115
  *         else:
  *             m = ~np.isnan(tgt_config)
  *             for idx in idxs:             # <<<<<<<<<<<<<<
@@ -4594,7 +4594,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
       __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "models/Inventory.py":116
+      /* "models/Inventory.pyx":116
  *             m = ~np.isnan(tgt_config)
  *             for idx in idxs:
  *                 seq_token_config[np.newaxis, idx][m] = tgt_config[m].astype(int)             # <<<<<<<<<<<<<<
@@ -4641,7 +4641,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "models/Inventory.py":115
+      /* "models/Inventory.pyx":115
  *         else:
  *             m = ~np.isnan(tgt_config)
  *             for idx in idxs:             # <<<<<<<<<<<<<<
@@ -4653,7 +4653,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   }
   __pyx_L3:;
 
-  /* "models/Inventory.py":117
+  /* "models/Inventory.pyx":117
  *             for idx in idxs:
  *                 seq_token_config[np.newaxis, idx][m] = tgt_config[m].astype(int)
  *         return seq_token_config             # <<<<<<<<<<<<<<
@@ -4665,7 +4665,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   __pyx_r = __pyx_v_seq_token_config;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":102
+  /* "models/Inventory.pyx":102
  *         return Inventory.config_to_nan(config)
  * 
  *     def update_config(             # <<<<<<<<<<<<<<
@@ -4690,7 +4690,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_16update_config(CYTHON_UN
   return __pyx_r;
 }
 
-/* "models/Inventory.py":119
+/* "models/Inventory.pyx":119
  *         return seq_token_config
  * 
  *     def is_compatible_seq_token(             # <<<<<<<<<<<<<<
@@ -4791,7 +4791,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_18is_compatible_seq_token
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_compatible_seq_token", 0);
 
-  /* "models/Inventory.py":127
+  /* "models/Inventory.pyx":127
  *         token configurations are compatible
  *         """
  *         m = ~np.isnan(seq_cxt_config)             # <<<<<<<<<<<<<<
@@ -4824,7 +4824,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_18is_compatible_seq_token
   __pyx_v_m = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":128
+  /* "models/Inventory.pyx":128
  *         """
  *         m = ~np.isnan(seq_cxt_config)
  *         return np.all(seq_token_config[m], seq_cxt_config[m])             # <<<<<<<<<<<<<<
@@ -4894,7 +4894,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_18is_compatible_seq_token
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":119
+  /* "models/Inventory.pyx":119
  *         return seq_token_config
  * 
  *     def is_compatible_seq_token(             # <<<<<<<<<<<<<<
@@ -4919,7 +4919,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_18is_compatible_seq_token
   return __pyx_r;
 }
 
-/* "models/Inventory.py":130
+/* "models/Inventory.pyx":130
  *         return np.all(seq_token_config[m], seq_cxt_config[m])
  * 
  *     def get_compatible_idxs(             # <<<<<<<<<<<<<<
@@ -5029,7 +5029,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_compatible_idxs", 0);
 
-  /* "models/Inventory.py":138
+  /* "models/Inventory.pyx":138
  *         configuration is found in the token configuration sequence
  *         """
  *         compatible_idxs = []             # <<<<<<<<<<<<<<
@@ -5041,7 +5041,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   __pyx_v_compatible_idxs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":139
+  /* "models/Inventory.pyx":139
  *         """
  *         compatible_idxs = []
  *         ntokens_seq, _ = seq_token_config.shape             # <<<<<<<<<<<<<<
@@ -5101,7 +5101,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   __pyx_v__ = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":140
+  /* "models/Inventory.pyx":140
  *         compatible_idxs = []
  *         ntokens_seq, _ = seq_token_config.shape
  *         ntokens_cxt, _ = seq_cxt_config.shape             # <<<<<<<<<<<<<<
@@ -5161,7 +5161,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   __Pyx_DECREF_SET(__pyx_v__, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "models/Inventory.py":141
+  /* "models/Inventory.pyx":141
  *         ntokens_seq, _ = seq_token_config.shape
  *         ntokens_cxt, _ = seq_cxt_config.shape
  *         for i in range(ntokens_seq - ntokens_cxt + 1):             # <<<<<<<<<<<<<<
@@ -5219,7 +5219,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "models/Inventory.py":142
+    /* "models/Inventory.pyx":142
  *         ntokens_cxt, _ = seq_cxt_config.shape
  *         for i in range(ntokens_seq - ntokens_cxt + 1):
  *             sub_seq_token_config = seq_token_config[i : i + ntokens_cxt]             # <<<<<<<<<<<<<<
@@ -5234,7 +5234,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
     __Pyx_XDECREF_SET(__pyx_v_sub_seq_token_config, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "models/Inventory.py":143
+    /* "models/Inventory.pyx":143
  *         for i in range(ntokens_seq - ntokens_cxt + 1):
  *             sub_seq_token_config = seq_token_config[i : i + ntokens_cxt]
  *             if self.is_compatible_seq_token(sub_seq_token_config, seq_cxt_config):             # <<<<<<<<<<<<<<
@@ -5292,7 +5292,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_10) {
 
-      /* "models/Inventory.py":144
+      /* "models/Inventory.pyx":144
  *             sub_seq_token_config = seq_token_config[i : i + ntokens_cxt]
  *             if self.is_compatible_seq_token(sub_seq_token_config, seq_cxt_config):
  *                 compatible_idxs.append(i)             # <<<<<<<<<<<<<<
@@ -5301,7 +5301,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
  */
       __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_compatible_idxs, __pyx_v_i); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 144, __pyx_L1_error)
 
-      /* "models/Inventory.py":143
+      /* "models/Inventory.pyx":143
  *         for i in range(ntokens_seq - ntokens_cxt + 1):
  *             sub_seq_token_config = seq_token_config[i : i + ntokens_cxt]
  *             if self.is_compatible_seq_token(sub_seq_token_config, seq_cxt_config):             # <<<<<<<<<<<<<<
@@ -5310,7 +5310,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
  */
     }
 
-    /* "models/Inventory.py":141
+    /* "models/Inventory.pyx":141
  *         ntokens_seq, _ = seq_token_config.shape
  *         ntokens_cxt, _ = seq_cxt_config.shape
  *         for i in range(ntokens_seq - ntokens_cxt + 1):             # <<<<<<<<<<<<<<
@@ -5320,7 +5320,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Inventory.py":145
+  /* "models/Inventory.pyx":145
  *             if self.is_compatible_seq_token(sub_seq_token_config, seq_cxt_config):
  *                 compatible_idxs.append(i)
  *         return np.array(compatible_idxs)             # <<<<<<<<<<<<<<
@@ -5352,7 +5352,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":130
+  /* "models/Inventory.pyx":130
  *         return np.all(seq_token_config[m], seq_cxt_config[m])
  * 
  *     def get_compatible_idxs(             # <<<<<<<<<<<<<<
@@ -5381,7 +5381,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_20get_compatible_idxs(CYT
   return __pyx_r;
 }
 
-/* "models/Inventory.py":147
+/* "models/Inventory.pyx":147
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -5475,7 +5475,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_compatible_tokens", 0);
 
-  /* "models/Inventory.py":153
+  /* "models/Inventory.pyx":153
  *         matched in the segment
  *         """
  *         tconfigs = self.tconfigs()             # <<<<<<<<<<<<<<
@@ -5502,7 +5502,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
   __pyx_v_tconfigs = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":154
+  /* "models/Inventory.pyx":154
  *         """
  *         tconfigs = self.tconfigs()
  *         compatible_segs = []             # <<<<<<<<<<<<<<
@@ -5514,7 +5514,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
   __pyx_v_compatible_segs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":155
+  /* "models/Inventory.pyx":155
  *         tconfigs = self.tconfigs()
  *         compatible_segs = []
  *         for config in seq_config:             # <<<<<<<<<<<<<<
@@ -5563,7 +5563,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
     __Pyx_XDECREF_SET(__pyx_v_config, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":156
+    /* "models/Inventory.pyx":156
  *         compatible_segs = []
  *         for config in seq_config:
  *             m = ~np.isnan(config)             # <<<<<<<<<<<<<<
@@ -5596,7 +5596,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
     __Pyx_XDECREF_SET(__pyx_v_m, __pyx_t_6);
     __pyx_t_6 = 0;
 
-    /* "models/Inventory.py":157
+    /* "models/Inventory.pyx":157
  *         for config in seq_config:
  *             m = ~np.isnan(config)
  *             compatible_configs = (tconfigs[:, m] == config[m]).all(axis=1)             # <<<<<<<<<<<<<<
@@ -5632,7 +5632,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
     __Pyx_XDECREF_SET(__pyx_v_compatible_configs, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":158
+    /* "models/Inventory.pyx":158
  *             m = ~np.isnan(config)
  *             compatible_configs = (tconfigs[:, m] == config[m]).all(axis=1)
  *             compatible_segs.append(tconfigs[compatible_configs])             # <<<<<<<<<<<<<<
@@ -5644,7 +5644,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
     __pyx_t_7 = __Pyx_PyList_Append(__pyx_v_compatible_segs, __pyx_t_2); if (unlikely(__pyx_t_7 == ((int)-1))) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "models/Inventory.py":155
+    /* "models/Inventory.pyx":155
  *         tconfigs = self.tconfigs()
  *         compatible_segs = []
  *         for config in seq_config:             # <<<<<<<<<<<<<<
@@ -5654,7 +5654,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":159
+  /* "models/Inventory.pyx":159
  *             compatible_configs = (tconfigs[:, m] == config[m]).all(axis=1)
  *             compatible_segs.append(tconfigs[compatible_configs])
  *         return np.array(compatible_segs, dtype=object)             # <<<<<<<<<<<<<<
@@ -5684,7 +5684,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
   __pyx_t_6 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":147
+  /* "models/Inventory.pyx":147
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -5711,7 +5711,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_22get_compatible_tokens(C
   return __pyx_r;
 }
 
-/* "models/Inventory.py":163
+/* "models/Inventory.pyx":163
  *     """ ========== ACCESSORS ============================================ """
  * 
  *     def tokens(self):             # <<<<<<<<<<<<<<
@@ -5743,7 +5743,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_24tokens(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tokens", 0);
 
-  /* "models/Inventory.py":165
+  /* "models/Inventory.pyx":165
  *     def tokens(self):
  *         """Returns the tokens in the inventory"""
  *         return self._tokens             # <<<<<<<<<<<<<<
@@ -5757,7 +5757,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_24tokens(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":163
+  /* "models/Inventory.pyx":163
  *     """ ========== ACCESSORS ============================================ """
  * 
  *     def tokens(self):             # <<<<<<<<<<<<<<
@@ -5776,7 +5776,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_24tokens(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "models/Inventory.py":167
+/* "models/Inventory.pyx":167
  *         return self._tokens
  * 
  *     def segs(self):             # <<<<<<<<<<<<<<
@@ -5808,7 +5808,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_26segs(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("segs", 0);
 
-  /* "models/Inventory.py":169
+  /* "models/Inventory.pyx":169
  *     def segs(self):
  *         """Returns the segments in the inventory"""
  *         return self._segs             # <<<<<<<<<<<<<<
@@ -5822,7 +5822,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_26segs(CYTHON_UNUSED PyOb
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":167
+  /* "models/Inventory.pyx":167
  *         return self._tokens
  * 
  *     def segs(self):             # <<<<<<<<<<<<<<
@@ -5841,7 +5841,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_26segs(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "models/Inventory.py":171
+/* "models/Inventory.pyx":171
  *         return self._segs
  * 
  *     def feats(self):             # <<<<<<<<<<<<<<
@@ -5873,7 +5873,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_28feats(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("feats", 0);
 
-  /* "models/Inventory.py":173
+  /* "models/Inventory.pyx":173
  *     def feats(self):
  *         """Returns the feature names in the inventory"""
  *         return self._feats             # <<<<<<<<<<<<<<
@@ -5887,7 +5887,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_28feats(CYTHON_UNUSED PyO
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":171
+  /* "models/Inventory.pyx":171
  *         return self._segs
  * 
  *     def feats(self):             # <<<<<<<<<<<<<<
@@ -5906,7 +5906,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_28feats(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Inventory.py":175
+/* "models/Inventory.pyx":175
  *         return self._feats
  * 
  *     def tconfigs(self):             # <<<<<<<<<<<<<<
@@ -5938,7 +5938,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_30tconfigs(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("tconfigs", 0);
 
-  /* "models/Inventory.py":177
+  /* "models/Inventory.pyx":177
  *     def tconfigs(self):
  *         """Returns the feature configurations"""
  *         return self._tconfigs             # <<<<<<<<<<<<<<
@@ -5952,7 +5952,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_30tconfigs(CYTHON_UNUSED 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":175
+  /* "models/Inventory.pyx":175
  *         return self._feats
  * 
  *     def tconfigs(self):             # <<<<<<<<<<<<<<
@@ -5971,7 +5971,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_30tconfigs(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "models/Inventory.py":179
+/* "models/Inventory.pyx":179
  *         return self._tconfigs
  * 
  *     def sconfigs(self):             # <<<<<<<<<<<<<<
@@ -6003,7 +6003,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_32sconfigs(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("sconfigs", 0);
 
-  /* "models/Inventory.py":181
+  /* "models/Inventory.pyx":181
  *     def sconfigs(self):
  *         """Returns the feature configurations"""
  *         return self._sconfigs             # <<<<<<<<<<<<<<
@@ -6017,7 +6017,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_32sconfigs(CYTHON_UNUSED 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":179
+  /* "models/Inventory.pyx":179
  *         return self._tconfigs
  * 
  *     def sconfigs(self):             # <<<<<<<<<<<<<<
@@ -6036,7 +6036,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_32sconfigs(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "models/Inventory.py":183
+/* "models/Inventory.pyx":183
  *         return self._sconfigs
  * 
  *     def token2config(self, token: str):             # <<<<<<<<<<<<<<
@@ -6126,7 +6126,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_34token2config(CYTHON_UNU
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("token2config", 0);
 
-  /* "models/Inventory.py":185
+  /* "models/Inventory.pyx":185
  *     def token2config(self, token: str):
  *         """Returns the feature value vector given a token"""
  *         return self._tconfigs[self._token2id[token]]             # <<<<<<<<<<<<<<
@@ -6149,7 +6149,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_34token2config(CYTHON_UNU
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":183
+  /* "models/Inventory.pyx":183
  *         return self._sconfigs
  * 
  *     def token2config(self, token: str):             # <<<<<<<<<<<<<<
@@ -6170,7 +6170,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_34token2config(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "models/Inventory.py":187
+/* "models/Inventory.pyx":187
  *         return self._tconfigs[self._token2id[token]]
  * 
  *     def config2token(self, config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -6257,7 +6257,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
   __Pyx_RefNannySetupContext("config2token", 0);
   __Pyx_INCREF(__pyx_v_config);
 
-  /* "models/Inventory.py":189
+  /* "models/Inventory.pyx":189
  *     def config2token(self, config: np.ndarray):
  *         """Returns the token corresponding to the configuration"""
  *         if config.all() == None:             # <<<<<<<<<<<<<<
@@ -6287,7 +6287,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_4) {
 
-    /* "models/Inventory.py":190
+    /* "models/Inventory.pyx":190
  *         """Returns the token corresponding to the configuration"""
  *         if config.all() == None:
  *             return ""             # <<<<<<<<<<<<<<
@@ -6299,7 +6299,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
     __pyx_r = __pyx_kp_s__3;
     goto __pyx_L0;
 
-    /* "models/Inventory.py":189
+    /* "models/Inventory.pyx":189
  *     def config2token(self, config: np.ndarray):
  *         """Returns the token corresponding to the configuration"""
  *         if config.all() == None:             # <<<<<<<<<<<<<<
@@ -6308,7 +6308,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
  */
   }
 
-  /* "models/Inventory.py":191
+  /* "models/Inventory.pyx":191
  *         if config.all() == None:
  *             return ""
  *         config = tuple(config)             # <<<<<<<<<<<<<<
@@ -6320,7 +6320,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
   __Pyx_DECREF_SET(__pyx_v_config, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "models/Inventory.py":192
+  /* "models/Inventory.pyx":192
  *             return ""
  *         config = tuple(config)
  *         return self._tokens[self._tconfig2id[config]]             # <<<<<<<<<<<<<<
@@ -6343,7 +6343,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":187
+  /* "models/Inventory.pyx":187
  *         return self._tconfigs[self._token2id[token]]
  * 
  *     def config2token(self, config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -6365,7 +6365,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_36config2token(CYTHON_UNU
   return __pyx_r;
 }
 
-/* "models/Inventory.py":194
+/* "models/Inventory.pyx":194
  *         return self._tokens[self._tconfig2id[config]]
  * 
  *     def feat2id(self, feat: str):             # <<<<<<<<<<<<<<
@@ -6454,7 +6454,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_38feat2id(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("feat2id", 0);
 
-  /* "models/Inventory.py":196
+  /* "models/Inventory.pyx":196
  *     def feat2id(self, feat: str):
  *         """Returns the index of a feature"""
  *         return self._feat2id[feat]             # <<<<<<<<<<<<<<
@@ -6471,7 +6471,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_38feat2id(CYTHON_UNUSED P
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":194
+  /* "models/Inventory.pyx":194
  *         return self._tokens[self._tconfig2id[config]]
  * 
  *     def feat2id(self, feat: str):             # <<<<<<<<<<<<<<
@@ -6491,7 +6491,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_38feat2id(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Inventory.py":198
+/* "models/Inventory.pyx":198
  *         return self._feat2id[feat]
  * 
  *     def ntokens(self):             # <<<<<<<<<<<<<<
@@ -6523,7 +6523,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_40ntokens(CYTHON_UNUSED P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("ntokens", 0);
 
-  /* "models/Inventory.py":200
+  /* "models/Inventory.pyx":200
  *     def ntokens(self):
  *         """Returns the number of tokens in the inventory"""
  *         return self._ntokens             # <<<<<<<<<<<<<<
@@ -6537,7 +6537,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_40ntokens(CYTHON_UNUSED P
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":198
+  /* "models/Inventory.pyx":198
  *         return self._feat2id[feat]
  * 
  *     def ntokens(self):             # <<<<<<<<<<<<<<
@@ -6556,7 +6556,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_40ntokens(CYTHON_UNUSED P
   return __pyx_r;
 }
 
-/* "models/Inventory.py":202
+/* "models/Inventory.pyx":202
  *         return self._ntokens
  * 
  *     def nsegs(self):             # <<<<<<<<<<<<<<
@@ -6588,7 +6588,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_42nsegs(CYTHON_UNUSED PyO
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nsegs", 0);
 
-  /* "models/Inventory.py":204
+  /* "models/Inventory.pyx":204
  *     def nsegs(self):
  *         """Returns the number of segments in the inventory"""
  *         return self._nsegs             # <<<<<<<<<<<<<<
@@ -6602,7 +6602,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_42nsegs(CYTHON_UNUSED PyO
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":202
+  /* "models/Inventory.pyx":202
  *         return self._ntokens
  * 
  *     def nsegs(self):             # <<<<<<<<<<<<<<
@@ -6621,7 +6621,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_42nsegs(CYTHON_UNUSED PyO
   return __pyx_r;
 }
 
-/* "models/Inventory.py":206
+/* "models/Inventory.pyx":206
  *         return self._nsegs
  * 
  *     def nfeats(self):             # <<<<<<<<<<<<<<
@@ -6653,7 +6653,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_44nfeats(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("nfeats", 0);
 
-  /* "models/Inventory.py":208
+  /* "models/Inventory.pyx":208
  *     def nfeats(self):
  *         """Returns the number of features in the inventory"""
  *         return self._nfeats             # <<<<<<<<<<<<<<
@@ -6665,7 +6665,7 @@ static PyObject *__pyx_pf_5optim_9Inventory_9Inventory_44nfeats(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "models/Inventory.py":206
+  /* "models/Inventory.pyx":206
  *         return self._nsegs
  * 
  *     def nfeats(self):             # <<<<<<<<<<<<<<
@@ -6806,7 +6806,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_map, __pyx_k_map, sizeof(__pyx_k_map), 0, 0, 1, 1},
   {&__pyx_n_s_match, __pyx_k_match, sizeof(__pyx_k_match), 0, 0, 1, 1},
   {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
-  {&__pyx_kp_s_models_Inventory_py, __pyx_k_models_Inventory_py, sizeof(__pyx_k_models_Inventory_py), 0, 0, 1, 0},
+  {&__pyx_kp_s_models_Inventory_pyx, __pyx_k_models_Inventory_pyx, sizeof(__pyx_k_models_Inventory_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
   {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
@@ -6884,7 +6884,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "models/Inventory.py":17
+  /* "models/Inventory.pyx":17
  * 
  *         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
  *         def is_seg(token):             # <<<<<<<<<<<<<<
@@ -6894,9 +6894,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_token); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_is_seg, 17, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_is_seg, 17, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 17, __pyx_L1_error)
 
-  /* "models/Inventory.py":157
+  /* "models/Inventory.pyx":157
  *         for config in seq_config:
  *             m = ~np.isnan(config)
  *             compatible_configs = (tconfigs[:, m] == config[m]).all(axis=1)             # <<<<<<<<<<<<<<
@@ -6907,7 +6907,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
 
-  /* "models/Inventory.py":13
+  /* "models/Inventory.pyx":13
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):             # <<<<<<<<<<<<<<
@@ -6917,9 +6917,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__7 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_feats, __pyx_n_s_configs, __pyx_n_s_is_seg, __pyx_n_s_is_seg, __pyx_n_s_i, __pyx_n_s_s, __pyx_n_s_i, __pyx_n_s_f, __pyx_n_s_i, __pyx_n_s_c); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(4, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_init, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(4, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_init, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 13, __pyx_L1_error)
 
-  /* "models/Inventory.py":40
+  /* "models/Inventory.pyx":40
  * 
  *     @staticmethod
  *     def config_to_nan(config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -6929,9 +6929,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__9 = PyTuple_Pack(1, __pyx_n_s_config); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_config_to_nan, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_config_to_nan, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 40, __pyx_L1_error)
 
-  /* "models/Inventory.py":50
+  /* "models/Inventory.pyx":50
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def sample_sconfigs(self, n: int):             # <<<<<<<<<<<<<<
@@ -6941,9 +6941,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__11 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_n); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_sample_sconfigs, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_sample_sconfigs, 50, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 50, __pyx_L1_error)
 
-  /* "models/Inventory.py":54
+  /* "models/Inventory.pyx":54
  *         return self._rng.choice(self.sconfigs(), n)
  * 
  *     def sample_segs(self, n: int):             # <<<<<<<<<<<<<<
@@ -6953,9 +6953,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__13 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_n); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
-  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_sample_segs, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_sample_segs, 54, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 54, __pyx_L1_error)
 
-  /* "models/Inventory.py":58
+  /* "models/Inventory.pyx":58
  *         return self._rng.choice(self.segs(), n)
  * 
  *     def tokens2seq_config(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -6965,9 +6965,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__15 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_tokens, __pyx_n_s_seq_config, __pyx_n_s_token); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_tokens2seq_config, 58, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_tokens2seq_config, 58, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 58, __pyx_L1_error)
 
-  /* "models/Inventory.py":66
+  /* "models/Inventory.pyx":66
  *         return seq_config
  * 
  *     def seq_config2tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -6977,9 +6977,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__17 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_seq_config, __pyx_n_s_tokens, __pyx_n_s_config); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_seq_config2tokens, 66, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_seq_config2tokens, 66, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 66, __pyx_L1_error)
 
-  /* "models/Inventory.py":75
+  /* "models/Inventory.pyx":75
  *         return tokens
  * 
  *     def seq_config2list(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -6989,9 +6989,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__19 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_seq_config, __pyx_n_s_tokens, __pyx_n_s_config); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
-  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_seq_config2list, 75, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_codeobj__20 = (PyObject*)__Pyx_PyCode_New(2, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__19, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_seq_config2list, 75, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__20)) __PYX_ERR(0, 75, __pyx_L1_error)
 
-  /* "models/Inventory.py":83
+  /* "models/Inventory.pyx":83
  *         return tokens
  * 
  *     def str_feats2config(self, str_feats: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7001,9 +7001,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__21 = PyTuple_Pack(8, __pyx_n_s_self, __pyx_n_s_str_feats, __pyx_n_s_config, __pyx_n_s_str_feat, __pyx_n_s_typ, __pyx_n_s_feat, __pyx_n_s_id, __pyx_n_s_val); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_str_feats2config, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_str_feats2config, 83, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 83, __pyx_L1_error)
 
-  /* "models/Inventory.py":102
+  /* "models/Inventory.pyx":102
  *         return Inventory.config_to_nan(config)
  * 
  *     def update_config(             # <<<<<<<<<<<<<<
@@ -7013,9 +7013,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__23 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_seq_token_config, __pyx_n_s_tgt_config, __pyx_n_s_idxs, __pyx_n_s_m, __pyx_n_s_idx); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_update_config, 102, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(4, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_update_config, 102, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 102, __pyx_L1_error)
 
-  /* "models/Inventory.py":119
+  /* "models/Inventory.pyx":119
  *         return seq_token_config
  * 
  *     def is_compatible_seq_token(             # <<<<<<<<<<<<<<
@@ -7025,9 +7025,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__25 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_seq_token_config, __pyx_n_s_seq_cxt_config, __pyx_n_s_m); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_is_compatible_seq_token, 119, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_is_compatible_seq_token, 119, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 119, __pyx_L1_error)
 
-  /* "models/Inventory.py":130
+  /* "models/Inventory.pyx":130
  *         return np.all(seq_token_config[m], seq_cxt_config[m])
  * 
  *     def get_compatible_idxs(             # <<<<<<<<<<<<<<
@@ -7037,9 +7037,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__28 = PyTuple_Pack(9, __pyx_n_s_self, __pyx_n_s_seq_token_config, __pyx_n_s_seq_cxt_config, __pyx_n_s_compatible_idxs, __pyx_n_s_ntokens_seq, __pyx_n_s__27, __pyx_n_s_ntokens_cxt, __pyx_n_s_i, __pyx_n_s_sub_seq_token_config); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
-  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_get_compatible_idxs, 130, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_codeobj__29 = (PyObject*)__Pyx_PyCode_New(3, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__28, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_get_compatible_idxs, 130, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__29)) __PYX_ERR(0, 130, __pyx_L1_error)
 
-  /* "models/Inventory.py":147
+  /* "models/Inventory.pyx":147
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7049,9 +7049,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__30 = PyTuple_Pack(7, __pyx_n_s_self, __pyx_n_s_seq_config, __pyx_n_s_tconfigs_2, __pyx_n_s_compatible_segs, __pyx_n_s_config, __pyx_n_s_m, __pyx_n_s_compatible_configs); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
-  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_get_compatible_tokens, 147, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_codeobj__31 = (PyObject*)__Pyx_PyCode_New(2, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__30, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_get_compatible_tokens, 147, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__31)) __PYX_ERR(0, 147, __pyx_L1_error)
 
-  /* "models/Inventory.py":163
+  /* "models/Inventory.pyx":163
  *     """ ========== ACCESSORS ============================================ """
  * 
  *     def tokens(self):             # <<<<<<<<<<<<<<
@@ -7061,9 +7061,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__32 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_tokens, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_tokens, 163, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(0, 163, __pyx_L1_error)
 
-  /* "models/Inventory.py":167
+  /* "models/Inventory.pyx":167
  *         return self._tokens
  * 
  *     def segs(self):             # <<<<<<<<<<<<<<
@@ -7073,9 +7073,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__34 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_segs_2, 167, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_segs_2, 167, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(0, 167, __pyx_L1_error)
 
-  /* "models/Inventory.py":171
+  /* "models/Inventory.pyx":171
  *         return self._segs
  * 
  *     def feats(self):             # <<<<<<<<<<<<<<
@@ -7085,9 +7085,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__36 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
-  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_feats, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_feats, 171, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 171, __pyx_L1_error)
 
-  /* "models/Inventory.py":175
+  /* "models/Inventory.pyx":175
  *         return self._feats
  * 
  *     def tconfigs(self):             # <<<<<<<<<<<<<<
@@ -7097,9 +7097,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__38 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__38)) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__38);
   __Pyx_GIVEREF(__pyx_tuple__38);
-  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_tconfigs_2, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 175, __pyx_L1_error)
+  __pyx_codeobj__39 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__38, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_tconfigs_2, 175, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__39)) __PYX_ERR(0, 175, __pyx_L1_error)
 
-  /* "models/Inventory.py":179
+  /* "models/Inventory.pyx":179
  *         return self._tconfigs
  * 
  *     def sconfigs(self):             # <<<<<<<<<<<<<<
@@ -7109,9 +7109,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__40 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__40)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__40);
   __Pyx_GIVEREF(__pyx_tuple__40);
-  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_sconfigs_2, 179, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_codeobj__41 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__40, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_sconfigs_2, 179, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__41)) __PYX_ERR(0, 179, __pyx_L1_error)
 
-  /* "models/Inventory.py":183
+  /* "models/Inventory.pyx":183
  *         return self._sconfigs
  * 
  *     def token2config(self, token: str):             # <<<<<<<<<<<<<<
@@ -7121,9 +7121,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__42 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_token); if (unlikely(!__pyx_tuple__42)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__42);
   __Pyx_GIVEREF(__pyx_tuple__42);
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_token2config, 183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_token2config, 183, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 183, __pyx_L1_error)
 
-  /* "models/Inventory.py":187
+  /* "models/Inventory.pyx":187
  *         return self._tconfigs[self._token2id[token]]
  * 
  *     def config2token(self, config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7133,9 +7133,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__44 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_config); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__44);
   __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_config2token, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_config2token, 187, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 187, __pyx_L1_error)
 
-  /* "models/Inventory.py":194
+  /* "models/Inventory.pyx":194
  *         return self._tokens[self._tconfig2id[config]]
  * 
  *     def feat2id(self, feat: str):             # <<<<<<<<<<<<<<
@@ -7145,9 +7145,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__46 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_feat); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_feat2id_2, 194, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_feat2id_2, 194, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(0, 194, __pyx_L1_error)
 
-  /* "models/Inventory.py":198
+  /* "models/Inventory.pyx":198
  *         return self._feat2id[feat]
  * 
  *     def ntokens(self):             # <<<<<<<<<<<<<<
@@ -7157,9 +7157,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__48 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__48)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__48);
   __Pyx_GIVEREF(__pyx_tuple__48);
-  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_ntokens_2, 198, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 198, __pyx_L1_error)
+  __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_ntokens_2, 198, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 198, __pyx_L1_error)
 
-  /* "models/Inventory.py":202
+  /* "models/Inventory.pyx":202
  *         return self._ntokens
  * 
  *     def nsegs(self):             # <<<<<<<<<<<<<<
@@ -7169,9 +7169,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__50 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__50);
   __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_nsegs_2, 202, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_nsegs_2, 202, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 202, __pyx_L1_error)
 
-  /* "models/Inventory.py":206
+  /* "models/Inventory.pyx":206
  *         return self._nsegs
  * 
  *     def nfeats(self):             # <<<<<<<<<<<<<<
@@ -7181,7 +7181,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__52 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__52);
   __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_py, __pyx_n_s_nfeats_2, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_models_Inventory_pyx, __pyx_n_s_nfeats_2, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7465,7 +7465,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "models/Inventory.py":1
+  /* "models/Inventory.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import re
  * from copy import deepcopy
@@ -7475,7 +7475,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":2
+  /* "models/Inventory.pyx":2
  * import numpy as np
  * import re             # <<<<<<<<<<<<<<
  * from copy import deepcopy
@@ -7486,7 +7486,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_re, __pyx_t_1) < 0) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":3
+  /* "models/Inventory.pyx":3
  * import numpy as np
  * import re
  * from copy import deepcopy             # <<<<<<<<<<<<<<
@@ -7507,7 +7507,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Inventory.py":10
+  /* "models/Inventory.pyx":10
  * 
  * 
  * class Inventory:             # <<<<<<<<<<<<<<
@@ -7517,7 +7517,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Inventory, __pyx_n_s_Inventory, (PyObject *) NULL, __pyx_n_s_optim_Inventory, __pyx_kp_s_INITIALIZATION); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "models/Inventory.py":13
+  /* "models/Inventory.pyx":13
  *     """========== INITIALIZATION ======================================="""
  * 
  *     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7554,7 +7554,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":40
+  /* "models/Inventory.pyx":40
  * 
  *     @staticmethod
  *     def config_to_nan(config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7575,7 +7575,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_4);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":39
+  /* "models/Inventory.pyx":39
  *     """ ========== STATIC METHODS ======================================== """
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
@@ -7588,7 +7588,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_config_to_nan, __pyx_t_4) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":50
+  /* "models/Inventory.pyx":50
  *     """ ========== INSTANCE METHODS ===================================== """
  * 
  *     def sample_sconfigs(self, n: int):             # <<<<<<<<<<<<<<
@@ -7605,7 +7605,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_sample_sconfigs, __pyx_t_3) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":54
+  /* "models/Inventory.pyx":54
  *         return self._rng.choice(self.sconfigs(), n)
  * 
  *     def sample_segs(self, n: int):             # <<<<<<<<<<<<<<
@@ -7622,7 +7622,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_sample_segs, __pyx_t_4) < 0) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":58
+  /* "models/Inventory.pyx":58
  *         return self._rng.choice(self.segs(), n)
  * 
  *     def tokens2seq_config(self, tokens: str):             # <<<<<<<<<<<<<<
@@ -7639,7 +7639,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_tokens2seq_config, __pyx_t_3) < 0) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":66
+  /* "models/Inventory.pyx":66
  *         return seq_config
  * 
  *     def seq_config2tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7662,7 +7662,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_seq_config2tokens, __pyx_t_1) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":75
+  /* "models/Inventory.pyx":75
  *         return tokens
  * 
  *     def seq_config2list(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7685,7 +7685,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_seq_config2list, __pyx_t_4) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":83
+  /* "models/Inventory.pyx":83
  *         return tokens
  * 
  *     def str_feats2config(self, str_feats: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7708,7 +7708,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_str_feats2config, __pyx_t_3) < 0) __PYX_ERR(0, 83, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":102
+  /* "models/Inventory.pyx":102
  *         return Inventory.config_to_nan(config)
  * 
  *     def update_config(             # <<<<<<<<<<<<<<
@@ -7718,7 +7718,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_3 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "models/Inventory.py":103
+  /* "models/Inventory.pyx":103
  * 
  *     def update_config(
  *         self, seq_token_config: np.ndarray, tgt_config: np.ndarray, idxs: np.ndarray             # <<<<<<<<<<<<<<
@@ -7747,7 +7747,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_idxs, __pyx_t_1) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":102
+  /* "models/Inventory.pyx":102
  *         return Inventory.config_to_nan(config)
  * 
  *     def update_config(             # <<<<<<<<<<<<<<
@@ -7761,7 +7761,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_update_config, __pyx_t_1) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":119
+  /* "models/Inventory.pyx":119
  *         return seq_token_config
  * 
  *     def is_compatible_seq_token(             # <<<<<<<<<<<<<<
@@ -7771,7 +7771,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "models/Inventory.py":120
+  /* "models/Inventory.pyx":120
  * 
  *     def is_compatible_seq_token(
  *         self, seq_token_config: np.ndarray, seq_cxt_config: np.ndarray             # <<<<<<<<<<<<<<
@@ -7793,7 +7793,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_seq_cxt_config, __pyx_t_3) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":119
+  /* "models/Inventory.pyx":119
  *         return seq_token_config
  * 
  *     def is_compatible_seq_token(             # <<<<<<<<<<<<<<
@@ -7807,7 +7807,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_is_compatible_seq_token, __pyx_t_3) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":130
+  /* "models/Inventory.pyx":130
  *         return np.all(seq_token_config[m], seq_cxt_config[m])
  * 
  *     def get_compatible_idxs(             # <<<<<<<<<<<<<<
@@ -7817,7 +7817,7 @@ if (!__Pyx_RefNanny) {
   __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "models/Inventory.py":131
+  /* "models/Inventory.pyx":131
  * 
  *     def get_compatible_idxs(
  *         self, seq_token_config: np.ndarray, seq_cxt_config: np.ndarray             # <<<<<<<<<<<<<<
@@ -7839,7 +7839,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_seq_cxt_config, __pyx_t_1) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":130
+  /* "models/Inventory.pyx":130
  *         return np.all(seq_token_config[m], seq_cxt_config[m])
  * 
  *     def get_compatible_idxs(             # <<<<<<<<<<<<<<
@@ -7853,7 +7853,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_get_compatible_idxs, __pyx_t_1) < 0) __PYX_ERR(0, 130, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":147
+  /* "models/Inventory.pyx":147
  *         return np.array(compatible_idxs)
  * 
  *     def get_compatible_tokens(self, seq_config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7876,7 +7876,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_get_compatible_tokens, __pyx_t_4) < 0) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":163
+  /* "models/Inventory.pyx":163
  *     """ ========== ACCESSORS ============================================ """
  * 
  *     def tokens(self):             # <<<<<<<<<<<<<<
@@ -7888,7 +7888,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_tokens, __pyx_t_4) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":167
+  /* "models/Inventory.pyx":167
  *         return self._tokens
  * 
  *     def segs(self):             # <<<<<<<<<<<<<<
@@ -7900,7 +7900,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_segs_2, __pyx_t_4) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":171
+  /* "models/Inventory.pyx":171
  *         return self._segs
  * 
  *     def feats(self):             # <<<<<<<<<<<<<<
@@ -7912,7 +7912,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_feats, __pyx_t_4) < 0) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":175
+  /* "models/Inventory.pyx":175
  *         return self._feats
  * 
  *     def tconfigs(self):             # <<<<<<<<<<<<<<
@@ -7924,7 +7924,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_tconfigs_2, __pyx_t_4) < 0) __PYX_ERR(0, 175, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":179
+  /* "models/Inventory.pyx":179
  *         return self._tconfigs
  * 
  *     def sconfigs(self):             # <<<<<<<<<<<<<<
@@ -7936,7 +7936,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_sconfigs_2, __pyx_t_4) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "models/Inventory.py":183
+  /* "models/Inventory.pyx":183
  *         return self._sconfigs
  * 
  *     def token2config(self, token: str):             # <<<<<<<<<<<<<<
@@ -7953,7 +7953,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_token2config, __pyx_t_1) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":187
+  /* "models/Inventory.pyx":187
  *         return self._tconfigs[self._token2id[token]]
  * 
  *     def config2token(self, config: np.ndarray):             # <<<<<<<<<<<<<<
@@ -7976,7 +7976,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_config2token, __pyx_t_3) < 0) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "models/Inventory.py":194
+  /* "models/Inventory.pyx":194
  *         return self._tokens[self._tconfig2id[config]]
  * 
  *     def feat2id(self, feat: str):             # <<<<<<<<<<<<<<
@@ -7993,7 +7993,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_feat2id_2, __pyx_t_1) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":198
+  /* "models/Inventory.pyx":198
  *         return self._feat2id[feat]
  * 
  *     def ntokens(self):             # <<<<<<<<<<<<<<
@@ -8005,7 +8005,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_ntokens_2, __pyx_t_1) < 0) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":202
+  /* "models/Inventory.pyx":202
  *         return self._ntokens
  * 
  *     def nsegs(self):             # <<<<<<<<<<<<<<
@@ -8017,7 +8017,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_nsegs_2, __pyx_t_1) < 0) __PYX_ERR(0, 202, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":206
+  /* "models/Inventory.pyx":206
  *         return self._nsegs
  * 
  *     def nfeats(self):             # <<<<<<<<<<<<<<
@@ -8029,7 +8029,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_SetNameInClass(__pyx_t_2, __pyx_n_s_nfeats_2, __pyx_t_1) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "models/Inventory.py":10
+  /* "models/Inventory.pyx":10
  * 
  * 
  * class Inventory:             # <<<<<<<<<<<<<<
@@ -8042,7 +8042,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "models/Inventory.py":1
+  /* "models/Inventory.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * import re
  * from copy import deepcopy
