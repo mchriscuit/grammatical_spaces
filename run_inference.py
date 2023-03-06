@@ -1,12 +1,19 @@
+import multiprocessing as mp
 import numpy as np
+import re
+import os
 import json
 import argparse
-from models.Inventory import Inventory
-from models.Lexicon import Lexicon
-from models.Phonology import SPE, OT
-from models.Grammar import Grammar
-from models.MCMC import MCMC
+from optim.Inventory import Inventory
+from optim.Lexicon import Lexicon
+from optim.Phonology import SPE, OT
+from optim.Grammar import Grammar
+from optim.MCMC import MCMC
 
+
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+                ARGUMENT PASSER
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
 
 def parse_args():
     """Reads in and parses arguments from the command line"""
@@ -32,6 +39,9 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+                PARAMETER LOADER
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
 
 def load_parameters(parameters_fn):
     """Loads parameters from JSON file"""
@@ -40,48 +50,31 @@ def load_parameters(parameters_fn):
     return parameters
 
 
-def load_grammar_class(inventory_fn, lexicon_fn, mappings_fn, data_fn, mode):
-    """Loads and initializes a Grammar class"""
-    segs, feats, configs = load_inventory(inventory_fn)
-    lxs, clxs, urs = load_lexicon(lexicon_fn)
-    L = Lexicon(lxs, clxs, urs, segs, feats, configs)
-    if mode == OT:
-        cnames, cdefs = load_constraints(mappings_fn)
-        M = OT(cnames, cdefs, segs, feats, configs)
-    else:
-        rnames, rdefs = load_rules(mappings_fn)
-        M = SPE(rnames, rdefs, segs, feats, configs)
-    clxs, srs, nobs = load_data(data_fn)
-    G = Grammar(clxs, srs, nobs, L, M)
-    return G
-
-
 def load_inventory(inventory_fn):
-    """Loads in inventory file and returns an Inventory object"""
+    """Loads in and reads an inventory file"""
     prefix = "./parameters/inventory/"
     with open(f"{prefix}{inventory_fn}") as f:
         inventory = f.readlines()
         inventory = [i.strip().split(",") for i in inventory]
         inventory = np.array(inventory)
-    segs = inventory[:, 0][1:]
+    tokens = inventory[:, 0][1:]
     feats = inventory[0, :][1:]
     configs = inventory[1:, 1:].astype(int)
-    return segs, feats, configs
+    return tokens, feats, configs
 
 
 def load_lexicon(lexicon_fn):
-    """Loads in a lexicon file and returns formatted
-    lexemes and underlying forms
-    """
+    """Loads in lexicon file and returns the initial UR hypothesis
+    for each lexeme in the space"""
     prefix = "./parameters/lexicon/"
     with open(f"{prefix}{lexicon_fn}") as f:
         lexicon = f.readlines()
-        lexicon = [l.strip().split(",") for l in lexicon]
-    lxs, clxs, urs = zip(*lexicon)
-    lxs = list(lxs)
-    clxs = [[tuple(xs.split(":")) for xs in clx.split(".")] for clx in clxs]
-    urs = [tuple(ur.split(".")) for ur in urs]
-    return lxs, clxs, urs
+        lexicon = [s.strip().split(",") for s in lexicon]
+    init_lxs, init_clxs, init_urs = zip(*lexicon)
+    init_lxs = list(init_lxs)
+    init_clxs = [[tuple(x.split(":")) for x in cx.split(".")] for cx in init_clxs]
+    init_urs = [[tuple(u.split(":")) for u in ur.split(".")] for ur in init_urs]
+    return init_lxs, init_clxs, init_urs
 
 
 def load_constraints(constraints_fn):
@@ -106,19 +99,81 @@ def load_rules(rules_fn):
     return rnames, rdefs
 
 
-def load_data(data_fn):
+def load_surface_forms(surface_forms_fn):
     """Loads in a surface form file and returns formatted
-    lexemes and suurface forms
+    lexemes and surface forms
     """
     prefix = "./data/"
-    with open(f"{prefix}{data_fn}") as f:
-        lexicon = f.readlines()
-        lexicon = [l.strip().split(",") for l in lexicon]
-    clxs, srs, nobs = zip(*lexicon)
+    with open(f"{prefix}{surface_forms_fn}") as f:
+        surface_forms = f.readlines()
+        surface_forms = [s.strip().split(",") for s in surface_forms]
+    clxs, srs, nobs = zip(*surface_forms)
+
+    ## Generate the clxs by splitting by the delimiter ":"
     clxs = [tuple(clx.split(":")) for clx in clxs]
+
+    ## Generate the lxs by getting all the unique lxs in the space of clxs
+    lxs = sorted(set(lx for clx in clxs for lx in clx))
+
+    ## Generate the list of clxs containing each lx
+    lx_clxs = [[clx for clx in clxs if lx in clx] for lx in lxs]
+    lx_clxs = [[tuple(["PROTO"])] + cxs for cxs in lx_clxs]
+
+    ## Convert the tuple of SRs to a list of SRs
     srs = list(srs)
+
+    ## Convers the tuple of observations to a list of observations
     nobs = [int(nob) for nob in nobs]
-    return clxs, srs, nobs
+
+    return lxs, lx_clxs, clxs, srs, nobs
+
+
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+                GRAMMAR INSTANTIATION
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
+
+
+def load_grammar_class(inventory, lexicon, mappings, surface_forms, mode):
+    """Loads and initializes a Grammar class"""
+
+    ## Load in inventory information
+    inventory_fn = inventory["fn"]
+    tokens, feats, configs = load_inventory(inventory_fn)
+
+    ## Load in mappings information
+    mappings_fn = mappings["fn"]
+
+    ## If we are using an OT-based theory, retrieve the constraints
+    ## and instantiate an OT object
+    if mode == OT:
+        cnames, cdefs = load_constraints(mappings_fn)
+        M = OT(cnames, cdefs, tokens, feats, configs)
+
+    ## Otherwise, we are using a rule-based theory. Retrieve the rules
+    ## and instantiate an SPE object
+    else:
+        rnames, rdefs = load_rules(mappings_fn)
+        M = SPE(rnames, rdefs, tokens, feats, configs)
+
+    ## Load in surface forms
+    surface_forms_fn = surface_forms["fn"]
+
+    ## Generate the lexical information
+    lxs, lx_clxs, clxs, srs, nobs = load_surface_forms(surface_forms_fn)
+    lx_params = lexicon["params"]
+
+    ## Instantiate a Lexicon object
+    L = Lexicon(lxs, lx_clxs, lx_params, tokens, feats, configs)
+
+    ## Initialize UR hypothesis
+    lexicon_fn = lexicon["fn"]
+    L.initialize_urs(load_lexicon(lexicon_fn))
+
+    ## Instantiate a Grammar object
+    lm = surface_forms["lambda"]
+    G = Grammar(clxs, srs, nobs, lm, L, M)
+
+    return G
 
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -129,23 +184,69 @@ def load_data(data_fn):
 def main():
     """PARSE ARGUMENTS"""
     args = parse_args()
-    parameters = load_parameters(args.parameters_fn)
+    params = load_parameters(args.parameters_fn)
     mode = args.mode
 
     """LOAD GRAMMAR CLASS"""
-    inventory_fn = parameters["inventory_fn"]
-    lexicon_fn = parameters["lexicon_fn"]
-    mappings_fn = parameters["mappings_fn"]
-    data_fn = parameters["surface_forms_fn"]
-    G = load_grammar_class(inventory_fn, lexicon_fn, mappings_fn, data_fn, mode)
+    inventory = params["inventory"]
+    lexicon = params["lexicon"]
+    mappings = params["mappings"]
+    surface_forms = params["surface_forms"]
+    G = load_grammar_class(inventory, lexicon, mappings, surface_forms, mode)
 
-    """RUN MCMC MODEL"""
-    iterations = parameters["iterations"]
-    sampled_grammars = MCMC.gibbs_sampler(G, iterations)
+    """ ==================== RUN MODEL ===================================="""
+    gs_iterations = params["MCMC"]["gs_iterations"]
+    mh_iterations = params["MCMC"]["mh_iterations"]
+    anneal = params["MCMC"]["anneal"]
+    sg = MCMC.gibbs_sampler(G, anneal, gs_iterations, mh_iterations)
 
-    """PREDICTIVE POSTERIOR"""
-    burned_in_sampled_grammars = MCMC.burn_in(sampled_grammars)
-    predictive = MCMC.posterior_predictive(burned_in_sampled_grammars)
+    """ ==================== BURN IN ======================================"""
+    bi = MCMC.burn_in(sg)
+    post, pred = MCMC.posterior_predictive(bi)
+
+    """ ==================== SAVE TO FILE ================================="""
+    ## Retrieve hyperparameters for printing
+    lm = surface_forms["lambda"]
+    psi = lexicon["params"]["psi"]
+    phi = lexicon["params"]["phi"]
+    alpha = lexicon["params"]["alpha"]
+
+    ## Generate new directory
+    output_path = f"./output/"
+    output_path += f"{re.sub('.csv', '', surface_forms['fn'])}"
+    output_path += f"-gs{gs_iterations}-mh{mh_iterations}"
+    output_path += f"-lambda{lm}-psi{psi}-phi{phi}-alpha{alpha}"
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+    posterior_fn = f"{output_path}/posterior.csv"
+    with open(posterior_fn, "w") as f:
+        f.write("clxs,")
+        f.write("mhyp,")
+        f.write("urs,")
+        f.write("pred_srs,")
+        f.write("obs_srs,")
+        f.write("prob\n")
+        for g, p in sorted(post.items(), key=lambda kv: kv[1], reverse=True):
+            c, m, u, prd, obs = g
+            f.write(f"{c},")
+            f.write(f"{m},")
+            f.write(f"{u},")
+            f.write(f"{prd},")
+            f.write(f"{obs},")
+            f.write(f"{p}\n")
+
+    predictive_fn = f"{output_path}/predictive.csv"
+    with open(predictive_fn, "w") as f:
+        f.write("clx,")
+        f.write("pred_sr,")
+        f.write("prob\n")
+        for clx, prds in pred.items():
+            for prd, p in sorted(prds.items(), key=lambda it: it[1], reverse=True):
+                f.write(f"{clx},")
+                f.write(f"{prd},")
+                f.write(f"{p}\n")
+
 
 if __name__ == "__main__":
     main()

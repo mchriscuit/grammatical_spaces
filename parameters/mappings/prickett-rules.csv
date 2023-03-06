@@ -1,0 +1,5 @@
+palatalization,+cor:-son,+dist,_.+hi:-cons
+generalized palatalization,+cor:-son,+dist,_
+depalatalization,+dist,-dist,_.#
+generalized depalatalization,+dist,-dist,_
+deletion,-cons,,_.-cons
