@@ -2,3 +2,7 @@ eiRaise,-cons:-hi:-lo,+hi,-cons:+hi.+cons._
 ieLower,-cons:+hi,-hi,-cons:-hi:-lo.+cons._
 aeRaise,-cons:+lo,-lo,-cons:-hi:-lo.+cons._
 eaLower,-cons:-hi:-lo,+lo,-cons:+lo.+cons._
+eiRaiseCxt,-cons:-hi:-lo,+hi,-cons:+hi.+cons._.+cons.#
+ieLowerCxt,-cons:+hi,-hi,-cons:-hi:-lo.+cons._.+cons.#
+aeRaiseCxt,-cons:+lo,-lo,-cons:-hi:-lo.+cons._.+cons.#
+eaLowerCxt,-cons:-hi:-lo,+lo,-cons:+lo.+cons._.+cons.#
