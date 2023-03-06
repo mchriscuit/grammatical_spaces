@@ -1519,6 +1519,7 @@ static const char __pyx_k_lxs[] = "lxs";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_srs[] = "srs";
 static const char __pyx_k_str[] = "str";
+static const char __pyx_k_sub[] = "sub";
 static const char __pyx_k_urs[] = "urs";
 static const char __pyx_k_zip[] = "zip";
 static const char __pyx_k_axis[] = "axis";
@@ -1716,6 +1717,7 @@ static PyObject *__pyx_n_s_str_cxt_ur;
 static PyObject *__pyx_n_s_str_cxt_urs;
 static PyObject *__pyx_n_s_str_ur;
 static PyObject *__pyx_n_s_str_urs;
+static PyObject *__pyx_n_s_sub;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_u_tuple;
 static PyObject *__pyx_n_s_update;
@@ -4350,6 +4352,8 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14export(CYTHON_UNUSED PyObje
   PyObject *__pyx_t_7 = NULL;
   int __pyx_t_8;
   PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4590,7 +4594,7 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14export(CYTHON_UNUSED PyObje
   /* "models/Grammar.pyx":143
  * 
  *         ## Get the predicted SRs
- *         pred_srs = [self.predict_sr(ur) for ur in urs]             # <<<<<<<<<<<<<<
+ *         pred_srs = [self.predict_sr(re.sub("-", "", ur)) for ur in urs]             # <<<<<<<<<<<<<<
  * 
  *         ## Get the observed SRs
  */
@@ -4609,18 +4613,72 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14export(CYTHON_UNUSED PyObje
     __pyx_t_2 = 0;
     __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_predict_sr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_9 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_re); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_sub); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = NULL;
+    __pyx_t_8 = 0;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_10);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_10, function);
+        __pyx_t_8 = 1;
+      }
+    }
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_10)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_kp_s__2, __pyx_kp_s_, __pyx_v_ur};
+      __pyx_t_9 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_9);
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
+      PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_kp_s__2, __pyx_kp_s_, __pyx_v_ur};
+      __pyx_t_9 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_GOTREF(__pyx_t_9);
+    } else
+    #endif
+    {
+      __pyx_t_11 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      if (__pyx_t_4) {
+        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_4); __pyx_t_4 = NULL;
+      }
+      __Pyx_INCREF(__pyx_kp_s__2);
+      __Pyx_GIVEREF(__pyx_kp_s__2);
+      PyTuple_SET_ITEM(__pyx_t_11, 0+__pyx_t_8, __pyx_kp_s__2);
+      __Pyx_INCREF(__pyx_kp_s_);
+      __Pyx_GIVEREF(__pyx_kp_s_);
+      PyTuple_SET_ITEM(__pyx_t_11, 1+__pyx_t_8, __pyx_kp_s_);
+      __Pyx_INCREF(__pyx_v_ur);
+      __Pyx_GIVEREF(__pyx_v_ur);
+      PyTuple_SET_ITEM(__pyx_t_11, 2+__pyx_t_8, __pyx_v_ur);
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __pyx_t_10 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_7);
-      if (likely(__pyx_t_9)) {
+      __pyx_t_10 = PyMethod_GET_SELF(__pyx_t_7);
+      if (likely(__pyx_t_10)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(__pyx_t_10);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_7, function);
       }
     }
-    __pyx_t_2 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_9, __pyx_v_ur) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_ur);
-    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __pyx_t_2 = (__pyx_t_10) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_10, __pyx_t_9) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_9);
+    __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -4703,6 +4761,8 @@ static PyObject *__pyx_pf_5optim_7Grammar_7Grammar_14export(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("optim.Grammar.Grammar.export", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -5436,6 +5496,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_str_cxt_urs, __pyx_k_str_cxt_urs, sizeof(__pyx_k_str_cxt_urs), 0, 0, 1, 1},
   {&__pyx_n_s_str_ur, __pyx_k_str_ur, sizeof(__pyx_k_str_ur), 0, 0, 1, 1},
   {&__pyx_n_s_str_urs, __pyx_k_str_urs, sizeof(__pyx_k_str_urs), 0, 0, 1, 1},
+  {&__pyx_n_s_sub, __pyx_k_sub, sizeof(__pyx_k_sub), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_u_tuple, __pyx_k_tuple, sizeof(__pyx_k_tuple), 0, 1, 0, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},

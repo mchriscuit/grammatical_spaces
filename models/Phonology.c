@@ -3476,7 +3476,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
  *         cp.__dict__.update(self.__dict__)
  *         return cp             # <<<<<<<<<<<<<<
  * 
- *     def __deepcopy__(self, memo):
+ *     def __deepcopy__(self, dict memo):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_cp);
@@ -3510,7 +3510,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_2__copy__(CYTHON_UNUSED PyObjec
 /* "models/Phonology.pyx":66
  *         return cp
  * 
- *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
+ *     def __deepcopy__(self, dict memo):             # <<<<<<<<<<<<<<
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__
  */
@@ -3564,7 +3564,7 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_5__deepcopy__(PyObject *__pyx_s
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
     __pyx_v_self = values[0];
-    __pyx_v_memo = values[1];
+    __pyx_v_memo = ((PyObject*)values[1]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
@@ -3574,9 +3574,14 @@ static PyObject *__pyx_pw_5optim_9Phonology_3SPE_5__deepcopy__(PyObject *__pyx_s
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_memo), (&PyDict_Type), 1, "memo", 1))) __PYX_ERR(0, 66, __pyx_L1_error)
   __pyx_r = __pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(__pyx_self, __pyx_v_self, __pyx_v_memo);
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -3596,7 +3601,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   __Pyx_RefNannySetupContext("__deepcopy__", 0);
 
   /* "models/Phonology.pyx":68
- *     def __deepcopy__(self, memo):
+ *     def __deepcopy__(self, dict memo):
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__             # <<<<<<<<<<<<<<
  *         cp = cls.__new__(cls)
@@ -3681,7 +3686,7 @@ static PyObject *__pyx_pf_5optim_9Phonology_3SPE_4__deepcopy__(CYTHON_UNUSED PyO
   /* "models/Phonology.pyx":66
  *         return cp
  * 
- *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
+ *     def __deepcopy__(self, dict memo):             # <<<<<<<<<<<<<<
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__
  */
@@ -13372,7 +13377,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "models/Phonology.pyx":66
  *         return cp
  * 
- *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
+ *     def __deepcopy__(self, dict memo):             # <<<<<<<<<<<<<<
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__
  */
@@ -14211,7 +14216,7 @@ if (!__Pyx_RefNanny) {
   /* "models/Phonology.pyx":66
  *         return cp
  * 
- *     def __deepcopy__(self, memo):             # <<<<<<<<<<<<<<
+ *     def __deepcopy__(self, dict memo):             # <<<<<<<<<<<<<<
  *         """Returns a shallow copy of everything"""
  *         cls = self.__class__
  */
