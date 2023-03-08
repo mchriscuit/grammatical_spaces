@@ -1,0 +1,14 @@
+1,PROTO.1.1:A.1:A:B.1:B,ikik.ikik:1.ikik:1.ikik:1.ikik:1
+2,PROTO.2.2:A.2:A:B.2:B,ikik.ikik:1.ikik:1.ikik:1.ikik:1
+3,PROTO.3.3:A.3:A:B.3:B,ikik.ikik:1.ikik:1.ikik:1.ikik:1
+4,PROTO.4.4:A.4:A:B.4:B,ikak.ikak:1.ikak:1.ikak:1.ikak:1
+5,PROTO.5.5:A.5:A:B.5:B,ikak.ikak:1.ikak:1.ikak:1.ikak:1
+6,PROTO.6.6:A.6:A:B.6:B,ikak.ikak:1.ikak:1.ikak:1.ikak:1
+7,PROTO.7.7:A.7:A:B.7:B,ikit.ikit:1.ikit:1.ikit:1.ikit:1
+8,PROTO.8.8:A.8:A:B.8:B,ikit.ikit:1.ikit:1.ikit:1.ikit:1
+9,PROTO.9.9:A.9:A:B.9:B,ikit.ikit:1.ikit:1.ikit:1.ikit:1
+10,PROTO.10.10:A.10:A:B.10:B,ikat.ikat:1.ikat:1.ikat:1.ikat:1
+11,PROTO.11.11:A.11:A:B.11:B,ikat.ikat:1.ikat:1.ikat:1.ikat:1
+12,PROTO.12.12:A.12:A:B.12:B,ikat.ikat:1.ikat:1.ikat:1.ikat:1
+A,PROTO.1:A.1:A:B.2:A.2:A:B.3:A.3:A:B.4:A.4:A:B.5:A.5:A:B.6:A.6:A:B.7:A.7:A:B.8:A.8:A:B.9:A.9:A:B.10:A.10:A:B.11:A.11:A:B.12:A.12:A:B,a.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1.a:1
+B,PROTO.1:A:B.1:B.2:A:B.2:B.3:A:B.3:B.4:A:B.4:B.5:A:B.5:B.6:A:B.6:B.7:A:B.7:B.8:A:B.8:B.9:A:B.9:B.10:A:B.10:B.11:A:B.11:B.12:A:B.12:B,i.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1.i:1

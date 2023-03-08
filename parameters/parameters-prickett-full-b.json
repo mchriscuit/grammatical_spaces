@@ -1,17 +1,17 @@
 {
   "surface_forms" : {
-    "fn": "ettlinger/ettlinger-cf.csv",
-    "lambda": 3
+    "fn": "prickett-full/prickett-b-full.csv",
+    "lambda": 1
   },
   "inventory" : {
-    "fn": "ettlinger-inventory.csv"
+    "fn": "prickett-inventory.csv"
   },
   "mappings" : {
-    "fn": "ettlinger-rules.csv",
+    "fn": "prickett-rules.csv",
     "max_rs": 3
   },
   "lexicon" : {
-    "fn": "ettlinger/ettlinger-cf.csv",
+    "fn": "prickett-full/prickett-b-full.csv",
     "params" : {
       "max_len": 5,
       "theta": 0.5,
@@ -22,8 +22,8 @@
     }
   },
   "MCMC": {
-    "anneal": 12,
-    "gs_iterations": 200000,
+    "anneal": 10,
+    "gs_iterations": 100000,
     "mh_iterations": 10
   }
 }

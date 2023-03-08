@@ -1,7 +1,7 @@
 {
   "surface_forms" : {
-    "fn": "kim-surface-forms.csv",
-    "lambda": 3
+    "fn": "/kim/kim-surface-forms.csv",
+    "lambda": 0.5
   },
   "inventory" : {
     "fn": "kim-inventory.csv"
@@ -11,7 +11,7 @@
     "max_rs": 3
   },
   "lexicon" : {
-    "fn": "kim-lexicon.csv",
+    "fn": "/kim/kim-lexicon.csv",
     "params" : {
       "max_len": 5,
       "theta": 0.5,

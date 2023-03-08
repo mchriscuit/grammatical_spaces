@@ -1,6 +1,6 @@
 {
   "surface_forms" : {
-    "fn": "ex-surface-forms.csv",
+    "fn": "ex/ex-surface-forms.csv",
     "lambda": 1
   },
   "inventory" : {
@@ -11,7 +11,7 @@
     "max_rs": 3
   },
   "lexicon" : {
-    "fn": "ex-lexicon.csv",
+    "fn": "ex/ex-lexicon.csv",
     "params" : {
       "max_len": 5,
       "theta": 0.5,
