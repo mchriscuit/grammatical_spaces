@@ -1,6 +1,6 @@
-palatalization,+cor:-son,+dist,_.+hi:-cons
+palatalization,+cor:+cons,+dist,_.+hi:-cons
 depalatalization,+dist,-dist,_.(#)|(+cons)
 deletion,-cons,,_.-cons
 insertion,,-cons:+hi,+cons._.+cons
-generalized palatalization,+cor:-son,+dist,_
+generalized palatalization,+cor:+cons,+dist,_
 generalized depalatalization,+dist,-dist,_
