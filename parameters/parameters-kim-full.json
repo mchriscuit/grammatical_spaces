@@ -1,17 +1,17 @@
 {
   "surface_forms" : {
-    "fn": "prickett-repeat/prickett-f-repeat.csv",
-    "lambda": 3
+    "fn": "/kim/kim-surface-forms-full.csv",
+    "lambda": 1
   },
   "inventory" : {
-    "fn": "prickett-inventory.csv"
+    "fn": "kim-inventory.csv"
   },
   "mappings" : {
-    "fn": "prickett-rules.csv",
+    "fn": "kim-rules.csv",
     "max_rs": 3
   },
   "lexicon" : {
-    "fn": "prickett-repeat/prickett-f-repeat.csv",
+    "fn": "/kim/kim-lexicon-full.csv",
     "params" : {
       "max_len": 5,
       "theta": 0.5,

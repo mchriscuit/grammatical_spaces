@@ -1,6 +1,6 @@
 {
   "surface_forms" : {
-    "fn": "prickett/prickett-cf.csv",
+    "fn": "prickett/prickett-b.csv",
     "lambda": 3
   },
   "inventory" : {
@@ -11,7 +11,7 @@
     "max_rs": 3
   },
   "lexicon" : {
-    "fn": "prickett/prickett-f.csv",
+    "fn": "prickett/prickett-b.csv",
     "params" : {
       "max_len": 5,
       "theta": 0.5,

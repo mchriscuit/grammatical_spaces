@@ -1,7 +1,7 @@
 {
   "surface_forms" : {
     "fn": "/kim/kim-surface-forms.csv",
-    "lambda": 0.5
+    "lambda": 1
   },
   "inventory" : {
     "fn": "kim-inventory.csv"
@@ -22,8 +22,8 @@
     }
   },
   "MCMC": {
-    "anneal": 8,
-    "gs_iterations": 50000,
+    "anneal": 10,
+    "gs_iterations": 100000,
     "mh_iterations": 10
   }
 }
