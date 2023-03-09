@@ -11,7 +11,7 @@
     "max_rs": 3
   },
   "lexicon" : {
-    "fn": "prickett-full/prickett-cb-full.csv",
+    "fn": "prickett-full/prickett-b-full.csv",
     "params" : {
       "max_len": 5,
       "theta": 0.5,
