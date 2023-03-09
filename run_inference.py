@@ -123,7 +123,7 @@ def load_surface_forms(surface_forms_fn):
     srs = list(srs)
 
     ## Convers the tuple of observations to a list of observations
-    nobs = [int(nob) for nob in nobs]
+    nobs = [float(nob) for nob in nobs]
 
     return lxs, lx_clxs, clxs, srs, nobs
 
