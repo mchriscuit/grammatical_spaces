@@ -1,7 +1,7 @@
 {
   "surface_forms" : {
     "fn": "prickett-full/prickett-f-full.csv",
-    "lambda": 1
+    "lambda": 3
   },
   "inventory" : {
     "fn": "prickett-inventory.csv"
