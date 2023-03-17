@@ -1,0 +1,4 @@
+intervocalic voicing,+cons:+cor,+voi,-cons._.-cons
+final devoicing,+cons,-voi,_.#
+final deletion,+cons,*,_.(#|+cons:-voi.+cons)
+final insertion,*,+cor:-voi,-cons._.#

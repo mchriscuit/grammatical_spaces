@@ -1,0 +1,5 @@
+{
+    "anneal": 10,
+    "gsIters": 100000,
+    "mhIters": 10
+}
