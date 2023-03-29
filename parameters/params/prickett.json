@@ -1,20 +1,20 @@
 {
   "data" : 
   {
-    "fn": "ex/ex.csv"
+    "fn": "prickett/prickett-f.csv"
   },
   "inventory" : 
   {
-    "fn": "ex.csv"
+    "fn": "prickett.csv"
   },
   "mappings" : 
   {
-    "fn": "ex.csv",
+    "fn": "prickett.csv",
     "mode": "SPE"
   },
   "lexicon" : 
   {
-    "fn": "ex/ex.csv",
+    "fn": "prickett/prickett-f.csv",
     "maxLen": 5,
     "theta": 0.5,
     "lambda": 3,

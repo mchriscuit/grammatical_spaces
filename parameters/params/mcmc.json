@@ -1,5 +1,7 @@
 {
-    "anneal": 10,
-    "gsIters": 100000,
-    "mhIters": 10
+    "gsIters": 10000,
+    "mhIters": 8,
+    "skIters": 20,
+    "anConst": 8,
+    "biConst": 2
 }

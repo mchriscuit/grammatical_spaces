@@ -1,82 +1,119 @@
 import numpy as np
 import re
-import itertools as it
 
+from itertools import permutations, zip_longest
 from models.Inventory import Inventory
-from models.Distributions import Geometric, Bernoulli, Uniform, Distance
 
 
 class SPE(Inventory):
     """========== INITIALIZATION ================================================"""
 
-    def __init__(self, ikwargs: dict, mnames: np.ndarray, mdefs: np.ndarray):
-        self._rng = np.random.default_rng()
+    def __init__(
+        self, ikw: dict, mnms: np.ndarray, mdfs: np.ndarray, forms: np.ndarray
+    ):
 
         ## *=*=*= INHERITENCE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        super().__init__(**ikwargs)
+        super().__init__(**ikw)
+        self._rng = np.random.default_rng()
+        self._vln = np.vectorize(len)
 
-        ## *=*=*= BASIC RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-        self._mnames, self._nmnames = mnames, len(mnames) + 1
-        self._mdefs = mdefs
+        ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._bc = "."
 
-        ## *=*=*= RULE HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        ## *=*=*= RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+        self._mnms, self._nmnms = mnms, len(mnms) + 1
+        self._mdfs = mdfs
 
         """Rule hypotheses ========================"""
-        self._mhyps = np.array(
-            [
-                p
-                for i in range(self.nmnames)
-                for p in it.permutations(self.mnames.tolist(), i)
-            ],
-            dtype=object,
-        )
+        self._mhys = [m for i in range(self.nmnms) for m in permutations(self.mnms, i)]
+        self._mhys, self._nmhs = np.array(self._mhys, dtype=object), len(self.mhys)
+        self._mhid = np.array([0])
 
-        """Information and indexing ==============="""
-        self._nmhyps = len(self.mhyps)
-        self._mhidx = 0
+        """Rule mappings =========================="""
+        self._mnm2reg = self.init_mappings(self.mnms, self.mdfs)
 
-        ## *=*=*= RULE DICTIONARY *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._mname2mregex = self.init_mappings(self.mnames, self.mdefs)
+        """Pre-processing ========================="""
+        self._forms = forms
+        self._maxlen = self.vln(forms).max()
+        self._fm2exp = self.preprocess_tf(forms)
 
     """ ========== ACCESSORS ================================================== """
 
     @property
-    def mnames(self):
-        return self._mnames
+    def bc(self):
+        return self._bc
 
     @property
-    def nmnames(self):
-        return self._nmnames
+    def maxlen(self):
+        return self._maxlen
 
     @property
-    def mdefs(self):
-        return self._mdefs
+    def mnms(self):
+        return self._mnms
 
     @property
-    def mhyps(self):
-        return self._mhyps
+    def nmnms(self):
+        return self._nmnms
 
     @property
-    def nmhyps(self):
-        return self._nmhyps
+    def mdfs(self):
+        return self._mdfs
 
     @property
-    def mhidx(self):
-        return self._mhidx
-
-    @mhidx.setter
-    def mhidx(self, idx: int):
-        self._mhidx = idx
+    def mhys(self):
+        return self._mhys
 
     @property
-    def mname2mregex(self):
-        return self._mname2mregex
+    def nmhs(self):
+        return self._nmhs
+
+    @property
+    def mhid(self):
+        return self._mhid
+
+    @mhid.setter
+    def mhid(self, id: int):
+        self._mhid[0] = id
+
+    @property
+    def mnm2reg(self):
+        return self._mnm2reg
+
+    @property
+    def forms(self):
+        return self._forms
+
+    @property
+    def fm2exp(self):
+        return self._fm2exp
+
+    @property
+    def vln(self):
+        return self._vln
 
     """ ========== INSTANCE METHODS ============================================ """
 
-    def init_mappings(self, mnames: np.ndarray, mdefs: np.ndarray):
+    def preprocess_tf(self, urs: np.ndarray):
+        """Given the current space of rule mappings and space of possible (padded)
+        inputs, returns a cached matrix of input x mhyp outputs
+        """
+
+        ## Retrieve the dimensions of the output matrix
+        nurs = urs.size
+        nmhs = self.nmhs
+
+        ## Initialize the empty transformation cache
+        mdim = (nurs, nmhs)
+        fm2exp = np.full(mdim, "", dtype="U" + f"{self.maxlen}")
+
+        ## For each rule hypothesis, generate the predictions for each input
+        fm2exp = self.tfapply(urs=urs, mhid=np.arange(nmhs))
+
+        return fm2exp
+
+    def init_mappings(self, mnms: np.ndarray, mdfs: np.ndarray):
         """Converts mappings into regular expressions for process application"""
-        mname2mregex = {}
+        mnm2reg = {}
 
         def split_str_seq(str_seq_str_nclasses: str):
             """Splits string sequence of string natural classes into a
@@ -164,7 +201,7 @@ class SPE(Inventory):
             return seq_cxt_regex
 
         """=============== Main function call ==================================="""
-        for mname, rdef in zip(mnames, mdefs):
+        for mnm, mdf in zip(mnms.tolist(), mdfs.tolist()):
             """The source and target are always going to consist of a single row
             vector of features. Contexts, however, are a potential list of segments
             """
@@ -173,7 +210,7 @@ class SPE(Inventory):
             i = ""
 
             ## Retrieve the source, target, and context
-            src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), rdef)
+            src, tgt, cxt = map(lambda str_seq: split_str_seq(str_seq), mdf)
             src = split_str_nclass(src[0])
             tgt = split_str_nclass(tgt[0])
             idx = cxt.index("_")
@@ -228,35 +265,65 @@ class SPE(Inventory):
 
             ## Build the regular expression dictionary
             tf_regex = {}
-            for src, res in it.zip_longest(src_tokens.tolist(), res_regex.tolist()):
+            for src, res in zip_longest(src_tokens.tolist(), res_regex.tolist()):
                 if src is None:
                     tf_regex[""] = res
                 else:
                     tf_regex[src] = res
 
             ## Update the rule hypothesis
-            mname2mregex[mname] = (sd_regex, tf_regex, idx)
+            mnm2reg[mnm] = (sd_regex, tf_regex, idx)
 
-        return mname2mregex
+        return mnm2reg
 
     def tf(self, match: re.Match, tf_regex: dict, idx: int):
         """Returns a different regular expression depending on the match"""
         return match.expand(tf_regex[match.groups("")[idx]])
 
-    def apply(self, inputs: np.ndarray, mhidx: int = None):
-        """Applies the phonological mapping given a sequence of tokens"""
+    def tfapply(self, urs: np.ndarray, mhid: np.ndarray = None):
+        """Applies the phonological mapping given a sequence of padded tokens using a dict"""
 
         ## Check whether a mapping hypothesis is given; if not, use the
         ## current mapping hypothesis
-        mhyp = self.mhyps[self.mhidx] if mhidx is None else self.mhyps[mhidx]
+        if mhid is None:
+            mhys = self.mhys[self.mhid]
+            mdim = (len(urs), 1)
+        else:
+            mhys = self.mhys[mhid]
+            mdim = (len(urs), len(mhid))
 
-        ## Create a copy of the input array
-        outputs = "|".join(inputs.tolist())
+        ## Create an numpy array corresponding to the expected string
+        exs = np.empty(mdim, dtype="U" + f"{4 * self.maxlen}")
 
-        ## For each input in the input array, apply each mapping hypothesis
-        for mname in mhyp:
-            sd_regex, tf_regex, idx = self.mname2mregex[mname]
-            outputs = sd_regex.sub(lambda x: self.tf(x, tf_regex, idx), outputs)
+        ## For each indexed hypothesis, for each input
+        ## in the input array, apply each mapping hypothesis
+        for i, mhy in enumerate(mhys):
+            ex = self.bc.join(urs.tolist())
+            for mnm in mhy:
+                sd, tf, idx = self.mnm2reg[mnm]
+                ex = sd.sub(lambda x: self.tf(x, tf, idx), ex)
+            exs[:, i] = np.array(ex.split(self.bc))
 
-        outputs = outputs.split("|")
-        return outputs
+        return exs
+
+    def chapply(self, urs: np.ndarray, mhid: np.ndarray = None):
+        """Applies the phonological mapping given a sequence of padded tokens using a cache"""
+
+        ## Check whether a mapping hypothesis is given; if not, use the
+        ## current mapping hypothesis
+        mhid = self.mhid if mhid is None else mhid
+
+        ## Get the indices for the urs
+        ufid = self.forms.searchsorted(urs)
+
+        ## Get the outputs for each index: First, retrieve the rows of each indexed form
+        ## Next, get the column of expected outputs for each indexed rule hypothesis
+        exs = self.fm2exp[ufid][:, mhid]
+
+        return exs
+
+    def apply(self, urs: np.ndarray, mhid: np.ndarray = None):
+        if self.vln(urs).max() > self.maxlen:
+            return self.tfapply(urs=urs, mhid=mhid)
+        else:
+            return self.chapply(urs=urs, mhid=mhid)

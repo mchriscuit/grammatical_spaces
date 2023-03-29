@@ -1,41 +1,40 @@
 import numpy as np
 import re
-import copy as cp
 
 
 class Inventory:
-    """========== INITIALIZATION ================================================="""
+    """========== INITIALIZATION ==================================================="""
 
     def __init__(self, tokens: np.ndarray, feats: np.ndarray, configs: np.ndarray):
         self._rng = np.random.default_rng()
 
         ## *=*=*= HELPER FUNCTION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        def is_seg(token):
+        def is_seg(token: str):
             return bool(re.match("\w", token))
 
         ## *=*=*= SEGMENTS AND FEATURES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._tokens = tokens
-        self._segs = self._tokens[list(map(is_seg, self._tokens))]
+        self._segs = self.tokens[list(map(is_seg, self.tokens.tolist()))]
         self._feats = feats
         self._tconfigs = configs
-        self._sconfigs = self._tconfigs[list(map(is_seg, self._tokens))]
+        self._sconfigs = self.tconfigs[list(map(is_seg, self.tokens.tolist()))]
 
         ## *=*=*= SEGMENTS COUNTS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._ntokens = len(self._tokens)
-        self._nsegs = len(self._segs)
-        self._nfeats = len(self._feats)
+        self._ntokens = len(self.tokens)
+        self._nsegs = len(self.segs)
+        self._nfeats = len(self.feats)
 
         ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-        self._token2id = {s: i for i, s in enumerate(self._tokens)}
-        self._feat2id = {f: i for i, f in enumerate(self._feats)}
-        self._tconfig2id = {tuple(c): i for i, c in enumerate(self._tconfigs)}
+        self._token2id = {s: i for i, s in enumerate(self.tokens.tolist())}
+        self._feat2id = {f: i for i, f in enumerate(self.feats.tolist())}
+        self._tconfig2id = {tuple(c): i for i, c in enumerate(self.tconfigs.tolist())}
 
-    """ ========== STATIC METHODS =============================================== """
+    """ ========== STATIC METHODS ================================================= """
 
     @staticmethod
     def config_to_nan(config: np.ndarray):
-        """Takes in a vector (or list) of feature values and returns an array where
-        all 0 features are set to NaN
+        """Takes in a vector (or list) of feature values and returns an array
+        where all 0 features are set to NaN
         """
         config = config.astype("float")
         config[config == 0] = np.nan
@@ -49,82 +48,76 @@ class Inventory:
 
     def update_config(self, src_config: np.ndarray, tgt_config: np.ndarray):
         """Update the source features with the target configuration"""
-        out_config = cp.deepcopy(src_config)
+        out_config = np.copy(src_config)
         m = ~np.isnan(tgt_config).squeeze()
         out_config[..., m] = tgt_config[..., m].astype(int)
         return out_config
 
-    """ ========== BASIC ACCESSORS ================================================= """
+    """ ========== BASIC ACCESSORS ================================================ """
 
+    @property
     def tokens(self):
-        """Returns the tokens in the inventory"""
         return self._tokens
 
+    @property
     def segs(self):
-        """Returns the segments in the inventory"""
         return self._segs
 
+    @property
     def feats(self):
-        """Returns the feature names in the inventory"""
         return self._feats
 
+    @property
     def tconfigs(self):
-        """Returns the token feature configurations"""
         return self._tconfigs
 
+    @property
     def sconfigs(self):
-        """Returns the segment feature configurations"""
         return self._sconfigs
 
+    @property
     def ntokens(self):
-        """Returns the number of tokens in the inventory"""
         return self._ntokens
 
+    @property
     def nsegs(self):
-        """Returns the number of segments in the inventory"""
         return self._nsegs
 
+    @property
     def nfeats(self):
-        """Returns the number of features in the inventory"""
         return self._nfeats
-
-    def token2id(self, token: np.str_):
-        """Returns the index of a token"""
-        return self._token2id[token]
-
-    def feat2id(self, feat: np.str_):
-        """Returns the index of a feature"""
-        return self._feat2id[feat]
-
-    def config2id(self, config: np.ndarray):
-        """Returns the index of a configuration"""
-        config = tuple(config)
-        return self._tconfig2id[config]
 
     """ ========== GENERATIVE ACCESSORS =========================================== """
 
-    def tokens2configs(self, tokens: np.ndarray):
-        """Returns an array of configurations given an array of tokens"""
-        return self._tconfigs[[self.token2id(token) for token in tokens]]
+    def token2id(self, token: str):
+        return self._token2id[token]
 
-    def configs2tokens(self, configs: np.ndarray):
-        """Returns the tokens given an array of configurations"""
-        return self._tokens[[self.config2id(config) for config in configs]]
+    def feat2id(self, feat: str):
+        return self._feat2id[feat]
 
-    def seq2config(self, seq: np.ndarray):
+    def config2id(self, config: np.ndarray):
+        return self._tconfig2id[tuple(config)]
+
+    def tokens_to_configs(self, tokens: list):
+        return self.tconfigs[[self.token2id(token) for token in tokens]]
+
+    def configs_to_tokens(self, configs: list):
+        return self.tokens[[self.config2id(config) for config in configs]]
+
+    def nclass_to_config(self, nclass: list):
         """Takes in a list of strings denoting the features for a natural class
         or a list of tokens and returns a single configuration with the
         provided feature values
         """
 
         ## Check whether the input is a sequence of tokens
-        if np.isin(seq, self.tokens()).all():
-            config = self.intersect(seq)
+        if np.isin(nclass, self.tokens).all():
+            config = self.intersect(nclass)
             return config
 
         ## Otherwise, assume that it is a sequence of features
-        config = np.full((1, self.nfeats()), np.nan)
-        for feat in seq:
+        config = np.full((1, self.nfeats), np.nan)
+        for feat in nclass:
             typ, *feat = feat
             feat = "".join(feat)
             id = self.feat2id(feat)
@@ -133,7 +126,7 @@ class Inventory:
 
         return config
 
-    def compatible(self, seq_config: np.ndarray):
+    def compatible_configs(self, seq_config: list):
         """Takes in a vector of feature configurations and returns all
         token configurations compatible with that configuration. Compatible
         tokens are determined by seeing whether all of the non-NaN values are
@@ -142,7 +135,7 @@ class Inventory:
         """
 
         ## Retrieve the token configs
-        tconfigs = self.tconfigs()
+        tconfigs = self.tconfigs
 
         ## Loop through each configuration in the sequence
         segs = []
@@ -158,22 +151,22 @@ class Inventory:
 
         return np.vstack(segs) if len(segs) > 0 else np.array(segs)
 
-    def intersect(self, tokens: np.ndarray):
+    def intersect(self, tokens: list):
         """Returns the maximal natural class configuration consisting of the given
         tokens and nothing else. Returns an empty array if no compatible natural
         class is found. Works for both special characters and segments
         """
 
         ## Get all the tokens and other segments
-        segments = self.segs()
+        segments = self.segs
         osegments = segments[~np.isin(segments, tokens)]
 
         ## Get the token and alternative configs
-        tconfigs = self.tokens2configs(tokens)
-        oconfigs = self.tokens2configs(osegments)
+        tconfigs = self.tokens_to_configs(tokens)
+        oconfigs = self.tokens_to_configs(osegments)
 
         ## Initialize an empty configuration
-        nfeats = self.nfeats()
+        nfeats = self.nfeats
         cconfig = np.zeros((1, nfeats))
 
         ## Get all the indices where the feature values overlap

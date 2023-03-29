@@ -1,12 +1,8 @@
-import argparse
-import json
 import numpy as np
+import json
+import argparse
 
-from optim.Grammar import Grammar
-from optim.Lexicon import Lexicon
-from optim.Phonology import SPE
-from optim.Inventory import Inventory
-
+from models.Grammar import Grammar
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
                     ARGUMENT PARSER
@@ -60,22 +56,25 @@ def load_data(filename):
     ## Read in the data file
     prefix = "./parameters/data/"
     content = load_content(f"{prefix}{filename}")
-    clxs, srs, ns = zip(*content)
+    *out, nbs = zip(*content)
+
+    ## Sort and split the outputs
+    cxs, srs = zip(*sorted(zip(*out)))
 
     ## Generate the clxs by splitting by the delimiter ":"
-    clxs = [tuple(clx.split(":")) for clx in clxs]
+    cxs = np.array([tuple(cx.split(":")) for cx in cxs], dtype=object)
 
-    ## Generate the lxs by getting all the unique lxs
-    lxs = sorted(set(lx for clx in clxs for lx in clx))
+    ## Generate the string lxs by getting all the unique lxs
+    lxs = np.array(sorted(set(lx for cx in cxs for lx in cx)))
 
     ## Convert the tuple of SRs to a list of SRs
-    srs = list(srs)
+    srs = np.array(srs)
 
     ## Convert the tuple of observations to a list of observations
-    ns = [float(n) for n in ns]
+    nbs = np.array([float(n) for n in nbs])
 
     ## Create a dictionary to store all of the variables
-    data = {"lxs": lxs, "clxs": clxs, "srs": srs, "ns": ns}
+    data = {"lxs": lxs, "cxs": cxs, "srs": srs, "nbs": nbs}
 
     return data
 
@@ -112,32 +111,9 @@ def load_rules(filename):
     rdefs = content[:, 1:]
 
     ## Create a dictionary to store all of the variables
-    rules = {"mnames": rnames, "mdefs": rdefs}
+    rules = {"mnms": rnames, "mdfs": rdefs}
 
     return rules
-
-
-def load_lexicon(filename):
-    """Loads in lexicon file and returns the initial UR hypothesis for each lexeme
-    in the space
-    """
-
-    ## Read in the lexicon
-    prefix = "./parameters/lexicon/"
-    content = load_content(f"{prefix}{filename}")
-
-    ## Separate the list into the lexemes, lexical items, and underlying forms
-    init_lxs, init_clxs, init_urs = zip(*content)
-
-    ## Sort the list of lexemes
-    init_lxs = sorted(init_lxs)
-
-    ## Split the string underlying forms and contexts into separate lists
-    init_clxs = [[tuple(x.split(":")) for x in cx.split(".")] for cx in init_clxs]
-    init_urs = [[tuple(u.split(":")) for u in ur.split(".")] for ur in init_urs]
-
-    ## Create a dictionary to store all of the variables to pass the model
-    return init_lxs, init_clxs, init_urs
 
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -145,25 +121,22 @@ def load_lexicon(filename):
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
 
 
-def process(data, inventory, lexicon, mappings):
+def process_grammar(data, inventory, lexicon, mappings):
 
-    ## Load and initialize data parameters
-    lm = data["lambda"]
+    ## Load the data parameters
     d = load_data(data["fn"])
 
     ## Load inventory
     i = load_inventory(inventory["fn"])
 
+    ## Load the lexicon
+    l = {k: v for k, v in lexicon.items() if k != "fn"}
+
     ## Load and initialize mappings
-    mp = {k: v for k, v in mappings.items() if k != "fn"}
     m = load_rules(mappings["fn"])
 
-    ## Load the lexicon
-    lp = {k: v for k, v in lexicon.items() if k != "fn"}
-    l = load_lexicon(lexicon["fn"])
-
     ## Initialize the model
-    ## G = Grammar()
+    G = Grammar(i, l, m, **d)
 
     return G
 
@@ -176,8 +149,11 @@ def initialize():
     ## Load the arguments from the command-line
     args = parse_args()
 
-    ## Retrieve the parameters and process the variables
-    params = load(args.fp)
-    Grammar = process(**params)
+    ## Retrieve the GRAMMAR parameters and process the variables
+    gparams = load(args.fp)
+    G = process_grammar(**gparams)
 
-    return G
+    ## Retrieve the MCMC parameters and process the variables
+    C = load(args.fm)
+
+    return G, C
