@@ -8,9 +8,7 @@ from models.Inventory import Inventory
 class SPE(Inventory):
     """========== INITIALIZATION ================================================"""
 
-    def __init__(
-        self, ikw: dict, mnms: np.ndarray, mdfs: np.ndarray, forms: np.ndarray
-    ):
+    def __init__(self, ikw: dict, mnms: np.ndarray, mdfs: np.ndarray):
 
         ## *=*=*= INHERITENCE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         super().__init__(**ikw)
@@ -18,42 +16,42 @@ class SPE(Inventory):
         self._vln = np.vectorize(len)
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._bc = "."
+        self._bnd = "."
 
-        ## *=*=*= RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-        self._mnms, self._nmnms = mnms, len(mnms) + 1
+        ## *=*=*= BASIC RULE INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+        self._mnms, self._nmns = mnms, len(mnms) + 1
         self._mdfs = mdfs
 
         """Rule hypotheses ========================"""
-        self._mhys = [m for i in range(self.nmnms) for m in permutations(self.mnms, i)]
-        self._mhys, self._nmhs = np.array(self._mhys, dtype=object), len(self.mhys)
-        self._mhid = np.array([0])
+        self._mhys = [m for i in range(self.nmns) for m in permutations(self.mnms, i)]
+        self._mhys, self._nmhs = np.array(self.mhys, dtype=object), len(self.mhys)
+        self._mhid = np.zeros((1,)).astype(int)
 
         """Rule mappings =========================="""
-        self._mnm2reg = self.init_mappings(self.mnms, self.mdfs)
+        self._mn2rx = self.init_mappings(self.mnms, self.mdfs)
 
-        """Pre-processing ========================="""
-        self._forms = forms
-        self._maxlen = self.vln(forms).max()
-        self._fm2exp = self.preprocess_tf(forms)
+        """Pre-processed arrays ==================="""
+        self._ml = None
+        self._fm = None
+        self._fm2ex = None
 
     """ ========== ACCESSORS ================================================== """
 
     @property
-    def bc(self):
-        return self._bc
+    def ml(self):
+        return self._ml
 
     @property
-    def maxlen(self):
-        return self._maxlen
+    def bnd(self):
+        return self._bnd
 
     @property
     def mnms(self):
         return self._mnms
 
     @property
-    def nmnms(self):
-        return self._nmnms
+    def nmns(self):
+        return self._nmns
 
     @property
     def mdfs(self):
@@ -76,16 +74,16 @@ class SPE(Inventory):
         self._mhid[0] = id
 
     @property
-    def mnm2reg(self):
-        return self._mnm2reg
+    def mn2rx(self):
+        return self._mn2rx
 
     @property
-    def forms(self):
-        return self._forms
+    def fm(self):
+        return self._fm
 
     @property
-    def fm2exp(self):
-        return self._fm2exp
+    def fm2ex(self):
+        return self._fm2ex
 
     @property
     def vln(self):
@@ -93,23 +91,28 @@ class SPE(Inventory):
 
     """ ========== INSTANCE METHODS ============================================ """
 
-    def preprocess_tf(self, urs: np.ndarray):
+    def preprocess_tf(self, forms: np.ndarray):
         """Given the current space of rule mappings and space of possible (padded)
         inputs, returns a cached matrix of input x mhyp outputs
         """
 
+        ## Update class variables
+        self._fm = forms
+        self._ml = self.vln(forms).max()
+
         ## Retrieve the dimensions of the output matrix
-        nurs = urs.size
+        nfms = forms.size
         nmhs = self.nmhs
 
         ## Initialize the empty transformation cache
-        mdim = (nurs, nmhs)
-        fm2exp = np.full(mdim, "", dtype="U" + f"{self.maxlen}")
+        mdim = (nfms, nmhs)
+        fm2ex = np.full(mdim, "", dtype="U" + f"{self.ml}")
 
         ## For each rule hypothesis, generate the predictions for each input
-        fm2exp = self.tfapply(urs=urs, mhid=np.arange(nmhs))
+        fm2ex = self.tfapply(forms=forms, mhid=np.arange(nmhs))
 
-        return fm2exp
+        ## Update the class variable
+        self._fm2ex = fm2ex.copy()
 
     def init_mappings(self, mnms: np.ndarray, mdfs: np.ndarray):
         """Converts mappings into regular expressions for process application"""
@@ -280,50 +283,50 @@ class SPE(Inventory):
         """Returns a different regular expression depending on the match"""
         return match.expand(tf_regex[match.groups("")[idx]])
 
-    def tfapply(self, urs: np.ndarray, mhid: np.ndarray = None):
+    def tfapply(self, forms: np.ndarray, mhid: np.ndarray = None):
         """Applies the phonological mapping given a sequence of padded tokens using a dict"""
 
         ## Check whether a mapping hypothesis is given; if not, use the
         ## current mapping hypothesis
         if mhid is None:
-            mhys = self.mhys[self.mhid]
-            mdim = (len(urs), 1)
+            mhys = self.mhys[self.mhid].tolist()
+            mdim = (len(forms), 1)
         else:
-            mhys = self.mhys[mhid]
-            mdim = (len(urs), len(mhid))
+            mhys = self.mhys[mhid].tolist()
+            mdim = (len(forms), len(mhid))
 
         ## Create an numpy array corresponding to the expected string
-        exs = np.empty(mdim, dtype="U" + f"{4 * self.maxlen}")
+        exs = np.empty(mdim, dtype="U" + f"{3 * self.ml}")
 
         ## For each indexed hypothesis, for each input
         ## in the input array, apply each mapping hypothesis
         for i, mhy in enumerate(mhys):
-            ex = self.bc.join(urs.tolist())
-            for mnm in mhy:
-                sd, tf, idx = self.mnm2reg[mnm]
+            ex = self.bnd.join(forms.tolist())
+            for mn in mhy:
+                sd, tf, idx = self.mn2rx[mn]
                 ex = sd.sub(lambda x: self.tf(x, tf, idx), ex)
-            exs[:, i] = np.array(ex.split(self.bc))
+            exs[:, i] = np.array(ex.split(self.bnd))
 
         return exs
 
-    def chapply(self, urs: np.ndarray, mhid: np.ndarray = None):
+    def chapply(self, forms: np.ndarray, mhid: np.ndarray = None):
         """Applies the phonological mapping given a sequence of padded tokens using a cache"""
 
         ## Check whether a mapping hypothesis is given; if not, use the
         ## current mapping hypothesis
         mhid = self.mhid if mhid is None else mhid
 
-        ## Get the indices for the urs
-        ufid = self.forms.searchsorted(urs)
+        ## Get the indices for the forms
+        ufid = self.fm.searchsorted(forms)
 
         ## Get the outputs for each index: First, retrieve the rows of each indexed form
         ## Next, get the column of expected outputs for each indexed rule hypothesis
-        exs = self.fm2exp[ufid][:, mhid]
+        exs = self.fm2ex[ufid][:, mhid]
 
         return exs
 
-    def apply(self, urs: np.ndarray, mhid: np.ndarray = None):
-        if self.vln(urs).max() > self.maxlen:
-            return self.tfapply(urs=urs, mhid=mhid)
+    def apply(self, forms: np.ndarray, mhid: np.ndarray = None):
+        if self.vln(forms).max() > self.ml:
+            return self.tfapply(forms=forms, mhid=mhid)
         else:
-            return self.chapply(urs=urs, mhid=mhid)
+            return self.chapply(forms=forms, mhid=mhid)

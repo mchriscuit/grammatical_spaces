@@ -2,6 +2,7 @@ import numpy as np
 import copy as cp
 
 from polyleven import levenshtein
+from utils.loader import Loader
 from models.Lexicon import Lexicon
 from models.Phonology import SPE
 
@@ -26,24 +27,34 @@ class Grammar:
         self._pad = pad
 
         ## *=*=*= INHERITENCE *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self.L = Lexicon(ikw, lkw, lxs, cxs)
-        mkw["forms"] = np.array([f"{self.pad}{o}{self.pad}" for o in self.L.dist.O])
-        self.M = SPE(ikw, **mkw)
-        self._vlen = np.vectorize(len)
-        self._vdis = np.vectorize(levenshtein)
+        self._vln = np.vectorize(len)
+        self._vds = np.vectorize(levenshtein)
 
-        ## *=*=*= DATA INITIALIZATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        """Lexicon ================================"""
+        with Loader("(1) Initializing the ``Lexicon`` object..."):
+            self.L = Lexicon(ikw, lkw, lxs, cxs)
+
+        """Mappings ==============================="""
+        with Loader("(2) Initializing the ``SPE`` object..."):
+            self.M = SPE(ikw, **mkw)
+            forms = f"{self.pad}" + self.L.dist.O.astype(object) + f"{self.pad}"
+            forms = forms.astype(str)
+            self.M.preprocess_tf(forms)
+
+        ## *=*=*= BASIC GRAMMAR INFORMATION *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._lxs = lxs
         self._cxs = cxs
         self._srs = srs
         self._nbs = nbs
+
+        """SR indexing ============================"""
         self._oid = srs != ""
         self._pid = np.logical_and(self.oid, self.L.bid)
 
-        ## *=*=*= LIKELIHOODS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
-        self._ex, nc = self.L.dist.O, self.L.dist.ncpmf
-        self._maxlen = self.vlen(self.ex).max()
-        self._ex2lik = nc[:, self.ex.searchsorted(self.srs)] ** self.nbs
+        """Likelihoods ============================"""
+        self._ex, lk = self.L.dist.O, self.L.dist.ncpmf
+        self._ml = self.vln(self.ex).max()
+        self._ex2lk = lk[:, self.ex.searchsorted(self.srs)] ** self.nbs
 
         ## *=*=*= LEXEME GROUPING *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._gid = []
@@ -75,16 +86,16 @@ class Grammar:
     """ ========== ACCESSORS ================================================== """
 
     @property
-    def pad(self):
-        return self._pad
-
-    @property
-    def maxlen(self):
-        return self._maxlen
+    def ml(self):
+        return self._ml
 
     @property
     def lm(self):
         return self._lm
+
+    @property
+    def pad(self):
+        return self._pad
 
     @property
     def lxs(self):
@@ -93,10 +104,6 @@ class Grammar:
     @property
     def cxs(self):
         return self._cxs
-
-    @property
-    def ex(self):
-        return self._ex
 
     @property
     def srs(self):
@@ -119,12 +126,20 @@ class Grammar:
         return self._nbs
 
     @property
-    def ex2lik(self):
-        return self._ex2lik
+    def ex(self):
+        return self._ex
 
     @property
-    def vlen(self):
-        return self._vlen
+    def ex2lk(self):
+        return self._ex2lk
+
+    @property
+    def vln(self):
+        return self._vln
+
+    @property
+    def vds(self):
+        return self._vds
 
     """ ========== INSTANCE METHODS ============================================ """
 
@@ -134,7 +149,7 @@ class Grammar:
         """
 
         ## Calculate the unnormalized likelihoods
-        lk = np.exp(-self.lm * self._vdis(exs, srs)) ** self.nbs
+        lk = np.exp(-self.lm * self.vds(exs, srs)) ** self.nbs
 
         return lk
 
@@ -150,13 +165,13 @@ class Grammar:
         sfid = np.arange(len(srs))
 
         ## Get the outputs for each index
-        lks = self.ex2lik[efid, sfid]
+        lk = self.ex2lk[efid, sfid]
 
-        return lks
+        return lk
 
     def likelihood(self, exs: np.ndarray, srs: np.ndarray):
-        exs = Grammar.rm_padding(exs)
-        if self.vlen(exs).max() > self.maxlen:
+        exs = Grammar.rm_padding(exs).squeeze()
+        if self.vln(exs).max() > self.ml:
             return self.rtlikelihood(exs=exs, srs=srs)
         else:
             return self.chlikelihood(exs=exs, srs=srs)

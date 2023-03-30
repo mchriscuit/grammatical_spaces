@@ -1,9 +1,13 @@
 import numpy as np
+import pandas as pd
 import copy as cp
 import json
+import re
+import os
+from ast import literal_eval
+from collections import defaultdict
 
 from tqdm import tqdm
-from collections import defaultdict
 from utils.process import initialize
 from models.Grammar import Grammar
 from models.Phonology import SPE
@@ -24,14 +28,6 @@ def acceptance(o: np.ndarray, n: np.ndarray):
     ## Otherwise, sample a boolean corrresponding whetherr to accept
     ## or reject each parameter based on the ratio of the two joint probabilities
     s = np.random.uniform(0, 1, size=o.shape) < (n / o)
-
-    # print(o)
-    # print(n)
-    # print(n / o)
-    # print(h)
-    # print(z)
-    # print(s)
-    # print("")
 
     return np.logical_or.reduce((h, z, s))
 
@@ -94,12 +90,12 @@ def sample(
                 nexp = G.M.apply(G.L.join(ncxt))
 
                 ## Calculate the likelihood of each of the contexts
-                olk = np.tile(np.diagonal(G.likelihood(oexp, G.srs)), (len(x), 1))
-                nlk = np.tile(np.diagonal(G.likelihood(nexp, G.srs)), (len(x), 1))
+                olk = np.tile(G.likelihood(oexp, G.srs), (len(x), 1))
+                nlk = np.tile(G.likelihood(nexp, G.srs), (len(x), 1))
 
                 ## Create a matrix containing the likelihoods
-                ol = np.ones(olk.shape)
-                nl = np.ones(nlk.shape)
+                ol = np.ones(ocxt[x].shape)
+                nl = np.ones(ncxt[x].shape)
 
                 ## Update the relevant slots based on the index
                 ol[pid] = olk[pid]
@@ -112,27 +108,6 @@ def sample(
                 ## Initialize and fill acceptance vector
                 a = np.full(G.L.nlxs, False)
                 a[x] = acceptance(oj, nj)
-
-                # print("opro", opro)
-                # print("ocxt", ocxt)
-                # print("oidy", idy)
-                # print("oprpro", oprpro[x])
-                # print("oprcxt", oprcxt[x])
-                # print("ol", ol)
-                # print("ontp", ontp)
-                # print("oj", oj)
-
-                # print("npro", npro)
-                # print("ncxt", ncxt)
-                # print("nidy", idy)
-                # print("nprpro", nprpro[x])
-                # print("nprcxt", nprcxt[x])
-                # print("nl", nl)
-                # print("notp", notp)
-                # print("nj", nj)
-
-                # print(a)
-                # print("")
 
                 ## If accepted, update the underlying form hypotheses
                 G.L.pro[a] = npro[a]
@@ -165,37 +140,12 @@ def sample(
             nlk = G.likelihood(nexp, G.srs)
 
             ## Create a matrix containing the likelihoods
-            ol = np.ones(olk[:, 0].shape)
-            nl = np.ones(nlk[:, 0].shape)
+            ol = np.ones(olk.shape)
+            nl = np.ones(nlk.shape)
 
             ## Update the relevant slots based on the index
-            ol[G.oid] = olk[G.oid, 0]
-            nl[G.oid] = nlk[G.oid, 0]
-
-            # print("====================================")
-            # print("OLD")
-            # print("====================================")
-            # print("ocxt", ocxt)
-            # print("oidy", oidy)
-            # print("oexp", oexp.squeeze())
-            # print("srs", G.srs)
-            # print(oprcxt)
-            # print(ol)
-            # print(ontp)
-
-            # print("====================================")
-            # print("NEW")
-            # print("====================================")
-            # print("ncxt", ncxt)
-            # print("nidy", nidy)
-            # print("nexp", nexp.squeeze())
-            # print("srs", G.srs)
-            # print(nprcxt)
-            # print(nl)
-            # print(notp)
-            # print("")
-
-            # assert False
+            ol[G.oid] = olk[G.oid]
+            nl[G.oid] = nlk[G.oid]
 
             ## Calculate the weighted posteriors
             po = ontp.prod(axis=0) * (ol * oprcxt.prod(axis=0)) ** pw
@@ -213,8 +163,8 @@ def sample(
 
         ## Calculate the expected outputs and likelihood of every context
         ## for each mapping hypothesis
-        exp = G.M.apply(G.L.join(G.L.cxt), midx).T
-        lik = G.likelihood(exp, G.srs)[:, G.oid].prod(axis=1)
+        exs = G.M.apply(G.L.join(G.L.cxt), midx).T
+        lik = G.likelihood(exs, G.srs)[:, G.oid].prod(axis=1)
         lik = lik / lik.sum()
 
         ## Sample a new mapping hypothesis based on the likelihoods
@@ -224,42 +174,58 @@ def sample(
         ## save the hypotheses and their predictions
         if gs >= burnIdx and gs % skIters == 0:
             smp = {
-                "lxs": G.L.lxs,
-                "pro": G.L.pro,
+                "lxs": G.lxs,
                 "cxs": G.cxs,
+                "mhy": G.M.mhys[G.M.mhid][0],
+                "pro": G.L.pro,
                 "cxt": G.L.join(G.L.cxt, ""),
                 "idy": G.L.idy[G.L.cid],
-                "pds": exp[G.M.mhid, :].squeeze(),
-                "mhy": G.M.mhys[G.M.mhid],
-                "obs": G.srs,
+                "exs": exs[G.M.mhid].squeeze(),
+                "srs": G.srs,
             }
             samples.append(cp.deepcopy(smp))
 
     return samples
 
 
-def posterior(B: list):
-    """Calculates the posterior and posterior predictive given a list of sampled grammars"""
-    post = {}
+def predictive(S: list):
+    """Calculates the posterior predictive given a list of sampled grammars"""
     pred = defaultdict(dict)
 
     ## Populate dictionaries
-    for bmp in tqdm(B):
+    for smp in tqdm(S):
 
         ## Retrieve the information from the grammar
-        cxs, pds = bmp["cxs"], bmp["pds"]
+        cxs, exs = smp["cxs"], smp["exs"]
 
         ## Count each predicted SR for each clx
-        for cx, pd in zip(cxs, pds):
+        for cx, ex in zip(cxs, exs):
             fcx = "-".join(cx)
-            pred[fcx][pd] = pred[fcx].get(pd, 0) + 1
+            pred[fcx][ex] = pred[fcx].get(ex, 0) + 1
 
     ## Normalize counts to get empirical probabilities
     pred = {
-        fcx: {pd: cnt / sum(pred[fcx].values()) for pd, cnt in pred[fcx].items()}
+        fcx: {ex: ct / sum(pred[fcx].values()) for ex, ct in pred[fcx].items()}
         for fcx in pred
     }
+
     return pred
+
+
+def posteriors(S: list, keys: list):
+    post = defaultdict(int)
+
+    ## Populate dictionaries
+    for smp in tqdm(S):
+
+        ## Retrieve the grammatical information
+        info = [list(smp[k]) for k in keys]
+        post[repr(info)] = post[repr(info)] + 1
+
+    ## Normalize counts to get posterior probabilities
+    post = {g: ct / sum(post.values()) for g, ct in post.items()}
+
+    return post
 
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
@@ -270,72 +236,46 @@ def posterior(B: list):
 def main():
 
     ## Load and initialize ``Grammar`` object
-    G, C = initialize()
+    print("\nInitializing Grammar object:")
+    G, C, P = initialize()
 
     ## Run the MCMC algorithm
-    B = sample(G, **C)
+    print("\nRunning the MCMC algorithm:")
+    S = sample(G, **C)
 
-    ## Calculate the posteriors and posterior predictive
-    pred = posterior(B)
-    print(pred)
+    ## Get the parameters of the model
+    lm = P["lexicon"]["lambda"]
+    ml = P["lexicon"]["maxLen"]
+    th = P["lexicon"]["theta"]
+    ps = P["lexicon"]["psi"]
+    ph = P["lexicon"]["phi"]
+    al = P["lexicon"]["alpha"]
+    bt = P["lexicon"]["beta"]
+    gs = C["gsIters"]
+    mh = C["mhIters"]
 
-    ## Save to file
-    with open("test.json", "w") as f:
-        json.dump(pred, f, indent=4)
-    assert False
+    ## Create the directory for the output files
+    print("\nSaving samples to file...")
+    do = "outputs"
+    dn = re.sub(r"^.*/(.*?)\..*", r"\1", P["data"]["fn"])
+    path = f"{do}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
+    if not os.path.exists(path):
+        os.makedirs(path)
 
-    """ ==================== RUN MODEL ===================================="""
-    gs_iterations = params["MCMC"]["gs_iterations"]
-    mh_iterations = params["MCMC"]["mh_iterations"]
-    anneal = params["MCMC"]["anneal"]
-    sg = MCMC.gibbs_sampler(G, anneal, gs_iterations, mh_iterations)
+    ## Retrieve posterior predictive distribution and save to file
+    Pr = predictive(S)
+    with open(f"{path}pred.json", "w") as f:
+        json.dump(Pr, f, indent=2)
 
-    """ ==================== BURN IN ======================================"""
-    bi = MCMC.burn_in(sg)
-    post, pred = MCMC.posterior_predictive(bi)
-
-    """ ==================== SAVE TO FILE ================================="""
-    ## Retrieve hyperparameters for printing
-    lm = surface_forms["lambda"]
-    psi = lexicon["params"]["psi"]
-    phi = lexicon["params"]["phi"]
-    alpha = lexicon["params"]["alpha"]
-
-    ## Generate new directory
-    output_path = f"./output/"
-    output_path += f"{re.sub('.csv', '', surface_forms['fn'])}"
-    output_path += f"-gs{gs_iterations}-mh{mh_iterations}"
-    output_path += f"-lambda{lm}-psi{psi}-phi{phi}-alpha{alpha}"
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-
-    posterior_fn = f"{output_path}/posterior.csv"
-    with open(posterior_fn, "w") as f:
-        f.write("clxs,")
-        f.write("mhyp,")
-        f.write("urs,")
-        f.write("pred_srs,")
-        f.write("obs_srs,")
-        f.write("prob\n")
-        for g, p in sorted(post.items(), key=lambda kv: kv[1], reverse=True):
-            c, m, u, prd, obs = g
-            f.write(f"{c},")
-            f.write(f"{m},")
-            f.write(f"{u},")
-            f.write(f"{prd},")
-            f.write(f"{obs},")
-            f.write(f"{p}\n")
-
-    predictive_fn = f"{output_path}/predictive.csv"
-    with open(predictive_fn, "w") as f:
-        f.write("clx,")
-        f.write("pred_sr,")
-        f.write("prob\n")
-        for clx, prds in pred.items():
-            for prd, p in sorted(prds.items(), key=lambda it: it[1], reverse=True):
-                f.write(f"{clx},")
-                f.write(f"{prd},")
-                f.write(f"{p}\n")
+    ## Retrieve posterior distribution and save to file
+    keys = ["pro", "cxt", "idy", "mhy", "exs"]
+    Po = posteriors(S, keys)
+    Po = [
+        [{k: v for k, v in zip(keys, literal_eval(g))}, p]
+        for g, p in sorted(Po.items(), key=lambda k: k[1])
+    ]
+    with open(f"{path}post.json", "w") as f:
+        json.dump(Po, f, indent=2)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 {
   "data" : 
   {
-    "fn": "prickett/prickett-b.csv"
+    "fn": "prickett/prickett-b-full.csv"
   },
   "inventory" : 
   {
@@ -17,7 +17,7 @@
     "fn": "prickett/prickett-b.csv",
     "maxLen": 5,
     "theta": 0.5,
-    "lambda": 3,
+    "lambda": 1,
     "psi": 5,
     "phi": 3,
     "alpha": 0.75,

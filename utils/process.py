@@ -144,6 +144,7 @@ def process_grammar(data, inventory, lexicon, mappings):
 def initialize():
     """Loads the parameters filename and populates a ``Grammar``
     with the provided parameters. Returns the ``Grammar`` object
+    and MCMC parameters for the algorithm
     """
 
     ## Load the arguments from the command-line
@@ -153,7 +154,7 @@ def initialize():
     gparams = load(args.fp)
     G = process_grammar(**gparams)
 
-    ## Retrieve the MCMC parameters and process the variables
+    ## Retrieve the MCMC parameters the variables
     C = load(args.fm)
 
-    return G, C
+    return G, C, gparams

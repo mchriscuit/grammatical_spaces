@@ -47,7 +47,6 @@ class Lexicon(Inventory):
         ## *=*=*= LEXICON HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self._bid = np.array([[lx in cx for cx in self.cxs] for lx in self.lxs])
         self._cid = np.nonzero(self.bid)
-
         self._pdim = (self.nlxs,)
         self._cdim = (self.nlxs, self.ncxs)
 
@@ -169,7 +168,7 @@ class Lexicon(Inventory):
 
             ## Retrieve the length of the prototype UR and calculate
             ## the prior of generating a prototype UR of that length
-            ln = self._vln(pro)
+            ln = self.vln(pro)
             pr *= self.geom.pmf(ln)
             pr *= Uniform.pmf(self.nsegs) ** ln
 

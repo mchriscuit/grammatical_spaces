@@ -1,6 +1,5 @@
 import numpy as np
 
-from tqdm import tqdm
 from itertools import product
 from polyleven import levenshtein
 
@@ -71,7 +70,7 @@ class Distance(Distributions):
 
         ## Parameters over the edit space
         self._m = n + 1
-        self._b = 0
+        self._b = 1
         self._nc = nc
         self._dl = dl
         self._de = de
@@ -105,7 +104,7 @@ class Distance(Distributions):
 
         ## Calculate the distances between each sorted string combination
         A = sorted(A)
-        D = [[levenshtein(a, x) for x in A] for a in tqdm(A)]
+        D = [[levenshtein(a, x) for x in A] for a in A]
 
         ## Convert to numpy arrays
         A = np.array(A)

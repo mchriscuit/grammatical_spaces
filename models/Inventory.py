@@ -98,13 +98,13 @@ class Inventory:
     def config2id(self, config: np.ndarray):
         return self._tconfig2id[tuple(config)]
 
-    def tokens_to_configs(self, tokens: list):
+    def tokens_to_configs(self, tokens: np.ndarray):
         return self.tconfigs[[self.token2id(token) for token in tokens]]
 
-    def configs_to_tokens(self, configs: list):
+    def configs_to_tokens(self, configs: np.ndarray):
         return self.tokens[[self.config2id(config) for config in configs]]
 
-    def nclass_to_config(self, nclass: list):
+    def nclass_to_config(self, nclass: np.ndarray):
         """Takes in a list of strings denoting the features for a natural class
         or a list of tokens and returns a single configuration with the
         provided feature values
@@ -126,7 +126,7 @@ class Inventory:
 
         return config
 
-    def compatible_configs(self, seq_config: list):
+    def compatible_configs(self, seq_config: np.ndarray):
         """Takes in a vector of feature configurations and returns all
         token configurations compatible with that configuration. Compatible
         tokens are determined by seeing whether all of the non-NaN values are
@@ -151,7 +151,7 @@ class Inventory:
 
         return np.vstack(segs) if len(segs) > 0 else np.array(segs)
 
-    def intersect(self, tokens: list):
+    def intersect(self, tokens: np.ndarray):
         """Returns the maximal natural class configuration consisting of the given
         tokens and nothing else. Returns an empty array if no compatible natural
         class is found. Works for both special characters and segments
