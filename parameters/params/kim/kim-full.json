@@ -1,15 +1,15 @@
 {
   "data" : 
   {
-    "fn": "ex/ex.csv"
+    "fn": "kim/kim-full.csv"
   },
   "inventory" : 
   {
-    "fn": "ex.csv"
+    "fn": "kim.csv"
   },
   "mappings" : 
   {
-    "fn": "ex.csv",
+    "fn": "kim.csv",
     "mode": "SPE"
   },
   "lexicon" : 

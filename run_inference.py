@@ -213,6 +213,7 @@ def predictive(S: list):
 
 
 def posteriors(S: list, keys: list):
+    """Calculates the posterior given a list of sampled grammars"""
     post = defaultdict(int)
 
     ## Populate dictionaries
@@ -264,6 +265,12 @@ def main():
 
     ## Retrieve posterior predictive distribution and save to file
     Pr = predictive(S)
+    Pr = {
+        fcx: {
+            ex: p for ex, p in sorted(Pr[fcx].items(), reverse=True, key=lambda k: k[1])
+        }
+        for fcx in Pr
+    }
     with open(f"{path}pred.json", "w") as f:
         json.dump(Pr, f, indent=2)
 
@@ -272,7 +279,7 @@ def main():
     Po = posteriors(S, keys)
     Po = [
         [{k: v for k, v in zip(keys, literal_eval(g))}, p]
-        for g, p in sorted(Po.items(), key=lambda k: k[1])
+        for g, p in sorted(Po.items(), reverse=True, key=lambda k: k[1])
     ]
     with open(f"{path}post.json", "w") as f:
         json.dump(Po, f, indent=2)

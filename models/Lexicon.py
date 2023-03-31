@@ -20,6 +20,7 @@ class Lexicon(Inventory):
 
         """Prior Distribution ====================="""
         self._ml = lkw["maxLen"]
+        self._me = lkw["maxEds"]
         self._lm = lkw["lambda"]
         self._th = lkw["theta"]
         self._ps = lkw["psi"]
@@ -33,7 +34,7 @@ class Lexicon(Inventory):
         self._geom = Geometric(self._ml, self._th)
 
         """Distance Distribution =================="""
-        self._dist = Distance(self.segs, self._ml, self._lm, self._ps, self._ph)
+        self._dist = Distance(self.segs, self.ml, self.me, self._lm, self._ps, self._ph)
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._snm = -1
@@ -79,6 +80,10 @@ class Lexicon(Inventory):
     @property
     def ml(self):
         return self._ml
+
+    @property
+    def me(self):
+        return self._me
 
     @property
     def snm(self):

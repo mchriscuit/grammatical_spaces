@@ -1,5 +1,6 @@
 import numpy as np
 
+from tqdm import tqdm
 from itertools import product
 from polyleven import levenshtein
 
@@ -63,21 +64,24 @@ class Distance(Distributions):
 
     """========== INITIALIZATION ==================================================="""
 
-    def __init__(self, segs: np.ndarray, n: int, nc: float, dl: float, de: float):
+    def __init__(
+        self, segs: np.ndarray, n: int, e: int, nc: float, dl: float, de: float
+    ):
 
         ## Segment inventory
         self._segs = np.array(segs)
 
         ## Parameters over the edit space
         self._m = n + 1
-        self._b = 1
+        self._e = e
+        self._b = 5
         self._nc = nc
         self._dl = dl
         self._de = de
 
         ## Alignments and distances
-        self._O, N = self.init_dists(self._m + self._b)
-        self._I, P = self.init_dists(self._m)
+        self._O, N = self.init_dists(self._m + self._b, self._e)
+        self._I, P = self.init_dists(self._m, self._e)
 
         """=============== INPUTS AND OUTPUTS ======================= """
         self._ncprbs = np.exp(-N * self._nc)
@@ -92,7 +96,7 @@ class Distance(Distributions):
 
     """========== INSTANCE METHODS ================================================"""
 
-    def init_dists(self, m: int):
+    def init_dists(self, m: int, e: int):
         """Initializes the space of possible edits of a pair of strings of
         length (0,0) to (n,n)
         """
@@ -104,7 +108,7 @@ class Distance(Distributions):
 
         ## Calculate the distances between each sorted string combination
         A = sorted(A)
-        D = [[levenshtein(a, x) for x in A] for a in A]
+        D = [[levenshtein(a, x) for x in A] for a in tqdm(A)]
 
         ## Convert to numpy arrays
         A = np.array(A)

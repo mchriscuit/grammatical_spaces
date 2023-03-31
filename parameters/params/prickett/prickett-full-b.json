@@ -1,15 +1,15 @@
 {
   "data" : 
   {
-    "fn": "ex/ex.csv"
+    "fn": "prickett/all/prickett-b-full.csv"
   },
   "inventory" : 
   {
-    "fn": "ex.csv"
+    "fn": "prickett.csv"
   },
   "mappings" : 
   {
-    "fn": "ex.csv",
+    "fn": "prickett.csv",
     "mode": "SPE"
   },
   "lexicon" : 
