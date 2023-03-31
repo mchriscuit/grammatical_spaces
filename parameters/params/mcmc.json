@@ -1,6 +1,6 @@
 {
-    "gsIters": 100000,
-    "mhIters": 10,
+    "gsIters": 300000,
+    "mhIters": 12,
     "skIters": 20,
     "anConst": 10,
     "biConst": 2
