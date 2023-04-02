@@ -182,7 +182,7 @@ class SPE(Inventory):
                         i.join([f"[{i.join(list(set(o)))}]" for o in opt])
                         for opt in opt_tokens
                     ]
-                    cxt_regex = f"({'|'.join(cxt_regex)})"
+                    cxt_regex = f"(?={'|'.join(cxt_regex)})"
 
                 ## Otherwise, it is a single natural class; perform as usual
                 else:
@@ -196,7 +196,7 @@ class SPE(Inventory):
 
                     ## Get and join the associated segments
                     cxt_tokens = self.configs_to_tokens(cxt_compat)
-                    cxt_regex = f"([{''.join(list(set(cxt_tokens)))}])"
+                    cxt_regex = f"(?=[{''.join(list(set(cxt_tokens)))}])"
 
                 ## Append to the list
                 seq_cxt_regex.append(cxt_regex)
@@ -241,8 +241,24 @@ class SPE(Inventory):
                 res_configs = np.array([])
 
             ## Get the array of tokens for the source and result
-            src_tokens = self.configs_to_tokens(src_configs)
-            res_tokens = self.configs_to_tokens(res_configs)
+            fsrc_tokens = self.configs_to_tokens(src_configs)
+            fres_tokens = self.configs_to_tokens(res_configs)
+
+            ## Remove vacuous pairs
+            src_tokens = np.array(
+                [
+                    src
+                    for src, res in zip_longest(fsrc_tokens, fres_tokens)
+                    if src != res
+                ]
+            )
+            res_tokens = np.array(
+                [
+                    res
+                    for src, res in zip_longest(fsrc_tokens, fres_tokens)
+                    if src != res
+                ]
+            )
 
             ## Generate the regular expressions of the source segments
             src_regex = f"([{i.join(src_tokens)}])"
@@ -250,28 +266,26 @@ class SPE(Inventory):
 
             ## Generate the regular expression of the structural description
             seq_cxt_regex[idx] = src_regex
+
+            ## Fix the context such that the lookaheads before the idx are
+            ## converted into lookbehinds
+            seq_cxt_regex = [
+                re.sub(r"=", r"<=", cxt) if i < idx else cxt
+                for i, cxt in enumerate(seq_cxt_regex)
+            ]
+
+            ## Generate the regular expression for the structural description
             sd_regex = re.compile(i.join(seq_cxt_regex))
 
             # Generate the regular expressions of the result segments
-            x = np.arange(len(seq_cxt_regex))
-            if len(res_tokens) > 0:
-                res_regex = [
-                    i.join(rf"\{w+1}" if w != idx else res for w in x)
-                    for res in res_tokens.tolist()
-                ]
-            else:
-                res_regex = [
-                    i.join(rf"\{w+1}" for w in x if w != idx)
-                    for src in src_tokens.tolist()
-                ]
-            res_regex = np.array(res_regex)
+            res_regex = np.array(res_tokens)
 
             ## Build the regular expression dictionary
             tf_regex = {}
             for src, res in zip_longest(src_tokens.tolist(), res_regex.tolist()):
                 if src is None:
                     tf_regex[""] = res
-                else:
+                if src != res:
                     tf_regex[src] = res
 
             ## Update the rule hypothesis
@@ -281,7 +295,7 @@ class SPE(Inventory):
 
     def tf(self, match: re.Match, tf_regex: dict, idx: int):
         """Returns a different regular expression depending on the match"""
-        return match.expand(tf_regex[match.groups("")[idx]])
+        return tf_regex[match.groups("")[0]]
 
     def tfapply(self, forms: np.ndarray, mhid: np.ndarray = None):
         """Applies the phonological mapping given a sequence of padded tokens using a dict"""

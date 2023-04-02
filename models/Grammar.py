@@ -37,7 +37,7 @@ class Grammar:
         """Mappings ==============================="""
         with Loader("(2) Initializing the ``SPE`` object..."):
             self.M = SPE(ikw, **mkw)
-            forms = f"{self.pad}" + self.L.dist.O.astype(object) + f"{self.pad}"
+            forms = f"{self.pad}" + self.L.dist.R.astype(object) + f"{self.pad}"
             forms = forms.astype(str)
             self.M.preprocess_tf(forms)
 

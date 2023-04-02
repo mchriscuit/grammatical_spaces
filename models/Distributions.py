@@ -80,8 +80,14 @@ class Distance(Distributions):
         self._de = de
 
         ## Alignments and distances
-        self._O, N = self.init_dists(self._m + self._b, self._e)
+        self._O, N = self.init_dists(self._m, self._e)
         self._I, P = self.init_dists(self._m, self._e)
+
+        ## Possible string combinations
+        self._R = []
+        for i in range(self._m + self._b):
+            self._R += ["".join(r) for r in product(self._segs.tolist(), repeat=i)]
+        self._R = np.array(sorted(self._R))
 
         """=============== INPUTS AND OUTPUTS ======================= """
         self._ncprbs = np.exp(-N * self._nc)
@@ -108,7 +114,7 @@ class Distance(Distributions):
 
         ## Calculate the distances between each sorted string combination
         A = sorted(A)
-        D = [[levenshtein(a, x) for x in A] for a in tqdm(A)]
+        D = [[levenshtein(a, x) for x in A] for a in A]
 
         ## Convert to numpy arrays
         A = np.array(A)
@@ -119,12 +125,16 @@ class Distance(Distributions):
     """========== ACCESSORS ========================================================"""
 
     @property
+    def O(self):
+        return self._O
+
+    @property
     def I(self):
         return self._I
 
     @property
-    def O(self):
-        return self._O
+    def R(self):
+        return self._R
 
     @property
     def ncpmf(self):

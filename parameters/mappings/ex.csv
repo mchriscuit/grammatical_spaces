@@ -1,2 +1,2 @@
 intervocalic voicing,+cons:+cor,+voi,-cons._.-cons
-final devoicing,+cons,-voi,_.#
+final devoicing,+cons,-voi,_.(#|+cons)
