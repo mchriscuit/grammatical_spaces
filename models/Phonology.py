@@ -1,6 +1,8 @@
 import numpy as np
+import h5py as hp
 import re
 
+from tqdm import tqdm
 from itertools import permutations, zip_longest
 from models.Inventory import Inventory
 
@@ -29,11 +31,13 @@ class SPE(Inventory):
 
         """Rule mappings =========================="""
         self._mn2rx = self.init_mappings(self.mnms, self.mdfs)
+        self._pt = f"({'|'.join(list(zip(*self._mn2rx.values()))[0])})"
 
         """Pre-processed arrays ==================="""
         self._ml = None
         self._fm = None
         self._fm2ex = None
+        self._cache = None
 
     """ ========== ACCESSORS ================================================== """
 
@@ -78,6 +82,10 @@ class SPE(Inventory):
         return self._mn2rx
 
     @property
+    def pt(self):
+        return self._pt
+
+    @property
     def fm(self):
         return self._fm
 
@@ -96,6 +104,9 @@ class SPE(Inventory):
         inputs, returns a cached matrix of input x mhyp outputs
         """
 
+        ## Get only the forms that undergo the processes
+        ## forms = np.array([f for f in forms.tolist() if re.search(self.pt, f)])
+
         ## Update class variables
         self._fm = forms
         self._ml = self.vln(forms).max()
@@ -103,16 +114,18 @@ class SPE(Inventory):
         ## Retrieve the dimensions of the output matrix
         nfms = forms.size
         nmhs = self.nmhs
-
-        ## Initialize the empty transformation cache
         mdim = (nfms, nmhs)
-        fm2ex = np.full(mdim, "", dtype="U" + f"{self.ml}")
 
-        ## For each rule hypothesis, generate the predictions for each input
-        fm2ex = self.tfapply(forms=forms, mhid=np.arange(nmhs))
+        ## Create a cache in hdf5 format
+        f = hp.File("cache.hdf5", "w")
+        d = hp.special_dtype(vlen=str)
+        self._fm2ex = f.create_dataset("cache", mdim, chunks=True, dtype=d)
 
-        ## Update the class variable
-        self._fm2ex = fm2ex.copy()
+        ## Get the indices corresponding to how many chunks of
+        ## forms and mapping hypothese we should have
+        for i in self._fm2ex.iter_chunks():
+            u, m = i
+            self._fm2ex[i] = self.tfapply(forms=forms[u], mhid=np.arange(nmhs)[m])
 
     def init_mappings(self, mnms: np.ndarray, mdfs: np.ndarray):
         """Converts mappings into regular expressions for process application"""
@@ -275,7 +288,7 @@ class SPE(Inventory):
             ]
 
             ## Generate the regular expression for the structural description
-            sd_regex = re.compile(i.join(seq_cxt_regex))
+            sd_regex = i.join(seq_cxt_regex)
 
             # Generate the regular expressions of the result segments
             res_regex = np.array(res_tokens)
@@ -310,15 +323,16 @@ class SPE(Inventory):
             mdim = (len(forms), len(mhid))
 
         ## Create an numpy array corresponding to the expected string
-        exs = np.empty(mdim, dtype="U" + f"{3 * self.ml}")
+        exs = np.empty(mdim, dtype="U" + f"{2 * self.ml}")
 
         ## For each indexed hypothesis, for each input
         ## in the input array, apply each mapping hypothesis
+        ur = self.bnd.join(forms.tolist())
         for i, mhy in enumerate(mhys):
-            ex = self.bnd.join(forms.tolist())
+            ex = ur
             for mn in mhy:
                 sd, tf, idx = self.mn2rx[mn]
-                ex = sd.sub(lambda x: self.tf(x, tf, idx), ex)
+                ex = re.sub(sd, lambda x: self.tf(x, tf, idx), ur)
             exs[:, i] = np.array(ex.split(self.bnd))
 
         return exs
@@ -330,12 +344,32 @@ class SPE(Inventory):
         ## current mapping hypothesis
         mhid = self.mhid if mhid is None else mhid
 
-        ## Get the indices for the forms
+        ## Check that the form is in the index
+        ## bfid = self.fm[self.fm.searchsorted(forms)] == forms
+
+        ## Get the indices for the forms in the cache
         ufid = self.fm.searchsorted(forms)
 
-        ## Get the outputs for each index: First, retrieve the rows of each indexed form
-        ## Next, get the column of expected outputs for each indexed rule hypothesis
-        exs = self.fm2ex[ufid][:, mhid]
+        ## If it is empty, return just the copy
+        if len(ufid) == 0:
+            return np.tile(forms[:, None], (1, mhid.size))
+
+        ## Retrive the unique indices of the ufid
+        ## Keep the indices to retrieve the values at the end
+        fd, ud = np.unique(ufid, return_inverse=True)
+
+        ## Sort the unique ufids and keep the indices
+        ## to undo the sort
+        x = np.argsort(fd)
+        fd = fd[x]
+        ud = x[ud]
+
+        ## Retrieve the values at the denoted indices
+        out = self.fm2ex.asstr()[fd]
+
+        ## Get the outputs for each index: First, retrieve the rows of each indexed
+        ## form. Next, get the column of expected outputs for each indexed rule hypothesis
+        exs = out[ud][:, mhid].astype("U" + f"{self.ml}")
 
         return exs
 
