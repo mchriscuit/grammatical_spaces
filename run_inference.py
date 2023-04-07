@@ -1,17 +1,13 @@
 import numpy as np
-import pandas as pd
 import copy as cp
 import json
 import re
 import os
 from ast import literal_eval
 from collections import defaultdict
-
 from tqdm import tqdm
-from utils.process import initialize
+from utils.process import load_parameters, process_parameters
 from models.Grammar import Grammar
-from models.Phonology import SPE
-from models.Lexicon import Lexicon
 
 
 def acceptance(o: np.ndarray, n: np.ndarray):
@@ -45,7 +41,7 @@ def sample(
     rng = np.random.default_rng()
 
     ## Initialize rule hypothesis indices
-    midx = np.arange(G.M.nmhs)
+    midx = np.arange(G.M.nhs)
 
     ## Get the burn-in value, which tells us when to start taking samples
     burnIdx = gsIters // biConst
@@ -90,8 +86,8 @@ def sample(
                 nexp = G.M.apply(G.L.join(ncxt))
 
                 ## Calculate the likelihood of each of the contexts
-                olk = np.tile(G.likelihood(oexp, G.srs), (len(x), 1))
-                nlk = np.tile(G.likelihood(nexp, G.srs), (len(x), 1))
+                olk = np.tile(G.likelihood(oexp, G.obs), (len(x), 1))
+                nlk = np.tile(G.likelihood(nexp, G.obs), (len(x), 1))
 
                 ## Create a matrix containing the likelihoods
                 ol = np.ones(ocxt[x].shape)
@@ -136,8 +132,8 @@ def sample(
             nexp = G.M.apply(G.L.join(ncxt))
 
             ## Calculate the likelihood of each of the contexts
-            olk = G.likelihood(oexp, G.srs)
-            nlk = G.likelihood(nexp, G.srs)
+            olk = G.likelihood(oexp, G.obs)
+            nlk = G.likelihood(nexp, G.obs)
 
             ## Create a matrix containing the likelihoods
             ol = np.ones(olk.shape)
@@ -164,11 +160,11 @@ def sample(
         ## Calculate the expected outputs and likelihood of every context
         ## for each mapping hypothesis
         exs = G.M.apply(G.L.join(G.L.cxt), midx).T
-        lik = G.likelihood(exs, G.srs)[:, G.oid].prod(axis=1)
-        lik = lik / lik.sum()
+        lks = G.likelihood(exs, G.obs)[:, G.oid].prod(axis=1)
+        lks = lks / lks.sum()
 
         ## Sample a new mapping hypothesis based on the likelihoods
-        G.M.mhid = rng.choice(np.arange(lik.size), p=lik)
+        G.M.mhi = rng.choice(np.arange(lks.size), p=lks)
 
         ## After the burn-in period, for every xth iteration,
         ## save the hypotheses and their predictions
@@ -176,12 +172,12 @@ def sample(
             smp = {
                 "lxs": G.lxs,
                 "cxs": G.cxs,
-                "mhy": G.M.mhys[G.M.mhid][0],
+                "mhy": G.M.mhs[G.M.mhi][0],
                 "pro": G.L.pro,
                 "cxt": G.L.join(G.L.cxt, ""),
                 "idy": G.L.idy[G.L.cid],
-                "exs": exs[G.M.mhid].squeeze(),
-                "srs": G.srs,
+                "exs": exs[G.M.mhi].squeeze(),
+                "obs": G.obs,
             }
             samples.append(cp.deepcopy(smp))
 
@@ -229,36 +225,54 @@ def posteriors(S: list, keys: list):
     return post
 
 
-""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+""" *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
                 MAIN FUNCTION CALL
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=* """
 
 
 def main():
 
-    ## Load and initialize ``Grammar`` object
+    """====== (1) Process Grammar Object ==========================================="""
     print("\nInitializing Grammar object:")
-    G, C, P = initialize()
+
+    ## Load in parameters of the model
+    grP, mcP = load_parameters()
+
+    ## Process each parameter of the model
+    fn = grP["filenames"]
+
+    ## Process the parameters of the model
+    d, m, i = process_parameters(**fn)
+    params = grP["parameters"]
+
+    ## Initialize the model given the processed parameters
+    G = Grammar(*d, m, i, params)
+
+    """====== (2) Run Sampling Algorithm ==========================================="""
+    print("\nRunning the MCMC algorithm:")
 
     ## Run the MCMC algorithm
-    print("\nRunning the MCMC algorithm:")
-    S = sample(G, **C)
+    S = sample(G, **mcP)
+    print(S[-5:])
 
     ## Get the parameters of the model
-    lm = P["lexicon"]["lambda"]
-    ml = P["lexicon"]["maxLen"]
-    th = P["lexicon"]["theta"]
-    ps = P["lexicon"]["psi"]
-    ph = P["lexicon"]["phi"]
-    al = P["lexicon"]["alpha"]
-    bt = P["lexicon"]["beta"]
-    gs = C["gsIters"]
-    mh = C["mhIters"]
+    lm = params["conservativity"]
+    ml = params["maxlength"]
+    mb = params["maxbuffer"]
+    th = params["prolength"]
+    ps = params["urprior"]
+    ph = params["urtrans"]
+    al = params["dfprior"]
+    bt = params["dftrans"]
+    gs = mcP["gsIters"]
+    mh = mcP["mhIters"]
+
+    """====== (3) Save Outputs to File ============================================="""
+    print("\nSaving samples to file...")
 
     ## Create the directory for the output files
-    print("\nSaving samples to file...")
     do = "outputs"
-    dn = re.sub(r"^.*/(.*?)\..*", r"\1", P["data"]["fn"])
+    dn = re.sub(r"^.*/(.*?)\..*", r"\1", grP["filenames"]["obs"])
     path = f"{do}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
     if not os.path.exists(path):
         os.makedirs(path)

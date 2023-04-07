@@ -99,7 +99,7 @@ class Inventory:
         return self._tconfig2id[tuple(config)]
 
     def tokens_to_configs(self, tokens: np.ndarray):
-        return self.tconfigs[[self.token2id(token) for token in tokens]]
+        return self.tconfigs[[self.token2id(token) for token in tokens.tolist()]]
 
     def configs_to_tokens(self, configs: np.ndarray):
         return self.tokens[[self.config2id(config) for config in configs]]
@@ -112,7 +112,7 @@ class Inventory:
 
         ## Check whether the input is a sequence of tokens
         if np.isin(nclass, self.tokens).all():
-            config = self.intersect(nclass)
+            config = self.intersect(np.array(nclass))
             return config
 
         ## Otherwise, assume that it is a sequence of features
