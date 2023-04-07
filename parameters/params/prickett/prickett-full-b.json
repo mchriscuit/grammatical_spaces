@@ -1,27 +1,19 @@
 {
-  "data" : 
+  "filenames": 
   {
-    "fn": "prickett/all/prickett-b-full.csv"
+    "obs": "prickett/all/prickett-b-full.csv",
+    "inv": "prickett.csv",
+    "map": "prickett.csv"
   },
-  "inventory" : 
+  "parameters": 
   {
-    "fn": "prickett.csv"
-  },
-  "mappings" : 
-  {
-    "fn": "prickett.csv",
-    "mode": "SPE"
-  },
-  "lexicon" : 
-  {
-    "fn": "",
-    "maxLen": 5,
-    "maxEds": 5,
-    "theta": 0.5,
-    "lambda": 3,
-    "psi": 5,
-    "phi": 3,
-    "alpha": 0.75,
-    "beta": 0.5
+    "conservativity": 3,
+    "maxlength": 5,
+    "maxbuffer": 0,
+    "prolength": 0.5,
+    "urprior": 5,
+    "urtrans": 3,
+    "dfprior": 0.75,
+    "dftrans": 0.5
   }
 }
