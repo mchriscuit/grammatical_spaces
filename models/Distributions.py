@@ -107,10 +107,6 @@ class Distance:
         return self._bn
 
     @property
-    def bi(self):
-        return self._bi
-
-    @property
     def bw(self):
         return self._bw
 
