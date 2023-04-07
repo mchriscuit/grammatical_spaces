@@ -144,7 +144,7 @@ class Distance:
         dp = np.exp(-c * dp, dp)
 
         ## Normalize the distances, if set as True
-        dp = dp / (dp.sum(axis=1)[:None]) ** int(nrm)
+        dp = dp / (dp.sum(axis=1)[:, None]) ** int(nrm)
 
         ## Create a CustomDistribution object
         setattr(self, pname, CustomDistribution(dw, dp))
