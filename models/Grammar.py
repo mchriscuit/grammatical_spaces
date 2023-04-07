@@ -1,5 +1,6 @@
 import numpy as np
 import copy as cp
+import logging
 from polyleven import levenshtein
 from models.Lexicon import Lexicon
 from models.Phonology import SPE
