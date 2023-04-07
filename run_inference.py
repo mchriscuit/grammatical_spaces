@@ -314,7 +314,7 @@ def main():
     ]
     with open(f"{opath}post.json", "w") as f:
         json.dump(Po, f, indent=2)
-    print("\nSamples successfully saved to file!")
+    print("Samples successfully saved to file!")
 
 
 if __name__ == "__main__":
