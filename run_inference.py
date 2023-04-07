@@ -1,5 +1,6 @@
 import numpy as np
 import copy as cp
+import logging
 import json
 import re
 import os
@@ -232,8 +233,7 @@ def posteriors(S: list, keys: list):
 
 def main():
 
-    """====== (1) Process Grammar Object ==========================================="""
-    print("\nInitializing Grammar object:")
+    """====== (1) Load Parameter Data =============================================="""
 
     ## Load in parameters of the model
     grP, mcP = load_parameters()
@@ -244,16 +244,6 @@ def main():
     ## Process the parameters of the model
     d, m, i = process_parameters(**fn)
     params = grP["parameters"]
-
-    ## Initialize the model given the processed parameters
-    G = Grammar(*d, m, i, params)
-
-    """====== (2) Run Sampling Algorithm ==========================================="""
-    print("\nRunning the MCMC algorithm:")
-
-    ## Run the MCMC algorithm
-    S = sample(G, **mcP)
-    print(S[-5:])
 
     ## Get the parameters of the model
     lm = params["conservativity"]
@@ -267,17 +257,44 @@ def main():
     gs = mcP["gsIters"]
     mh = mcP["mhIters"]
 
-    """====== (3) Save Outputs to File ============================================="""
-    print("\nSaving samples to file...")
+    """====== (2) Process Logging and Output Files ================================="""
 
-    ## Create the directory for the output files
-    do = "outputs"
+    ## Retrieve the filename of the dataset
     dn = re.sub(r"^.*/(.*?)\..*", r"\1", grP["filenames"]["obs"])
-    path = f"{do}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
-    if not os.path.exists(path):
-        os.makedirs(path)
+
+    ## Process the file directory for the logging file; generate a directory if there is
+    ## not one found
+    dl = "docs/logs"
+    lpath = f"{dl}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
+    if not os.path.exists(lpath):
+        os.makedirs(lpath)
+    logging.basicConfig(filename=f"{lpath}runtime.log", level=logging.INFO)
+
+    ## Process the file directory for the output file; generate a directory if there is
+    ## not one found
+    do = "outputs"
+    opath = f"{do}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
+    if not os.path.exists(opath):
+        os.makedirs(opath)
+
+    """====== (3) Initialize Grammar Object ========================================"""
+
+    ## Initialize the model given the processed parameters
+    print("\nInitializing ``Grammar`` object...")
+    G = Grammar(*d, m, i, params)
+    print("``Grammar`` object has been initialized!")
+
+    """====== (3) Run Sampling Algorithm ==========================================="""
+
+    ## Run the MCMC algorithm
+    print("\nRunning the MCMC algorithm...")
+    S = sample(G, **mcP)
+    print("MCMC algorithm has completed running!")
+
+    """====== (3) Save Outputs to File ============================================="""
 
     ## Retrieve posterior predictive distribution and save to file
+    print("\nSaving samples to file...")
     Pr = predictive(S)
     Pr = {
         fcx: {
@@ -285,7 +302,7 @@ def main():
         }
         for fcx in Pr
     }
-    with open(f"{path}pred.json", "w") as f:
+    with open(f"{opath}pred.json", "w") as f:
         json.dump(Pr, f, indent=2)
 
     ## Retrieve posterior distribution and save to file
@@ -295,8 +312,9 @@ def main():
         [{k: v for k, v in zip(keys, literal_eval(g))}, p]
         for g, p in sorted(Po.items(), reverse=True, key=lambda k: k[1])
     ]
-    with open(f"{path}post.json", "w") as f:
+    with open(f"{opath}post.json", "w") as f:
         json.dump(Po, f, indent=2)
+    print("\nSamples successfully saved to file!")
 
 
 if __name__ == "__main__":
