@@ -37,7 +37,6 @@ def sample(
     anConst: float,
     biConst: float,
 ):
-
     ## Initialize RNG generator
     rng = np.random.default_rng()
 
@@ -52,7 +51,6 @@ def sample(
 
     ## Perform the Gibbs sampling algorithm for gsIters iterations
     for gs in tqdm(range(gsIters)):
-
         ## Compute annealing exponent by taking the log of the current iteration
         ## divided by some constant. This should be set so that the exponent reaches
         ## a value of 1 around halfway into sampling (where burn-in takes place)
@@ -62,13 +60,11 @@ def sample(
 
         ## Loop through each independent group of lexemes
         for x in G.gid:
-
             ## Get the ids for each cxt a lexeme is associated with
             pid = G.pid[x]
 
             ## Sample prototype underlying forms
             for _ in range(mhIters):
-
                 ## Retrieve the identity parameters
                 idy = G.L.idy
 
@@ -116,7 +112,6 @@ def sample(
 
         ## Loop through each contextual UR
         for _ in range(mhIters):
-
             ## Retrieve the current prototype and contextual URs
             ocxt, oidy, oprcxt = G.L.cxt, G.L.idy, G.L.prcxt
 
@@ -191,7 +186,6 @@ def predictive(S: list):
 
     ## Populate dictionaries
     for smp in tqdm(S):
-
         ## Retrieve the information from the grammar
         cxs, exs = smp["cxs"], smp["exs"]
 
@@ -215,7 +209,6 @@ def posteriors(S: list, keys: list):
 
     ## Populate dictionaries
     for smp in tqdm(S):
-
         ## Retrieve the grammatical information
         info = [list(smp[k]) for k in keys]
         post[repr(info)] = post[repr(info)] + 1
@@ -232,7 +225,6 @@ def posteriors(S: list, keys: list):
 
 
 def main():
-
     """====== (1) Load Parameter Data =============================================="""
 
     ## Load in parameters of the model
@@ -314,7 +306,7 @@ def main():
     ]
     with open(f"{opath}post.json", "w") as f:
         json.dump(Po, f, indent=2)
-    print("Samples successfully saved to file!")
+    print("Samples successfully saved to file!\n")
 
 
 if __name__ == "__main__":
