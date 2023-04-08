@@ -10,6 +10,9 @@ from tqdm import tqdm
 from utils.process import load_parameters, process_parameters
 from models.Grammar import Grammar
 
+def logsumexp(x):
+    c = x.max()
+    return c + np.log(np.sum(np.exp(x - c)))
 
 def acceptance(o: np.ndarray, n: np.ndarray):
     """Returns a boolean corresponding whether to accept or reject the new sample"""
@@ -156,8 +159,8 @@ def sample(
         ## Calculate the expected outputs and likelihood of every context
         ## for each mapping hypothesis
         exs = G.M.apply(G.L.join(G.L.cxt), midx).T
-        lks = G.likelihood(exs, G.obs)[:, G.oid].prod(axis=1)
-        lks = lks / lks.sum()
+        lks = np.log(G.likelihood(exs, G.obs)[:, G.oid]).sum(axis=1)
+        lks = np.exp(lks - logsumexp(lks))
 
         ## Sample a new mapping hypothesis based on the likelihoods
         G.M.mhi = rng.choice(np.arange(lks.size), p=lks)
