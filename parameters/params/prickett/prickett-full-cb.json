@@ -10,7 +10,7 @@
     "conservativity": 1.5,
     "maxlength": 5,
     "maxbuffer": 0,
-    "prolength": 0.5,
+    "prolength": 0.25,
     "urprior": 5,
     "urtrans": 3,
     "dfprior": 0.75,
