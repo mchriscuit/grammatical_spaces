@@ -10,9 +10,11 @@ from tqdm import tqdm
 from utils.process import load_parameters, process_parameters
 from models.Grammar import Grammar
 
+
 def logsumexp(x):
     c = x.max()
     return c + np.log(np.sum(np.exp(x - c)))
+
 
 def acceptance(o: np.ndarray, n: np.ndarray):
     """Returns a boolean corresponding whether to accept or reject the new sample"""
@@ -101,6 +103,20 @@ def sample(
                 oj = ontp * (ol.prod(axis=1) * oprpro[x] * oprcxt[x].prod(axis=1)) ** pw
                 nj = notp * (nl.prod(axis=1) * nprpro[x] * nprcxt[x].prod(axis=1)) ** pw
 
+                # print(G.lxs[x])
+                # print(pid)
+                # print(opro[x])
+                # print(idy[x])
+                # print(ocxt[x])
+                # print(oexp)
+                # print(G.obs)
+                # print(ol)
+                # print(ol.prod(axis=1))
+                # print(oprpro[x])
+                # print(oprcxt[x])
+                # print(oprcxt[x].prod(axis=1))
+                # print()
+
                 ## Initialize and fill acceptance vector
                 a = np.full(G.L.nlxs, False)
                 a[x] = acceptance(oj, nj)
@@ -142,12 +158,26 @@ def sample(
             ol[G.oid] = olk[G.oid]
             nl[G.oid] = nlk[G.oid]
 
+            # print(oexp)
+            # print(G.obs)
+            # print(ol)
+
+            # print(nexp)
+            # print(G.obs)
+            # print(nl)
+            # print()
+
             ## Calculate the weighted posteriors
             po = ontp.prod(axis=0) * (ol * oprcxt.prod(axis=0)) ** pw
             pn = notp.prod(axis=0) * (nl * nprcxt.prod(axis=0)) ** pw
 
             ## Initialize and fill acceptance vector
             a = acceptance(po, pn)
+
+            # print(G.L.cxt)
+            # print(a)
+            # print(G.L.cxt[:, a])
+            # print()
 
             ## If accepted, update the underlying form hypotheses
             G.L.cxt[:, a] = ncxt[:, a]
@@ -178,6 +208,9 @@ def sample(
                 "exs": exs[G.M.mhi].squeeze(),
                 "obs": G.obs,
             }
+            # for k, v in smp.items():
+            #     print(k, v)
+            # print()
             samples.append(cp.deepcopy(smp))
 
     return samples
@@ -272,6 +305,15 @@ def main():
     if not os.path.exists(opath):
         os.makedirs(opath)
 
+    ## Print out parameters to console
+    print("\nLoading parameters into the model...")
+    print("Filename of the data:", dn)
+    print("Conservativity: (lm):", lm)
+    print("Gibbs iterations:", gs)
+    print("Metropolis-Hastings iterations:", mh)
+    print("Prototype underlying form prior (ps):", ps)
+    print("Prototype underlying form proposal (ph):", ph)
+
     """====== (3) Initialize Grammar Object ========================================"""
 
     ## Initialize the model given the processed parameters
@@ -279,14 +321,14 @@ def main():
     G = Grammar(*d, m, i, params)
     print("``Grammar`` object has been initialized!")
 
-    """====== (3) Run Sampling Algorithm ==========================================="""
+    """====== (4) Run Sampling Algorithm ==========================================="""
 
     ## Run the MCMC algorithm
     print("\nRunning the MCMC algorithm...")
     S = sample(G, **mcP)
     print("MCMC algorithm has completed running!")
 
-    """====== (3) Save Outputs to File ============================================="""
+    """====== (5) Save Outputs to File ============================================="""
 
     ## Retrieve posterior predictive distribution and save to file
     print("\nSaving samples to file...")

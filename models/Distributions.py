@@ -27,7 +27,6 @@ class BaseDistribution:
 
 class Uniform(BaseDistribution):
     def __init__(self, n: float):
-
         ## Initialize random variates and probabilities
         self._vs = np.arange(n)
         self._ps = np.full(n, 1 / n)
@@ -38,7 +37,6 @@ class Uniform(BaseDistribution):
 
 class Bernoulli(BaseDistribution):
     def __init__(self, p: float):
-
         ## Initialize random variates and probabilities
         self._vs = np.array([0, 1])
         self._ps = np.array([1 - p, p])
@@ -49,7 +47,6 @@ class Bernoulli(BaseDistribution):
 
 class Geometric(BaseDistribution):
     def __init__(self, n: int, p: float):
-
         ## Initialize random variates and probabilities
         self._vs = np.arange(n + 1)
         self._ps = Geometric.p(self._vs, p)
@@ -92,7 +89,6 @@ class CustomDistribution:
 
 class Distance:
     def __init__(self, ss: np.ndarray, cs: dict = {}, n: int = 1):
-
         ## Segmental information and costs
         self._ss = ss
         self._ns = ss.size

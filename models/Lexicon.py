@@ -5,7 +5,6 @@ class Lexicon:
     """========== INITIALIZATION ==================================================="""
 
     def __init__(self, lxs: np.ndarray, cxs: np.ndarray, ml: int, pad: str, *pdist):
-
         ## *=*=*= HELPER FUNCTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._rng = np.random.default_rng()
         self._vln = np.vectorize(len)
@@ -23,6 +22,7 @@ class Lexicon:
         self._ulen, self._unif, self._dfpr, self._dftp, self._pr, self._tp = pdist
 
         ## *=*=*= LEXICON HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._aid = [[self.lxs.searchsorted(c) for c in cx] for cx in self.cxs]
         self._bid = np.asarray([[lx in cx for cx in self.cxs] for lx in self.lxs])
         self._cid = np.nonzero(self.bid)
         pdim = (self.nlxs,)
@@ -49,11 +49,9 @@ class Lexicon:
     ## *=*=*= PROBABILITY METHODS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 
     def pr(self, pro: np.ndarray, cxt: np.ndarray = None, idy: np.ndarray = None):
-
         ## If no contextual underlying form vector is given, calculate the
         ## prior of the prototype underlying form
         if cxt is None:
-
             ## Initialize the prior
             pr = np.ones(pro.shape)
 
@@ -66,7 +64,6 @@ class Lexicon:
         ## Otherwise, calculate the probability of generating the specified
         ## contextual UR given the prototype UR
         else:
-
             ## Get indices of the prototype and contextual underlying forms
             ## given the underlying form matrix. Rows correspond to lexemes
             ## while columns correspond to contexts
@@ -248,6 +245,10 @@ class Lexicon:
         return self._idy
 
     @property
+    def aid(self):
+        return self._aid
+
+    @property
     def bid(self):
         return self._bid
 
@@ -261,5 +262,6 @@ class Lexicon:
 
     def join(self, cxt: np.ndarray, pad: str = None):
         pad = self.pad if pad is None else pad
-        jxt = f"{self.pad}" + cxt.astype(object).sum(axis=0) + f"{self.pad}"
-        return jxt.astype(str)
+        aid = self.aid
+        jxt = np.asarray([f"{pad}{''.join(cx[ai])}{pad}" for ai, cx in zip(aid, cxt.T)])
+        return jxt

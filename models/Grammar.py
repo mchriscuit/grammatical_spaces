@@ -22,7 +22,6 @@ class Grammar:
         params: tuple,
         pad: str = "#",
     ):
-
         ## *=*=*= HELPER FUNCTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._vln = np.vectorize(len)
         self._vds = np.vectorize(levenshtein)
@@ -151,6 +150,14 @@ class Grammar:
             return self.chlikelihood(exs=exs, obs=obs)
 
     """ ========== ACCESSORS ===================================================== """
+
+    @property
+    def lxs(self):
+        return self._lxs
+
+    @property
+    def cxs(self):
+        return self._cxs
 
     @property
     def ml(self):

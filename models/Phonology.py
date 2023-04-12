@@ -7,7 +7,6 @@ class SPE:
     """========== INITIALIZATION ==================================================="""
 
     def __init__(self, mnms: np.ndarray, mdfs: np.ndarray, fms: np.ndarray, inv):
-
         ## *=*=*= HELPER FUNCTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._rng = np.random.default_rng()
         self._vln = np.vectorize(len)
@@ -128,7 +127,6 @@ class SPE:
 
             ## The input is a list of contexts. As such, loop through each context
             for str_nclass in seq_str_nclasses:
-
                 ## If the given natural class is '_', it is the source position; skip it
                 if str_nclass == "_":
                     cxt_rgx = ""
@@ -137,7 +135,6 @@ class SPE:
                 ## or not is it by looking at its type: if it a string that contains
                 ## '|', it contains an optional position. Do some special operations on it...
                 elif "|" in str_nclass:
-
                     ## Get the optional environment
                     opts = split_opt_nclass(str_nclass)
                     opts = [[o.split(":") for o in opt.split(".")] for opt in opts]
@@ -162,7 +159,6 @@ class SPE:
 
                 ## Otherwise, it is a single natural class; perform as usual
                 else:
-
                     ## Get the natural class
                     cxt = np.asarray(split_str_nclass(str_nclass))
 
