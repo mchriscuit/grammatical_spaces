@@ -1,6 +1,6 @@
 import numpy as np
-from itertools import product, combinations
-from polyleven import levenshtein
+from itertools import product
+from weighted_levenshtein import levenshtein
 
 """ *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
                 SUPERCLASS DECLARATION
@@ -88,15 +88,17 @@ class CustomDistribution:
 
 
 class Distance:
-    def __init__(self, ss: np.ndarray, cs: dict = {}, n: int = 1):
+    def __init__(self, ss: np.ndarray, n: int = 1):
         ## Segmental information and costs
         self._ss = ss
         self._ns = ss.size
-        self._cs = cs
 
         ## Base distribution
         self._bn = n + 1
         self._bw = self.it_prod(n + 1)
+        self._ic = np.ones(128, dtype=np.float64)
+        self._dc = np.ones(128, dtype=np.float64)
+        self._sc = np.ones((128, 128), dtype=np.float64)
 
     @property
     def bn(self):
@@ -106,7 +108,19 @@ class Distance:
     def bw(self):
         return self._bw
 
-    def add_derv(self, name: str, k: int):
+    @property
+    def sc(self):
+        return self._sc
+
+    @property
+    def ic(self):
+        return self._ic
+
+    @property
+    def dc(self):
+        return self._dc
+
+    def add_derv(self, name: str, k: int, c: dict = None):
         """Creates a derived distribution of strings and distances from length 0 to k < n"""
 
         ## Check that the derived distribution is a subset of the base
@@ -116,12 +130,17 @@ class Distance:
         setattr(self, name + "_dk", k)
 
         ## Get the view of the string distributions up to length k
-        dw = self.it_prod(k)
+        dw = self.it_prod(n=k)
         setattr(self, name + "_dw", dw)
 
         ## Calculate the edit distance between all points in the matrix
-        dd = self.it_dist(dw)
+        dic = np.ones(128, dtype=np.float64)
+        ddc = np.ones(128, dtype=np.float64)
+        dd, dsc = self.it_dist(w=dw, c=c)
         setattr(self, name + "_dd", dd)
+        setattr(self, name + "_dic", dic)
+        setattr(self, name + "_ddc", ddc)
+        setattr(self, name + "_dsc", dsc)
 
     def add_pdis(self, pname: str, dname: str, c: float, nrm: bool = True):
         """Creates a custom probability distribution given an initialized derived
@@ -162,12 +181,21 @@ class Distance:
 
         return w
 
-    def it_dist(self, w: np.ndarray):
+    def it_dist(self, w: np.ndarray, c: dict = None):
         """Takes in a one-dimensional array of strings and returns a matrix of
         (symmetric) Levenshtein distances between each pair of strings"""
 
+        ## If a custom operation cost is specified, build to cost matrix
+        ## The API takes in a 128 x 128 matrix corresponding to each ASCII
+        ## character, where each cell corresponds to the cost. For now, we assume
+        ## that only substitutions are non-one
+        sc = np.ones((128, 128), dtype=np.float64)
+        if c is not None:
+            for ss, sm in c.items():
+                sc[ord(ss[0]), ord(ss[1])] = 1 - sm
+
         ## Calculate the symmetric distances between each pair of strings
         l = w.tolist()
-        d = np.asarray([[levenshtein(x, y) for y in l] for x in l])
+        d = np.asarray([[levenshtein(x, y, substitute_costs=sc) for y in l] for x in l])
 
-        return d
+        return d, sc

@@ -1,5 +1,6 @@
 import numpy as np
 import re
+import itertools as it
 
 
 class Inventory:
@@ -12,22 +13,27 @@ class Inventory:
         def is_seg(token: str):
             return bool(re.match("\w", token))
 
-        ## *=*=*= SEGMENTS AND FEATURES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        ## *=*=*= SEGMENTS AND FEATURES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self._tokens = tokens
         self._segs = self.tokens[list(map(is_seg, self.tokens.tolist()))]
         self._feats = feats
         self._tconfigs = configs
         self._sconfigs = self.tconfigs[list(map(is_seg, self.tokens.tolist()))]
 
-        ## *=*=*= SEGMENTS COUNTS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        ## *=*=*= SEGMENTS COUNTS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self._ntokens = len(self.tokens)
         self._nsegs = len(self.segs)
         self._nfeats = len(self.feats)
 
-        ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+        ## *=*=*= INDEX DICTIONARIES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._token2id = {s: i for i, s in enumerate(self.tokens.tolist())}
         self._feat2id = {f: i for i, f in enumerate(self.feats.tolist())}
         self._tconfig2id = {tuple(c): i for i, c in enumerate(self.tconfigs.tolist())}
+
+        ## *=*=*= NATURAL CLASSES AND SIMILARITY *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
+        self._sncs = self.gen_nclass(self.segs, self.feats, self.sconfigs)
+        self._sshd, self._ushd = self.cnt_nclass(self.segs, self.sncs)
+        self._ssim = self.sim_nclass(self.sshd, self.ushd)
 
     """ ========== STATIC METHODS ================================================= """
 
@@ -87,6 +93,22 @@ class Inventory:
     def nfeats(self):
         return self._nfeats
 
+    @property
+    def sncs(self):
+        return self._sncs
+
+    @property
+    def sshd(self):
+        return self._sshd
+
+    @property
+    def ushd(self):
+        return self._ushd
+
+    @property
+    def ssim(self):
+        return self._ssim
+
     """ ========== GENERATIVE ACCESSORS =========================================== """
 
     def token2id(self, token: str):
@@ -140,7 +162,6 @@ class Inventory:
         ## Loop through each configuration in the sequence
         segs = []
         for config in seq_config:
-
             ## If the configs given are all nan, then it is a word boundary
             config = np.zeros(config.shape) if np.isnan(config).all() else config
 
@@ -181,3 +202,84 @@ class Inventory:
         cconfig[:, cidx] = tconfigs[0, cidx]
 
         return Inventory.config_to_nan(cconfig)
+
+    """ ========== NATURAL CLASSES ================================================ """
+
+    def gen_nclass(self, ss: np.ndarray, fs: np.ndarray, vs: np.ndarray):
+        """Generates all possible natural classes given a set of features"""
+
+        ## Initializ segment to natural class dictionary
+        sncs = {}
+
+        ## If the segment inventory is empty, end the recursion
+        if len(fs) == 0:
+            return sncs
+
+        ## Recurse over all possible feature subsets
+        for i, _ in enumerate(fs):
+            fsub = np.delete(fs, i)
+            vsub = np.delete(vs, i, axis=1)
+            ssub = self.gen_nclass(ss, fsub, vsub)
+
+            ## Update dictionaries
+            for s, ncs in ssub.items():
+                sncs[s] = sncs[s].union(ncs) if s in sncs else ncs
+
+        ## Generate all possible permutations of each feature value
+        nfs = len(fs)
+        vpm = it.product([-1, 1], repeat=nfs)
+
+        ## Iterate through each permutation and populate the dictionary
+        for i, p in enumerate(vpm):
+            cd = np.sum(vs * p, axis=1)
+            id = np.nonzero(cd == nfs)
+
+            ## Update the dictionaries
+            cs = ss[id]
+            nc = frozenset(f"+{f}" if p[j] > 0 else f"-{f}" for j, f in enumerate(fs))
+            nc = set((nc,))
+
+            ## Update the s2ncs dictionary
+            for s in cs:
+                sncs[s] = sncs[s].union(nc) if s in sncs else nc
+
+        return sncs
+
+    def cnt_nclass(self, ss: np.ndarray, sncs: dict):
+        """Computes the number of (un)shared natural classes between all segment pairs"""
+
+        ## Initialize dictionaries
+        sshd = {}
+        ushd = {}
+
+        ## Loop through each pair of segments: order does not matter
+        for x in ss:
+            for y in ss:
+                ncx = sncs[x]
+                ncy = sncs[y]
+                nnx = len(ncx)
+                nny = len(ncy)
+
+                ## Compute number of shared and unshared natural classes
+                sh = ncx.intersection(ncy)
+                ns = len(sh)
+                nu = nnx + nny - 2 * ns
+
+                ## Write to dictionary
+                pair = (x, y)
+                sshd[pair] = ns
+                ushd[pair] = nu
+
+        return sshd, ushd
+
+    def sim_nclass(self, sshd: dict, ushd: dict):
+        """Compute similarity of two segments (Frisch et al 2004)"""
+
+        ## Initialize dictionary
+        ssim = {}
+
+        ## Compute similarities
+        for pair in sshd:
+            ssim[pair] = sshd[pair] / (sshd[pair] + ushd[pair])
+
+        return ssim

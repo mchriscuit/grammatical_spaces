@@ -308,8 +308,8 @@ def main():
     ## Print out parameters to console
     print("\nLoading parameters into the model...")
     print("Filename of the data:", dn)
-    print("Conservativity: (lm):", lm)
     print("Gibbs iterations:", gs)
+    print("Conservativity: (lm):", lm)
     print("Metropolis-Hastings iterations:", mh)
     print("Prototype underlying form prior (ps):", ps)
     print("Prototype underlying form proposal (ph):", ph)

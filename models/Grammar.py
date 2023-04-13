@@ -1,7 +1,6 @@
 import numpy as np
 import copy as cp
-import logging
-from polyleven import levenshtein
+from weighted_levenshtein import levenshtein
 from models.Lexicon import Lexicon
 from models.Phonology import SPE
 from models.Inventory import Inventory
@@ -24,7 +23,6 @@ class Grammar:
     ):
         ## *=*=*= HELPER FUNCTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._vln = np.vectorize(len)
-        self._vds = np.vectorize(levenshtein)
 
         ## *=*=*= HYPERPARAMETERS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
         self._pad = pad
@@ -50,14 +48,19 @@ class Grammar:
         self._ss = self._iv.segs
         self._ns = self._iv.nsegs
         self._fs = self._iv.feats
+        self._sm = self._iv.ssim
 
         """ (2) Distance object ===================================================="""
         self._m = self._ml + self._mb
         self._D = Distance(ss=self._ss, n=self._m)
-        self._D.add_derv("sub", self._ml)
+        self._D.add_derv("sub", self._ml, self._sm)
         self._D.add_pdis("nc", "sub", self._lm, False)
         self._D.add_pdis("pr", "sub", self._ps)
         self._D.add_pdis("tp", "sub", self._ph)
+
+        ## Generate the vectorized weighted levenshtein distance function
+        dsc = self._D.sub_dsc
+        self._vds = np.vectorize(lambda x, y: levenshtein(x, y, substitute_costs=dsc))
 
         """ (3) Distribution object ================================================"""
         self._ulen = Geometric(self._ml, self._th)
