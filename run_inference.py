@@ -103,20 +103,6 @@ def sample(
                 oj = ontp * (ol.prod(axis=1) * oprpro[x] * oprcxt[x].prod(axis=1)) ** pw
                 nj = notp * (nl.prod(axis=1) * nprpro[x] * nprcxt[x].prod(axis=1)) ** pw
 
-                # print(G.lxs[x])
-                # print(pid)
-                # print(opro[x])
-                # print(idy[x])
-                # print(ocxt[x])
-                # print(oexp)
-                # print(G.obs)
-                # print(ol)
-                # print(ol.prod(axis=1))
-                # print(oprpro[x])
-                # print(oprcxt[x])
-                # print(oprcxt[x].prod(axis=1))
-                # print()
-
                 ## Initialize and fill acceptance vector
                 a = np.full(G.L.nlxs, False)
                 a[x] = acceptance(oj, nj)
@@ -158,26 +144,12 @@ def sample(
             ol[G.oid] = olk[G.oid]
             nl[G.oid] = nlk[G.oid]
 
-            # print(oexp)
-            # print(G.obs)
-            # print(ol)
-
-            # print(nexp)
-            # print(G.obs)
-            # print(nl)
-            # print()
-
             ## Calculate the weighted posteriors
             po = ontp.prod(axis=0) * (ol * oprcxt.prod(axis=0)) ** pw
             pn = notp.prod(axis=0) * (nl * nprcxt.prod(axis=0)) ** pw
 
             ## Initialize and fill acceptance vector
             a = acceptance(po, pn)
-
-            # print(G.L.cxt)
-            # print(a)
-            # print(G.L.cxt[:, a])
-            # print()
 
             ## If accepted, update the underlying form hypotheses
             G.L.cxt[:, a] = ncxt[:, a]
@@ -208,9 +180,6 @@ def sample(
                 "exs": exs[G.M.mhi].squeeze(),
                 "obs": G.obs,
             }
-            # for k, v in smp.items():
-            #     print(k, v)
-            # print()
             samples.append(cp.deepcopy(smp))
 
     return samples
