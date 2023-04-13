@@ -34,7 +34,7 @@ def acceptance(o: np.ndarray, n: np.ndarray):
     return np.logical_or.reduce((h, z, s))
 
 
-def sample(
+def sample_posterior(
     G: Grammar,
     gsIters: float,
     mhIters: float,
@@ -294,7 +294,7 @@ def main():
 
     ## Run the MCMC algorithm
     print("\nRunning the MCMC algorithm...")
-    S = sample(G, **mcP)
+    S = sample_posterior(G, **mcP)
     print("MCMC algorithm has completed running!")
 
     """====== (5) Save Outputs to File ============================================="""
