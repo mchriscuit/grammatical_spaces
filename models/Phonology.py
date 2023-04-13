@@ -221,7 +221,7 @@ class SPE:
                 [
                     src
                     for src, res in it.zip_longest(fsrc_tokens, fres_tokens)
-                    if src != res
+                    if src != res and src is not None
                 ]
             )
             res_tokens = np.asarray(
