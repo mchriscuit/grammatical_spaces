@@ -52,29 +52,29 @@ def main():
         ## (1) the outermost dictionary corresponds to the lexical item (cx)
         ## (2) the inner dictionary corresponds to the expected forms and
         ##     their posterior predictive
-        df = {
-            "cx": [],
-            "trial": [],
-            "int": [],
-            "alt": [],
-            "int_prb": [],
-            "alt_prb": [],
-            "nprb": [],
-        }
+        df = {"cx": [], "trial": [], "int": [], "alt": [], "prb": []}
         for cx, info in jex.items():
-            intd = info["int_sr"]
-            altd = info["alt_sr"]
-            trial = info["trial"]
-            pint = jdf[cx].get(intd, 0)
-            palt = jdf[cx].get(altd, 0)
-            pnrm = jdf[cx].get(intd, 0) / (jdf[cx].get(intd, 0) + jdf[cx].get(altd, 0))
-            df["cx"].append(cx)
-            df["trial"].append(trial)
-            df["int"].append(intd)
-            df["alt"].append(altd)
-            df["int_prb"].append(pint)
-            df["alt_prb"].append(palt)
-            df["nprb"].append(pnrm)
+            if "int_sr" in info and "alt_sr" in info:
+                intd = info["int_sr"]
+                altd = info["alt_sr"]
+                trial = info["trial"]
+                pint = jdf[cx].get(intd, 0)
+                palt = jdf[cx].get(altd, 0)
+                pnrm = pint / (pint + palt)
+                df["cx"].append(cx)
+                df["trial"].append(trial)
+                df["int"].append(intd)
+                df["alt"].append(altd)
+                df["prb"].append(pnrm)
+            elif "int_sr" in info:
+                intd = info["int_sr"]
+                trial = info["trial"]
+                pint = jdf[cx].get(intd, 0)
+                df["cx"].append(cx)
+                df["trial"].append(trial)
+                df["int"].append(intd)
+                df["alt"].append(altd)
+                df["prb"].append(pint)
 
         ## Transform to dataframe
         df = pd.DataFrame(df)

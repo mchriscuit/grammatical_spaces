@@ -70,7 +70,7 @@ def main():
     for color, level in zip(colors, lg):
         ax.bar(
             x=x + p,
-            height=df[df["lng"] == level]["nprb"],
+            height=df[df["lng"] == level]["prb"],
             width=w,
             label=level,
             capsize=1.5,
