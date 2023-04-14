@@ -253,6 +253,8 @@ def main():
     bt = params["dftrans"]
     gs = mcP["gsIters"]
     mh = mcP["mhIters"]
+    bi = mcP["biConst"]
+    sk = mcP["skIters"]
 
     """====== (2) Process Logging and Output Files ================================="""
 
@@ -278,10 +280,13 @@ def main():
     print("\nLoading parameters into the model...")
     print("Filename of the data:", dn)
     print("Gibbs iterations:", gs)
-    print("Conservativity: (lm):", lm)
     print("Metropolis-Hastings iterations:", mh)
-    print("Prototype underlying form prior (ps):", ps)
-    print("Prototype underlying form proposal (ph):", ph)
+    print("Burn-in proportion:", bi)
+    print("Skip iterations:", sk)
+    print("Conservativity: (lm):", lm)
+    print("Prototype underlying form max length + prior:", ml, th)
+    print("Contextual underlying form prior (ps):", ps)
+    print("Underlying form proposal (ph):", ph)
 
     """====== (3) Initialize Grammar Object ========================================"""
 
