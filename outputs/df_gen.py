@@ -52,9 +52,10 @@ def main():
         ## (1) the outermost dictionary corresponds to the lexical item (cx)
         ## (2) the inner dictionary corresponds to the expected forms and
         ##     their posterior predictive
-        df = {"cx": [], "trial": [], "int": [], "alt": [], "prb": []}
-        for cx, info in jex.items():
-            if "int_sr" in info and "alt_sr" in info:
+        check = list(jex.values())[0]
+        if "int_sr" in check and "alt_sr" in check:
+            df = {"cx": [], "trial": [], "int": [], "alt": [], "prb": []}
+            for cx, info in jex.items():
                 intd = info["int_sr"]
                 altd = info["alt_sr"]
                 trial = info["trial"]
@@ -66,14 +67,15 @@ def main():
                 df["int"].append(intd)
                 df["alt"].append(altd)
                 df["prb"].append(pnrm)
-            elif "int_sr" in info:
+        elif "int_sr" in check:
+            df = {"cx": [], "trial": [], "int": [], "prb": []}
+            for cx, info in jex.items():
                 intd = info["int_sr"]
                 trial = info["trial"]
                 pint = jdf[cx].get(intd, 0)
                 df["cx"].append(cx)
                 df["trial"].append(trial)
                 df["int"].append(intd)
-                df["alt"].append(altd)
                 df["prb"].append(pint)
 
         ## Transform to dataframe
