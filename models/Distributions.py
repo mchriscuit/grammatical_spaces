@@ -26,13 +26,28 @@ class BaseDistribution:
 
 
 class Uniform(BaseDistribution):
-    def __init__(self, n: float):
+    def __init__(self, n: int):
         ## Initialize random variates and probabilities
         self._vs = np.arange(n)
-        self._ps = np.full(n, 1 / n)
+        self._ps = np.full(n, 1 / float(n))
 
         ## Initialize the superclass
         super().__init__(self._vs, self._ps)
+
+
+class Kniform(BaseDistribution):
+    def __init__(self, n: int, k: int, t: float):
+        ## Initialize random variates and probabilities
+        self._vs = np.arange(k + 1)
+        self._ps = Kniform.p(n, self._vs, t)
+        self._ps = self._ps / self._ps.sum()
+
+        ## Initialize the superclass
+        super().__init__(self._vs, self._ps)
+
+    @staticmethod
+    def p(n: int, k: np.ndarray, t: float):
+        return 1 / float(n) ** (k.astype(float) * t)
 
 
 class Bernoulli(BaseDistribution):
@@ -45,11 +60,11 @@ class Bernoulli(BaseDistribution):
         super().__init__(self._vs, self._ps)
 
 
-class Geometric(BaseDistribution):
+class Keometric(BaseDistribution):
     def __init__(self, n: int, p: float):
         ## Initialize random variates and probabilities
         self._vs = np.arange(n + 1)
-        self._ps = Geometric.p(self._vs, p)
+        self._ps = Keometric.p(self._vs, p)
         self._ps = self._ps / self._ps.sum()
 
         ## Initialize the superclass
@@ -66,7 +81,7 @@ class Geometric(BaseDistribution):
 
 
 class CustomDistribution:
-    def __init__(self, w: np.ndarray, p: float):
+    def __init__(self, w: np.ndarray, p: np.ndarray):
         self._w = w
         self._p = p
 

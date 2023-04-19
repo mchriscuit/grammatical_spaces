@@ -284,7 +284,7 @@ def main():
     print("Burn-in proportion:", bi)
     print("Skip iterations:", sk)
     print("Conservativity: (lm):", lm)
-    print("Prototype underlying form max length + prior:", ml, th)
+    print("Prototype underlying form max length + prior:", f"{ml}, {th}")
     print("Contextual underlying form prior (ps):", ps)
     print("Underlying form proposal (ph):", ph)
 

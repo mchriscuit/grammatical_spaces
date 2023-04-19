@@ -19,7 +19,7 @@ class Lexicon:
         self._cxs, self._ncxs = cxs, len(cxs)
 
         ## *=*=*= DISTRIBUTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-        self._ulen, self._unif, self._dfpr, self._dftp, self._pr, self._tp = pdist
+        self._ulen, self._dfpr, self._dftp, self._pr, self._tp = pdist
 
         ## *=*=*= LEXICON HYPOTHESES *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._aid = [[self.lxs.searchsorted(c) for c in cx] for cx in self.cxs]
@@ -59,7 +59,6 @@ class Lexicon:
             ## the prior of generating a prototype UR of that length
             l = self.vln(pro)
             pr *= self._ulen.pmf(l)
-            pr *= self._unif.pmf(0) ** l
 
         ## Otherwise, calculate the probability of generating the specified
         ## contextual UR given the prototype UR

@@ -4,7 +4,7 @@ from weighted_levenshtein import levenshtein
 from models.Lexicon import Lexicon
 from models.Phonology import SPE
 from models.Inventory import Inventory
-from models.Distributions import Uniform, Bernoulli, Geometric, Distance
+from optims.Distributions import Kniform, Bernoulli, Distance
 
 
 class Grammar:
@@ -63,13 +63,12 @@ class Grammar:
         self._vds = np.vectorize(lambda x, y: levenshtein(x, y, substitute_costs=dsc))
 
         """ (3) Distribution object ================================================"""
-        self._ulen = Geometric(self._ml, self._th)
-        self._unif = Uniform(self._ns)
+        self._ulen = Kniform(self._ns, self._ml, self._th)
         self._dfpr = Bernoulli(self._al)
         self._dftp = Bernoulli(self._bt)
 
         """ (4) Lexicon object ====================================================="""
-        pdist = (self._ulen, self._unif, self._dfpr, self._dftp, self._D.pr, self._D.tp)
+        pdist = (self._ulen, self._dfpr, self._dftp, self._D.pr, self._D.tp)
         self.L = Lexicon(self._lxs, self._cxs, self._ml, self._pad, *pdist)
 
         """ (5) Mappings object ===================================================="""
