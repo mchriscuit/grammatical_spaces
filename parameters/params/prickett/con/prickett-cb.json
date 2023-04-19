@@ -7,10 +7,10 @@
   },
   "parameters": 
   {
-    "conservativity": 1,
+    "conservativity": 10,
     "maxlength": 5,
     "maxbuffer": 0,
-    "prolength": 0.25,
+    "prolength": 0.5,
     "urprior": 5,
     "urtrans": 3,
     "dfprior": 0.75,

@@ -1,7 +1,7 @@
 {
   "filenames": 
   {
-    "obs": "prickett/all/prickett-cf-full.csv",
+    "obs": "prickett/all/prickett-full-cf.csv",
     "inv": "prickett.csv",
     "map": "prickett.csv"
   },
@@ -10,7 +10,7 @@
     "conservativity": 5,
     "maxlength": 5,
     "maxbuffer": 0,
-    "prolength": 0.25,
+    "prolength": 0.5,
     "urprior": 5,
     "urtrans": 3,
     "dfprior": 0.75,
