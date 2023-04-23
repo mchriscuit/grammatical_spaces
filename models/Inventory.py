@@ -263,7 +263,7 @@ class Inventory:
                 ## Compute number of shared and unshared natural classes
                 sh = ncx.intersection(ncy)
                 ns = len(sh)
-                nu = nnx + nny - 2 * ns
+                nu = nnx - ns
 
                 ## Write to dictionary
                 pair = (x, y)
