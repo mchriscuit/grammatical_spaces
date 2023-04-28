@@ -269,13 +269,6 @@ def main():
         os.makedirs(lpath)
     logging.basicConfig(filename=f"{lpath}runtime.log", level=logging.INFO)
 
-    ## Process the file directory for the output file; generate a directory if there is
-    ## not one found
-    do = "outputs"
-    opath = f"{do}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
-    if not os.path.exists(opath):
-        os.makedirs(opath)
-
     ## Print out parameters to console
     print("\nLoading parameters into the model...")
     print("Filename of the data:", dn)
@@ -285,6 +278,7 @@ def main():
     print("Skip iterations:", sk)
     print("Conservativity: (lm):", lm)
     print("Prototype underlying form max length + prior:", f"{ml}, {th}")
+    print("Contextual underlying form default (al):", al)
     print("Contextual underlying form prior (ps):", ps)
     print("Underlying form proposal (ph):", ph)
 
@@ -304,6 +298,14 @@ def main():
 
     """====== (5) Save Outputs to File ============================================="""
 
+    ## Process the file directory for the output file; generate a directory if there is
+    ## not one found
+    ic = 0
+    do = "outputs"
+    opath = f"{do}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
+    if not os.path.exists(opath):
+        os.makedirs(opath)
+
     ## Retrieve posterior predictive distribution and save to file
     print("\nSaving samples to file...")
     Pr = predictive(S)
@@ -313,7 +315,13 @@ def main():
         }
         for fcx in Pr
     }
-    with open(f"{opath}pred.json", "w") as f:
+
+    ## Check whether the file exists; if it does, write to a new file
+    prp = f"{opath}pred"
+    while os.path.isfile(f"{prp}.json"):
+        ic += 1
+        prp = f"{prp}-{str(ic)}"
+    with open(f"{prp}.json", "w") as f:
         json.dump(Pr, f, indent=2)
 
     ## Retrieve posterior distribution and save to file
@@ -323,7 +331,13 @@ def main():
         [{k: v for k, v in zip(keys, literal_eval(g))}, p]
         for g, p in sorted(Po.items(), reverse=True, key=lambda k: k[1])
     ]
-    with open(f"{opath}post.json", "w") as f:
+
+    ## Check whether the file exists; if it does, write to a new file
+    pop = f"{opath}post"
+    while os.path.isfile(f"{pop}.json"):
+        ic += 1
+        pop = f"{pop}-{str(pop)}"
+    with open(f"{opath}.json", "w") as f:
         json.dump(Po, f, indent=2)
     print("Samples successfully saved to file!\n")
 
