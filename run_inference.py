@@ -318,9 +318,9 @@ def main():
 
     ## Check whether the file exists; if it does, write to a new file
     prp = f"{opath}pred"
-    while os.path.isfile(f"{prp}.json"):
+    while os.path.isfile(f"{prp}-{ic}.json"):
         ic += 1
-        prp = f"{prp}-{str(ic)}"
+    prp = f"{prp}-{ic}"
     with open(f"{prp}.json", "w") as f:
         json.dump(Pr, f, indent=2)
 
@@ -334,10 +334,10 @@ def main():
 
     ## Check whether the file exists; if it does, write to a new file
     pop = f"{opath}post"
-    while os.path.isfile(f"{pop}.json"):
+    while os.path.isfile(f"{pop}-{ic}.json"):
         ic += 1
-        pop = f"{pop}-{str(pop)}"
-    with open(f"{opath}.json", "w") as f:
+    pop = f"{pop}-{ic}"
+    with open(f"{pop}.json", "w") as f:
         json.dump(Po, f, indent=2)
     print("Samples successfully saved to file!\n")
 
