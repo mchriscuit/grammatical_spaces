@@ -1,7 +1,7 @@
 {
-    "gsIters": 300000,
+    "gsIters": 1000000,
     "mhIters": 10,
     "skIters": 15,
-    "anConst": 12,
+    "anConst": 15,
     "biConst": 2
 }
