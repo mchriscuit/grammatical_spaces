@@ -1,13 +1,13 @@
 {
   "filenames": 
   {
-    "obs": "prickett/sub/prickett-sub-cf.csv",
+    "obs": "prickett/sub/prickett-sub-cb.csv",
     "inv": "prickett.csv",
     "map": "prickett.csv"
   },
   "parameters": 
   {
-    "conservativity": 2,
+    "conservativity": 1,
     "maxlength": 5,
     "maxbuffer": 0,
     "prolength": 0.75,

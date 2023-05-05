@@ -7,7 +7,7 @@
   },
   "parameters": 
   {
-    "conservativity": 2,
+    "conservativity": 1,
     "maxlength": 5,
     "maxbuffer": 0,
     "prolength": 0.75,
