@@ -1,0 +1,19 @@
+{
+  "filenames": 
+  {
+    "obs": "prickett/type/prickett-type-cf.csv",
+    "inv": "prickett.csv",
+    "map": "prickett.csv"
+  },
+  "parameters": 
+  {
+    "conservativity": 1,
+    "maxlength": 5,
+    "maxbuffer": 0,
+    "prolength": 0.75,
+    "urprior": 5,
+    "urtrans": 3,
+    "dfprior": 0.75,
+    "dftrans": 0.5
+  }
+}
