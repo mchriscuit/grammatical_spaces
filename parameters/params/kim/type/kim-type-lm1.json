@@ -1,13 +1,13 @@
 {
   "filenames": 
   {
-    "obs": "prickett/base/prickett-base-cf.csv",
-    "inv": "prickett.csv",
-    "map": "prickett.csv"
+    "obs": "kim/kim-type.csv",
+    "inv": "kim.csv",
+    "map": "kim.csv"
   },
   "parameters": 
   {
-    "conservativity": 12.5,
+    "conservativity": 1,
     "maxlength": 5,
     "maxbuffer": 0,
     "prolength": 0.5,
