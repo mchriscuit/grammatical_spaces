@@ -1,7 +1,7 @@
 {
   "filenames": 
   {
-    "obs": "kim/kim.csv",
+    "obs": "kim/kim-base.csv",
     "inv": "kim.csv",
     "map": "kim.csv"
   },
@@ -10,7 +10,7 @@
     "conservativity": 1,
     "maxlength": 5,
     "maxbuffer": 0,
-    "prolength": 0.25,
+    "prolength": 0.5,
     "urprior": 5,
     "urtrans": 3,
     "dfprior": 0.75,
