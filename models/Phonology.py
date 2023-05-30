@@ -63,8 +63,12 @@ class SPE:
         for i, mhy in enumerate(mhys):
             out = jnd
             for mnm in mhy:
-                sd, tf = self.mnm2rgx[mnm]
-                out = sd.sub(lambda x: tf[x.groups("")[0]], out)
+                while True:
+                    old = out
+                    sd, tf = self.mnm2rgx[mnm]
+                    out = sd.sub(lambda x: tf[x.groups("")[0]], out)
+                    if old == out:
+                        break
             exs[:, i] = np.asarray(out.split(self.bnd))
 
         return exs
