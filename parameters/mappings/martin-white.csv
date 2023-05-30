@@ -1,4 +1,4 @@
-vowel harmony 1,-cons,+front,+front.+cons._
-vowel harmony 2,-cons,-front,-front.+cons._
-vowel disharmony 1,-cons,+front,-front.+cons._
-vowel disharmony 2,-cons,-front,+front.+cons._
+vowel harmony 1,-cons,+back,+back.+cons._
+vowel harmony 2,-cons,-back,-back.+cons._
+vowel disharmony 1,-cons,+back,-back.+cons._
+vowel disharmony 2,-cons,-back,+back.+cons._

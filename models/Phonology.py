@@ -20,7 +20,17 @@ class SPE:
         self._mdfs = mdfs
 
         """Rule hypotheses ========================================================="""
-        self._mhs = [m for i in range(self.nmns) for m in it.permutations(self.mnms, i)]
+        ## self._mhs = [m for i in range(self.nmns) for m in it.permutations(self.mnms, i)] 
+        ## REMOVE THIS LATER
+        self._mhs = []
+        for i in range(self.nmns):
+            for j in it.permutations(range(2), i):
+                if len(j) > 1:
+                    self._mhs.append(tuple([self.mnms[j[0] * 2]] + [self.mnms[j[0] * 2 + 1]] + [self.mnms[j[1]* 2] ] + [self.mnms[j[1] * 2 + 1]]))
+                elif len(j) == 1:
+                    self._mhs.append(tuple([self.mnms[j[0] * 2]] + [self.mnms[j[0] * 2 + 1]]))
+                else:
+                    self._mhs.append(tuple())
         self._mhs, self._nhs = np.asarray(self.mhs, dtype=object), len(self.mhs)
         self._mhi = np.asarray([0])
 
