@@ -73,14 +73,13 @@ class SPE:
         for i, mhy in enumerate(mhys):
             out = jnd
             for mnm in mhy:
-                while True:
+                run = True
+                while run:
                     old = out
                     sd, tf = self.mnm2rgx[mnm]
                     out = sd.sub(lambda x: tf[x.groups("")[0]], out)
-                    if old == out:
-                        break
+                    run = re.search(sd, out)
             exs[:, i] = np.asarray(out.split(self.bnd))
-
         return exs
 
     def chapply(self, fms: np.ndarray, mhi: np.ndarray = None):
@@ -169,7 +168,7 @@ class SPE:
                         i.join([f"[{i.join(list(set(o)))}]" for o in op])
                         for op in opt_tok
                     ]
-                    cxt_rgx = f"(?={'|'.join(cxt_rgx)})"
+                    cxt_rgx = f"({'|'.join(cxt_rgx)})"
 
                 ## Otherwise, it is a single natural class; perform as usual
                 else:
@@ -182,7 +181,7 @@ class SPE:
 
                     ## Get and join the associated segments
                     cxt_toks = self.inv.configs_to_tokens(cxt_cmp)
-                    cxt_rgx = f"(?=[{''.join(list(set(cxt_toks)))}])"
+                    cxt_rgx = f"[{''.join(list(set(cxt_toks)))}]"
 
                 ## Append to the list
                 seq_cxt_rgx.append(cxt_rgx)
@@ -256,8 +255,12 @@ class SPE:
             ## Fix the context such that the lookaheads before the idx are
             ## converted into lookbehinds
             seq_cxt_regex = [
-                re.sub(r"=", r"<=", cxt) if x < idx else cxt
-                for x, cxt in enumerate(seq_cxt_regex)
+                f"(?<={cxt}" if x == 0 and x < idx else 
+                f"(?={cxt}" if x == idx + 1 and x + 1 < len(seq_cxt_regex) else
+                f"(?<={cxt})" if x == 0 and x + 1 == idx else 
+                f"(?={cxt})" if x == idx + 1 and x + 1 == len(seq_cxt_regex) else
+                f"{cxt})" if x + 1 == idx or x + 1 == len(seq_cxt_regex) and x != idx else 
+                cxt for x, cxt in enumerate(seq_cxt_regex)
             ]
 
             ## Generate the regular expression for the structural description
