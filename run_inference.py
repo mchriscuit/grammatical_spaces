@@ -261,40 +261,43 @@ def main():
     ## Retrieve the filename of the dataset
     dn = re.sub(r"^.*/(.*?)\..*", r"\1", grP["filenames"]["obs"])
 
-    ## Process the file directory for the logging file; generate a directory if there is
-    ## not one found
+    ## Process the file directory for the logging file; generate a directory if one 
+    ## cannot be found
     dl = "docs/logs"
     lpath = f"{dl}/{dn}/lm{lm}-gs{gs}-mh{mh}-ml{ml}-th{th}-ps{ps}-ph{ph}-al{al}-bt{bt}/"
     if not os.path.exists(lpath):
         os.makedirs(lpath)
-    logging.basicConfig(filename=f"{lpath}runtime.log", level=logging.INFO)
+    logging.basicConfig(filename=f"{lpath}runtime.log", level=logging.DEBUG)
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    logging.getLogger('').addHandler(console)
 
     ## Print out parameters to console
-    print("\nLoading parameters into the model...")
-    print("Filename of the data:", dn)
-    print("Gibbs iterations:", gs)
-    print("Metropolis-Hastings iterations:", mh)
-    print("Burn-in proportion:", bi)
-    print("Skip iterations:", sk)
-    print("Conservativity: (lm):", lm)
-    print("Prototype underlying form max length + prior:", f"{ml}, {th}")
-    print("Contextual underlying form default (al):", al)
-    print("Contextual underlying form prior (ps):", ps)
-    print("Underlying form proposal (ph):", ph)
+    logging.info("\nLoading parameters into the model...")
+    logging.info(f"Filename of the data: {dn}")
+    logging.info(f"Gibbs iterations: {gs}")
+    logging.info(f"Metropolis-Hastings iterations: {mh}")
+    logging.info(f"Burn-in proportion: {bi}")
+    logging.info(f"Skip iterations: {sk}")
+    logging.info(f"Conservativity: (lm): {lm}")
+    logging.info(f"Prototype underlying form max length + prior: {ml}, {th}")
+    logging.info(f"Contextual underlying form default (al): {al}")
+    logging.info(f"Contextual underlying form prior (ps): {ps}")
+    logging.info(f"Underlying form proposal (ph): {ph}")
 
     """====== (3) Initialize Grammar Object ========================================"""
 
     ## Initialize the model given the processed parameters
-    print("\nInitializing ``Grammar`` object...")
+    logging.info("\nInitializing ``Grammar`` object...")
     G = Grammar(*d, m, i, params)
-    print("``Grammar`` object has been initialized!")
+    logging.info("``Grammar`` object has been initialized!")
 
     """====== (4) Run Sampling Algorithm ==========================================="""
 
     ## Run the MCMC algorithm
-    print("\nRunning the MCMC algorithm...")
+    logging.info("\nRunning the MCMC algorithm...")
     S = sample_posterior(G, **mcP)
-    print("MCMC algorithm has completed running!")
+    logging.info("MCMC algorithm has completed running!")
 
     """====== (5) Save Outputs to File ============================================="""
 
@@ -307,7 +310,7 @@ def main():
         os.makedirs(opath)
 
     ## Retrieve posterior predictive distribution and save to file
-    print("\nSaving samples to file...")
+    logging.info("\nSaving samples to file...")
     Pr = predictive(S)
     Pr = {
         fcx: {
@@ -339,7 +342,7 @@ def main():
     pop = f"{pop}-{ic}"
     with open(f"{pop}.json", "w") as f:
         json.dump(Po, f, indent=2)
-    print("Samples successfully saved to file!\n")
+    logging.info("Samples successfully saved to file!\n")
 
 
 if __name__ == "__main__":
