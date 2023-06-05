@@ -126,12 +126,30 @@ def process_rls(filename):
     ## Convert to numpy array for easy indexing
     content = np.array(content)
 
-    ## Separate the matrix into vectors / matrices for each of the variables
-    rnames = content[:, 0]
-    rdefs = content[:, 1:]
+    ## Check if the first entry is a number; if so, assume that there are 
+    ## rule groupings
+    grouped = content[0, 0].isnumeric()
+
+    ## If it is grouped, separate the matrix into vectors / matrices 
+    ## for each of the variables
+    if grouped:
+        groups = content[:, 0]
+        rnames = content[:, 1]
+        rdefs = content[:, 2:]
+        ids = {}
+        for gr, rn in zip(groups, rnames):
+            ids.setdefault(gr, []).append(rn)
+
+        rnames, rdefs = zip(*ids.values())
+
+    ## Otherwise, assume each rule belongs in its own group
+    else:
+        rnames = content[:, 0]
+        rdefs = content[:, 1:]
+        ids = {gr: [rn] for gr, rn in enumerate(rnames)}
 
     ## Create a dictionary to store all of the variables
-    rules = (rnames, rdefs)
+    rules = (ids, rnames, rdefs)
 
     return rules
 
