@@ -1,0 +1,19 @@
+{
+  "filenames": 
+  {
+    "obs": "martin-white/type/martin-white-type-d.csv",
+    "inv": "martin-white.csv",
+    "map": "martin-white.csv"
+  },
+  "parameters": 
+  {
+    "conservativity": 5,
+    "maxlength": 5,
+    "maxbuffer": 0,
+    "prolength": 0.25,
+    "urprior": 5,
+    "urtrans": 3,
+    "dfprior": 0.75,
+    "dftrans": 0.5
+  }
+}
