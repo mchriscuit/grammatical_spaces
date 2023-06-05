@@ -1,12 +1,13 @@
 import numpy as np
 import re
 import itertools as it
+from functools import reduce
 
 
 class SPE:
     """========== INITIALIZATION ==================================================="""
 
-    def __init__(self, mnms: np.ndarray, mdfs: np.ndarray, fms: np.ndarray, inv):
+    def __init__(self, mgrs: np.ndarray, mnms: np.ndarray, mdfs: np.ndarray, fms: np.ndarray, inv):
         ## *=*=*= HELPER FUNCTIONS *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=
         self._rng = np.random.default_rng()
         self._vln = np.vectorize(len)
@@ -20,17 +21,8 @@ class SPE:
         self._mdfs = mdfs
 
         """Rule hypotheses ========================================================="""
-        ## self._mhs = [m for i in range(self.nmns) for m in it.permutations(self.mnms, i)] 
-        ## REMOVE THIS LATER
-        self._mhs = []
-        for i in range(self.nmns):
-            for j in it.permutations(range(2), i):
-                if len(j) > 1:
-                    self._mhs.append(tuple([self.mnms[j[0] * 2]] + [self.mnms[j[0] * 2 + 1]] + [self.mnms[j[1]* 2] ] + [self.mnms[j[1] * 2 + 1]]))
-                elif len(j) == 1:
-                    self._mhs.append(tuple([self.mnms[j[0] * 2]] + [self.mnms[j[0] * 2 + 1]]))
-                else:
-                    self._mhs.append(tuple())
+        self._mhs = [m for i in range(self.nmns) for m in it.permutations(mgrs.keys(), i)]
+        self._mhs = [tuple(it.chain(*[mgrs[m] for m in mh])) for mh in self.mhs]
         self._mhs, self._nhs = np.asarray(self.mhs, dtype=object), len(self.mhs)
         self._mhi = np.asarray([0])
 
@@ -255,10 +247,10 @@ class SPE:
             ## Fix the context such that the lookaheads before the idx are
             ## converted into lookbehinds
             seq_cxt_regex = [
-                f"(?<={cxt}" if x == 0 and x < idx else 
-                f"(?={cxt}" if x == idx + 1 and x + 1 < len(seq_cxt_regex) else
                 f"(?<={cxt})" if x == 0 and x + 1 == idx else 
                 f"(?={cxt})" if x == idx + 1 and x + 1 == len(seq_cxt_regex) else
+                f"(?<={cxt}" if x == 0 and x < idx else 
+                f"(?={cxt}" if x == idx + 1 and x + 1 < len(seq_cxt_regex) else
                 f"{cxt})" if x + 1 == idx or x + 1 == len(seq_cxt_regex) and x != idx else 
                 cxt for x, cxt in enumerate(seq_cxt_regex)
             ]
