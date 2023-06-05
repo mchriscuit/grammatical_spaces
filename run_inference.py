@@ -35,6 +35,7 @@ def acceptance(o: np.ndarray, n: np.ndarray):
 
 
 def sample_posterior(
+    L,
     G: Grammar,
     gsIters: float,
     mhIters: float,
@@ -44,6 +45,9 @@ def sample_posterior(
 ):
     ## Initialize RNG generator
     rng = np.random.default_rng()
+
+    ## Keep track of intervals
+    itv = gsIters // 10
 
     ## Initialize rule hypothesis indices
     midx = np.arange(G.M.nhs)
@@ -182,6 +186,10 @@ def sample_posterior(
             }
             samples.append(cp.deepcopy(smp))
 
+        ## If 1/10 of the run is complete, write the log file
+        if gs % (itv) == 0:
+            L.debug(f"{gs} / {gsIters}")
+
     return samples
 
 
@@ -271,6 +279,9 @@ def main():
     console = logging.StreamHandler()
     console.setLevel(logging.INFO)
     logging.getLogger('').addHandler(console)
+    
+    ## Create an extra logger to allow for writing only to file
+    flog = logging.getLogger('')
 
     ## Print out parameters to console
     logging.info("\nLoading parameters into the model...")
@@ -296,7 +307,7 @@ def main():
 
     ## Run the MCMC algorithm
     logging.info("\nRunning the MCMC algorithm...")
-    S = sample_posterior(G, **mcP)
+    S = sample_posterior(flog, G, **mcP)
     logging.info("MCMC algorithm has completed running!")
 
     """====== (5) Save Outputs to File ============================================="""
