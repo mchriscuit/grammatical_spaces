@@ -72,9 +72,9 @@ class Grammar:
         self.L = Lexicon(self._lxs, self._cxs, self._ml, self._pad, *pdist)
 
         """ (5) Mappings object ===================================================="""
-        self._mnms, self._mdfs = m_args
+        self._mgrs, self._mnms, self._mdfs = m_args
         self._pfms = (self.pad + self._D.bw.astype(object) + self.pad).astype(str)
-        self.M = SPE(self._mnms, self._mdfs, self._pfms, self._iv)
+        self.M = SPE(self._mgrs, self._mnms, self._mdfs, self._pfms, self._iv)
 
         ## *=*=*= LEXEME GROUPING *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 
