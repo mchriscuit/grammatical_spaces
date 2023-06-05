@@ -138,9 +138,7 @@ def process_rls(filename):
         rdefs = content[:, 2:]
         ids = {}
         for gr, rn in zip(groups, rnames):
-            ids.setdefault(gr, []).append(rn)
-
-        rnames, rdefs = zip(*ids.values())
+            ids.setdefault(gr, []).append((rn))
 
     ## Otherwise, assume each rule belongs in its own group
     else:
