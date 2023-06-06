@@ -22,7 +22,7 @@ class SPE:
 
         """Rule hypotheses ========================================================="""
         self._mhs = [m for i in range(self.nmns) for m in it.permutations(mgrs.keys(), i)]
-        self._mhs = [tuple(it.chain(*[mgrs[m] for m in mh])) for mh in self.mhs]
+        self._mhs = [tuple(mgrs[m] for m in mh) for mh in self.mhs]
         self._mhs, self._nhs = np.asarray(self.mhs, dtype=object), len(self.mhs)
         self._mhi = np.asarray([0])
 
@@ -53,7 +53,7 @@ class SPE:
         mhi = self.mhi if mhi is None else mhi
 
         ## Retrieve the dimensions of the output matrix
-        mhys = self.mhs[mhi].tolist()
+        mhys = self.mhs[mhi]
         mdim = (fms.size, mhi.size)
 
         ## Create an numpy array corresponding to the expected string
@@ -64,13 +64,14 @@ class SPE:
         ## in the input array, apply each mapping hypothesis
         for i, mhy in enumerate(mhys):
             out = jnd
-            for mnm in mhy:
+            for mgrp in mhy:
                 run = True
                 while run:
-                    old = out
-                    sd, tf = self.mnm2rgx[mnm]
-                    out = sd.sub(lambda x: tf[x.groups("")[0]], out)
-                    run = re.search(sd, out)
+                    for mnm in mgrp:
+                        old = out
+                        sd, tf = self.mnm2rgx[mnm]
+                        out = sd.sub(lambda x: tf[x.groups("")[0]], out)
+                    run = old != out
             exs[:, i] = np.asarray(out.split(self.bnd))
         return exs
 
