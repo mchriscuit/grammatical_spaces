@@ -1,0 +1,20 @@
+{
+    "filenames": 
+    {
+      "obs": "test/test-f.csv",
+      "inv": "test.csv",
+      "map": "test.csv"
+    },
+    "parameters": 
+    {
+      "conservativity": 3,
+      "maxlength": 5,
+      "maxbuffer": 0,
+      "prolength": 0.5,
+      "urprior": 5,
+      "urtrans": 3,
+      "dfprior": 0.75,
+      "dftrans": 0.5
+    }
+  }
+  

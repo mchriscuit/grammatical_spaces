@@ -1,0 +1,5 @@
+i-insertion,*,-cons:+hi,+cons._.+cons
+v-deletion,-cons,*,_.-cons
+k-deletion,+cons:+hi:-voi,*,-cons._.-cons
+k-intervocalic voicing,+cons:+hi,+voi,-cons._.-cons
+k-final devoicing,+cons:+hi,-voi,_.#
