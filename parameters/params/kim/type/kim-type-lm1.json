@@ -1,9 +1,9 @@
 {
   "filenames": 
   {
-    "obs": "kim/kim-type-redux.csv",
+    "obs": "kim/kim-type.csv",
     "inv": "kim.csv",
-    "map": "kim-redux.csv"
+    "map": "kim.csv"
   },
   "parameters": 
   {
