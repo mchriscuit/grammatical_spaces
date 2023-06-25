@@ -1,5 +1,5 @@
 {
-    "gsIters": 1000000,
+    "gsIters": 500000,
     "mhIters": 10,
     "skIters": 15,
     "anConst": 12,
