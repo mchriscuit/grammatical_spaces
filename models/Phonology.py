@@ -68,7 +68,7 @@ class SPE:
                 # run = True
                 # while run:
                 for mnm in mgrp:
-                    old = out
+                    # old = out
                     sd, tf = self.mnm2rgx[mnm]
                     out = sd.sub(lambda x: tf[x.groups("")[0]], out)
                 # run = old != out
