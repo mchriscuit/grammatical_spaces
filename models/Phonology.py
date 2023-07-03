@@ -32,7 +32,7 @@ class SPE:
         """Pre-processed arrays ===================================================="""
         self._fms, self._nfms = fms, len(fms)
         self._mxl = self.vln(self.fms).max()
-        self._fms2exs = self.preprocess_tf()
+        # self._fms2exs = self.preprocess_tf()
 
     """ ========== INSTANCE METHODS ================================================ """
 
@@ -91,10 +91,11 @@ class SPE:
         return exs
 
     def apply(self, fms: np.ndarray, mhi: np.ndarray = None):
-        if self.vln(fms).max() > self.mxl:
-            return self.tfapply(fms=fms, mhi=mhi)
-        else:
-            return self.chapply(fms=fms, mhi=mhi)
+        return self.tfapply(fms=fms, mhi=mhi)
+        # if self.vln(fms).max() > self.mxl:
+        #     return self.tfapply(fms=fms, mhi=mhi)
+        # else:
+        #     return self.chapply(fms=fms, mhi=mhi)
 
     def init_mappings(self, mnms: np.ndarray, mdfs: np.ndarray):
         """Converts mappings into regular expressions for process application"""
